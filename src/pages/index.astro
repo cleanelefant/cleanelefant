@@ -1,105 +1,30 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import OrderNavigator from '../components/OrderNavigator';
+import Layout from "../layouts/Layout.astro";
+import OrderNavigator from "../components/OrderNavigator";
+
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<figure class="md:flex bg-slate-100 rounded-xl p-8 md:p-0 dark:bg-slate-800">
-			
-			<div class="pt-6 md:p-8 text-center md:text-left space-y-4">
-			  <blockquote>
-				<p class="text-lg font-medium">
-				  “Tailwind CSS is the only framework that I've seen scale
-				  on large teams. It’s easy to customize, adapts to any design,
-				  and the build size is tiny.”
-				</p>
-			  </blockquote>
-			  <figcaption class="font-medium">
-				<div class="text-sky-500 dark:text-sky-400">
-				  Sarah Dayan
-				</div>
-				<div class="text-slate-700 dark:text-slate-500">
-				  Staff Engineer, Algolia
-				</div>
-			  </figcaption>
-			</div>
-		  </figure>
-		  <OrderNavigator client:load/>
-		
-	
-		<!-- <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-		<p class="instructions">
-			To get started, open the directory <code>src/pages</code> in your project.<br />
-			<strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-		</p>
-		<ul role="list" class="link-card-grid">
-			<Card
-				href="https://docs.astro.build/"
-				title="Documentation"
-				body="Learn how Astro works and explore the official API docs."
-			/>
-			<Card
-				href="https://astro.build/integrations/"
-				title="Integrations"
-				body="Supercharge your project with new frameworks and libraries."
-			/>
-			<Card
-				href="https://astro.build/themes/"
-				title="Themes"
-				body="Explore a galaxy of community-built starter themes."
-			/>
-			<Card
-				href="https://astro.build/chat/"
-				title="Community"
-				body="Come say hi to our amazing Discord community. ❤️"
-			/>
-		</ul> -->
-	</main>
+<Layout 
+title="Sprzątanie mieszkań Zielona Góra" 
+description="Firma sprzątającą w Zielonej Górze! Sprzątanie mieszkańia Zielona Góra, sprzątanie po remoncie, mycie okien, pranie mebli i kanap, sprzątanie biur i locali"
+keywords="sprzątanie, sprzątanie mieszkań, sprzątanie mieszkań zielona góra, sprzątanie mieszkania zielona góra, sprzątanie domu, sprzątanie mieszkań cena za godzinę, sprzątanie mieszkań cennik, sprzątanie mieszkań, prywatnych warszawa, sprzątanie domu cena, ile za sprzątanie domu"
+>
+  <main>
+    <div class="prime">
+      <div class="w-3/5 mx-auto pt-80 text-center">
+        <h1 class="text-6xl font-bold ">Sprzątanie mieszkań Zielona Góra</h1>
+        <p class="text-2xl py-5">Usługa obejmuje kuchnię, łazienkę, pokoje oraz przedpokój</p>
+      </div>
+	  <OrderNavigator client:load />
+    </div>
+
+   
+  </main>
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1.5rem;
-		max-width: 60ch;
-	}
-	h1 {
-		font-size: 3rem;
-		font-weight: 800;
-		margin: 0;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		border: 1px solid rgba(var(--accent), 25%);
-		background-color: white;
-		padding: 1rem;
-		border-radius: 0.4rem;
-	}
-	.instructions code {
-		font-size: 0.875em;
-		font-weight: bold;
-		background: rgba(var(--accent), 12%);
-		color: rgb(var(--accent));
-		border-radius: 4px;
-		padding: 0.3em 0.45em;
-	}
-	.instructions strong {
-		color: rgb(var(--accent));
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
+  .prime {
+    height: 100vh;
+    background: url(/bg-image .jpg) no-repeat top/ cover;
+  }
 </style>

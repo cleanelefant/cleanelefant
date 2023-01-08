@@ -14,12 +14,10 @@ export default function OrderNavigator() {
   };
 
   return (
-    <figure className="md:flex bg-slate-100 rounded-xl p-8 md:p-0">
-    
+    <div className="md:flex gap-x-5 flex items-center justify-center mx-auto   mt-24">
         <OrderButton min={1} title={"pokój"} foo={setRoom} />
         <OrderButton min={1} title={"łazienka"} foo={setBedroom} />
         <OrderLink parentState={state}/>        
-      
-    </figure>
+    </div>
   );
 }
