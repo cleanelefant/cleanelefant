@@ -1,6 +1,6 @@
 ---
-import { Image, Picture } from "@astrojs/image/components";
 import elephant from "../images/icons8-elephant-100.png";
+import Contact from "../components/Contact.astro";
 
 export interface Props {
   title: string;
@@ -24,27 +24,26 @@ const { title, description, keywords } = Astro.props;
   </head>
   <body>
     <header class='fixed top-0 left-0 right-0 py-3'>
-      <div class='mx-8 hidden lg:block'>
-        <div class='flex'>
+      <div class='mx-2 lg:mx-8'>
+        <div class='flex justify-between items-center'>
           <a href='http://localhost:3000'>
             <img
+              class='hidden lg:block'
               src={elephant}
               width={100}
               height={100}
               alt='Sprzątanie mieszkań Zielona Góra'
             />
+            <img
+              class='lg:hidden'
+              src={elephant}
+              width={60}
+              height={60}
+              alt='Sprzątanie mieszkań Zielona Góra'
+            />
           </a>
+          <Contact />
         </div>
-      </div>
-      <div class='mx-8 lg:hidden'>
-        <a href='http://localhost:3000'>
-          <img
-            src={elephant}
-            width={60}
-            height={60}
-            alt='Sprzątanie mieszkań Zielona Góra'
-          />
-        </a>
       </div>
     </header>
     <slot />
