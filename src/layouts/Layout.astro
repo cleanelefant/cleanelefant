@@ -1,6 +1,6 @@
 ---
-import { Image, Picture } from '@astrojs/image/components';
-import elephant from '../images/icons8-elephant-100.png';
+import { Image, Picture } from "@astrojs/image/components";
+import elephant from "../images/icons8-elephant-100.png";
 
 export interface Props {
   title: string;
@@ -12,24 +12,29 @@ const { title, description, keywords } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content={keywords} />
+    <meta name='description' content={description} />
+    <meta name='keywords' content={keywords} />
   </head>
   <body>
-    <header class="fixed top-0 left-0 right-0 py-3">
-      <div class="mx-8">
-        <a href="http://localhost:3000">
-			<img src={elephant} width={100} height={100} />         
+    <!-- <header class='fixed top-0 left-0 right-0 py-3'>
+      <div class='mx-8'>
+        <a href='http://localhost:3000'>
+          <img
+            src={elephant}
+            width={100}
+            height={100}
+            alt='Sprzątanie mieszkań Zielona Góra'
+          />
         </a>
       </div>
-    </header>
+    </header> -->
     <slot />
   </body>
 </html>
