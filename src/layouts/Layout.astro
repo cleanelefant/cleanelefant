@@ -23,7 +23,7 @@ const { title, description, keywords } = Astro.props;
     <meta name='keywords' content={keywords} />
   </head>
   <body>
-    <!-- <header class='fixed top-0 left-0 right-0 py-3'>
+    <header class='fixed top-0 left-0 right-0 py-3'>
       <div class='mx-8'>
         <a href='http://localhost:3000'>
           <img
@@ -34,19 +34,12 @@ const { title, description, keywords } = Astro.props;
           />
         </a>
       </div>
-    </header> -->
+    </header>
     <slot />
   </body>
 </html>
 <style is:global>
   :root {
-    --accent: 124, 58, 237;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      #da62c4 30%,
-      white 60%
-    );
   }
   html {
     font-family: system-ui, sans-serif;
