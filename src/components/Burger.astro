@@ -1,13 +1,8 @@
 ---
-function changeHeaderBackgroun() {
-  const id = "header_123";
-  const header = document.getElementById(id);
-  header.style.backgroundColor = "red";
-}
 ---
 
-<div id='right-menu' class='right-menu'>
-  <div id='menuToggle' class='cursor-pointer p-3'>
+<div id='right-menu' class='right-menu hidden xl:block'>
+  <div id='menuToggle' class='cursor-pointer p-4'>
     <span></span>
     <span></span>
     <span class='last-burger-span'></span>
@@ -41,8 +36,6 @@ function changeHeaderBackgroun() {
   const dropdown_id = "dropdowm-menu_123";
   const dropdown = document.getElementById(dropdown_id);
   const menu = document.getElementById("right-menu");
-  const burger = document.getElementById("menu-button_123");
-
   menu.addEventListener("mouseover", handleMouseover);
   menu.addEventListener("click", handleMouseover);
   dropdown.addEventListener("mouseleave", handleDropdownMouseover);
@@ -56,9 +49,6 @@ function changeHeaderBackgroun() {
     user-select: none;
   }
 
-  /*
- * Just a quick hamburger
- */
   #menuToggle span {
     display: block;
     width: 33px;
