@@ -10,35 +10,38 @@
 </div>
 
 <script>
-  function handleMouseover() {
+  function initDesctopMenu() {
+    function handleMouseover() {
+      const dropdown_id = "dropdowm-menu_123";
+      const id = "header_123";
+      const burger = document.getElementById("menu-button_123");
+      const header = document.getElementById(id);
+      const dropdown = document.getElementById(dropdown_id);
+      header.style.backgroundColor = "white";
+      dropdown.style.display = "block";
+      burger.style.backgroundColor = "darkgrey";
+    }
+
+    function handleDropdownMouseover() {
+      const id = "header_123";
+      const header = document.getElementById(id);
+      const dropdown_id = "dropdowm-menu_123";
+      const dropdown = document.getElementById(dropdown_id);
+      const burger = document.getElementById("menu-button_123");
+
+      dropdown.style.display = "none";
+      header.style.backgroundColor = "transparent";
+      burger.style.backgroundColor = "white";
+    }
+
     const dropdown_id = "dropdowm-menu_123";
-    const id = "header_123";
-    const burger = document.getElementById("menu-button_123");
-    const header = document.getElementById(id);
     const dropdown = document.getElementById(dropdown_id);
-    header.style.backgroundColor = "white";
-    dropdown.style.display = "block";
-    burger.style.backgroundColor = "darkgrey";
+    const menu = document.getElementById("right-menu");
+    menu.addEventListener("mouseover", handleMouseover);
+    menu.addEventListener("click", handleMouseover);
+    dropdown.addEventListener("mouseleave", handleDropdownMouseover);
   }
-
-  function handleDropdownMouseover() {
-    const id = "header_123";
-    const header = document.getElementById(id);
-    const dropdown_id = "dropdowm-menu_123";
-    const dropdown = document.getElementById(dropdown_id);
-    const burger = document.getElementById("menu-button_123");
-
-    dropdown.style.display = "none";
-    header.style.backgroundColor = "transparent";
-    burger.style.backgroundColor = "white";
-  }
-
-  const dropdown_id = "dropdowm-menu_123";
-  const dropdown = document.getElementById(dropdown_id);
-  const menu = document.getElementById("right-menu");
-  menu.addEventListener("mouseover", handleMouseover);
-  menu.addEventListener("click", handleMouseover);
-  dropdown.addEventListener("mouseleave", handleDropdownMouseover);
+  window.onload = initDesctopMenu;
 </script>
 
 <style>
