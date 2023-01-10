@@ -1,4 +1,8 @@
 ---
+import whatsapp from "../images/whatsapp.png";
+import telegram from "../images/telegram.png";
+import messenger from "../images/messenger.png";
+import Icon from "./Icon.astro";
 ---
 
 <div
@@ -6,30 +10,28 @@
 >
   <a href='tel:+4733378901'>+48 690 456 901</a>
   <div class='flex items-center gap-x-2'>
-    <a href='https://api.whatsapp.com/send?phone=48690483990' target='_blank'>
-      <img
-        class='animate'
-        src='/assets/frontend/images/icons/whatsapp.svg'
-        alt='whatsapp'
-      />
-    </a>
+    <Icon
+      src={whatsapp}
+      href='https://api.whatsapp.com/send?phone=48690483990'
+      alt='whatsapp'
+      width={32}
+      height={32}
+    />
+    <Icon
+      src={telegram}
+      href='tg://resolve?domain=cleanwhalewarsaw'
+      alt='telegram'
+      width={33}
+      height={33}
+    />
+    <Icon
+      src={messenger}
+      href='https://m.me/igor.rak.184'
+      alt='messenger'
+      width={32}
+      height={32}
+    />
   </div>
 
-  <style>
-    .float {
-      width: 60px;
-      height: 60px;
-      background-color: #25d366;
-      color: #fff;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 3px #999;
-      z-index: 100;
-    }
-
-    .my-float {
-      margin-top: 16px;
-    }
-  </style>
+  <style></style>
 </div>
