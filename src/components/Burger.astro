@@ -10,7 +10,7 @@ function changeHeaderBackgroun() {
   <div id='menuToggle' class='cursor-pointer p-3'>
     <span></span>
     <span></span>
-    <span></span>
+    <span class='last-burger-span'></span>
   </div>
 </div>
 
@@ -69,5 +69,8 @@ function changeHeaderBackgroun() {
     border-radius: 3px;
     z-index: 1;
     transform-origin: 4px 0px;
+  }
+  #menuToggle span:last-child {
+    margin-bottom: 0;
   }
 </style>
