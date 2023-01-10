@@ -38,7 +38,7 @@ export default function OrderButton(props: {
         <p>{setWordInRightWay(props.title, state)}</p>
       </div>
       <button
-        className='text-3xl rounded-md hover:bg-slate-200 transition duration-300  py-5 px-5 mr-4'
+        className='text-3xl rounded-md hover:bg-slate-200 transition duration-300  py-3 px-5 mr-4'
         onClick={increase}
       >
         +
