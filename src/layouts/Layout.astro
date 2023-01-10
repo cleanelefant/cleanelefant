@@ -1,6 +1,7 @@
 ---
 import elephant from "../images/elephant.png";
 import Contact from "../components/Contact.astro";
+import Burger from "../components/Burger.astro";
 
 export interface Props {
   title: string;
@@ -23,26 +24,39 @@ const { title, description, keywords } = Astro.props;
     <meta name='keywords' content={keywords} />
   </head>
   <body>
-    <header class='fixed top-0 left-0 right-0 py-3'>
+    <header id='header_123' class='fixed top-0 left-0 right-0 py-3'>
       <div class='mx-2 lg:mx-8'>
         <div class='flex justify-between items-center'>
-          <a href='http://localhost:3000'>
-            <img
-              class='hidden lg:block'
-              src={elephant}
-              width={80}
-              height={80}
-              alt='Sprzątanie mieszkań Zielona Góra'
-            />
-            <img
-              class='lg:hidden'
-              src={elephant}
-              width={60}
-              height={60}
-              alt='Sprzątanie mieszkań Zielona Góra'
-            />
-          </a>
+          <div class='flex gap-x-5 items-center'>
+            <a href='http://localhost:3000'>
+              <img
+                class='hidden lg:block'
+                src={elephant}
+                width={60}
+                height={60}
+                alt='Sprzątanie mieszkań Zielona Góra'
+              />
+              <img
+                class='lg:hidden'
+                src={elephant}
+                width={40}
+                height={40}
+                alt='Sprzątanie mieszkań Zielona Góra'
+              />
+            </a>
+            <Burger />
+          </div>
+
           <Contact />
+        </div>
+      </div>
+      <div id='dropdowm-menu_123' class='dropdowm-menu'>
+        <div class='flex flex-col mx-8 p-5'>
+          <a href='#'>Home</a>
+          <a href='#'>About</a>
+          <a href='#'>Join us</a>
+          <a href='#'>Contacts</a>
+          <a href='#'>Portfolio</a>
         </div>
       </div>
     </header>
@@ -60,4 +74,28 @@ const { title, description, keywords } = Astro.props;
     font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
       DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
   }
+
+  .menu-button {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 100%;
+  }
+  .right-menu {
+    display: inline-block;
+    background-color: rgba(211, 211, 211, 0.3);
+    border-radius: 100%;
+  }
+  .dropdowm-menu {
+    display: none;
+    background-color: white;
+  }
+  .dropdowm-menu a:hover {
+    background-color: black;
+    color: white;
+  }
+
+  /* .right-menu:hover .menu-button {
+    background-color: darkgrey;
+  } */
 </style>
