@@ -28,7 +28,7 @@ export default function OrderButton(props: {
   return (
     <div className='basis-full flex items-center justify-between  bg-white text-2xl font-bold  py-2 rounded-xl'>
       <button
-        className='text-3xl rounded-md hover:bg-slate-200 transition duration-300  py-3 lg:py-5 px-5 ml-4'
+        className='text-3xl rounded-md hover:bg-slate-200 transition duration-300  py-3 lg:py-3 px-5 ml-4'
         onClick={decrease}
       >
         -
