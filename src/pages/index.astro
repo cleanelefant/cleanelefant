@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrderNavigator from "../components/OrderNavigator";
+import Chat from "../components/Chats";
 ---
 
 <Layout
@@ -20,6 +21,7 @@ import OrderNavigator from "../components/OrderNavigator";
       </div>
       <OrderNavigator client:load />
     </div>
+    <Chat client:load />
   </main>
 </Layout>
 

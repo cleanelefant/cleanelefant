@@ -6,6 +6,8 @@ import Menu from "../components/menu/Menu.astro";
 import Join from "../components/menu/Join.astro";
 import MobileBurger from "../components/menu/MobileBurger.astro";
 import MobileMenu from "../components/menu/MobileMenu.astro";
+import phone from "../images/phone-call.png";
+import Icon from "../components/Icon.astro";
 
 export interface Props {
   title: string;
@@ -55,6 +57,9 @@ const { title, description, keywords } = Astro.props;
             <MobileBurger />
           </div>
           <Contact />
+          <a class='lg:hidden' href='tel:+48690456901'
+            ><img src={phone} width={64} height={64} alt='phone' /></a
+          >
           <Join />
         </div>
       </div>
