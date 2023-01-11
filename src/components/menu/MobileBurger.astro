@@ -4,7 +4,7 @@
 <div class='right-menu block lg:hidden rounded-full'>
   <div id='mobileMenuToggle' class='menuToggle cursor-pointer'>
     <span></span>
-    <span></span>
+    <span class='middle'></span>
     <span class='last-burger-span'></span>
   </div>
 </div>
@@ -31,6 +31,15 @@
   .menuToggle span:last-child {
     margin-bottom: 0;
   }
+  .menuToggle.active span:first-child {
+    transform: rotate(45deg) translate(-4px, -2px);
+  }
+  .menuToggle.active .middle {
+    display: none;
+  }
+  .menuToggle.active span:last-child {
+    transform: rotate(-45deg) translate(-4px, -2px);
+  }
 </style>
 
 <script>
@@ -50,9 +59,11 @@
       if (menu.style.display === "block") {
         menu.style.display = "none";
         header.classList.remove("bg-white");
+        burger.classList.remove("active");
       } else {
         menu.style.display = "block";
         header.classList.add("bg-white");
+        burger.classList.add("active");
       }
     });
   }
