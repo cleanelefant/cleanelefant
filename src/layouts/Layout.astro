@@ -2,8 +2,10 @@
 import elephant from "../images/elephant.png";
 import Contact from "../components/Contact.astro";
 import Burger from "../components/menu/Burger.astro";
-import Menu from "../components/Menu.astro";
+import Menu from "../components/menu/Menu.astro";
 import Join from "../components/menu/Join.astro";
+import MobileBurger from "../components/menu/MobileBurger.astro";
+import MobileMenu from "../components/menu/MobileMenu.astro";
 
 export interface Props {
   title: string;
@@ -28,11 +30,11 @@ const { title, description, keywords } = Astro.props;
   <body>
     <header
       id='header_123'
-      class='fixed top-0 left-0 right-0 py-3 bg-gradient-to-b from-white ...'
+      class='fixed top-0 left-0 right-0 bg-gradient-to-b from-white ...'
     >
-      <div class='mx-2 lg:mx-8'>
+      <div class='mx-2 lg:mx-8 py-3'>
         <div class='flex justify-between items-center'>
-          <div class='flex gap-x-5 items-center'>
+          <div class='flex gap-x-3 lg:gap-x-5 items-center'>
             <a href='http://localhost:3000'>
               <img
                 class='hidden lg:block'
@@ -50,15 +52,17 @@ const { title, description, keywords } = Astro.props;
               />
             </a>
             <Burger />
+            <MobileBurger />
           </div>
           <Contact />
           <Join />
         </div>
       </div>
       <Menu />
+      <MobileMenu />
     </header>
   </body>
-  <slot />
+  <main id='main'><slot /></main>
 </html>
 
 <style is:global>
@@ -80,8 +84,7 @@ const { title, description, keywords } = Astro.props;
     border-radius: 100%;
   }
   .right-menu {
-    /* background-color: rgba(128, 126, 126, 0.5); */
-    border-radius: 100%;
+    /* border-radius: 100%; */
   }
   .dropdowm-menu {
     display: none;

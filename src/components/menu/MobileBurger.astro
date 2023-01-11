@@ -1,0 +1,60 @@
+---
+---
+
+<div class='right-menu block lg:hidden rounded-full'>
+  <div id='mobileMenuToggle' class='menuToggle cursor-pointer'>
+    <span></span>
+    <span></span>
+    <span class='last-burger-span'></span>
+  </div>
+</div>
+
+<style>
+  .menuToggle {
+    display: block;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .menuToggle span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    margin-bottom: 4px;
+    position: relative;
+    background: #0a0000;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+  }
+  .menuToggle span:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
+<script>
+  function initMobileBurger() {
+    const burger = document.getElementById("mobileMenuToggle");
+
+    burger.addEventListener("click", () => {
+      const menu = document.getElementById("mobile_menu_123");
+      const header = document.getElementById("header_123");
+      const main = document.getElementById("main");
+
+      main.addEventListener("click", () => {
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        }
+      });
+      if (menu.style.display === "block") {
+        menu.style.display = "none";
+        header.classList.remove("bg-white");
+      } else {
+        menu.style.display = "block";
+        header.classList.add("bg-white");
+      }
+    });
+  }
+  initMobileBurger();
+</script>
