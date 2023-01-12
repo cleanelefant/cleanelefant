@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import OrderNavigator from "../components/OrderNavigator";
 import Chat from "../components/Chats";
+import Options from "../components/options/Options.astro";
 ---
 
 <Layout
@@ -9,20 +10,19 @@ import Chat from "../components/Chats";
   description='Firma sprzątającą w Zielonej Górze! Sprzątanie mieszkańia Zielona Góra, sprzątanie po remoncie, mycie okien, pranie mebli i kanap, sprzątanie biur i locali'
   keywords='sprzątanie, sprzątanie mieszkań, sprzątanie mieszkań zielona góra, sprzątanie mieszkania zielona góra, sprzątanie domu, sprzątanie mieszkań cena za godzinę, sprzątanie mieszkań cennik, sprzątanie mieszkań, prywatnych warszawa, sprzątanie domu cena, ile za sprzątanie domu'
 >
-  <main>
-    <div class='prime'>
-      <div class='w-5/6 lg:w-3/5 mx-auto pt-28 lg:pt-60 text-center'>
-        <h1 class='text-3xl md:text-4xl lg:text-6xl font-bold'>
-          Sprzątanie mieszkań Zielona Góra
-        </h1>
-        <p class='text-sm md:text-2xl lg:text-2xl py-5'>
-          Usługa obejmuje kuchnię, łazienkę, pokoje oraz przedpokój
-        </p>
-      </div>
-      <OrderNavigator client:load />
+  <div class='prime'>
+    <div class='w-5/6 lg:w-3/5 mx-auto pt-28 lg:pt-60 text-center'>
+      <h1 class='text-3xl md:text-4xl lg:text-6xl font-bold'>
+        Sprzątanie mieszkań Zielona Góra
+      </h1>
+      <p class='text-sm md:text-2xl lg:text-2xl py-5'>
+        Usługa obejmuje kuchnię, łazienkę, pokoje oraz przedpokój
+      </p>
     </div>
-    <Chat client:load />
-  </main>
+    <OrderNavigator client:load />
+  </div>
+  <Options />
+  <Chat client:load />
 </Layout>
 
 <style>

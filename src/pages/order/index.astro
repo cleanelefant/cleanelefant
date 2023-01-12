@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Order from "../../components/Order";
+import Chat from "../../components/Chats";
 ---
 
 <Layout title='Welcome to Order'>
@@ -8,4 +9,5 @@ import Order from "../../components/Order";
     <h1>Order</h1>
     <Order client:load />
   </div>
+  <Chat client:load />
 </Layout>
