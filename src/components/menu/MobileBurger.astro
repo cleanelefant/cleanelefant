@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class='right-menu block lg:hidden rounded-full'>
+<div class='right-menu block lg:hidden rounded-full p-4'>
   <div id='mobileMenuToggle' class='menuToggle cursor-pointer'>
     <span></span>
     <span class='middle'></span>
@@ -19,9 +19,9 @@
 
   .menuToggle span {
     display: block;
-    width: 33px;
-    height: 4px;
-    margin-bottom: 4px;
+    width: 34px;
+    height: 3px;
+    margin-bottom: 10px;
     position: relative;
     background: #0a0000;
     border-radius: 3px;
@@ -32,13 +32,13 @@
     margin-bottom: 0;
   }
   .menuToggle.active span:first-child {
-    transform: rotate(45deg) translate(-6px, -2px);
+    transform: rotate(45deg) translate(-4px, -2px);
   }
   .menuToggle.active .middle {
     display: none;
   }
   .menuToggle.active span:last-child {
-    transform: rotate(-45deg) translate(-6px, -2px);
+    transform: rotate(-45deg) translate(-4px, -2px);
   }
 </style>
 
@@ -50,6 +50,7 @@
       const menu = document.getElementById("mobile_menu_123");
       const header = document.getElementById("header_123");
       const main = document.getElementById("main");
+      ("right-menu");
 
       main.addEventListener("click", () => {
         if (menu.style.display === "block") {

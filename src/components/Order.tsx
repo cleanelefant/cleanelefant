@@ -15,7 +15,7 @@ export default function Order() {
   }, []);
 
   return (
-    <div className='border-black border-2 mt-20 mx-20'>
+    <div className='border-black border-2 '>
       <div>
         <p>{state.room}</p>
         <p>{state.bedroom}</p>
