@@ -1,6 +1,6 @@
 import React from "react";
 
-import chat from "../images/chat.png";
+import chat from "../images/chat_f.png";
 import messanger from "../images/messenger_m.png";
 import telegram from "../images/telegram_m.png";
 import watsapp from "../images/whatsapp_m.png";
