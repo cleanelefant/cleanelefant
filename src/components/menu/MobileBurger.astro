@@ -1,7 +1,7 @@
 ---
 ---
 
-<div class='right-menu block lg:hidden rounded-full p-4'>
+<div class='right-menu block lg:hidden rounded-full'>
   <div id='mobileMenuToggle' class='menuToggle cursor-pointer'>
     <span></span>
     <span class='middle'></span>
@@ -51,6 +51,8 @@
       const header = document.getElementById("header_123");
       const main = document.getElementById("main");
       ("right-menu");
+      const chat = document.getElementById("chat_123");
+      console.log(chat);
 
       main.addEventListener("click", () => {
         if (menu.style.display === "block") {
@@ -61,10 +63,12 @@
         menu.style.display = "none";
         header.classList.remove("bg-white");
         burger.classList.remove("active");
+        chat.style.display = "block";
       } else {
         menu.style.display = "block";
         header.classList.add("bg-white");
         burger.classList.add("active");
+        chat.style.display = "none";
       }
     });
   }
