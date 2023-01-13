@@ -3,14 +3,18 @@ export type OrderStateType = {
   bedroom: number;
 };
 
-export type basePricesType = {
-  one: number;
-  two: number;
-  three: number;
+export type rateType = {
+  id: number;
+  title: string;
+  discount: number;
+  link: string;
+  isCurent: boolean;
 };
 
-export type ratesType = {
-  first: number;
-  second: number;
-  thrird: number;
+export type priceType = {
+  id: number;
+  title: string;
+  description: string;
+  room: number;
+  price: number;
 };

@@ -1,88 +1,136 @@
 import React from "react";
-import { basePricesType, ratesType } from "../../types";
+import { rateType, priceType } from "../../types";
+
+function setActualPrice(basePrice: number, actualDiscount: number) {
+  const multiplicator = (100 - actualDiscount) / 100;
+  return basePrice * multiplicator;
+}
 
 export default function PriceOptions() {
-  const [state, setState] = React.useState<basePricesType>(
-    {} as basePricesType
-  );
-  const [rates, setRates] = React.useState<ratesType>({} as ratesType);
+  const [discounts, setDiscounts] = React.useState<rateType[]>();
+  const [prices, setPrices] = React.useState<priceType[]>();
 
-  const ratesKeys: string[] = Object.keys(rates);
+  const actualDiscount = discounts?.find((d) => d.isCurent === true);
 
-  const ref = React.useRef({} as basePricesType);
-  function setPrices(rate: number) {
-    const num = (100 - rate) / 100;
-    const currentPrices: basePricesType = {
-      one: ref.current.one * num,
-      two: ref.current.two * num,
-      three: ref.current.three * num,
-    };
-    setState(currentPrices);
+  function setActualDiscount(id: number) {
+    setDiscounts(
+      [...discounts].map((d) => {
+        if (id === d.id) {
+          return { ...d, isCurent: true };
+        } else {
+          return { ...d, isCurent: false };
+        }
+      })
+    );
   }
 
   React.useEffect(() => {
-    const basePrices = { one: 150, two: 180, three: 210 };
-    const fetchedRates = { first: 20, second: 15, third: 10 };
-    ref.current = basePrices;
-    setState(basePrices);
-    setRates({
-      first: fetchedRates.first,
-      second: fetchedRates.second,
-      thrird: fetchedRates.third,
-    });
+    const fetchedRates: rateType[] = [
+      {
+        id: 1,
+        title: "Raz w tygodniu",
+        discount: 20,
+        link: "week",
+        isCurent: true,
+      },
+      {
+        id: 2,
+        title: "Raz na dwa tygodnie",
+        discount: 15,
+        link: "twiceperweek",
+        isCurent: false,
+      },
+      {
+        id: 3,
+        title: "Raz w miesiącu",
+        discount: 10,
+        link: "month",
+        isCurent: false,
+      },
+      {
+        id: 4,
+        title: "Jednorazowe sprzątanie",
+        discount: 0,
+        link: "once",
+        isCurent: false,
+      },
+    ];
+    const fetchedPrices = [
+      {
+        id: 1,
+        title: "Jednopokojowe",
+        price: 149.9,
+        room: 1,
+        description:
+          "Cena obejmuje sprzątanie jednego pokoju, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+      },
+      {
+        id: 2,
+        title: "Dwupokojowe",
+        price: 179.0,
+        room: 2,
+        description:
+          "Cena obejmuje sprzątanie dwóch pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+      },
+      {
+        id: 3,
+        title: "Trzypokojowe",
+        price: 209.9,
+        room: 3,
+        description:
+          "Cena obejmuje sprzątanie trzech pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+      },
+    ];
+    setDiscounts(fetchedRates);
+    setPrices(fetchedPrices);
   }, []);
 
   return (
-    <div className=''>
-      <div className='flex gap-x-5'>
-        <button
-          onClick={() => {
-            setPrices(rates.first);
-          }}
-        >
-          <p>
-            <span>-{rates.first}%</span>Raz w tygodniu
-          </p>
-        </button>
-        <button
-          onClick={() => {
-            setPrices(rates.second);
-          }}
-        >
-          <p>
-            <span>-{rates.second}%</span>Raz na dwa tygodnie
-          </p>
-        </button>
-        <button
-          onClick={() => {
-            setPrices(rates.thrird);
-          }}
-        >
-          <p>
-            <span>-{rates.second}%</span>Raz w miesiącu
-          </p>
-        </button>
-        <button
-          onClick={() => {
-            setPrices(0);
-          }}
-        >
-          <p>Jednorazowe sprzątanie</p>
-        </button>
+    <div className='py-10 xl:mx-28'>
+      <div className='flex gap-x-4 justify-center py-2 font-bold '>
+        {discounts?.map((d) => (
+          <button
+            className={`${
+              d.isCurent ? "bg-blue-500" : "bg-slate-300"
+            } p-4 rounded-md basis-full`}
+            key={d.id}
+            onClick={() => {
+              setActualDiscount(d.id);
+            }}
+          >
+            <div>
+              {d.discount !== 0 ? (
+                <p>
+                  <span className='mr-4 bg-yellow-600 p-2 rounded-lg font-extrabold'>
+                    -{d.discount}%
+                  </span>
+                  {d.title}
+                </p>
+              ) : (
+                <p>{d.title}</p>
+              )}
+            </div>
+          </button>
+        ))}
       </div>
-      <div className='flex gap-x-5'>
-        <a href={`/order?rooms=1&bedrooms=1&type=${ratesKeys[0]}`}>
-          <p>Jednopokojowe</p>
-          <p>{state.one} zł</p>
-        </a>
-        <a href={`/order?rooms=2&bedrooms=1&type=${ratesKeys[1]}`}>
-          <p>Dwupokojowe</p>
-          <p>{state.two} zł</p>
-        </a>
-        <a href={`/order?rooms=3&bedrooms=1&type=${ratesKeys[2]}`}>
-          <p>Trzypokojowe</p>
-          <p>{state.three} zł</p>
-        </a>
+      <div className='flex gap-x-4 justify-center py-8 font-bold '>
+        {prices?.map((p) => (
+          <a
+            className='flex justify-center'
+            key={p.id}
+            href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link}`}
+          >
+            <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+              <p>{p.title}</p>
+              <p>
+                {setActualPrice(p.price, actualDiscount.discount).toFixed(2)}
+                zł.
+              </p>
+              <div className='text-sm font-thin'>{p.description}</div>
+              <div>Zamów sprzątanie</div>
+            </div>
+          </a>
+        ))}
       </div>
     </div>
   );
