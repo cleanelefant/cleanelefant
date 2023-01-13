@@ -87,12 +87,12 @@ export default function PriceOptions() {
 
   return (
     <div className='py-10 xl:mx-28'>
-      <div className='flex gap-x-4 justify-center py-2 font-bold '>
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center py-2 text-sm lg:text-lg font-bold '>
         {discounts?.map((d) => (
           <button
             className={`${
-              d.isCurent ? "bg-blue-500" : "bg-slate-300"
-            } p-4 rounded-md basis-full`}
+              d.isCurent ? "bg-blue-500 " : "bg-slate-100 hover:bg-slate-200"
+            } py-2 lg:p-4 rounded-md basis-full transition ease-in-out`}
             key={d.id}
             onClick={() => {
               setActualDiscount(d.id);
@@ -100,12 +100,12 @@ export default function PriceOptions() {
           >
             <div>
               {d.discount !== 0 ? (
-                <p>
-                  <span className='mr-4 bg-yellow-600 p-2 rounded-lg font-extrabold'>
+                <div className='flex flex-col lg:flex-row items-center justify-center'>
+                  <p className=' bg-yellow-600 p-2  rounded-lg font-extrabold inline-block'>
                     -{d.discount}%
-                  </span>
-                  {d.title}
-                </p>
+                  </p>
+                  <p className='p-2'>{d.title}</p>
+                </div>
               ) : (
                 <p>{d.title}</p>
               )}
@@ -113,21 +113,23 @@ export default function PriceOptions() {
           </button>
         ))}
       </div>
-      <div className='flex gap-x-4 justify-center py-8 font-bold '>
+      <div className='flex flex-col lg:flex-row gap-x-4 justify-center py-8 font-bold '>
         {prices?.map((p) => (
           <a
-            className='flex justify-center'
+            className='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
             key={p.id}
-            href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link}`}
+            href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
           >
             <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
-              <p>{p.title}</p>
-              <p>
+              <p className='text-2xl pb-4'>{p.title}</p>
+              <p className='text-4xl mb-12'>
                 {setActualPrice(p.price, actualDiscount.discount).toFixed(2)}
-                zł.
+                <span className='ml-2'>zł.</span>
               </p>
-              <div className='text-sm font-thin'>{p.description}</div>
-              <div>Zamów sprzątanie</div>
+              <div className='text-sm font-thin pb-2 '>{p.description}</div>
+              <div className='py-4  bg-blue-600 text-white rounded-lg'>
+                Zamów sprzątanie
+              </div>
             </div>
           </a>
         ))}
