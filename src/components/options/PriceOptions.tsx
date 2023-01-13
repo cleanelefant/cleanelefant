@@ -91,7 +91,9 @@ export default function PriceOptions() {
         {discounts?.map((d) => (
           <button
             className={`${
-              d.isCurent ? "bg-blue-500 " : "bg-slate-100 hover:bg-slate-200"
+              d.isCurent
+                ? "bg-blue-500 "
+                : "bg-slate-200 lg:bg-slate-100 hover:bg-slate-200"
             } py-2 lg:p-4 rounded-md basis-full transition ease-in-out`}
             key={d.id}
             onClick={() => {
@@ -113,7 +115,7 @@ export default function PriceOptions() {
           </button>
         ))}
       </div>
-      <div className='flex flex-col lg:flex-row gap-x-4 justify-center py-8 font-bold '>
+      <div className='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-center py-8 font-bold '>
         {prices?.map((p) => (
           <a
             className='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
