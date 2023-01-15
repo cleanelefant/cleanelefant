@@ -129,7 +129,7 @@ export default function PriceOptions() {
                 <span className='ml-2'>zł.</span>
               </p>
               <div className='text-sm font-thin pb-2 '>{p.description}</div>
-              <div className='py-4  bg-blue-600 text-white rounded-lg'>
+              <div className='py-4  bg-blue-600 text-white rounded-lg text-xl'>
                 Zamów sprzątanie
               </div>
             </div>
