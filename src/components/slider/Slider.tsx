@@ -22,7 +22,7 @@ export default function Slider() {
 
   return (
     <div>
-      <div className='flex gap-x-5 justify-center items-center'>
+      <div className='flex flex-col lg:flex-row gap-x-0 lg:gap-x-5 justify-center items-center'>
         {images.map((image, index) => {
           return (
             <button
@@ -36,7 +36,7 @@ export default function Slider() {
           );
         })}
       </div>
-      <div className='max-w-[74vw] h-[800px] w-full m-auto relative group'>
+      <div className='max-w-[100vw] lg:max-w-[74vw]  h-[800px] w-full m-auto relative group'>
         <div
           className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
           style={{ backgroundImage: `url(${image.src})` }}
