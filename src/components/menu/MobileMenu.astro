@@ -5,32 +5,32 @@ import watsapp from "../../images/whatsapp_m.png";
 import Join from "./Join.astro";
 ---
 
-<menu id='mobile_menu_123' class='bg-white py-8 px-5 h-screen z-50'>
+<menu id='mobile_menu_123' class='bg-white py-4 px-2 h-screen z-50'>
   <div class='mb-8 flex justify-end'>
-    <div>
+    <!-- <div>
       <a
         href='/joinus'
         class='bg-gradient-to-r from-purple-500 to-pink-500 py-2 lg:py-4 px-4 lg:px-8 text-sm lg:text-2xl text-white font-bold rounded-3xl'
       >
         Zostań cleanerem
       </a>
-    </div>
+    </div> -->
   </div>
-  <div class='flex items-center justify-between'>
+  <div class='flex flex-col gap-y-4 items-center justify-between'>
     <div
-      class='flex items-center gap-x-5 bg-gradient-to-r from-cyan-500 to-green-500 py-2 lg:py-4 px-4 lg:px-8 text-sm lg:text-2xl text-white font-bold rounded-3xl'
+      class='flex items-center gap-y-2 bg-gradient-to-r from-cyan-500 to-green-500 py-4 lg:py-8 px-8 lg:px-16 text-lg lg:text-2xl text-white font-bold rounded-3xl'
     >
       <a href='tel:+4733378901'>+48 690 456 901</a>
     </div>
     <div class='flex gap-x-4'>
       <a href='https://m.me/igor.rak.184'>
-        <img src={messanger} width={32} height={32} alt={"messanger"} />
+        <img src={messanger} width={64} height={64} alt={"messanger"} />
       </a>
       <a href='tg://resolve?domain=cleanwhalewarsaw'>
-        <img src={telegram} width={32} height={32} alt={"telegram"} />
+        <img src={telegram} width={64} height={64} alt={"telegram"} />
       </a>
       <a href='https://api.whatsapp.com/send?phone=48690483990'>
-        <img src={watsapp} width={32} height={32} alt={"messanger"} />
+        <img src={watsapp} width={64} height={64} alt={"messanger"} />
       </a>
     </div>
   </div>

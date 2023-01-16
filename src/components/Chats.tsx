@@ -24,12 +24,14 @@ export default function Chat() {
         </div>
       )}
       <button
-        className='mt-5'
+        // className='mt-5'
+        className='mt-5 w-[64px] h-[64px] rounded-full bg-center bg-cover'
+        style={{ backgroundImage: `url(${chat})` }}
         onClick={() => {
           setState((s) => !s);
         }}
       >
-        <img src={chat} width={64} height={64} alt={"chat"} />
+        {/* <img src={chat} width={64} height={64} alt={"chat"} /> */}
       </button>
     </div>
   );
