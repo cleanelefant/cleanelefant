@@ -25,6 +25,7 @@ export default function Chat() {
       )}
       <button
         // className='mt-5'
+        aria-label='Chat'
         className='mt-5 w-[64px] h-[64px] rounded-full bg-center bg-cover'
         style={{ backgroundImage: `url(${chat})` }}
         onClick={() => {
