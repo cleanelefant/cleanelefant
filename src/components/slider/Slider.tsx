@@ -36,9 +36,9 @@ export default function Slider() {
           );
         })}
       </div>
-      <div className='max-w-[100vw] lg:max-w-[74vw]  h-[800px] w-full m-auto relative group'>
+      <div className='max-w-[100vw] lg:max-w-[74vw]  h-[800px] w-full m-auto'>
         <div
-          className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
+          className='w-full h-full rounded-2xl bg-center bg-cover duration-500 '
           style={{ backgroundImage: `url(${image.src})` }}
         ></div>
       </div>
