@@ -86,8 +86,8 @@ export default function PriceOptions() {
   }, []);
 
   return (
-    <div className='py-10 xl:mx-28'>
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center py-2 text-sm lg:text-lg font-bold '>
+    <div className='pt-10 xl:mx-28'>
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-10 text-sm lg:text-lg font-bold '>
         {discounts?.map((d) => (
           <button
             className={`${
@@ -115,7 +115,7 @@ export default function PriceOptions() {
           </button>
         ))}
       </div>
-      <div className='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-center py-8 font-bold '>
+      <div className='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-between pb-10 font-bold '>
         {prices?.map((p) => (
           <a
             className='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
