@@ -217,7 +217,15 @@ export default function Slider() {
               y={"top-60"}
               isLeft={false}
             />
-            
+              <MyNote
+              slide={image.id}
+              id={3}
+              text={"Przecieramy wszystkie powierzchnie"}
+              x={"left-60"}
+              y={"top-60"}
+              isLeft={false}
+            />
+            Możemy wrzucić Twoje rzeczy do pralki
            
             
             
