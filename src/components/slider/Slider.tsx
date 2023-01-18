@@ -1,9 +1,9 @@
 import React from "react";
 import MyNote from "./MyNote";
 import bg0 from "../../images/bedroom2.webp";
-import bg1 from "../../images/2.png";
-import bg2 from "../../images/3.png";
-import bg3 from "../../images/4.png";
+import bg1 from "../../images/corridore.webp";
+import bg2 from "../../images/kitchen.webp";
+import bg3 from "../../images/lazenka.webp";
 
 export default function Slider() {
   const [state, setState] = React.useState(0);
@@ -22,7 +22,7 @@ export default function Slider() {
   const image = images?.find((image) => image.id === state);
 
   return (
-    <div className='pt-10'>
+    <div className='pt-10 xl:mx-28'>
       <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-10 text-sm lg:text-lg font-bold'>
         {images.map((image, index) => {
           return (
@@ -105,6 +105,123 @@ export default function Slider() {
               y={"bottom-72"}
               isLeft={false}
             />
+             <MyNote
+              slide={image.id}
+              id={1}
+              text={"Sprzątamy śmieci"}
+              x={"left-0"}
+              y={"top-10"}
+              isLeft={true}
+            />
+             <MyNote
+              slide={image.id}
+              id={1}
+              text={"Starannie składamy i rozwieszamy odzież"}
+              x={"right-40"}
+              y={"top-10"}
+              isLeft={true}
+            />
+             <MyNote
+              slide={image.id}
+              id={1}
+              text={"Rozstawiamy obuwie"}
+              x={"left-60"}
+              y={"bottom-60"}
+              isLeft={true}
+            />
+             <MyNote
+              slide={image.id}
+              id={1}
+              text={"Myjemy podłogi"}
+              x={"right-20"}
+              y={"bottom-10"}
+              isLeft={false}
+            />
+             <MyNote
+              slide={image.id}
+              id={2}
+              text={"Przecieramy parapety, kaloryfery, listwy, drzwi, wyłączniki"}
+              x={"left-0"}
+              y={"top-10"}
+              isLeft={true}
+            />
+             <MyNote
+              slide={image.id}
+              id={2}
+              text={"Myjemy podłogę"}
+              x={"left-0"}
+              y={"top-40"}
+              isLeft={true}
+            />            
+            <MyNote
+              slide={image.id}
+              id={2}
+              text={"Myjemy fronty i meble"}
+              x={"right-60"}
+              y={"top-52"}
+              isLeft={true}
+            />
+              <MyNote
+              slide={image.id}
+              id={2}
+              text={"Myjemy naczynia. Te, które są w zlewie. Jeżeli tych naczyń jest dużo, zaznacz to w usługach dodatkowych"}
+              x={"right-5"}
+              y={"bottom-52"}
+              isLeft={false}
+            />
+              <MyNote
+              slide={image.id}
+              id={2}
+              text={"Rozstawiamy krzesła, zaprowadzamy porządek"}
+              x={"left-40"}
+              y={"bottom-20"}
+              isLeft={false}
+            />
+             <MyNote
+              slide={image.id}
+              id={2}
+              text={"Myjemy kuchenkę, zlew i blat"}
+              x={"left-52"}
+              y={"bottom-60"}
+              isLeft={false}
+            />
+             <MyNote
+              slide={image.id}
+              id={2}
+              text={"Przecieramy wszystkie powierzchnie, lodówkę, okap, AGD, czy mikrofalówkę"}
+              x={"left-16"}
+              y={"bottom-72"}
+              isLeft={true}
+            />
+               <MyNote
+              slide={image.id}
+              id={3}
+              text={"Myjemy i dezynfekujemy sedes"}
+              x={"left-0"}
+              y={"top-10"}
+              isLeft={true}
+            />
+               <MyNote
+              slide={image.id}
+              id={3}
+              text={"Czyścimy lustra"}
+              x={"right-0"}
+              y={"top-40"}
+              isLeft={false}
+            />
+              <MyNote
+              slide={image.id}
+              id={3}
+              text={"Przecieramy wszystkie powierzchnie"}
+              x={"left-60"}
+              y={"top-60"}
+              isLeft={false}
+            />
+            
+           
+            
+            
+            
           </div>
         </div>
       </div>
