@@ -1,9 +1,9 @@
 ---
-import icon from "../images/messenger_m.png";
-import price from "../images/advantages/best-price.png";
-import card from "../images/advantages/wallet.png";
-import insurance from "../images/advantages/insurance.png";
-import inventory from "../images/advantages/cleaning.png";
+
+import price from "../../images/advantages/best-price.png";
+import card from "../../images/advantages/wallet.png";
+import insurance from "../../images/advantages/insurance.png";
+import inventory from "../../images/advantages/cleaning.png";
 const advantages = [
   {
     id: 1,
@@ -39,7 +39,7 @@ const advantages = [
     {
       advantages.map((item) => (
         <li class='text-center p-2 lg:p-8 '>
-          <div class='flex justify-center items-center mb-4'>
+          <div class='flex justify-center items-center mb-5'>
             <img
               class='hidden lg:block'
               src={item.src}
