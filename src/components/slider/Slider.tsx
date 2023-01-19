@@ -41,12 +41,12 @@ export default function Slider() {
           );
         })}
       </div>
-      <div className=' lg:max-w-[1333px] h-[700px] m-auto'>
+      <div className='hidden lg:block lg:max-w-[1333px] h-[600px] m-auto'>
         <div
           className='w-full h-full rounded-2xl bg-center bg-cover duration-500 '
           style={{ backgroundImage: `url(${image.src})` }}
         >
-          <div className='mx-auto lg:w-[90%]  xl:w-[80%] h-full relative'>
+          <div className='mx-auto lg:w-[90%]   h-full relative'>
             <MyNote
               slide={image.id}
               id={0}
