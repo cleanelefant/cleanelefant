@@ -278,7 +278,13 @@ export default function Slider() {
             <li key={n.id}>{n.text}</li>
           ))}
         </ul>
-        <img src={image.src} alt={image.title} className='py-5' />
+        <img
+          src={image.src}
+          alt={image.title}
+          width={1334}
+          height={750}
+          className='pt-5'
+        />
       </div>
     </div>
   );

@@ -111,7 +111,7 @@ export const notes = [
     text: "Możemy wrzucić Twoje rzeczy do pralki",
   },
   {
-    id: 25,
+    id: 29,
     slide: 3,
     text: "Myjemy wannę, krany i kabiny prysznicowe. Pamiętaj jednak, że jeśli Twój prysznic lub wanna są bardzo brudne, powinieneś nas o tym uprzedzić",
   },
