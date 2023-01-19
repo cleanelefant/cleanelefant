@@ -105,7 +105,7 @@ export default function Slider() {
               y={"bottom-72"}
               isLeft={false}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={1}
               text={"Sprzątamy śmieci"}
@@ -113,7 +113,7 @@ export default function Slider() {
               y={"top-10"}
               isLeft={true}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={1}
               text={"Starannie składamy i rozwieszamy odzież"}
@@ -121,7 +121,7 @@ export default function Slider() {
               y={"top-10"}
               isLeft={true}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={1}
               text={"Rozstawiamy obuwie"}
@@ -129,7 +129,7 @@ export default function Slider() {
               y={"bottom-60"}
               isLeft={true}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={1}
               text={"Myjemy podłogi"}
@@ -137,22 +137,24 @@ export default function Slider() {
               y={"bottom-10"}
               isLeft={false}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={2}
-              text={"Przecieramy parapety, kaloryfery, listwy, drzwi, wyłączniki"}
+              text={
+                "Przecieramy parapety, kaloryfery, listwy, drzwi, wyłączniki"
+              }
               x={"left-0"}
               y={"top-10"}
               isLeft={true}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={2}
               text={"Myjemy podłogę"}
               x={"left-0"}
               y={"top-40"}
               isLeft={true}
-            />            
+            />
             <MyNote
               slide={image.id}
               id={2}
@@ -161,15 +163,17 @@ export default function Slider() {
               y={"top-52"}
               isLeft={true}
             />
-              <MyNote
+            <MyNote
               slide={image.id}
               id={2}
-              text={"Myjemy naczynia. Te, które są w zlewie. Jeżeli tych naczyń jest dużo, zaznacz to w usługach dodatkowych"}
+              text={
+                "Myjemy naczynia. Te, które są w zlewie. Jeżeli tych naczyń jest dużo, zaznacz to w usługach dodatkowych"
+              }
               x={"right-5"}
               y={"bottom-52"}
               isLeft={false}
             />
-              <MyNote
+            <MyNote
               slide={image.id}
               id={2}
               text={"Rozstawiamy krzesła, zaprowadzamy porządek"}
@@ -177,7 +181,7 @@ export default function Slider() {
               y={"bottom-20"}
               isLeft={false}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={2}
               text={"Myjemy kuchenkę, zlew i blat"}
@@ -185,15 +189,17 @@ export default function Slider() {
               y={"bottom-60"}
               isLeft={false}
             />
-             <MyNote
+            <MyNote
               slide={image.id}
               id={2}
-              text={"Przecieramy wszystkie powierzchnie, lodówkę, okap, AGD, czy mikrofalówkę"}
+              text={
+                "Przecieramy wszystkie powierzchnie, lodówkę, okap, AGD, czy mikrofalówkę"
+              }
               x={"left-16"}
               y={"bottom-72"}
               isLeft={true}
             />
-               <MyNote
+            <MyNote
               slide={image.id}
               id={3}
               text={"Myjemy i dezynfekujemy sedes"}
@@ -201,7 +207,7 @@ export default function Slider() {
               y={"top-10"}
               isLeft={true}
             />
-               <MyNote
+            <MyNote
               slide={image.id}
               id={3}
               text={"Czyścimy lustra"}
@@ -209,7 +215,7 @@ export default function Slider() {
               y={"top-40"}
               isLeft={false}
             />
-              <MyNote
+            <MyNote
               slide={image.id}
               id={3}
               text={"Przecieramy wszystkie powierzchnie"}
@@ -217,7 +223,7 @@ export default function Slider() {
               y={"top-60"}
               isLeft={false}
             />
-              <MyNote
+            <MyNote
               slide={image.id}
               id={3}
               text={"Przecieramy wszystkie powierzchnie"}
@@ -225,11 +231,41 @@ export default function Slider() {
               y={"top-60"}
               isLeft={false}
             />
-            Możemy wrzucić Twoje rzeczy do pralki
-           
-            
-            
-            
+            <MyNote
+              slide={image.id}
+              id={3}
+              text={"Możemy wrzucić Twoje rzeczy do pralki"}
+              x={"left-0"}
+              y={"bottom-10"}
+              isLeft={true}
+            />
+
+            <MyNote
+              slide={image.id}
+              id={3}
+              text={
+                "Myjemy wannę, krany i kabiny prysznicowe. Pamiętaj jednak, że jeśli Twój prysznic lub wanna są bardzo brudne, powinieneś nas o tym uprzedzić"
+              }
+              x={"right-10"}
+              y={"bottom-10"}
+              isLeft={false}
+            />
+            <MyNote
+              slide={image.id}
+              id={3}
+              text={"Starannie rozstawiamy rzeczy"}
+              x={"left-0"}
+              y={"bottom-60"}
+              isLeft={true}
+            />
+            <MyNote
+              slide={image.id}
+              id={3}
+              text={"Myjemy umywalkę"}
+              x={"right-40"}
+              y={"bottom-60"}
+              isLeft={false}
+            />
           </div>
         </div>
       </div>
