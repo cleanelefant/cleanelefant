@@ -4,6 +4,7 @@ import bg0 from "../../images/bedroom2.webp";
 import bg1 from "../../images/corridore.webp";
 import bg2 from "../../images/kitchen.webp";
 import bg3 from "../../images/lazenka.webp";
+import { notes } from "../../utils/notes";
 
 export default function Slider() {
   const [state, setState] = React.useState(0);
@@ -21,9 +22,11 @@ export default function Slider() {
 
   const image = images?.find((image) => image.id === state);
 
+  const actualNotes = notes.filter((n) => n.slide === state);
+
   return (
     <div className='pt-10 xl:mx-28'>
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-10 text-sm lg:text-lg font-bold'>
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-4 lg:pb-10 text-sm lg:text-lg font-bold'>
         {images.map((image, index) => {
           return (
             <button
@@ -268,6 +271,14 @@ export default function Slider() {
             />
           </div>
         </div>
+      </div>
+      <div className='lg:hidden'>
+        <ul className='list-inside list-disc text-left text-sm'>
+          {actualNotes.map((n) => (
+            <li key={n.id}>{n.text}</li>
+          ))}
+        </ul>
+        <img src={image.src} alt={image.title} className='py-5' />
       </div>
     </div>
   );
