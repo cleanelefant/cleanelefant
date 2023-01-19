@@ -4,6 +4,7 @@ import OrderNavigator from "../components/OrderNavigator";
 import Chat from "../components/Chats";
 import Options from "../components/options/Options.astro";
 import Slider from "../components/slider/Slider.astro";
+import Advantages from "../components/Advantages.astro";
 ---
 
 <Layout
@@ -22,6 +23,7 @@ import Slider from "../components/slider/Slider.astro";
     </div>
     <OrderNavigator client:load />
   </div>
+  <Advantages />
   <Options />
   <Chat client:load />
   <Slider />
