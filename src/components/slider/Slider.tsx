@@ -27,11 +27,12 @@ export default function Slider() {
   return (
     <div className='pt-10 xl:mx-28'>
       <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-4 lg:pb-10 text-sm lg:text-lg font-bold'>
-        {images.map((image, index) => {
+        {images.map((img, index) => {
           return (
             <button
+              key={index}
               className={`${
-                image.id === state
+                img.id === state
                   ? "bg-blue-500 "
                   : "bg-slate-200 lg:bg-slate-100 hover:bg-slate-200"
               } py-2 lg:p-4 rounded-md basis-full transition ease-in-out`}
@@ -39,7 +40,7 @@ export default function Slider() {
                 setState(index);
               }}
             >
-              {image.title}
+              {img.title}
             </button>
           );
         })}
