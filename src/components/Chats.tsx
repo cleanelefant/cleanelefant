@@ -9,7 +9,7 @@ export default function Chat() {
   const [state, setState] = React.useState(false);
 
   return (
-    <div id='chat_123' className='fixed lg:hidden bottom-5 right-5'>
+    <div id='chat_123' className='fixed lg:hidden bottom-5 right-5 z-50'>
       {state && (
         <div className='flex flex-col gap-y-4'>
           <a href='https://m.me/igor.rak.184'>
