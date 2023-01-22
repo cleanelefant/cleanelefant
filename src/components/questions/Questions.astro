@@ -1,0 +1,26 @@
+---
+import Questions from "./Questions";
+import { questionsType } from "../../types";
+
+type fetchedQuestionsType = Omit<questionsType, "isVisible">;
+
+const fetchedData:fetchedQuestionsType[] = [
+    {id:1, question:"Czy działacie tylko w Warszawie?", answer:"Przyjmujemy zamówienia z Warszawy i okolic. Po złożeniu zamówienia wybierz swoje miejsce zamieszkania, a my poinformujemy Cię o ewentualnej dopłacie za dojazd.Działamy także w Krakowie i Białymstoku." },
+    {id:2, question:"Czy sprzątacie domki letniskowe?", answer:"Tak, sprzątamy domki letniskowe, działki, kamienice i inne niestandardowe mieszkania. Zamówienie można złożyć na stronie internetowej, gdzie od razu zobaczysz wyliczony koszt sprzątania." },
+    {id:3, question:"Kto pracuje w Waszej firmie?", answer:"Jesteśmy na rynku od 2016 roku. Mamy doświadczony, na bieżąco szkolony zespół, oraz szczegółowy proces rekrutacji. Sprawdzamy wszystkie dane kandydatów, kilkukrotnie przeprowadzamy z nimi rozmowy, oceniamy umiejętności poprzez sprzątania testowe oraz egzaminy. Mamy stały skład pracowników, nie przyjmujemy ludzi do pracy na kilka dni lub tygodni." },
+    {id:4, question:"Czy trzeba zapewniać własne środki czystości?", answer:"Nasi specjaliści mają przy sobie wszystkie niezbędne narzędzia do sprzątania mieszkania i mycia okien. Wykorzystujemy profesjonalne środki czystości Medisept, w razie potrzeby możemy przyjść z odkurzaczem. Każdy Wykonawca ma zestaw z 5-7 detergentów, mikrofibry do różnych powierzchni, wiadro i mop, gąbki, skrobak, szczotkę do sierści. Tobie pozostaje tylko otworzyć drzwi." }
+]
+
+const questions:questionsType[] = fetchedData.map(i=>{return {...i,isVisible:false}})
+
+---
+
+<section>
+  <div class='lg:pt-5 lg:pb-10 px-2 xl:px-28 text-center'>
+    <p class='py-4 font-bold text-3xl lg:text-6xl'>
+      Ile kosztuje sprzątanie mieszkania?
+    </p>
+    <p><a href="/test">Zobacz wszystkie odpowiedzi<span class="ml-16 text-2xl">&#8594;</span></a></p>
+   </div>
+   <Questions client:visible questions={questions}/>
+</section>

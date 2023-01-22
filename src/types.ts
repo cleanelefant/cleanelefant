@@ -18,3 +18,10 @@ export type priceType = {
   room: number;
   price: number;
 };
+
+export type questionsType = {
+  id: number;
+  question: string;
+  answer: string;
+  isVisible:boolean;  
+};
