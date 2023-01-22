@@ -20,7 +20,7 @@ const questions:questionsType[] = fetchedData.map(i=>{return {...i,isVisible:fal
     <p class='py-4 font-bold text-3xl lg:text-6xl'>
       Ile kosztuje sprzątanie mieszkania?
     </p>
-    <p><a href="/test">Zobacz wszystkie odpowiedzi<span class="ml-16 text-2xl">&#8594;</span></a></p>
+    <p><a class="bg-neutral-200 hover:bg-neutral-300 hover:font-bold py-5 my-5 px-8 rounded-2xl" href="/test">Zobacz wszystkie odpowiedzi<span class="ml-10 text-2xl">&#8594;</span></a></p>
    </div>
    <Questions client:visible questions={questions}/>
 </section>

@@ -26,12 +26,12 @@ export default function Questions(props: IQuestions) {
       itemScope
       itemType="https://schema.org/FAQPage"
     >
-      {state.map((q) => (
+      {state.map((q,index) => (
         <div
-          key={q.id}
+          key={q.id} 
           itemScope
           itemProp="mainEntity"
-          itemType="https://schema.org/Question"
+          itemType="https://schema.org/Question"         
         >
           <div
             className="font-bold text-2xl hover:underline cursor-pointer"
@@ -49,6 +49,7 @@ export default function Questions(props: IQuestions) {
           >
             <span itemProp="text">{q.answer}</span>
           </div>
+          <div className="border-b my-5 border-neutral-200"></div>
         </div>
       ))}
     </div>
