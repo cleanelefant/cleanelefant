@@ -23,8 +23,7 @@ export default function Chat() {
           </a>
         </div>
       )}
-      <button
-        // className='mt-5'
+      <button       
         aria-label='Chat'
         className='mt-5 w-[64px] h-[64px] rounded-full bg-center bg-cover'
         style={{ backgroundImage: `url(${chat})` }}
@@ -32,7 +31,7 @@ export default function Chat() {
           setState((s) => !s);
         }}
       >
-        {/* <img src={chat} width={64} height={64} alt={"chat"} /> */}
+ 
       </button>
     </div>
   );

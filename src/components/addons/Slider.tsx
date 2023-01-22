@@ -162,7 +162,7 @@ export default function Slider() {
     setWidth(scroll_width - offset_width);
   }, []);
   return (
-    <div className="lg:mx-[10%]">
+    <div className="lg:mx-28">
       <motion.div
         ref={courusel}
         className="cursor-grab overflow-hidden "
@@ -178,7 +178,7 @@ export default function Slider() {
               <motion.div key={addon.id} className="min-w-[200px] h-[200px] bg-neutral-200 shadow-lg flex flex-col justify-center items-center">
                 <a className="block " href={addon.slut}>
                   <div className="flex flex-col  items-center ">                    
-                    <img className="pb-2" src={addon.src} alt={addon.title}/>
+                    <img className="pb-2" src={addon.src} alt={addon.title} width={64} height={64}/>
                     <p className="pb-2 font-semibold">{addon.title}</p>
                     <p className="p-2 bg-amber-600 rounded-md font-extrabold text-sm">{addon.price} zł</p>
                   </div>
