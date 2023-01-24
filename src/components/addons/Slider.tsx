@@ -178,11 +178,11 @@ export default function Slider() {
           {addons.map((addon) => {
             return (
               <div  key={addon.id} className="min-w-[200px] lg:min-w-[300px] h-[200px]  lg:h-[300px] bg-white rounded-lg shadow-lg flex flex-col justify-center items-center ">
-                <div className="block cursor-pointer" onClick={()=>{location.assign(addon.slug)}} >
-                  <div className="flex flex-col  items-center mx-10">
-                    <div className="w-[64px] h-[64px] lg:mb-5 hover:scale-110 transition duration-300" style={{ backgroundImage: `url(${addon.src})` }}></div>
-                    <a href={addon.slug} className="lg:mb-5 font-semibold hover:scale-110 transition duration-300">{addon.title}</a>
-                    <p className="py-2 px-4 bg-amber-600 rounded-md font-extrabold text-sm hover:scale-110 transition duration-300">{addon.price} zł</p>
+                <div className="cursor-pointer h-3/5" onClick={()=>{location.assign(addon.slug)}} >
+                  <div className="flex flex-col   items-center mx-5 h-full ">
+                    <div className="flex-none w-[64px] h-[64px]  hover:scale-110 transition duration-300" style={{ backgroundImage: `url(${addon.src})` }}></div>
+                    <div className="basis-full flex flex-col justify-center items-center" ><a href={addon.slug} className="inline-block text-[12px] lg:text-lg  font-semibold hover:scale-110 transition duration-300">{addon.title}</a></div>
+                    <p className="flex-none lg:text-lg py-2 px-4 bg-amber-600 rounded-md font-extrabold  hover:scale-110 transition duration-300">{addon.price} zł</p>
                   </div>
                 </div>
               </div>
