@@ -1,5 +1,6 @@
 import React from "react";
 import { questionsType } from "../../types";
+import arrow from "../../images/up-arrow.webp"
 
 interface IQuestions {
   questions: questionsType[];
@@ -34,15 +35,16 @@ export default function Questions(props: IQuestions) {
           itemType="https://schema.org/Question"         
         >
           <div
-            className="font-bold text-2xl hover:underline cursor-pointer"
+            className="font-bold text-2xl hover:underline cursor-pointer flex gap-x-4"
             onClick={() => {
               clickHandler(q.id);
             }}
           >
+            <span><img className={`${q.isVisible&&"rotate-180"} transition duration-300`} src={arrow} alt="arrow" width={32} height={32}/></span>
             <span itemProp="name">{q.question}</span>
           </div>
           <div
-            className={`${q.isVisible ? "block" : "hidden"} w-3/4 mb-5`}
+            className={`${q.isVisible ? "block" : "hidden"} w-3/4 mb-5 mt-2`}
             itemScope
             itemProp="acceptedAnswer"
             itemType="https://schema.org/Answer"
