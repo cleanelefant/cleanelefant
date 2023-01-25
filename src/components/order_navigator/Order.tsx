@@ -1,5 +1,5 @@
 import React from "react";
-import { OrderStateType } from "../types";
+import { OrderStateType } from "../../types";
 
 export default function Order() {
   const [state, setState] = React.useState<OrderStateType>({

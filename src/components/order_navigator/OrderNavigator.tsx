@@ -1,7 +1,7 @@
 import React from "react";
 import OrderButton from "./OrderButton";
 import OrderLink from "./OrderLink";
-import { OrderStateType } from "../types";
+import { OrderStateType } from "../../types";
 
 export default function OrderNavigator() {
   const [state, setState] = React.useState<OrderStateType>({

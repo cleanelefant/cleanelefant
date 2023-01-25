@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import OrderNavigator from "../components/OrderNavigator";
-import Chat from "../components/Chats";
+import OrderNavigator from "../components/order_navigator/OrderNavigator";
+import Chat from "../components/layout/Chats";
 import Options from "../components/options/Options.astro";
 import Slider from "../components/slider/Slider.astro";
 import Advantages from "../components/advantages/Advantages.astro";
@@ -9,6 +9,7 @@ import Services from "../components/services/Services.astro";
 import Addons from "../components/addons/Addons.astro";
 import Costs from "../components/Costs.astro";
 import Questions from "../components/questions/Questions.astro";
+import Description from "../components/description/Description.astro";
 ---
 
 <Layout
@@ -35,6 +36,7 @@ import Questions from "../components/questions/Questions.astro";
   <Addons />
   <Costs/>
   <Questions/>
+  <Description/>
 </Layout>
 
 <style>

@@ -1,5 +1,5 @@
 import React from "react";
-import { setWordInRightWay } from "../utils/word";
+import { setWordInRightWay } from "../../utils/word";
 
 export default function OrderButton(props: {
   min: number;

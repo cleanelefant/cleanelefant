@@ -1,9 +1,9 @@
 import React from "react";
 
-import chat from "../images/chat_f.png";
-import messanger from "../images/messenger_m.png";
-import telegram from "../images/telegram_m.png";
-import watsapp from "../images/whatsapp_m.png";
+import chat from "../../images/chat_f.png";
+import messanger from "../../images/messenger_m.png";
+import telegram from "../../images/telegram_m.png";
+import watsapp from "../../images/whatsapp_m.png";
 
 export default function Chat() {
   const [state, setState] = React.useState(false);
