@@ -1,6 +1,7 @@
 import React from "react";
 import { questionsType } from "../../types";
-import arrow from "../../images/up-arrow.webp"
+import arrow from "../../images/up-arrow.webp";
+
 
 interface IQuestions {
   questions: questionsType[];
@@ -40,7 +41,7 @@ export default function Questions(props: IQuestions) {
               clickHandler(q.id);
             }}
           >
-            <span><img className={`${q.isVisible&&"rotate-180"} transition duration-300`} src={arrow} alt="arrow" width={32} height={32}/></span>
+            <span className="basis-[32px]"><img className={`${q.isVisible&&"rotate-180"} transition duration-300`} src={arrow} alt="arrow" width={32} height={32}/></span>
             <span itemProp="name">{q.question}</span>
           </div>
           <div
