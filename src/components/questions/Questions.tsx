@@ -41,7 +41,7 @@ export default function Questions(props: IQuestions) {
               clickHandler(q.id);
             }}
           >
-            <span className="basis-[32px]"><img className={`${q.isVisible&&"rotate-180"} transition duration-300`} src={arrow} alt="arrow" width={32} height={32}/></span>
+            <span className="basis-[32px] shrink"><img className={`${q.isVisible&&"rotate-180"} transition duration-300`} src={arrow} alt="arrow" width={32} height={32}/></span>
             <span itemProp="name">{q.question}</span>
           </div>
           <div
