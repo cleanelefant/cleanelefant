@@ -6,24 +6,50 @@ import next from "../../images/next.png";
 
 type fetchedQuestionsType = Omit<questionsType, "isVisible">;
 
-const fetchedData:fetchedQuestionsType[] = [
-    {id:1, question:"Czy działacie tylko w Warszawie?", answer:"Przyjmujemy zamówienia z Warszawy i okolic. Po złożeniu zamówienia wybierz swoje miejsce zamieszkania, a my poinformujemy Cię o ewentualnej dopłacie za dojazd.Działamy także w Krakowie i Białymstoku." },
-    {id:2, question:"Czy sprzątacie domki letniskowe?", answer:"Tak, sprzątamy domki letniskowe, działki, kamienice i inne niestandardowe mieszkania. Zamówienie można złożyć na stronie internetowej, gdzie od razu zobaczysz wyliczony koszt sprzątania." },
-    {id:3, question:"Kto pracuje w Waszej firmie?", answer:"Jesteśmy na rynku od 2016 roku. Mamy doświadczony, na bieżąco szkolony zespół, oraz szczegółowy proces rekrutacji. Sprawdzamy wszystkie dane kandydatów, kilkukrotnie przeprowadzamy z nimi rozmowy, oceniamy umiejętności poprzez sprzątania testowe oraz egzaminy. Mamy stały skład pracowników, nie przyjmujemy ludzi do pracy na kilka dni lub tygodni." },
-    {id:4, question:"Czy trzeba zapewniać własne środki czystości?", answer:"Nasi specjaliści mają przy sobie wszystkie niezbędne narzędzia do sprzątania mieszkania i mycia okien. Wykorzystujemy profesjonalne środki czystości Medisept, w razie potrzeby możemy przyjść z odkurzaczem. Każdy Wykonawca ma zestaw z 5-7 detergentów, mikrofibry do różnych powierzchni, wiadro i mop, gąbki, skrobak, szczotkę do sierści. Tobie pozostaje tylko otworzyć drzwi." }
-]
+const fetchedData: fetchedQuestionsType[] = [
+  {
+    id: 1,
+    question: "Czy działacie tylko w Warszawie?",
+    answer:
+      "Przyjmujemy zamówienia z Warszawy i okolic. Po złożeniu zamówienia wybierz swoje miejsce zamieszkania, a my poinformujemy Cię o ewentualnej dopłacie za dojazd.Działamy także w Krakowie i Białymstoku.",
+  },
+  {
+    id: 2,
+    question: "Czy sprzątacie domki letniskowe?",
+    answer:
+      "Tak, sprzątamy domki letniskowe, działki, kamienice i inne niestandardowe mieszkania. Zamówienie można złożyć na stronie internetowej, gdzie od razu zobaczysz wyliczony koszt sprzątania.",
+  },
+  {
+    id: 3,
+    question: "Kto pracuje w Waszej firmie?",
+    answer:
+      "Jesteśmy na rynku od 2016 roku. Mamy doświadczony, na bieżąco szkolony zespół, oraz szczegółowy proces rekrutacji. Sprawdzamy wszystkie dane kandydatów, kilkukrotnie przeprowadzamy z nimi rozmowy, oceniamy umiejętności poprzez sprzątania testowe oraz egzaminy. Mamy stały skład pracowników, nie przyjmujemy ludzi do pracy na kilka dni lub tygodni.",
+  },
+  {
+    id: 4,
+    question: "Czy trzeba zapewniać własne środki czystości?",
+    answer:
+      "Nasi specjaliści mają przy sobie wszystkie niezbędne narzędzia do sprzątania mieszkania i mycia okien. Wykorzystujemy profesjonalne środki czystości Medisept, w razie potrzeby możemy przyjść z odkurzaczem. Każdy Wykonawca ma zestaw z 5-7 detergentów, mikrofibry do różnych powierzchni, wiadro i mop, gąbki, skrobak, szczotkę do sierści. Tobie pozostaje tylko otworzyć drzwi.",
+  },
+];
 
-const questions:questionsType[] = fetchedData.map(i=>{return {...i,isVisible:false}})
-
+const questions: questionsType[] = fetchedData.map((i) => {
+  return { ...i, isVisible: false };
+});
 ---
 
-<section class="lg:my-10">
+<section class='lg:my-10'>
   <div class='lg:pt-10 lg:pb-10 px-2 xl:px-28 text-center'>
     <p class='lg:py-8 font-bold text-3xl lg:text-6xl'>
       Ile kosztuje sprzątanie mieszkania?
     </p>
-    <a class="group bg-neutral-200 hover:bg-neutral-300 flex max-w-fit mx-auto py-4 px-10 rounded-3xl justify-center items-center gap-x-5 my-5" href="/test"><div>Zobacz wszystkie odpowiedzi</div><img class="group-hover:translate-x-2 transition duration-300" src={next} width={32} height={32} alt={'all answers-questios'} /></a>
-   </div>
-   <Questions client:visible questions={questions}/>
-   <Wsparcie/>
+    <a
+      class='group bg-neutral-200 hover:bg-neutral-300 flex max-w-fit mx-auto py-4 px-10 rounded-3xl justify-center items-center gap-x-5 my-5'
+      href='/test'
+      ><div>Zobacz wszystkie odpowiedzi</div>
+      <!-- <img class="group-hover:translate-x-2 transition duration-300" src={next} width={32} height={32} alt={'all answers-questios'} /> -->
+    </a>
+  </div>
+  <Questions client:visible questions={questions} />
+  <Wsparcie />
 </section>

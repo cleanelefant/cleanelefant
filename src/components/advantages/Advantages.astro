@@ -1,5 +1,4 @@
 ---
-
 import price from "../../images/advantages/best-price.png";
 import card from "../../images/advantages/wallet.png";
 import insurance from "../../images/advantages/insurance.png";
@@ -39,24 +38,6 @@ const advantages = [
     {
       advantages.map((item) => (
         <li class='text-center p-2 lg:p-8 '>
-          <div class='flex justify-center items-center mb-5'>
-            <img
-              class='hidden lg:block'
-              src={item.src}
-              alt={item.title}
-              width={128}
-              height={128}
-            />
-          </div>
-          <div class='flex justify-center items-center mb-4'>
-            <img
-              class='lg:hidden'
-              src={item.src}
-              alt={item.title}
-              width={64}
-              height={64}
-            />
-          </div>
           <p class='font-bold lg:text-xl mb-2'>{item.title}</p>
           <p class='text-sm'>{item.text}</p>
         </li>
