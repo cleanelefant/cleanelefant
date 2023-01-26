@@ -37,28 +37,70 @@ const opinions = [
 
 export default function Opinions() {
   const [state, setState] = React.useState(1);
-  const find = opinions.find((o, index) => index+1 === state);
+  const find = opinions.find((o, index) => index + 1 === state);
   const stars = [
-    {id:1, isGold:false},
-       {id:2, isGold:false},
-          {id:3, isGold:false},
-             {id:4, isGold:false},
-                {id:5, isGold:false}
-  ]
-  const maped_stars = stars.map(s=>{if(s.id < find.stars+1 ){return {...s,isGold:true}} else {return s}})
+    { id: 1, isGold: false },
+    { id: 2, isGold: false },
+    { id: 3, isGold: false },
+    { id: 4, isGold: false },
+    { id: 5, isGold: false },
+  ];
+  const maped_stars = stars.map((s) => {
+    if (s.id < find.stars + 1) {
+      return { ...s, isGold: true };
+    } else {
+      return s;
+    }
+  });
 
   return (
-    <section className="lg:my-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20">
-    <div className="flex gap-x-10 justify-center lg:pt-10 lg:pb-10 px-2 xl:px-28 ">
-        <div className="basis-20 text-6xl flex justify-center items-center"><button  onClick={()=>{setState(s=>{if(s>1){return s-1} else {return opinions.length}} )}}>-</button></div>      <div className="text-center basis-96">
-        <div className="font-bolt text-5xl mb-5">{find.user}</div>
-        <div className="font-bold">"{find.text}"</div>
-        <div className="flex justify-between gap-x-2 mt-4">{maped_stars.map(star=><img src={star.isGold?gold:silver} alt="star" width={64} height={64}/>)}</div>
+    <section className='lg:my-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20'>
+      <div className='flex gap-x-10 justify-center lg:pt-10 lg:pb-10 px-2 xl:px-28 '>
+        <div className='basis-20 text-6xl flex justify-center items-center'>
+          <button
+            onClick={() => {
+              setState((s) => {
+                if (s > 1) {
+                  return s - 1;
+                } else {
+                  return opinions.length;
+                }
+              });
+            }}
+          >
+            -
+          </button>
+        </div>{" "}
+        <div className='text-center basis-96'>
+          <div className='font-bolt text-5xl mb-5'>{find.user}</div>
+          <div className='font-bold'>"{find.text}"</div>
+          <div className='flex justify-between gap-x-2 mt-4'>
+            {maped_stars.map((star) => (
+              <img
+                src={star.isGold ? gold : silver}
+                alt='star'
+                width={32}
+                height={32}
+              />
+            ))}
+          </div>
+        </div>
+        <div className='basis-20 text-6xl  flex justify-center items-center'>
+          <button
+            onClick={() => {
+              setState((s) => {
+                if (state < opinions.length) {
+                  return s + 1;
+                } else {
+                  return 1;
+                }
+              });
+            }}
+          >
+            +
+          </button>
+        </div>
       </div>
-      <div className="basis-20 text-6xl  flex justify-center items-center"><button  onClick={()=>{setState(s=>{if(state<opinions.length){return s+1} else {return 1}})}}>+</button></div>
-      
-    </div>
-   
     </section>
   );
 }
