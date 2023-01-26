@@ -1,6 +1,8 @@
 import React from "react";
 import gold from "../../images/opinion/star_gold.png";
 import silver from "../../images/opinion/star.png";
+import useIntersection from "../../utils/useObserver";
+
 
 const opinions = [
   {
@@ -37,6 +39,7 @@ const opinions = [
 
 export default function Opinions() {
   const [state, setState] = React.useState(1);
+  const { bottomRef, topRef, intersection } = useIntersection();
   const find = opinions.find((o, index) => index + 1 === state);
   const stars = [
     { id: 1, isGold: false },
@@ -54,7 +57,8 @@ export default function Opinions() {
   });
 
   return (
-    <section className='lg:my-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20'>
+    <section className='lg:my-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20 relative'>
+      <div className='absolute top-[-20px] h-px' ref={topRef}></div>
       <div className='flex gap-x-10 justify-center lg:pt-10 lg:pb-10 px-2 xl:px-28 '>
         <div className='basis-20 text-6xl flex justify-center items-center'>
           <button
@@ -77,7 +81,7 @@ export default function Opinions() {
           <div className='flex justify-between gap-x-2 mt-4'>
             {maped_stars.map((star) => (
               <img
-                src={star.isGold ? gold : silver}
+                src={!intersection ? " ":star.isGold ? gold : silver}
                 alt='star'
                 width={32}
                 height={32}
@@ -101,6 +105,7 @@ export default function Opinions() {
           </button>
         </div>
       </div>
+      <div className='absolute bottom-[-120px] h-px ' ref={bottomRef}></div>
     </section>
   );
 }

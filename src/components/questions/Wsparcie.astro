@@ -1,38 +1,12 @@
 ---
-import messanger from "../../images/messanger/messenger.png";
-import telegram from "../../images/messanger/telegram.png";
-import whatsapp from "../../images/messanger/whatsapp.png";
+import Chats from "./Chats";
 ---
 
-<section class='flex flex-col items-center mb-20 mt-5 px-2 xl:px-28'>
-  <p class='text-2xl lg:text-5xl font-extrabold text-green-700'>
+<section class="flex flex-col items-center mb-20 mt-5 px-2 xl:px-28">
+  <p class="text-2xl lg:text-5xl font-extrabold text-green-700">
     Wsparcie na żywo
   </p>
-  <div
-    class='flex flex-wrap gap-y-4 gap-x-16 my-10 font-bold text-neutral-700 justify-center'
-  >
-    <a
-      href='https://m.me/igor.rak.184'
-      class='flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center'
-    >
-      <img src={messanger} width={32} height={32} alt={"messanger"} />
-      <p>messanger</p>
-    </a>
-    <a
-      href='tg://resolve?domain=cleanwhalewarsaw'
-      class='flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-green-700 to-cyan-200 hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center'
-    >
-      <img src={telegram} width={32} height={32} alt={"telegram"} />
-      <p>telegram</p>
-    </a>
-    <a
-      href='https://api.whatsapp.com/send?phone=48690483990'
-      class='flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-blue-700 to-cyan-500 hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center'
-    >
-      <img src={whatsapp} width={32} height={32} alt={"whatsapp"} />
-      <p>whatsapp</p>
-    </a>
-  </div>
+  <Chats client:visible />
   <div>
     Bez robotów i automatycznych odpowiedzi - zadaj pytanie i otrzymaj szybką
     odpowiedź od człowieka

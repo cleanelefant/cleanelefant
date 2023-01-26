@@ -5,47 +5,25 @@ import bg1 from "../../images/corridore.webp";
 import bg2 from "../../images/kitchen.webp";
 import bg3 from "../../images/lazenka.webp";
 import { notes } from "../../utils/notes";
+import useIntersection from "../../utils/useObserver";
+
+
+const images = [
+  {
+    id: 0,
+    src: bg0,
+    title: "SPRZĄTANIE POKOJU",
+  },
+  { id: 1, src: bg1, title: "W PRZEDPOKOJU" },
+  { id: 2, src: bg2, title: "KUCHNIA" },
+  { id: 3, src: bg3, title: "ŁAZIENKA" },
+];
 
 export default function Slider() {
   const [state, setState] = React.useState(0);
-  const [inter, setInter] = React.useState(false);
-  const topRef = React.useRef<HTMLDivElement>(null);
-  const bottomRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
-    const top_observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        if (!inter) {
-          setInter(true);
-        }
-      }
-    });
-    const bottom_observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        if (!inter) {
-          setInter(true);
-        }
-      }
-    });
-    if (topRef.current) {
-      top_observer.observe(topRef.current);
-    }
-    if (bottomRef.current) {
-      bottom_observer.observe(bottomRef.current);
-    }
-  }, []);
+  const { bottomRef, topRef, intersection } = useIntersection();
+ 
 
-  const images = [
-    {
-      id: 0,
-      src: bg0,
-      title: "SPRZĄTANIE POKOJU",
-    },
-    { id: 1, src: bg1, title: "W PRZEDPOKOJU" },
-    { id: 2, src: bg2, title: "KUCHNIA" },
-    { id: 3, src: bg3, title: "ŁAZIENKA" },
-  ];
 
   const image = images?.find((image) => image.id === state);
 
@@ -77,7 +55,7 @@ export default function Slider() {
         <div className='hidden lg:block lg:max-w-[1333px] h-[600px] m-auto'>
           <div
             className='w-full h-full rounded-2xl bg-center bg-cover duration-500 '
-            style={{ backgroundImage: `url(${inter ? image.src : ""})` }}
+            style={{ backgroundImage: `url(${intersection ? image.src : ""})` }}
           >
             <div className='mx-auto lg:w-[90%]   h-full relative'>
               <MyNote
@@ -309,7 +287,7 @@ export default function Slider() {
             ))}
           </ul>
           <img
-            src={inter ? image.src : ""}
+            src={intersection ? image.src : ""}
             alt={image.title}
             width={1334}
             height={750}
