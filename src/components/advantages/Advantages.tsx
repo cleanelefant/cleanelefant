@@ -3,6 +3,7 @@ import price from "../../images/advantages/best-price.png";
 import card from "../../images/advantages/wallet.png";
 import insurance from "../../images/advantages/insurance.png";
 import inventory from "../../images/advantages/cleaning.png";
+import useIntersection from "../../utils/useObserver";
 
 const advantages = [
   {
@@ -32,33 +33,7 @@ const advantages = [
 ];
 
 export default function Advantages() {
-  const [inter, setInter] = React.useState(false);
-  const topRef = React.useRef<HTMLDivElement>(null);
-  const bottomRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
-    const top_observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        if (!inter) {
-          setInter(true);
-        }
-      }
-    });
-    const bottom_observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        if (!inter) {
-          setInter(true);
-        }
-      }
-    });
-    if (topRef.current) {
-      top_observer.observe(topRef.current);
-    }
-    if (bottomRef.current) {
-      bottom_observer.observe(bottomRef.current);
-    }
-  }, []);
+  const { bottomRef, topRef, intersection } = useIntersection();
   return (
     <div className='relative'>
       <div className='absolute top-[-120px] h-px' ref={topRef}></div>
@@ -69,7 +44,7 @@ export default function Advantages() {
               <div>
                 <img
                   className='hidden lg:block'
-                  src={inter ? item.src : ""}
+                  src={intersection ? item.src : ""}
                   alt={item.title}
                   width={128}
                   height={128}
@@ -79,7 +54,7 @@ export default function Advantages() {
             <div className='flex justify-center items-center mb-4'>
               <img
                 className='lg:hidden'
-                src={inter ? item.src : ""}
+                src={intersection ? item.src : ""}
                 alt={item.title}
                 width={64}
                 height={64}
