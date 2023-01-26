@@ -1,7 +1,7 @@
 import React from "react";
 
-const useInter = () => {
-  const [inter, setInter] = React.useState(false);
+const useIntersection = () => {
+  const [intersection, setInter] = React.useState(false);
   const topRef = React.useRef<HTMLDivElement>(null);
   const bottomRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
@@ -29,7 +29,7 @@ const useInter = () => {
     }
   }, []);
 
-  return { bottomRef, topRef, inter };
+  return { bottomRef, topRef, intersection };
 };
 
-export default useInter;
+export default useIntersection;
