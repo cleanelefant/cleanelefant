@@ -8,6 +8,9 @@ interface IQuestions {
 
 export default function Questions(props: IQuestions) {
   const [state, setState] = React.useState(props.questions);
+  const [inter, setInter] = React.useState(false);
+  const topRef = React.useRef<HTMLDivElement>(null);
+  const bottomRef = React.useRef<HTMLDivElement>(null);
 
   const clickHandler = (id: number) => {
     setState(
@@ -21,12 +24,38 @@ export default function Questions(props: IQuestions) {
     );
   };
 
+  React.useEffect(() => {
+    const top_observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        if (!inter) {
+          setInter(true);
+        }
+      }
+    });
+    const bottom_observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        if (!inter) {
+          setInter(true);
+        }
+      }
+    });
+    if (topRef.current) {
+      top_observer.observe(topRef.current);
+    }
+    if (bottomRef.current) {
+      bottom_observer.observe(bottomRef.current);
+    }
+  }, []);
+
   return (
     <div
       className='lg:pt-5 lg:pb-10 px-2 lg:mx-60 mb-3'
       itemScope
       itemType='https://schema.org/FAQPage'
     >
+      <div className='absolute top-[-120px]  h-px  ' ref={topRef}></div>
       {state.map((q, index) => (
         <div
           key={q.id}
@@ -45,7 +74,7 @@ export default function Questions(props: IQuestions) {
                 className={`${
                   q.isVisible && "rotate-180"
                 } transition duration-300`}
-                src={arrow}
+                src={inter ? arrow : ""}
                 alt='arrow'
                 width={32}
                 height={32}
@@ -64,6 +93,7 @@ export default function Questions(props: IQuestions) {
           <div className='border-b my-5 border-neutral-200'></div>
         </div>
       ))}
+      <div className='absolute bottom-[-120px] h-px ' ref={bottomRef}></div>
     </div>
   );
 }
