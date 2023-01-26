@@ -1,47 +1,7 @@
 ---
-import price from "../../images/advantages/best-price.png";
-import card from "../../images/advantages/wallet.png";
-import insurance from "../../images/advantages/insurance.png";
-import inventory from "../../images/advantages/cleaning.png";
-const advantages = [
-  {
-    id: 1,
-    src: price,
-    title: "Stała cena",
-    text: "Cena za sprzątanie zależy od ilości pokojów, a nie od wielkości mieszkania",
-  },
-  {
-    id: 2,
-    src: card,
-    title: "Kartą lub gotówką",
-    text: "Sam wybierasz, jak zapłacić – kartą czy gotówką",
-  },
-  {
-    id: 3,
-    src: insurance,
-    title: "Nasze usługi są ubezpieczone",
-    text: "Płatność dopiero po sprzątaniu",
-  },
-  {
-    id: 4,
-    src: inventory,
-    title: "Wszystko jest gotowe na sprzątanie",
-    text: "Do każdego zamówienia mamy niezbędne środki czystości oraz sprzęt",
-  },
-];
+import Advantages from "./Advantages";
 ---
 
 <section class='pt-10 mx-2 xl:mx-20'>
-  <ul
-    class='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 justify-between pb-4 lg:pb-5 text-sm lg:text-lg'
-  >
-    {
-      advantages.map((item) => (
-        <li class='text-center p-2 lg:p-8 '>
-          <p class='font-bold lg:text-xl mb-2'>{item.title}</p>
-          <p class='text-sm'>{item.text}</p>
-        </li>
-      ))
-    }
-  </ul>
+  <Advantages client:visible />
 </section>
