@@ -61,7 +61,7 @@ export default function Advantages() {
   }, []);
   return (
     <div className='relative'>
-      <div className='absolute top-[-120px]  h-px  ' ref={topRef}></div>
+      <div className='absolute top-[-120px] h-px' ref={topRef}></div>
       <ul className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 justify-between pb-4 lg:pb-5 text-sm lg:text-lg'>
         {advantages.map((item) => (
           <li key={item.id} className='text-center p-2 lg:p-8 '>
