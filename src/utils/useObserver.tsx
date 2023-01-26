@@ -8,7 +8,7 @@ const useIntersection = () => {
     const top_observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        if (!inter) {
+        if (!intersection) {
           setInter(true);
         }
       }
@@ -16,7 +16,7 @@ const useIntersection = () => {
     const bottom_observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        if (!inter) {
+        if (!intersection) {
           setInter(true);
         }
       }
