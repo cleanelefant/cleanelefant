@@ -39,7 +39,6 @@ export default function Advantages() {
     const top_observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("tom");
         if (!inter) {
           setInter(true);
         }
@@ -48,18 +47,15 @@ export default function Advantages() {
     const bottom_observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("bottom");
         if (!inter) {
           setInter(true);
         }
       }
     });
     if (topRef.current) {
-      console.log(topRef.current);
       top_observer.observe(topRef.current);
     }
     if (bottomRef.current) {
-      console.log(bottomRef.current);
       bottom_observer.observe(bottomRef.current);
     }
   }, []);
