@@ -84,6 +84,7 @@ export default function Opinions() {
                 alt='star'
                 width={32}
                 height={32}
+                key={star.id}
               />
             ))}
           </div>
