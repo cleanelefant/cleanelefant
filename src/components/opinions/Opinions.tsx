@@ -3,7 +3,6 @@ import gold from "../../images/opinion/star_gold.png";
 import silver from "../../images/opinion/star.png";
 import useIntersection from "../../utils/useObserver";
 
-
 const opinions = [
   {
     id: 1,
@@ -57,7 +56,7 @@ export default function Opinions() {
   });
 
   return (
-    <section className='lg:my-10 bg-gradient-to-r from-purple-500 to-pink-500 text-white py-20 relative'>
+    <section className=' bg-gradient-to-r from-blue-500 to-cyan-500 text-white  relative'>
       <div className='absolute top-[-20px] h-px' ref={topRef}></div>
       <div className='flex gap-x-10 justify-center lg:pt-10 lg:pb-10 px-2 xl:px-28 '>
         <div className='basis-20 text-6xl flex justify-center items-center'>
@@ -81,7 +80,7 @@ export default function Opinions() {
           <div className='flex justify-between gap-x-2 mt-4'>
             {maped_stars.map((star) => (
               <img
-                src={!intersection ? " ":star.isGold ? gold : silver}
+                src={!intersection ? " " : star.isGold ? gold : silver}
                 alt='star'
                 width={32}
                 height={32}
