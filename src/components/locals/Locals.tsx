@@ -32,26 +32,32 @@ const slides = [
   {
     id: 5,
     slug: "/test",
-    text: "Slide 1",
-    src: "https://res.cloudinary.com/zielona-g-ra/image/upload/v1665663053/city_qivavo.webp",
+    text: "Order cleaning in Pasadena",
+    src: "https://res.cloudinary.com/du9w3xgvx/image/upload/v1674892605/cleaning/pasadena_qatnfm.webp",
   },
   {
     id: 6,
     slug: "/test",
-    text: "Slide 1",
-    src: "https://res.cloudinary.com/zielona-g-ra/image/upload/v1665663053/city_qivavo.webp",
-  },
-  {
-    id: 7,
-    slug: "/test",
-    text: "Slide 1",
-    src: "https://res.cloudinary.com/zielona-g-ra/image/upload/v1665663053/city_qivavo.webp",
+    text: "Order cleaning in Beverly Hills",
+    src: "https://res.cloudinary.com/du9w3xgvx/image/upload/v1674892605/cleaning/beverlihils_ad7f1g.webp",
   },
   {
     id: 8,
     slug: "/test",
-    text: "Slide 1",
-    src: "https://res.cloudinary.com/zielona-g-ra/image/upload/v1665663053/city_qivavo.webp",
+    text: "Order cleaning in The Valley",
+    src: "https://res.cloudinary.com/du9w3xgvx/image/upload/v1674892605/cleaning/valley_d6zlkm.webp",
+  },
+  {
+    id: 9,
+    slug: "/test",
+    text: "Order cleaning in La Habra",
+    src: "https://res.cloudinary.com/du9w3xgvx/image/upload/v1674892605/cleaning/la_habra_igknrk.webp",
+  },
+  {
+    id: 10,
+    slug: "/test",
+    text: "Order cleaning in Beach Cities",
+    src: "https://res.cloudinary.com/du9w3xgvx/image/upload/v1674892605/cleaning/beach_jmnb4c.webp",
   },
 ];
 
@@ -59,8 +65,22 @@ const Locals = () => {
   return (
     <div className='my-10'>
       <Swiper
+       
         spaceBetween={20}
         slidesPerView={5}
+        breakpoints={{
+          // when window width is >= 320px
+          320: {
+            width: 320,
+            slidesPerView: 1,
+            spaceBetween:5
+          },
+          // when window width is >= 1024px
+          1024: {
+            width: 1024,
+            slidesPerView: 3,
+          },
+        }}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
       >
@@ -76,7 +96,7 @@ const Locals = () => {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "50% 50%",
                 }}
-                className=' flex flex-col justify-center items-center  rounded-2xl text-2xl font-bold h-[600px] w-[340px]'
+                className=' flex flex-col justify-center items-center  rounded-2xl lg:text-2xl font-bold h-[600px] w-[340px]  lg:h-[600px] lg:w-[340px]'
               >
                 <p>{s.text}</p>
               </div>

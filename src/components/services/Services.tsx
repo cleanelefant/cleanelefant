@@ -67,6 +67,7 @@ export default function Services() {
             <a
               className='basis-[150px] lg:basis-[250px] p-5 lg:p-10 rounded-lg shadow-lg bg-white hover:bg-neutral-100 max-w-sm  flex flex-col justify-center items-center gap-y-2 transition duration-150 ease-in-out'
               href={s.link}
+              key={s.id}
             >
               <img
                 className=''
