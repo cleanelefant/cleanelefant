@@ -1,4 +1,4 @@
-import React from "react";
+
 import useIntersection from "../../utils/useObserver";
 import messanger from "../../images/messanger/messenger.png";
 import telegram from "../../images/messanger/telegram.png";
