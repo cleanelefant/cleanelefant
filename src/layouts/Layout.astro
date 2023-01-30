@@ -1,12 +1,12 @@
 ---
 import Contact from "../components/layout/Contact.astro";
 import Burger from "../components/menu/Burger.astro";
-import Menu from "../components/menu/Menu.astro";
+import Menu from "../components/menu/Menu";
 import Join from "../components/menu/Join.astro";
 import MobileBurger from "../components/menu/MobileBurger.astro";
 import MobileMenu from "../components/menu/MobileMenu.astro";
-import home from "../images/home.png";
-import phone from "../images/phone-call.png";
+// import home from "../images/home.png";
+// import phone from "../images/phone-call.png";
 import Footer from "../components/layout/Footer.astro";
 
 export interface Props {
@@ -77,7 +77,7 @@ const { title, description, keywords } = Astro.props;
           <MobileBurger />
         </div>
       </div>
-      <Menu />
+      <Menu client:load />
       <MobileMenu />
     </header>
     <main id='main'><slot /></main>
