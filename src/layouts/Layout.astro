@@ -51,17 +51,22 @@ const { title, description, keywords } = Astro.props;
               <img
                 class='lg:hidden'
                 src={home}
-                width={48}
-                height={48}
+                width={64}
+                height={64}
                 alt='Sprzątanie mieszkań Zielona Góra'
               />
             </a>
             <Burger />
           </div>
           <Contact />
-          <a class='lg:hidden' href='tel:+48690456901'
+          <!-- <a class='' href='tel:+48690456901'
             ><img src={phone} width={48} height={48} alt='phone' /></a
+          > -->
+          <div
+            class='lg:hidden flex items-center gap-y-2 bg-gradient-to-r from-cyan-500 to-green-500 py-4 lg:py-4 px-4 lg:px-16 text-base lg:text-2xl text-white font-bold rounded-3xl'
           >
+            <a href='tel:+4733378901'>+48 690 456 901</a>
+          </div>
           <Join />
           <MobileBurger />
         </div>
