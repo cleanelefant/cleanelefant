@@ -13,7 +13,7 @@ const PostsSlider = () => {
       <div className="my-10">
         <Swiper
           spaceBetween={40}
-          slidesPerView={5}
+          slidesPerView={2}
           breakpoints={{
             // when window width is >= 320px
             320: {
@@ -24,7 +24,7 @@ const PostsSlider = () => {
             // when window width is >= 1024px
             1024: {
               width: 1024,
-              slidesPerView: 3,
+              slidesPerView: 2,
             },
           }}
           // onSlideChange={() => console.log("slide change")}
