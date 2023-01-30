@@ -7,7 +7,7 @@ import watsapp from "../../images/free-icon-whatsapp-1383269.png";
 <menu id='mobile_menu_123' class='bg-white px-2 z-50'>
   <div class='mb-8 flex justify-end'></div>
   <div class='flex flex-col gap-y-4 items-center justify-between'>
-    <div class='flex gap-x-4'>
+    <div class='flex gap-x-4 gap-y-4'>
       <a href='https://m.me/igor.rak.184'>
         <img src={messanger} width={64} height={64} alt={"messanger"} />
       </a>
@@ -20,40 +20,51 @@ import watsapp from "../../images/free-icon-whatsapp-1383269.png";
     </div>
   </div>
   <div class='underline mt-5 font-bold'>O NAS</div>
-  <div class='flex flex-wrap gap-y-2 gap-x-2 mt-5 text-[13px]'>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>O nas</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Usługi sprzątania</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Co sprzątamy</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Cennik usług</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Sprzątanie w abonamencie</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Opinie</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Program poleceń</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Pytania i odpowiedzi</a>
-    <a href='/test' class='text-red-500 bg-slate-100 py-3 px-5'
-      >Zniżki i promocje</a
-    >
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Nasi partnerzy</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Propozycje dla biznesu</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Zostań cleanerem</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Blog</a>
-  </div>
-  <div class='flex flex-wrap gap-y-2 gap-x-2 mt-5 text-[13px]'>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>O nas</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Usługi sprzątania</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Co sprzątamy</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Cennik usług</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Sprzątanie w abonamencie</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Opinie</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Program poleceń</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Pytania i odpowiedzi</a>
-    <a href='/test' class='text-red-500 bg-slate-100 py-3 px-5'
-      >Zniżki i promocje</a
-    >
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Nasi partnerzy</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Propozycje dla biznesu</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Zostań cleanerem</a>
-    <a href='/test' class='bg-slate-100 py-3 px-5'>Blog</a>
-  </div>
+  <menu
+    class='flex flex-wrap gap-y-2 gap-x-2 mt-5 text-[13px]'
+    itemscope
+    itemtype='http://www.schema.org/SiteNavigationElement'
+  >
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>O nas</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Usługi sprzątania</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Co sprzątamy</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Cennik usług</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Sprzątanie w abonamencie</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Opinie</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Program poleceń</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Pytania i odpowiedzi</a>
+    </li>
+    <li itemprop='name' class='text-red-500 bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Zniżki i promocje</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Nasi partnerzy</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Propozycje dla biznesu</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Zostań cleanerem</a>
+    </li>
+    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
+      <a itemprop='url' href='/test'>Blog</a>
+    </li>
+  </menu>
 </menu>
 
 <style>
