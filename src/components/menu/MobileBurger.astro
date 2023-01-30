@@ -47,28 +47,32 @@
     const burger = document.getElementById("mobileMenuToggle");
 
     burger.addEventListener("click", () => {
+      const body = document.body;
       const menu = document.getElementById("mobile_menu_123");
       const header = document.getElementById("header_123");
       const main = document.getElementById("main");
-      ("right-menu");
       const chat = document.getElementById("chat_123");
-      console.log(chat);
 
-      main.addEventListener("click", () => {
-        if (menu.style.display === "block") {
-          menu.style.display = "none";
-        }
-      });
+      // main.addEventListener("click", () => {
+      //   if (menu.style.display === "block") {
+      //     menu.style.display = "none";
+      //   }
+      // });
+
       if (menu.style.display === "block") {
         menu.style.display = "none";
         header.classList.remove("bg-white");
         burger.classList.remove("active");
         chat.style.display = "block";
+        body.classList.remove("overflow-hidden");
+        header.classList.remove("bottom-0");
       } else {
         menu.style.display = "block";
         header.classList.add("bg-white");
         burger.classList.add("active");
         chat.style.display = "none";
+        body.classList.add("overflow-hidden");
+        header.classList.add("bottom-0");
       }
     });
   }
