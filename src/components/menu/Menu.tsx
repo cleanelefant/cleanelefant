@@ -64,7 +64,11 @@ export default function Menu() {
                 </a>
               </li>
             </menu>
-            <menu className='flex flex-col gap-y-3'>
+            <menu
+              className='flex flex-col gap-y-3'
+              itemScope
+              itemType='http://www.schema.org/SiteNavigationElement'
+            >
               <li itemProp='name'>
                 <a itemProp='url' href='/test'>
                   Nasi partnerzy
@@ -102,7 +106,7 @@ export default function Menu() {
               <p className='text-lg mt-2'>Promokod start - zniżka 15%</p>
             </div>
           </a>
-          {/* Banner start end */}
+          {/* Banner end */}
         </div>
       </div>
     </BrowserView>
