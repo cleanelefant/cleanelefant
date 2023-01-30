@@ -41,7 +41,7 @@ const { title, description, keywords } = Astro.props;
               href='http://localhost:3000'
               aria-label='Sprzątanie mieszkań Zielona Góra'
             >
-              <img
+              <!-- <img
                 class='hidden lg:block'
                 src={home}
                 width={128}
@@ -54,7 +54,13 @@ const { title, description, keywords } = Astro.props;
                 width={64}
                 height={64}
                 alt='Sprzątanie mieszkań Zielona Góra'
-              />
+              /> -->
+              <div
+                class='bg-blue-600 h-16 lg:h-24 text-white rounded-full text-sm p-4 text-center font-extrabold uppercase flex flex-col items-center justify-center'
+              >
+                <div>Best</div>
+                <div>Cleaning</div>
+              </div>
             </a>
             <Burger />
           </div>
