@@ -2,9 +2,10 @@
 import messanger from "../../images/messenger_m.png";
 import telegram from "../../images/telegram_m.png";
 import watsapp from "../../images/free-icon-whatsapp-1383269.png";
+import { services } from "../../utils/services";
 ---
 
-<menu id='mobile_menu_123' class='bg-white px-2 z-50'>
+<div id='mobile_menu_123' class='bg-white px-2 z-50 pb-5'>
   <div class='mb-8 flex justify-end'></div>
   <div class='flex flex-col gap-y-4 items-center justify-between'>
     <div class='flex gap-x-4 gap-y-4'>
@@ -19,53 +20,65 @@ import watsapp from "../../images/free-icon-whatsapp-1383269.png";
       </a>
     </div>
   </div>
-  <div class='underline mt-5 font-bold'>O NAS</div>
-  <menu
-    class='flex flex-wrap gap-y-2 gap-x-2 mt-5 text-[13px]'
-    itemscope
-    itemtype='http://www.schema.org/SiteNavigationElement'
-  >
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>O nas</a>
+  <div class='underline mt-5 font-bold uppercase'>Nasze usługiS</div>
+  <ul class='flex flex-col gap-y-2 gap-x-2 mt-5 text-[13px]'>
+    {
+      services.map((s) => (
+        <li>
+          <a href={s.link}>
+            <div class='flex gap-x-5 items-center'>
+              <img class='rounded-full' src={s.src} width={32} height={32} />
+              <div class='lowercase font-bold'>{s.title}</div>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class='underline mt-5 font-bold uppercase'>O NAS</div>
+  <ul class='flex flex-wrap gap-y-2 gap-x-2 mt-5 text-[13px]'>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>O nas</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Usługi sprzątania</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Usługi sprzątania</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Co sprzątamy</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Co sprzątamy</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Cennik usług</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Cennik usług</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Sprzątanie w abonamencie</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Sprzątanie w abonamencie</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Opinie</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Opinie</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Program poleceń</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Program poleceń</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Pytania i odpowiedzi</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Pytania i odpowiedzi</a>
     </li>
-    <li itemprop='name' class='text-red-500 bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Zniżki i promocje</a>
+    <li class='text-red-500 bg-slate-100 py-3 px-5'>
+      <a href='/test'>Zniżki i promocje</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Nasi partnerzy</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Nasi partnerzy</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Propozycje dla biznesu</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Propozycje dla biznesu</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Zostań cleanerem</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Zostań cleanerem</a>
     </li>
-    <li itemprop='name' class='bg-slate-100 py-3 px-5'>
-      <a itemprop='url' href='/test'>Blog</a>
+    <li class='bg-slate-100 py-3 px-5'>
+      <a href='/test'>Blog</a>
     </li>
-  </menu>
-</menu>
+  </ul>
+</div>
 
 <style>
   #mobile_menu_123 {
