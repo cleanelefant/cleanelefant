@@ -1,14 +1,7 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import { slides } from "../../utils/slides";
-
 import useIntersection from "../../utils/useObserver";
-
-
-
 
 const Locals = () => {
   const { bottomRef, topRef, intersection } = useIntersection();

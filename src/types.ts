@@ -25,3 +25,16 @@ export type questionsType = {
   answer: string;
   isVisible:boolean;  
 };
+
+export interface IPost {
+  id:number;
+  slug:string;
+  title:string;
+  description:string;
+  src?:string;
+  double:string;
+  text:string;
+  date:string;
+  target?:string
+  
+}
