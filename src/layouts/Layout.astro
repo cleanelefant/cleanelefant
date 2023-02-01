@@ -8,6 +8,7 @@ import MobileMenu from "../components/menu/MobileMenu.astro";
 // import home from "../images/home.png";
 // import phone from "../images/phone-call.png";
 import Footer from "../components/layout/Footer.astro";
+import Chat from "../components/layout/Chats";
 
 export interface Props {
   title: string;
@@ -63,6 +64,7 @@ const { title, description, keywords } = Astro.props;
               </div>
             </a>
             <Burger />
+            <Chat client:load />
           </div>
           <Contact />
           <!-- <a class='' href='tel:+48690456901'

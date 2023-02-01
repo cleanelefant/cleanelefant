@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import OrderNavigator from "../components/order_navigator/OrderNavigator";
-import Chat from "../components/layout/Chats";
 import Advantages from "../components/advantages/Advantages.astro";
 import Options from "../components/options/Options.astro";
 import Slider from "../components/slider/Slider.astro";
@@ -13,6 +12,7 @@ import Description from "../components/description/Description.astro";
 import Opinions from "../components/opinions/Opinions";
 import Locals from "../components/locals/Locals";
 import PostsSlider from "../components/posts/PostSlider";
+import Posts from "../components/posts/Posts.astro";
 ---
 
 <Layout
@@ -31,7 +31,7 @@ import PostsSlider from "../components/posts/PostSlider";
     </div>
     <OrderNavigator client:idle />
   </div>
-  <Chat client:idle />
+
   <Opinions client:load />
   <Advantages />
   <Options />
@@ -42,7 +42,7 @@ import PostsSlider from "../components/posts/PostSlider";
   <Questions />
   <Description />
   <Locals client:visible />
-  <PostsSlider client:visible />
+  <Posts />
 </Layout>
 
 <style>
