@@ -1,0 +1,29 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { blog } from "../../utils/posts";
+export async function getStaticPaths() {
+
+  return blog.map(({ slug, title, text, description,src,double }) => {
+    return {
+      params: { slug },
+      props: { title, text, description, src, double },
+    };
+  });
+}
+
+const { title, text, description, src, double } = Astro.props;
+---
+
+<Layout
+  title={title}
+  description="Firma sprzątającą w Zielonej Górze! Sprzątanie mieszkańia Zielona Góra, sprzątanie po remoncie, mycie okien, pranie mebli i kanap, sprzątanie biur i locali"
+  keywords="sprzątanie, sprzątanie mieszkań, sprzątanie mieszkań zielona góra, sprzątanie mieszkania zielona góra, sprzątanie domu, sprzątanie mieszkań cena za godzinę, sprzątanie mieszkań cennik, sprzątanie mieszkań, prywatnych warszawa, sprzątanie domu cena, ile za sprzątanie domu"
+>
+  <div class="my-40 mx-20">   
+    <h1 class="font-bold">{title}</h1>
+    <img src={src?src:double}/>
+    <p>{description}</p>
+    <p>{text}</p>
+    <a href="/order"><div class="bg-blue-500 text-white py-5 px-10 max-w-fit rounded-3xl">Policz koszty</div></a>
+  </div>
+</Layout>

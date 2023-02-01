@@ -35,6 +35,13 @@ export interface IPost {
   double:string;
   text:string;
   date:string;
-  target?:string
-  
+  target?:string;  
+}
+
+export interface IOurServices {
+  id:number;
+  slug:string;
+  title:string; 
+  target?:string;
+  text:string;  
 }
