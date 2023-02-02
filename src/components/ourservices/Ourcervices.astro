@@ -1,0 +1,18 @@
+---
+import { ourservices } from "../../utils/ourservices";
+---
+
+<section class='mx-[2vw] my-28'>
+  <div class='flex flex-wrap gap-x-2 gap-y-4'>
+    {
+      ourservices.map((s) => (
+        <a
+          class='p-6 rounded-lg shadow-lg bg-white hover:bg-slate-300 hover:border border-black text-[13px] hover:font-bold transition duration-300'
+          href={`uslugi/${s.slug}`}
+        >
+          <div>{s.title}</div>
+        </a>
+      ))
+    }
+  </div>
+</section>
