@@ -10,6 +10,6 @@ export interface Props {
 const { src, alt, href, width, height } = Astro.props;
 ---
 
-<a href={href}>
+<a href={href} class="hover:scale-110 transition-transform ">
   <img src={src} width={width} height={height} alt={alt} />
 </a>

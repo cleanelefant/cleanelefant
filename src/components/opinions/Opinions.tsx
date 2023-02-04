@@ -56,10 +56,10 @@ export default function Opinions() {
   });
 
   return (
-    <section className=' bg-gradient-to-r from-blue-500 to-cyan-500 text-white  relative'>
-      <div className='absolute top-[-20px] h-px' ref={topRef}></div>
-      <div className='flex gap-x-10 justify-center lg:pt-10 lg:pb-10 px-2 xl:px-28 '>
-        <div className='basis-20 text-6xl flex justify-center items-center'>
+    <section className=" bg-gradient-to-r from-blue-500 to-cyan-500 text-white  relative">
+      <div className="absolute top-[-20px] h-px" ref={topRef}></div>
+      <div className="flex gap-x-2 lg:gap-x-10 justify-center items-center px-2 xl:px-28 ">
+        <div className="basis-20 text-6xl flex justify-center items-center">
           <button
             onClick={() => {
               setState((s) => {
@@ -71,25 +71,27 @@ export default function Opinions() {
               });
             }}
           >
-            -
+             <i className="rotate-[135deg]  inline-block border border-white hover:border-orange-200 transition-colors duration-1000  p-[10px] lg:p-[30px] border-t-0 border-r-8 border-b-8 border-l-0" ></i>
           </button>
-        </div>{" "}
-        <div className='text-center basis-96'>
-          <div className='font-bolt text-5xl mb-5'>{find.user}</div>
-          <div className='font-bold'>"{find.text}"</div>
-          <div className='flex justify-between gap-x-2 mt-4'>
-            {maped_stars.map((star) => (
-              <img
-                src={!intersection ? " " : star.isGold ? gold : silver}
-                alt='star'
-                width={32}
-                height={32}
-                key={star.id}
-              />
-            ))}
+        </div>
+        <div className="text-center basis-96 h-[60vh] lg:h-[400px]">
+          <div className="h-full transition duration-500  flex flex-col items-center justify-center">
+            <div className="font-bolt text-5xl mb-5">{find.user}</div>
+            <div className="font-bold">"{find.text}"</div>
+            <div className="flex justify-between gap-x-2 mt-4">
+              {maped_stars.map((star) => (
+                <img
+                  src={!intersection ? " " : star.isGold ? gold : silver}
+                  alt="star"
+                  width={32}
+                  height={32}
+                  key={star.id}
+                />
+              ))}
+            </div>
           </div>
         </div>
-        <div className='basis-20 text-6xl  flex justify-center items-center'>
+        <div className="basis-20 text-6xl  flex justify-center items-center">
           <button
             onClick={() => {
               setState((s) => {
@@ -101,11 +103,11 @@ export default function Opinions() {
               });
             }}
           >
-            +
+            <i className="-rotate-45 inline-block border border-white hover:border-orange-200 transition-colors duration-1000 p-[10px] lg:p-[30px] border-t-0 border-r-8 border-b-8 border-l-0"></i>
           </button>
         </div>
       </div>
-      <div className='absolute bottom-[-120px] h-px ' ref={bottomRef}></div>
+      <div className="absolute bottom-[-120px] h-px " ref={bottomRef}></div>
     </section>
   );
 }

@@ -5,7 +5,6 @@ import Menu from "../components/menu/Menu";
 import Join from "../components/menu/Join.astro";
 import MobileBurger from "../components/menu/MobileBurger.astro";
 import MobileMenu from "../components/menu/MobileMenu.astro";
-// import home from "../images/home.png";
 // import phone from "../images/phone-call.png";
 import Footer from "../components/layout/Footer.astro";
 import Chat from "../components/layout/Chats";
@@ -42,25 +41,12 @@ const { title, description, keywords } = Astro.props;
               href='http://localhost:3000'
               aria-label='Sprzątanie mieszkań Zielona Góra'
             >
-              <!-- <img
-                class='hidden lg:block'
-                src={home}
-                width={128}
-                height={128}
-                alt='Sprzątanie mieszkań Zielona Góra'
-              />
-              <img
-                class='lg:hidden'
-                src={home}
-                width={64}
-                height={64}
-                alt='Sprzątanie mieszkań Zielona Góra'
-              /> -->
+           
               <div
-                class='bg-gradient-to-r from-purple-500 to-pink-500 h-16 lg:h-24 text-white rounded-full text-sm p-4 text-center font-extrabold uppercase flex flex-col items-center justify-center'
+                class='bg-gradient-to-r from-purple-500 to-pink-500 h-16 lg:h-24 text-white rounded-full text-[10px] lg:text-sm p-2 lg:p-4 text-center font-extrabold uppercase flex flex-col items-center justify-center'
               >
-                <div>Best</div>
-                <div>Cleaning</div>
+                <div>Ludwik</div>
+                <div>Agencja</div>
               </div>
             </a>
             <Burger />
@@ -92,7 +78,8 @@ const { title, description, keywords } = Astro.props;
   }
   html {
     /* font-family: system-ui, sans-serif; */
-    font-family: Lucida Console;
+    /* font-family: Lucida Console; */
+    font-family: Goudy Bookletter 1911;
     background-color: #f6f6f6;
   }
   code {

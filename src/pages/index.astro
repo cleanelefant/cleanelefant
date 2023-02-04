@@ -14,6 +14,7 @@ import Locals from "../components/locals/Locals";
 import PostsSlider from "../components/posts/PostSlider";
 import Posts from "../components/posts/Posts.astro";
 import Ourcervices from "../components/ourservices/Ourcervices.astro";
+import RightMenu from "../components/menu/RightMenu";
 ---
 
 <Layout
@@ -23,18 +24,19 @@ import Ourcervices from "../components/ourservices/Ourcervices.astro";
 >
   <div class='prime'>
     <div class='w-5/6 lg:w-3/5 mx-auto pt-28 lg:pt-60 text-center'>
-      <h1 class='text-3xl md:text-4xl lg:text-6xl font-bold'>
+      <h1 class='text-3xl md:text-4xl lg:text-6xl xl:text-8xl font-extrabold tracking-wide'>
         Sprzątanie mieszkań Zielona Góra
       </h1>
-      <p class='text-sm md:text-2xl lg:text-2xl py-5'>
-        Usługa obejmuje kuchnię, łazienkę, pokoje oraz przedpokój
+      <p class='text-lg md:text-2xl lg:text-2xl py-5'>
+        Usługa składa się z kuchni, łazienki, sypialni i przedpokoju.
       </p>
     </div>
     <OrderNavigator client:idle />
   </div>
 
-  <Opinions client:load />
+  <RightMenu client:load/>
   <Advantages />
+  <Opinions client:load />
   <Options />
   <Slider />
   <Services client:visible />
@@ -56,6 +58,7 @@ import Ourcervices from "../components/ourservices/Ourcervices.astro";
   .prime {
     height: 100vh;
     background: url(https://res.cloudinary.com/zielona-g-ra/image/upload/v1674714539/clean/bg_1_o8yetv.webp)
-      no-repeat center/cover;
+      no-repeat top/cover;
   }
+ 
 </style>
