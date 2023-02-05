@@ -10,7 +10,7 @@ export default function Services() {
         <p className='pb-5 lg:pb-10 font-bold text-3xl lg:text-6xl'>
           Wszystkie nasze usługi
         </p>
-        <div className='flex flex-wrap gap-x-2 gap-y-4 justify-center 2xl:mx-40 pb-5'>
+        <div className='flex flex-wrap gap-x-2 gap-y-4 justify-center 2xl:mx-[200px] pb-5'>
           {services.map((s) => (
             <a
               className='basis-[150px] lg:basis-[250px] p-5 lg:p-10 rounded-lg shadow-lg bg-white hover:bg-neutral-100 max-w-sm  flex flex-col justify-center items-center gap-y-2 transition duration-150 ease-in-out'

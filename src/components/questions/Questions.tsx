@@ -51,7 +51,7 @@ export default function Questions(props: IQuestions) {
 
   return (
     <div
-      className='relative lg:pt-5 lg:pb-10 px-2 lg:mx-60 mb-3'
+      className='relative lg:pt-5 lg:pb-10 px-2 lg:mx-[300px] mb-3'
       itemScope
       itemType='https://schema.org/FAQPage'
     >

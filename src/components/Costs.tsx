@@ -3,7 +3,7 @@ import useIntersection from "../utils/useObserver";
 export default function Costs(){
   const { bottomRef, topRef, intersection } = useIntersection();
   return (
-    <section className="relative p-5 text-white 2xl:px-40 flex items-center lg:py-20
+    <section className="relative p-5 text-white xl:px-[400px] flex items-center lg:py-20
 " style={{ backgroundImage: `url(${intersection?sunrise:''}) `, backgroundRepeat: 'no-repeat', backgroundSize:"cover", backgroundPosition:"50% 50%"}} >
   <div className='absolute top-[-120px] h-px' ref={topRef}></div>
     <div className="">

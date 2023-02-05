@@ -10,25 +10,25 @@ const advantages = [
     id: 1,
     src: price,
     title: "Stała cena",
-    text: "Cena za sprzątanie zależy od ilości pokojów, a nie od wielkości mieszkania",
+    text: "Koszt sprzątania ustalany jest na podstawie ilości pokoi, a nie wymiarów mieszkania.",
   },
   {
     id: 2,
     src: card,
-    title: "Kartą lub gotówką",
-    text: "Sam wybierasz, jak zapłacić – kartą czy gotówką",
+    title: "Gotówką lub kartą",
+    text: "Forma płatności jest dowolna, kartą lub gotówką.",
   },
   {
     id: 3,
     src: insurance,
-    title: "Nasze usługi są ubezpieczone",
-    text: "Płatność dopiero po sprzątaniu",
+    title: "Nasze oferty sprzątania są ubezpieczone",
+    text: "Płatność należy uregulować dopiero po zakończeniu sprzątania.",
   },
   {
     id: 4,
     src: inventory,
-    title: "Wszystko jest gotowe na sprzątanie",
-    text: "Do każdego zamówienia mamy niezbędne środki czystości oraz sprzęt",
+    title: "Wszystko jest przygotowane do czyszczenia",
+    text: "Jesteśmy wyposażeni w odpowiednie środki czystości i sprzęt do każdego zadania.",
   },
 ];
 

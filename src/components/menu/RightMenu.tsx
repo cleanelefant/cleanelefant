@@ -53,7 +53,7 @@ export default function RightMenu() {
           },
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-        className="flex flex-col gap-y-5 bg-white p-2 drop-shadow-2xl"
+        className="flex flex-col gap-y-5 p-2 drop-shadow-2xl"
       >
         {services.map((s, index) => (
           <motion.div          
