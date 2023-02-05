@@ -19,11 +19,11 @@ export default function PostCard(props: IPostCard) {
             alt={title}
           />
         </div>
-        <div className='py-12 px-6 h-[380px]'>
-          <p className='text-gray-900 text-2xl font-bold mb-4 hover:underline transition duration-1000'>
+        <div className='py-12 px-6 h-[300px] lg:h-[380px]'>
+          <p className='text-gray-900 text-xl lg:text-2xl font-bold mb-4 hover:underline transition duration-1000'>
             {title}
           </p>
-          <p className='text-gray-700 text-lg mb-8'>{description}</p>
+          <p className='text-gray-700 text-sm lg:text-lg mb-8'>{description}</p>
         </div>
       </div>
     </a>

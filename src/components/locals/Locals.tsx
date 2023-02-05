@@ -9,8 +9,7 @@ const Locals = () => {
     <div className='relative'>
        <div className='absolute top-[-120px] h-px' ref={topRef}></div>
     <div className='my-10'>
-      <Swiper
-       
+      <Swiper       
         spaceBetween={40}
         slidesPerView={5}
         breakpoints={{
@@ -41,9 +40,9 @@ const Locals = () => {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "50% 50%",
                 }}
-                className=' flex flex-col justify-center  rounded-2xl  h-[500px] w-[300px]  lg:h-[500px] lg:w-[340px]'
+                className=' flex flex-col justify-center  rounded-2xl   h-[400px] w-[300px]  lg:h-[500px] lg:w-[340px]'
               >
-                <p className="mx-4 text-lg lg:text-2xl font-bold">{s.text}</p>
+                <p className="mx-4 text-lg lg:text-2xl font-bold text-center">{s.text}</p>
               </div>
             </a>
           </SwiperSlide>

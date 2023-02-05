@@ -51,11 +51,11 @@ export default function Questions(props: IQuestions) {
 
   return (
     <div
-      className='relative lg:pt-5 lg:pb-10 px-2 lg:mx-[300px] mb-3'
+      className='relative lg:pt-5 lg:pb-10 px-2 lg:mx-[300px]'
       itemScope
       itemType='https://schema.org/FAQPage'
     >
-      <div className='absolute top-[-120px] h-px  ' ref={topRef}></div>
+      <div className='absolute top-[-120px] h-px' ref={topRef}></div>
       {state.map((q, index) => (
         <div
           key={q.id}
@@ -69,7 +69,7 @@ export default function Questions(props: IQuestions) {
               clickHandler(q.id);
             }}
           >
-            <span className='basis-[32px] shrink'>
+            <div className='basis-[32px] shrink-0'>
               <img
                 className={`${
                   q.isVisible && "rotate-180"
@@ -79,8 +79,8 @@ export default function Questions(props: IQuestions) {
                 width={32}
                 height={32}
               />
-            </span>
-            <span itemProp='name'>{q.question}</span>
+            </div>
+            <div itemProp='name'>{q.question}</div>
           </div>
           <div
             className={`${q.isVisible ? "block" : "hidden"} w-3/4 mb-5 mt-2`}

@@ -2,12 +2,12 @@
 import { ourservices } from "../../utils/ourservices";
 ---
 
-<section class='mx-[2vw] my-28'>
+<section class='mx-[2vw] lg:my-20'>
   <div class='flex flex-wrap gap-x-2 gap-y-4'>
     {
       ourservices.map((s) => (
         <a
-          class='p-6 rounded-lg shadow-lg bg-white hover:bg-blue-300 hover:border  text-[13px] hover:font-bold transition duration-300'
+          class='p-2 lg:p-6 rounded-lg shadow-lg bg-white hover:bg-blue-300 hover:border  text-[13px] hover:font-bold transition duration-300'
           href={`uslugi/${s.slug}`}
         >
           <div>{s.title}</div>
