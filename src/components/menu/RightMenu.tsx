@@ -1,30 +1,86 @@
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-
-const items = [   
-    {id:1, bg:"bg-green-300"},
-    {id:2, bg:"bg-red-300"},
-    {id:3, bg:"bg-cyan-300"},
-    {id:4, bg:"bg-white"},
-    {id:5, bg:"bg-red-700"},
-    {id:6, bg:"bg-orange-300"},
-    {id:7, bg:"bg-slate-300"},
-    {id:8, bg:"bg-yellow-300"},
-   
-]
+import { motion, Variants } from "framer-motion";
+import { services } from "../../utils/services";
 
 export default function RightMenu() {
+  const [isOpen, setIsOpen] = React.useState(true);
   return (
-    <div className="hidden lg:block fixed right-5 top-32 z-50">
-        <div className="flex flex-col gap-y-5">
-        {items.map(item=> <motion.div
-        style={{ x: 100 }}
-        animate={{ x: 0 }}
-        transition={{ ease: "easeOut", duration: 0.2, delay: (1 * item.id)/8}}
-        className={`w-20 h-[8vh] ${item.bg}`}
-      ></motion.div>)}
-      </div>
-     
-    </div>
+    <motion.nav
+      initial={true}
+      animate={isOpen ? "open" : "closed"}
+      className="hidden lg:block fixed right-5 top-24 z-40"
+    >
+      <motion.button
+        whileTap={{ scale: 0.97 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className="max-w-[48px] mx-auto flex items-center justify-between gap-x-5 my-5"
+      >
+       
+        <motion.div
+          variants={{
+            open: { rotate: 180 },
+            closed: { rotate: 0 },
+          }}
+          transition={{ duration: 0.2 }}
+          style={{ originY: 0.55 }}
+        >
+          <svg width="55" height="55" fill="black" viewBox="0 0 20 20">
+            <path d="M0 7 L 20 7 L 10 16" />
+          </svg>
+        </motion.div>
+      </motion.button>
+
+      <motion.div
+        variants={{
+          open: {
+            clipPath: "inset(0% 0% 0% 0% round 10px)",
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.7,
+              delayChildren: 0.3,
+              staggerChildren: 0.05,
+            },
+          },
+          closed: {
+            clipPath: "inset(10% 50% 90% 50% round 10px)",
+            transition: {
+              type: "spring",
+              bounce: 0,
+              duration: 0.3,
+            },
+          },
+        }}
+        style={{ pointerEvents: isOpen ? "auto" : "none" }}
+        className="flex flex-col gap-y-5"
+      >
+        {services.map((s, index) => (
+          <motion.div          
+            key={s.id}
+            style={{ x: 400, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{
+              ease: "easeOut",
+              duration: 0.5,
+              delay: (1 * index) / 8,
+            }}
+            className="py-1 group"
+          >
+            <a className="rounded-lg shadow-lg " href={s.link} key={s.id}>
+              <img
+                className="max-w-[48px] mx-auto group-hover:scale-125 transition-transform "
+                src={s.src}
+                alt={s.title}
+                width={40}
+                height={40}
+              />
+              <div className="text-[14px] max-w-[150px] text-center font-medium ">
+                {s.title}
+              </div>
+            </a>
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.nav>
   );
 }

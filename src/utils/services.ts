@@ -18,24 +18,24 @@ export const services = [
     title: "Czyszczenie chemiczne mebli i kanap",
     link: "./test",
   },
-  {
-    id: 5,
-    src: handyman,
-    title: "Złota rączka",
-    link: "./test",
-  },
+  // {
+  //   id: 5,
+  //   src: handyman,
+  //   title: "Złota rączka",
+  //   link: "./test",
+  // },
   {
     id: 6,
     src: kitchen,
     title: "Sprzątanie kuchni",
     link: "./test",
   },
-  {
-    id: 7,
-    src: car,
-    title: "Mycie i sprzątanie samochodu",
-    link: "./test",
-  },
+  // {
+  //   id: 7,
+  //   src: car,
+  //   title: "Mycie i sprzątanie samochodu",
+  //   link: "./test",
+  // },
 
   {
     id: 8,

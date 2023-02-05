@@ -24,7 +24,7 @@ export default function Chats() {
         </a>
         <a
           href="tg://resolve?domain=cleanwhalewarsaw"
-          className="flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-green-700 to-cyan-200 hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center"
+          className="flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-blue-700 to-cyan-500 hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center"
         >
           <img
             src={intersection ? telegram : ""}
@@ -36,7 +36,7 @@ export default function Chats() {
         </a>
         <a
           href="https://api.whatsapp.com/send?phone=48690483990"
-          className="flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-blue-700 to-cyan-500 hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center"
+          className="flex gap-x-4 bg-slate-200 hover:bg-gradient-to-r from-green-700 to-green-500  hover:text-white transition duration-300 py-3 px-6 rounded-3xl items-center"
         >
           <img
             src={intersection ? whatsapp : ""}
