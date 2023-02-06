@@ -5,9 +5,9 @@ import Menu from "../components/menu/Menu";
 import Join from "../components/menu/Join.astro";
 import MobileBurger from "../components/menu/MobileBurger.astro";
 import MobileMenu from "../components/menu/MobileMenu.astro";
-// import phone from "../images/phone-call.png";
 import Footer from "../components/layout/Footer.astro";
-import Chat from "../components/layout/Chats";
+import MobileContact from "../components/layout/MobileContact.astro";
+import Logo from "../components/layout/Logo.astro";
 
 export interface Props {
   title: string;
@@ -37,33 +37,19 @@ const { title, description, keywords } = Astro.props;
       <div class='mx-2 lg:mx-8 py-3'>
         <div class='flex justify-between items-center'>
           <div class='flex gap-x-5 lg:gap-x-5 items-center'>
-            <a
-              href='http://localhost:3000'
-              aria-label='Sprzątanie mieszkań Zielona Góra'
-            >
-           
-              <div
-                class='bg-gradient-to-r from-purple-500 to-pink-500 h-16 lg:h-24 text-white rounded-full text-[10px] lg:text-sm p-2 lg:p-4 text-center font-extrabold uppercase flex flex-col items-center justify-center'
-              >
-                <div>Ludwik</div>
-                <div>Agencja</div>
-              </div>
-            </a>
+            <Logo />
             <Burger />
-            <!-- <Chat client:load /> -->
           </div>
           <Contact />
-          <!-- <a class='' href='tel:+48690456901'
-            ><img src={phone} width={48} height={48} alt='phone' /></a
-          > -->
-          <div
-            class='lg:hidden flex items-center gap-y-2 bg-gradient-to-r from-cyan-500 to-green-500 py-4 lg:py-4 px-4 lg:px-16 text-sm lg:text-2xl text-white font-bold rounded-3xl'
-          >
-            <a href='tel:+4733378901'>+48690456901</a>
-          </div>
+          <MobileContact />
           <Join />
           <MobileBurger />
         </div>
+        <!-- <div
+          class='text-center text-sm p-1 text-white bg-black/75 max-w-fit mx-auto'
+        >
+          Zadzwoń albo napisz nam
+        </div> -->
       </div>
       <Menu client:load />
       <MobileMenu />
