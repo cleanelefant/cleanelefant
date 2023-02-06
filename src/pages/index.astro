@@ -24,7 +24,7 @@ import RightMenu from "../components/menu/RightMenu";
 >
   <div class='prime'>
     <div class='w-5/6 lg:w-4/5 mx-auto pt-28 lg:pt-60 text-center'>
-      <h1 class='text-3xl xl:text-7xl   font-extrabold tracking-wide'>
+      <h1 class='text-3xl xl:text-7xl font-extrabold tracking-wide'>
         Sprzątanie mieszkań Zielona Góra
       </h1>
       <p class='text-lg md:text-2xl lg:text-2xl py-5'>
@@ -34,7 +34,7 @@ import RightMenu from "../components/menu/RightMenu";
     <OrderNavigator client:idle />
   </div>
 
-  <RightMenu client:load/>
+  <RightMenu client:load />
   <Advantages />
   <!-- <Opinions client:load /> -->
   <Options />
@@ -47,6 +47,10 @@ import RightMenu from "../components/menu/RightMenu";
   <Locals client:visible />
   <Ourcervices />
   <Posts />
+  <section class=''>
+    <h3 class=''>Zamów sprzątanie mieszkania</h3>
+    <div class='mb-10'><OrderNavigator /></div>
+  </section>
 </Layout>
 
 <style>
@@ -60,5 +64,4 @@ import RightMenu from "../components/menu/RightMenu";
     background: url(https://res.cloudinary.com/zielona-g-ra/image/upload/v1674714539/clean/bg_1_o8yetv.webp)
       no-repeat top/cover;
   }
- 
 </style>
