@@ -5,7 +5,7 @@ import { services } from "../../utils/services";
 export default function RightMenu() {
   const [isOpen, setIsOpen] = React.useState(true);
   return (
-    <motion.nav
+    <motion.div
       initial={true}
       animate={isOpen ? "open" : "closed"}
       className='hidden lg:block fixed right-5 top-24 z-40 '
@@ -29,7 +29,9 @@ export default function RightMenu() {
         </motion.div>
       </motion.button>
 
-      <motion.div
+      <motion.menu
+        itemScope
+        itemType='http://www.schema.org/SiteNavigationElement'
         variants={{
           open: {
             clipPath: "inset(0% 0% 0% 0% round 10px)",
@@ -54,7 +56,8 @@ export default function RightMenu() {
         className='flex flex-col gap-y-2 p-2 drop-shadow-2xl'
       >
         {services.map((s, index) => (
-          <motion.div
+          <motion.li
+            itemProp='name'
             key={s.id}
             style={{ x: 400, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
@@ -65,7 +68,12 @@ export default function RightMenu() {
             }}
             className='py-1 group'
           >
-            <a className='rounded-lg shadow-lg ' href={s.link} key={s.id}>
+            <a
+              className='rounded-lg shadow-lg '
+              href={s.link}
+              key={s.id}
+              itemProp='url'
+            >
               <img
                 className='max-w-[48px] mx-auto group-hover:scale-125 transition-transform '
                 src={s.src}
@@ -77,9 +85,9 @@ export default function RightMenu() {
                 {s.title}
               </div>
             </a>
-          </motion.div>
+          </motion.li>
         ))}
-      </motion.div>
-    </motion.nav>
+      </motion.menu>
+    </motion.div>
   );
 }
