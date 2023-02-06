@@ -13,7 +13,7 @@ export default function OrderLink(props: IOrderLink) {
     >
       <div className=' flex justify-center items-center i py-4 lg:py-7 bg-[#2457c6] hover:bg-[#2457e8] rounded-xl'>
         Policz koszty
-        <span className='ml-16 text-2xl font-extrabold'>&#8594;</span>
+        <span className='ml-16 text-3xl font-extrabold'>&#8594;</span>
       </div>
     </a>
   );
