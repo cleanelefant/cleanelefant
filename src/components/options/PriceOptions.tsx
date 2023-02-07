@@ -63,6 +63,7 @@ export default function PriceOptions() {
         room: 1,
         description:
           "Cena obejmuje sprzątanie jednego pokoju, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+        itemPropName: "sprzątanie kawalerki",
       },
       {
         id: 2,
@@ -71,6 +72,7 @@ export default function PriceOptions() {
         room: 2,
         description:
           "Cena obejmuje sprzątanie dwóch pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+        itemPropName: "sprzątanie dwupokojowego mieszkania",
       },
       {
         id: 3,
@@ -79,6 +81,7 @@ export default function PriceOptions() {
         room: 3,
         description:
           "Cena obejmuje sprzątanie trzech pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+        itemPropName: "sprzątanie trzypokojowego mieszkania",
       },
     ];
     setDiscounts(fetchedRates);
@@ -121,14 +124,34 @@ export default function PriceOptions() {
             className='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
             key={p.id}
             href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
+            itemType='https://schema.org/Product'
+            itemScope
           >
+            <meta itemProp='name' content={p.itemPropName}></meta>
+            <div
+              itemProp='offers'
+              itemType='https://schema.org/Offer'
+              itemScope
+            >
+              <link itemProp='url' href='https://cleanwhale.pl/order/3/1' />
+              <meta
+                itemProp='availability'
+                content='https://schema.org/InStock'
+              />
+              <meta itemProp='priceCurrency' content='PLN' />
+              <meta
+                itemProp='itemCondition'
+                content='https://schema.org/UsedCondition'
+              />
+              <meta itemProp='price' content={p.price.toString()} />
+            </div>
             <div className='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
               <p className='text-2xl pb-4'>{p.title}</p>
               <p className='text-4xl mb-12'>
                 {setActualPrice(p.price, actualDiscount.discount).toFixed(2)}
                 <span className='ml-2'>zł.</span>
               </p>
-              <div className='text-sm font-thin pb-2 '>{p.description}</div>
+              <div className='text-sm font-thin pb-5 '>{p.description}</div>
               <div className='py-4  bg-blue-600 text-white rounded-lg text-xl'>
                 Zamów sprzątanie
               </div>

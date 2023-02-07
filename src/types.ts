@@ -17,31 +17,32 @@ export type priceType = {
   description: string;
   room: number;
   price: number;
+  itemPropName: string;
 };
 
 export type questionsType = {
   id: number;
   question: string;
   answer: string;
-  isVisible:boolean;  
+  isVisible: boolean;
 };
 
 export interface IPost {
-  id:number;
-  slug:string;
-  title:string;
-  description:string;
-  src?:string;
-  double:string;
-  text:string;
-  date:string;
-  target?:string;  
+  id: number;
+  slug: string;
+  title: string;
+  description: string;
+  src?: string;
+  double: string;
+  text: string;
+  date: string;
+  target?: string;
 }
 
 export interface IOurServices {
-  id:number;
-  slug:string;
-  title:string; 
-  target?:string;
-  text:string;  
+  id: number;
+  slug: string;
+  title: string;
+  target?: string;
+  text: string;
 }
