@@ -134,7 +134,10 @@ export default function PriceOptions() {
               itemType='https://schema.org/Offer'
               itemScope
             >
-              <link itemProp='url' href='https://cleanwhale.pl/order/3/1' />
+              <link
+                itemProp='url'
+                href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
+              />
               <meta
                 itemProp='availability'
                 content='https://schema.org/InStock'
