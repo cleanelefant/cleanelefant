@@ -126,6 +126,7 @@ export default function PriceOptions() {
             href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
             itemType='https://schema.org/Product'
             itemScope
+            rel='nofollow'
           >
             <meta itemProp='name' content={p.itemPropName}></meta>
             <div
