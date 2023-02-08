@@ -12,5 +12,42 @@ import PriceOptions from "./PriceOptions";
       zniżki
     </p>
     <PriceOptions client:load />
+    <div
+      class='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-between pb-10 font-bold'
+    >
+      <a
+        class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
+        href={`/order?rooms=1&bedrooms=1&discount=1 `}
+        itemtype='https://schema.org/Product'
+        itemscope
+        rel='nofollow'
+      >
+        <meta itemprop='name' content={"sprzątanie kawalerki"} /></a
+      >
+      <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
+        <link itemprop='url' href={`/order?rooms=1&bedrooms=1&discount=week`} />
+        <meta itemprop='availability' content='https://schema.org/InStock' />
+        <meta itemprop='priceCurrency' content='PLN' />
+        <meta
+          itemprop='itemCondition'
+          content='https://schema.org/UsedCondition'
+        />
+        <meta itemprop='price' content='142' />
+      </div>
+      <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+        <p class='text-2xl pb-4'>Jednopokojowe</p>
+        <p class='text-4xl mb-12'>
+          142
+          <span class='ml-2'>zł.</span>
+        </p>
+        <div class='text-sm font-thin pb-5'>
+          Cena obejmuje sprzątanie jednego pokoju, kuchni, przedpokoju oraz
+          jednej łazienki, raz w tygodniu
+        </div>
+        <div class='py-4 bg-blue-600 text-white rounded-lg text-xl'>
+          Zamów sprzątanie
+        </div>
+      </div>
+    </div>
   </div>
 </section>
