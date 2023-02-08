@@ -27,7 +27,11 @@ import RightMenu from "../components/menu/RightMenu";
       <h1 class='text-3xl xl:text-7xl font-extrabold tracking-wide'>
         Sprzątanie mieszkań Zielona Góra
       </h1>
-      <p class='text-lg md:text-2xl lg:text-2xl py-5'>
+      <p class='text-lg md:text-2xl lg:text-3xl py-5 fomt-medium'>
+        Sprzątamy też domy jednorodzinny a letniskowy (altany), biura i
+        mieszkania po remoncie
+      </p>
+      <p class='text-lg md:text-2xl lg:text-2xl py-10 mt-20'>
         Usługa składa się z kuchni, łazienki, sypialni i przedpokoju.
       </p>
     </div>
@@ -47,9 +51,11 @@ import RightMenu from "../components/menu/RightMenu";
   <!-- <Locals client:visible /> -->
   <Ourcervices />
   <Posts />
-  <section class=''>
-    <h3 class=''>Zamów sprzątanie mieszkania</h3>
-    <div class='mb-10'><OrderNavigator client:visible /></div>
+  <section class='my-32'>
+    <h3 class='text-center font-bold text-2xl lg:text-4xl mb-10'>
+      Zamów sprzątanie mieszkania
+    </h3>
+    <div class='mb-10'><OrderNavigator client:load /></div>
   </section>
 </Layout>
 
