@@ -8,9 +8,9 @@ const PostsSlider = () => {
   const { bottomRef, topRef, intersection } = useIntersection();
 
   return (
-    <div className="relative">
-      <div className="absolute top-[-120px] h-px" ref={topRef}></div>
-      <div className="my-10">
+    <div className='relative'>
+      <div className='absolute top-[-120px] h-px' ref={topRef}></div>
+      <div className='my-10'>
         <Swiper
           spaceBetween={40}
           slidesPerView={2}
@@ -30,7 +30,7 @@ const PostsSlider = () => {
           // onSlideChange={() => console.log("slide change")}
           // onSwiper={(swiper) => console.log(swiper)}
         >
-          {blog.map((post) => {           
+          {blog.map((post) => {
             return (
               <SwiperSlide key={post.id}>
                 <PostCard
@@ -39,13 +39,14 @@ const PostsSlider = () => {
                   description={post.description}
                   double={post.double}
                   intersection={intersection}
+                  src={post.src}
                 />
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-      <div className="absolute bottom-[-120px] h-px " ref={bottomRef}></div>
+      <div className='absolute bottom-[-120px] h-px ' ref={bottomRef}></div>
     </div>
   );
 };
