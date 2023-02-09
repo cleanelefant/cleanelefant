@@ -1,5 +1,66 @@
 ---
+import { rateType } from "../../types";
 import PriceOptions from "./PriceOptions";
+const host = "http://localhost:3000";
+const fetchedRates: rateType[] = [
+  {
+    id: 1,
+    title: "Raz w tygodniu",
+    discount: 20,
+    link: "week",
+    isCurent: true,
+  },
+  {
+    id: 2,
+    title: "Raz na dwa tygodnie",
+    discount: 15,
+    link: "twiceperweek",
+    isCurent: false,
+  },
+  {
+    id: 3,
+    title: "Raz w miesiącu",
+    discount: 10,
+    link: "month",
+    isCurent: false,
+  },
+  {
+    id: 4,
+    title: "Jednorazowe sprzątanie",
+    discount: 0,
+    link: "once",
+    isCurent: false,
+  },
+];
+const options = [
+  {
+    id: 1,
+    title: "Jednopokojowe",
+    price: 149.9,
+    room: 1,
+    description:
+      "Cena obejmuje sprzątanie jednego pokoju, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+    itemPropName: "sprzątanie kawalerki",
+  },
+  {
+    id: 2,
+    title: "Dwupokojowe",
+    price: 179.0,
+    room: 2,
+    description:
+      "Cena obejmuje sprzątanie dwóch pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+    itemPropName: "sprzątanie dwupokojowego mieszkania",
+  },
+  {
+    id: 3,
+    title: "Trzypokojowe",
+    price: 209.9,
+    room: 3,
+    description:
+      "Cena obejmuje sprzątanie trzech pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
+    itemPropName: "sprzątanie trzypokojowego mieszkania",
+  },
+];
 ---
 
 <section>
@@ -12,41 +73,124 @@ import PriceOptions from "./PriceOptions";
       zniżki
     </p>
     <PriceOptions client:load />
-    <div
-      class='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-between pb-10 font-bold'
-    >
-      <a
-        class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
-        href={`/order?rooms=1&bedrooms=1&discount=1 `}
-        itemtype='https://schema.org/Product'
-        itemscope
-        rel='nofollow'
+    <div class='pt-10 xl:mx-28'>
+      <div
+        class='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-between pb-10 font-bold'
       >
-        <meta itemprop='name' content={"sprzątanie kawalerki"} /></a
-      >
-      <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
-        <link itemprop='url' href={`/order?rooms=1&bedrooms=1&discount=week`} />
-        <meta itemprop='availability' content='https://schema.org/InStock' />
-        <meta itemprop='priceCurrency' content='PLN' />
-        <meta
-          itemprop='itemCondition'
-          content='https://schema.org/UsedCondition'
-        />
-        <meta itemprop='price' content='142' />
-      </div>
-      <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
-        <p class='text-2xl pb-4'>Jednopokojowe</p>
-        <p class='text-4xl mb-12'>
-          142
-          <span class='ml-2'>zł.</span>
-        </p>
-        <div class='text-sm font-thin pb-5'>
-          Cena obejmuje sprzątanie jednego pokoju, kuchni, przedpokoju oraz
-          jednej łazienki, raz w tygodniu
-        </div>
-        <div class='py-4 bg-blue-600 text-white rounded-lg text-xl'>
-          Zamów sprzątanie
-        </div>
+        <a
+          class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
+          href={`${host}/order?rooms=${options[0].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
+          itemtype='https://schema.org/Product'
+          itemscope
+          rel='nofollow'
+        >
+          <meta itemprop='name' content={`${options[0].itemPropName}`} />
+          <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
+            <link
+              itemprop='url'
+              href={`${host}/order?rooms=${options[0].room}&bedrooms=1`}
+            />
+            <meta
+              itemprop='availability'
+              content='https://schema.org/InStock'
+            />
+            <meta itemprop='priceCurrency' content='PLN' />
+            <meta
+              itemprop='itemCondition'
+              content='https://schema.org/UsedCondition'
+            />
+            <meta itemprop='price' content={`${options[0].price}`} />
+          </div>
+          <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+            <p class='text-2xl pb-4'>{`${options[0].title}`}</p>
+            <p class='text-4xl mb-12'>
+              {`${options[0].price}`}
+              <span class='ml-2'>zł.</span>
+            </p>
+            <div class='text-sm font-thin pb-5'>
+              {`${options[0].description}`}
+            </div>
+            <div class='py-4 bg-blue-600 text-white rounded-lg text-xl'>
+              Zamów sprzątanie
+            </div>
+          </div>
+        </a>
+        <a
+          class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
+          href={`${host}/order?rooms=${options[1].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
+          itemtype='https://schema.org/Product'
+          itemscope
+          rel='nofollow'
+        >
+          <meta itemprop='name' content={`${options[1].itemPropName}`} />
+          <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
+            <link
+              itemprop='url'
+              href={`${host}/order?rooms=${options[1].room}&bedrooms=1`}
+            />
+            <meta
+              itemprop='availability'
+              content='https://schema.org/InStock'
+            />
+            <meta itemprop='priceCurrency' content='PLN' />
+            <meta
+              itemprop='itemCondition'
+              content='https://schema.org/UsedCondition'
+            />
+            <meta itemprop='price' content={`${options[1].price}`} />
+          </div>
+          <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+            <p class='text-2xl pb-4'>{`${options[1].title}`}</p>
+            <p class='text-4xl mb-12'>
+              {`${options[1].price}`}
+              <span class='ml-2'>zł.</span>
+            </p>
+            <div class='text-sm font-thin pb-5'>
+              {`${options[1].description}`}
+            </div>
+            <div class='py-4 bg-blue-600 text-white rounded-lg text-xl'>
+              Zamów sprzątanie
+            </div>
+          </div>
+        </a>
+        <a
+          class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
+          href={`${host}/order?rooms=${options[2].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
+          itemtype='https://schema.org/Product'
+          itemscope
+          rel='nofollow'
+        >
+          <meta itemprop='name' content={"sprzątanie kawalerki"} />
+          <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
+            <link
+              itemprop='url'
+              href={`${host}/order?rooms=${options[2].room}&bedrooms=1}`}
+            />
+            <meta
+              itemprop='availability'
+              content='https://schema.org/InStock'
+            />
+            <meta itemprop='priceCurrency' content='PLN' />
+            <meta
+              itemprop='itemCondition'
+              content='https://schema.org/UsedCondition'
+            />
+            <meta itemprop='price' content={`${options[2].price}`} />
+          </div>
+          <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
+            <p class='text-2xl pb-4'>{`${options[2].title}`}</p>
+            <p class='text-4xl mb-12'>
+              {`${options[2].price}`}
+              <span class='ml-2'>zł.</span>
+            </p>
+            <div class='text-sm font-thin pb-5'>
+              {`${options[2].description}`}
+            </div>
+            <div class='py-4 bg-blue-600 text-white rounded-lg text-xl'>
+              Zamów sprzątanie
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </div>
