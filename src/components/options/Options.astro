@@ -2,6 +2,7 @@
 import { rateType } from "../../types";
 import PriceOptions from "./PriceOptions";
 const host = "http://localhost:3000";
+const deployhost = "https://cleanelefant.netlify.app";
 const fetchedRates: rateType[] = [
   {
     id: 1,
@@ -77,6 +78,7 @@ const options = [
       <div
         class='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-between pb-10 font-bold'
       >
+        <!-- First link -->
         <a
           class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
           href={`${host}/order?rooms=${options[0].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
@@ -88,7 +90,7 @@ const options = [
           <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
             <link
               itemprop='url'
-              href={`${host}/order?rooms=${options[0].room}&bedrooms=1`}
+              href={`${deployhost}/order?rooms=${options[0].room}&bedrooms=1`}
             />
             <meta
               itemprop='availability'
@@ -115,6 +117,7 @@ const options = [
             </div>
           </div>
         </a>
+        <!-- Second link -->
         <a
           class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
           href={`${host}/order?rooms=${options[1].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
@@ -126,7 +129,7 @@ const options = [
           <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
             <link
               itemprop='url'
-              href={`${host}/order?rooms=${options[1].room}&bedrooms=1`}
+              href={`${deployhost}/order?rooms=${options[1].room}&bedrooms=1`}
             />
             <meta
               itemprop='availability'
@@ -153,6 +156,7 @@ const options = [
             </div>
           </div>
         </a>
+        <!-- Third link -->
         <a
           class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
           href={`${host}/order?rooms=${options[2].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
@@ -160,11 +164,11 @@ const options = [
           itemscope
           rel='nofollow'
         >
-          <meta itemprop='name' content={"sprzątanie kawalerki"} />
+          <meta itemprop='name' content={`${options[2].itemPropName}`} />
           <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
             <link
               itemprop='url'
-              href={`${host}/order?rooms=${options[2].room}&bedrooms=1}`}
+              href={`${deployhost}/order?rooms=${options[2].room}&bedrooms=1}`}
             />
             <meta
               itemprop='availability'
