@@ -1,67 +1,8 @@
 ---
-import { rateType } from "../../types";
+import { options } from "../../utils/data/options/options";
+import { fetchedRates } from "../../utils/data/options/rates";
 import PriceOptions from "./PriceOptions";
-const host = "http://localhost:3000";
 const deployhost = "https://cleanelefant.netlify.app";
-const fetchedRates: rateType[] = [
-  {
-    id: 1,
-    title: "Raz w tygodniu",
-    discount: 20,
-    link: "week",
-    isCurent: true,
-  },
-  {
-    id: 2,
-    title: "Raz na dwa tygodnie",
-    discount: 15,
-    link: "twiceperweek",
-    isCurent: false,
-  },
-  {
-    id: 3,
-    title: "Raz w miesiącu",
-    discount: 10,
-    link: "month",
-    isCurent: false,
-  },
-  {
-    id: 4,
-    title: "Jednorazowe sprzątanie",
-    discount: 0,
-    link: "once",
-    isCurent: false,
-  },
-];
-const options = [
-  {
-    id: 1,
-    title: "Jednopokojowe",
-    price: 149.9,
-    room: 1,
-    description:
-      "Cena obejmuje sprzątanie jednego pokoju, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
-    itemPropName: "sprzątanie kawalerki",
-  },
-  {
-    id: 2,
-    title: "Dwupokojowe",
-    price: 179.0,
-    room: 2,
-    description:
-      "Cena obejmuje sprzątanie dwóch pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
-    itemPropName: "sprzątanie dwupokojowego mieszkania",
-  },
-  {
-    id: 3,
-    title: "Trzypokojowe",
-    price: 209.9,
-    room: 3,
-    description:
-      "Cena obejmuje sprzątanie trzech pokoi, kuchni, przedpokoju oraz jednej łazienki, raz w tygodniu",
-    itemPropName: "sprzątanie trzypokojowego mieszkania",
-  },
-];
 ---
 
 <section>
@@ -74,8 +15,39 @@ const options = [
       zniżki
     </p>
     <PriceOptions client:load />
-    <div class='pt-10 xl:mx-28'>
+    <div class='pt-10 xl:mx-16'>
+      <!-- Discounts -->
       <div
+        class='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-10 text-sm lg:text-lg font-bold'
+      >
+        {
+          fetchedRates?.map((d) => (
+            <button class='rate_button_123' data-key={d.id}>
+              <div
+                class={`${
+                  d.isCurent
+                    ? "bg-blue-500"
+                    : "bg-slate-200 lg:bg-slate-100 hover:bg-slate-200"
+                } py-2 lg:p-4 rounded-md basis-full transition ease-in-out`}
+              >
+                {d.discount !== 0 ? (
+                  <div class='flex flex-col lg:flex-row items-center justify-center'>
+                    <p class=' bg-yellow-600 p-2  rounded-lg font-extrabold inline-block'>
+                      -{d.discount}%
+                    </p>
+                    <p class='p-2'>{d.title}</p>
+                  </div>
+                ) : (
+                  <p>{d.title}</p>
+                )}
+              </div>
+            </button>
+          ))
+        }
+      </div>
+      <!-- Links -->
+      <div
+        id='options_123'
         class='flex flex-col lg:flex-row gap-y-4 lg:gap-y-0 gap-x-4 justify-between pb-10 font-bold'
       >
         <!-- First link -->
@@ -105,7 +77,11 @@ const options = [
           </div>
           <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
             <p class='text-2xl pb-4'>{`${options[0].title}`}</p>
-            <p class='text-4xl mb-12'>
+            <p
+              class='text-4xl mb-12'
+              data-type='price'
+              data-price={`${options[0].price}`}
+            >
               {`${options[0].price}`}
               <span class='ml-2'>zł.</span>
             </p>
@@ -144,7 +120,11 @@ const options = [
           </div>
           <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
             <p class='text-2xl pb-4'>{`${options[1].title}`}</p>
-            <p class='text-4xl mb-12'>
+            <p
+              class='text-4xl mb-12'
+              data-type='price'
+              data-price={`${options[1].price}`}
+            >
               {`${options[1].price}`}
               <span class='ml-2'>zł.</span>
             </p>
@@ -183,7 +163,11 @@ const options = [
           </div>
           <div class='block p-6 rounded-lg shadow-lg bg-white max-w-sm'>
             <p class='text-2xl pb-4'>{`${options[2].title}`}</p>
-            <p class='text-4xl mb-12'>
+            <p
+              class='text-4xl mb-12'
+              data-type='price'
+              data-price={`${options[2].price}`}
+            >
               {`${options[2].price}`}
               <span class='ml-2'>zł.</span>
             </p>
@@ -199,3 +183,74 @@ const options = [
     </div>
   </div>
 </section>
+
+<script>
+  import { fetchedRates } from "../../utils/data/options/rates";
+
+  function setActualPrice(basePrice: number, actualDiscount: number) {
+    const multiplicator = (100 - actualDiscount) / 100;
+    const price = Math.round(basePrice * multiplicator);
+    return price.toString();
+  }
+
+  function findButtonParent(element) {
+    if (element.nodeName === "BUTTON") {
+      return element;
+    } else if (element.parentNode) {
+      return findButtonParent(element.parentNode);
+    }
+    return false;
+  }
+
+  function setOptions() {
+    const buttons = document.querySelectorAll(".rate_button_123");
+
+    for (const item of buttons) {
+      item.addEventListener("click", (e) => {
+        const mybuttons = document.querySelectorAll(".rate_button_123");
+        for (const button of mybuttons) {
+          button.firstElementChild.classList.remove("bg-blue-500");
+          button.firstElementChild.classList.remove("lg:bg-blue-500");
+          button.firstElementChild.classList.add("bg-slate-200");
+          button.firstElementChild.classList.add("lg:bg-slate-100");
+          button.firstElementChild.classList.add("hover:bg-slate-200");
+        }
+        const button = findButtonParent(e.target);
+        if (button) {
+          const key = button.getAttribute("data-key");
+
+          button.firstElementChild.classList.remove("bg-slate-200");
+          button.firstElementChild.classList.remove("lg:bg-slate-100");
+          button.firstElementChild.classList.remove("hover:bg-slate-200");
+          button.firstElementChild.classList.add("lg:bg-blue-500");
+          button.firstElementChild.classList.add("bg-blue-500");
+
+          const findActualRate = fetchedRates.find(
+            (rate) => rate.id === Number(key)
+          );
+          console.log(findActualRate);
+
+          const option_box = document.querySelector("#options_123");
+          const links = option_box.children;
+          for (const link of links) {
+            const linkNode = link.getAttribute("href").split("=");
+            linkNode[linkNode.length - 1] = findActualRate.link;
+            const newLink = linkNode.join("=");
+
+            const priceNode = link.querySelector('[data-type="price"]');
+            const basePrice = priceNode.getAttribute("data-price");
+            const firstChild = priceNode.firstChild;
+            const newPrice = setActualPrice(
+              Number(basePrice),
+              findActualRate.discount
+            );
+
+            firstChild.nodeValue = newPrice;
+            link.setAttribute("href", newLink);
+          }
+        }
+      });
+    }
+  }
+  setOptions();
+</script>
