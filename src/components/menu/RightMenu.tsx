@@ -8,9 +8,9 @@ export default function RightMenu() {
     <motion.div
       initial={true}
       animate={isOpen ? "open" : "closed"}
-      className='hidden lg:block fixed right-5 top-24 z-40 '
+      className='hidden lg:block '
     >
-      <motion.button
+      {/* <motion.button
         whileTap={{ scale: 0.97 }}
         onClick={() => setIsOpen(!isOpen)}
         className=' mx-auto flex items-center justify-center gap-x-5 my-5 p-4 bg-white rounded-full drop-shadow-2xl'
@@ -27,7 +27,7 @@ export default function RightMenu() {
             <path d='M0 7 L 20 7 L 10 16' />
           </svg>
         </motion.div>
-      </motion.button>
+      </motion.button> */}
 
       <motion.menu
         itemScope
@@ -53,7 +53,7 @@ export default function RightMenu() {
           },
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-        className='flex flex-col gap-y-2 p-2 drop-shadow-2xl'
+        className='flex p-2 drop-shadow-2xl overflow-hidden'
       >
         {services.map((s, index) => (
           <motion.li
@@ -81,7 +81,7 @@ export default function RightMenu() {
                 width={40}
                 height={40}
               />
-              <div className='text-[14px] max-w-[150px] text-center font-medium'>
+              <div className='text-[12px] max-w-[150px] text-center font-medium'>
                 {s.title}
               </div>
             </a>

@@ -8,6 +8,7 @@ import MobileMenu from "../components/menu/MobileMenu.astro";
 import Footer from "../components/layout/Footer.astro";
 import MobileContact from "../components/layout/MobileContact.astro";
 import Logo from "../components/layout/Logo.astro";
+import RightMenu from "../components/menu/RightMenu";
 
 export interface Props {
   title: string;
@@ -41,6 +42,7 @@ const { title, description, keywords } = Astro.props;
             <Burger />
           </div>
           <Contact />
+          <RightMenu client:load />
           <MobileContact />
           <Join />
           <MobileBurger />
