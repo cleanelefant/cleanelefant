@@ -7,7 +7,6 @@ import bg3 from "../../images/lazenka.webp";
 import { notes } from "../../utils/notes";
 import useIntersection from "../../utils/useObserver";
 
-
 const images = [
   {
     id: 0,
@@ -22,8 +21,6 @@ const images = [
 export default function Slider() {
   const [state, setState] = React.useState(0);
   const { bottomRef, topRef, intersection } = useIntersection();
- 
-
 
   const image = images?.find((image) => image.id === state);
 
@@ -31,7 +28,7 @@ export default function Slider() {
 
   return (
     <div className='relative'>
-      <div className='absolute top-[-20px] h-px' ref={topRef}></div>
+      <div className='absolute top-[-120px] h-px' ref={topRef}></div>
       <div className='pt-10 xl:mx-28'>
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-4 lg:pb-10 text-sm lg:text-lg font-bold'>
           {images.map((img, index) => {
