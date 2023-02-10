@@ -53,7 +53,7 @@ export default function RightMenu() {
           },
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-        className='flex p-2 drop-shadow-2xl overflow-hidden'
+        className='flex gap-x-1 p-2 drop-shadow-2xl overflow-hidden'
       >
         {services.map((s, index) => (
           <motion.li
@@ -81,7 +81,7 @@ export default function RightMenu() {
                 width={40}
                 height={40}
               />
-              <div className='text-[12px] max-w-[150px] text-center font-medium'>
+              <div className='text-[12px] max-w-[100px] text-center font-medium font-mono'>
                 {s.title}
               </div>
             </a>
