@@ -75,13 +75,13 @@ export default function RightMenu() {
               itemProp='url'
             >
               <img
-                className='max-w-[48px] mx-auto group-hover:scale-125 transition-transform '
+                className='max-w-[48px] mx-auto  '
                 src={s.src}
                 alt={s.title}
                 width={40}
                 height={40}
               />
-              <div className='text-[12px] max-w-[100px] text-center font-medium font-mono'>
+              <div className='text-[12px] max-w-[100px] text-center font-medium group-hover:scale-110 transition-transform'>
                 {s.title}
               </div>
             </a>
