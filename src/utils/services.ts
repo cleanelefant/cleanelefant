@@ -15,7 +15,8 @@ export const services = [
   {
     id: 4,
     src: sofa,
-    title: "Czyszczenie chemiczne mebli i kanap",
+    // title: "Czyszczenie chemiczne mebli i kanap",
+    title: "Czyszczenie mebli i kanap",
     link: "./test",
   },
   // {
@@ -46,7 +47,8 @@ export const services = [
   {
     id: 9,
     src: home,
-    title: "Sprzątanie domu prywatnego i działki",
+    // title: "Sprzątanie domu prywatnego i działki",
+    title: "Sprzątanie domu",
     link: "./test",
   },
 ];

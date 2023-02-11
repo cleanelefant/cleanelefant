@@ -53,7 +53,7 @@ export default function RightMenu() {
           },
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-        className='flex gap-x-1 p-2 drop-shadow-2xl overflow-hidden'
+        className='flex xl:gap-x-2 p-2 drop-shadow-2xl overflow-hidden'
       >
         {services.map((s, index) => (
           <motion.li
