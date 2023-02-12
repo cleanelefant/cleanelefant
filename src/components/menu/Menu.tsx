@@ -3,8 +3,8 @@ import start from "../../images/start.webp";
 export default function Menu() {
   return (
     <div id='dropdowm-menu_123' className='dropdowm-menu'>
-      <div className='flex gap-x-10 justify-between mx-8 py-10 2xl:px-20 font-bold'>
-        <div className='flex gap-x-10 2xl:gap-x-30'>
+      <div className='flex gap-x-10 justify-between mx-8 py-10 2xl:px-20 font-medium'>
+        <div className='flex lg:gap-x-20 2xl:gap-x-40 text-xl'>
           <menu
             itemScope
             itemType='http://www.schema.org/SiteNavigationElement'
@@ -57,7 +57,7 @@ export default function Menu() {
               </a>
             </li>
             <li itemProp='name'>
-              <a itemProp='url' href='/test' className='text-red-400'>
+              <a itemProp='url' href='/test' className='text-red-400 font-bold'>
                 Zniżki i promocje
               </a>
             </li>

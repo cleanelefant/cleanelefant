@@ -2,17 +2,49 @@
 import present from "../../images/present.png";
 ---
 
-<div class='hidden lg:flex items-center justify-center gap-x-4'>
-  <a href='/test'>
-    <img src={present} alt='present' width={64} height={64} />
+<div class="hidden lg:flex items-center justify-center gap-x-4 relative ">
+ 
+  <a href="/test" class="block">
+    <img src={present} alt="present" width={64} height={64} />
   </a>
   <a
-    href='/test'
-    class='bg-gradient-to-r from-cyan-500 to-blue-400  hover:from-cyan-700 hover:to-blue-500 transition-transform py-2 lg:py-5 px-2 lg:px-4 text-white rounded-full flex items-center gap-x-5  hover:underline font-medium'
+    href="/test"
+    class="bg-gradient-to-r from-cyan-500 to-blue-400 hover:from-cyan-700 hover:to-blue-500 transition-transform py-2 lg:py-5 px-2 lg:px-4 text-white rounded-full flex items-center gap-x-5 hover:underline font-medium"
   >
-    <div class='text-center'>
-      <p class=''>-15%</p>
-      <p class='text-[12px] font-mono'>na start</p>
+    <div class="text-center">
+      <p class="">-15%</p>
+      <p class="text-[12px] font-mono">na start</p>
     </div>
   </a>
 </div>
+
+<style>
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  .tooltip .tooltiptext {
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    left: 10%;
+    margin-left: -60px;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+  }
+</style>

@@ -33,7 +33,7 @@ export default function OrderButton(props: {
       >
         -
       </button>
-      <div className='flex gap-x-5 text-lg lg:text-2xl'>
+      <div className='flex gap-x-5 text-lg lg:text-3xl font-bold'>
         <p>{state}</p>
         <p>{setWordInRightWay(props.title, state)}</p>
       </div>

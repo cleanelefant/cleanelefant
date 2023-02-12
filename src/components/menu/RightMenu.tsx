@@ -34,7 +34,7 @@ export default function RightMenu() {
         itemType='http://www.schema.org/SiteNavigationElement'
         variants={{
           open: {
-            clipPath: "inset(0% 0% 0% 0% round 10px)",
+            clipPath: "inset(0% 0% 0% 0% )",
             transition: {
               type: "spring",
               bounce: 0,
@@ -53,7 +53,7 @@ export default function RightMenu() {
           },
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-        className='flex xl:gap-x-2 p-2 drop-shadow-2xl overflow-hidden'
+        className='flex xl:gap-x-2 overflow-hidden'
       >
         {services.map((s, index) => (
           <motion.li
@@ -64,9 +64,9 @@ export default function RightMenu() {
             transition={{
               ease: "easeOut",
               duration: 0.5,
-              delay: (1 * index) / 8,
+              delay: (1 * (index)) / 8,
             }}
-            className='py-1 group'
+            className='p-4 hover:bg-slate-300/75'
           >
             <a
               className='rounded-lg shadow-lg '
@@ -81,8 +81,8 @@ export default function RightMenu() {
                 width={40}
                 height={40}
               />
-              <div className='text-[12px] max-w-[100px] text-center font-medium group-hover:scale-110 transition-transform'>
-                {s.title}
+              <div className='text-[14px] max-w-[100px] text-center font-medium text-slate-800 '>
+                {s.shortTitle}
               </div>
             </a>
           </motion.li>
