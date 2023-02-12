@@ -8,7 +8,7 @@ export default function RightMenu() {
     <motion.div
       initial={true}
       animate={isOpen ? "open" : "closed"}
-      className='hidden lg:block '
+      className="hidden lg:block "
     >
       {/* <motion.button
         whileTap={{ scale: 0.97 }}
@@ -31,7 +31,7 @@ export default function RightMenu() {
 
       <motion.menu
         itemScope
-        itemType='http://www.schema.org/SiteNavigationElement'
+        itemType="http://www.schema.org/SiteNavigationElement"
         variants={{
           open: {
             clipPath: "inset(0% 0% 0% 0% )",
@@ -53,36 +53,32 @@ export default function RightMenu() {
           },
         }}
         style={{ pointerEvents: isOpen ? "auto" : "none" }}
-        className='flex xl:gap-x-2 overflow-hidden'
+        className="flex xl:gap-x-2 overflow-hidden"
       >
         {services.map((s, index) => (
           <motion.li
-            itemProp='name'
+            itemProp="name"
             key={s.id}
             style={{ x: 400, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{
               ease: "easeOut",
               duration: 0.5,
-              delay: (1 * (index)) / 8,
+              delay: (1 * index) / 8,
             }}
-            className='p-4 hover:bg-slate-300/75'
           >
-            <a
-              className='rounded-lg shadow-lg '
-              href={s.link}
-              key={s.id}
-              itemProp='url'
-            >
-              <img
-                className='max-w-[48px] mx-auto  '
-                src={s.src}
-                alt={s.title}
-                width={40}
-                height={40}
-              />
-              <div className='text-[14px] max-w-[100px] text-center font-medium text-slate-800 '>
-                {s.shortTitle}
+            <a className="" href={s.link} key={s.id} itemProp="url">
+              <div className="p-4 hover:bg-slate-300/75">
+                <img
+                  className="max-w-[48px] mx-auto  "
+                  src={s.src}
+                  alt={s.title}
+                  width={40}
+                  height={40}
+                />
+                <div className="text-[14px] max-w-[100px] text-center font-medium text-slate-800 ">
+                  {s.shortTitle}
+                </div>
               </div>
             </a>
           </motion.li>
