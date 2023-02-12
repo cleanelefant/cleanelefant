@@ -18,7 +18,7 @@ const deployhost = "https://cleanelefant.netlify.app";
     <div class='pt-10 xl:mx-16'>
       <!-- Discounts -->
       <div
-        class='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 justify-center pb-10 text-sm lg:text-lg font-bold'
+        class='grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-4 place-items-stretch pb-10 text-sm lg:text-lg font-bold'
       >
         {
           fetchedRates?.map((d) => (
@@ -28,7 +28,7 @@ const deployhost = "https://cleanelefant.netlify.app";
                   d.isCurent
                     ? "bg-blue-500"
                     : "bg-slate-200 lg:bg-slate-100 hover:bg-slate-200"
-                } py-2 lg:p-4 rounded-md basis-full transition ease-in-out `}
+                } py-2 lg:p-4 rounded-md basis-full transition ease-in-out  h-full flex items-center justify-center`}
               >
                 {d.discount !== 0 ? (
                   <div class='flex flex-col lg:flex-row items-center justify-center'>
@@ -39,7 +39,7 @@ const deployhost = "https://cleanelefant.netlify.app";
                   </div>
                 ) : (
                 
-                  <p>{d.title}</p>
+                  <div class="">{d.title}</div>
                 
                 )}
               </div>
@@ -230,7 +230,7 @@ const deployhost = "https://cleanelefant.netlify.app";
           const findActualRate = fetchedRates.find(
             (rate) => rate.id === Number(key)
           );
-          console.log(findActualRate);
+    
 
           const option_box = document.querySelector("#options_123");
           const links = option_box.children;

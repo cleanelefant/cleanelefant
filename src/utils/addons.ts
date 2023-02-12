@@ -109,7 +109,7 @@ export const addons = [
     id: 20,
     title: "Pranie narożnika (7+ os.)",
     price: 200,
-    src: window,
+    src: fivesofa,
     slug: "/test",
   },
   {
