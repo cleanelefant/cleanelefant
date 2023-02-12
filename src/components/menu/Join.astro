@@ -4,8 +4,9 @@ import present from "../../images/present.png";
 
 <div class="hidden lg:flex items-center justify-center gap-x-4 relative ">
  
-  <a href="/test" class="block">
-    <img src={present} alt="present" width={64} height={64} />
+  <a href="/test" >
+    <!-- <img src={present} alt="present" width={64} height={64} /> -->
+    <div class="tooltip tooltip--bottom text-sm" data-tooltip="Prezent - spszatanie"><img src={present} alt="present" width={64} height={64} /> </div>
   </a>
   <a
     href="/test"
@@ -19,32 +20,56 @@ import present from "../../images/present.png";
 </div>
 
 <style>
-  .tooltip {
-    position: relative;
-    display: inline-block;
-  }
-  .tooltip .tooltiptext {
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: 100px;
-    left: 10%;
-    margin-left: -60px;
-  }
+.tooltip {
+  position: relative; 
+}
 
-  .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
-  }
+.tooltip::before,
+.tooltip::after {
+  position: absolute;
+  text-align: center;
+}
+
+
+
+.tooltip::before {
+  content: attr(data-tooltip);
+  z-index: 2;
+  width: 160px;
+  color: #000;
+  background: rgba(233, 150, 27, 0.7);
+  border-radius: 5px; 
+  font-weight: 100;
+}
+
+.tooltip::after {
+  content: "";
+  width: 0;
+  height: 0;
+}
+
+.tooltip--bottom::before {
+  top: 100%;
+  transform: translate(-40%);
+  margin-top: 8px;
+  padding: 2px;
+}
+
+
+.tooltip--bottom::after {
+  top: 100%;
+  left: 40%; 
+  margin-top: 8px;
+}
+
+
+
+.tooltip--bottom::after {
+  margin-top: 1px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 7px solid rgba(233, 150, 27, 0.7);;  
+}
+
+
 </style>
