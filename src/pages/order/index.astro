@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import Order from "../../components/order_navigator/Order";
+import Container from "../../components/order/index";
 ---
 
 <Layout
@@ -8,8 +8,7 @@ import Order from "../../components/order_navigator/Order";
   description='Firma sprzątającą w Zielonej Górze! Sprzątanie mieszkańia Zielona Góra, sprzątanie po remoncie, mycie okien, pranie mebli i kanap, sprzątanie biur i locali'
   keywords='sprzątanie, sprzątanie mieszkań, sprzątanie mieszkań zielona góra, sprzątanie mieszkania zielona góra, sprzątanie domu, sprzątanie mieszkań cena za godzinę, sprzątanie mieszkań cennik, sprzątanie mieszkań, prywatnych warszawa, sprzątanie domu cena, ile za sprzątanie domu'
 >
-  <div class='mt-20 mx-20'>
-    <h1>Order</h1>
-    <Order client:load />
+  <div class='mt-28 mx-20'>
+    <Container client:load />
   </div>
 </Layout>
