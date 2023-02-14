@@ -9,7 +9,6 @@ export default class Store {
   basePrise: number;
   roomPrise: number;
   bedroomPrise: number;
-  isVAT: boolean;
   VATvalue:number;
   rate:number;
 
@@ -20,10 +19,11 @@ export default class Store {
     this.bedroomPrise=30;
     this.roomPrise=40;
     this.basePrise=80;
+    this.VATvalue=1
   }
 
   calculateTotalPrise(){
-    return  this.basePrise + (this.roomPrise*this.rooms) + (this.bedroomPrise*this.bedrooms)
+    return  (this.basePrise + (this.roomPrise*this.rooms) + (this.bedroomPrise*this.bedrooms))*this.VATvalue
   }
 
   setBasePrice(basePrise:number){
@@ -38,9 +38,6 @@ export default class Store {
     this.bedroomPrise = bedroomPrise;
   }
 
-  setIsVat(isVat:boolean){
-    this.isVAT = isVat
-  }
 
   setVATvalue(VATvalue:number){
     this.VATvalue = VATvalue

@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "./index";
 import RoomCounter from "./room_counter/RoomCounter";
 import BedroomCounter from "./room_counter/BedroomCounter";
+import Launcher from "./launcher/Launcher";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -29,9 +30,7 @@ function OrderComponent() {
   return (
     <div className="flex flex-col lg:flex-row gap-y-10 lg:gap-x-10">
       <div className="basis-3/4">
-        <div className="flex  my-2 lg:my-10">
-          <button>Osoba prywatna</button> <button>Firma</button>
-        </div>
+        <Launcher/>
         <div className="uppercase lg:text-3xl font-extrabold text-gray-700">
           TWOJE MIESZKANIE
         </div>
@@ -43,7 +42,7 @@ function OrderComponent() {
       </div>
       <div className="basis-1/4">      
         <div className="my-10 p-5 text-xl bg-slate-400/75">
-          <div>{store.calculateTotalPrise()}</div>          
+          <div className="text-center">{store.calculateTotalPrise()} zł.</div>          
         </div>
       </div>
     </div>
