@@ -15,14 +15,25 @@ function OrderComponent() {
     console.log("useEffect");
   }, []);
   return (
-    <div className='flex gap-x-5'>
-      <div className='basis-3/4 flex gap-x-10 my-10'>
-        <RoomCounter />
-        <BedroomCounter />
+    <div className="flex flex-col lg:flex-row gap-y-10 lg:gap-x-10">
+      <div className="basis-3/4">
+        <div className="flex  my-2 lg:my-10">
+          <button>Osoba prywatna</button> <button>Firma</button>
+        </div>
+        <div className="uppercase lg:text-3xl font-extrabold text-gray-700">
+          TWOJE MIESZKANIE
+        </div>
+
+        <div className=" flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10">
+          <RoomCounter />
+          <BedroomCounter />
+        </div>
       </div>
-      <div className='text-xl basis-1/4 my-10'>
-        <div>{store.rooms}</div>
-        <div>{store.bedrooms}</div>
+      <div className="basis-1/4">      
+        <div className="my-10 p-5 text-xl bg-slate-400/75">
+          <div>{store.rooms}</div>
+          <div>{store.bedrooms}</div>
+        </div>
       </div>
     </div>
   );

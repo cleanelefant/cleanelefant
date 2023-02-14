@@ -9,7 +9,7 @@ export default class Store {
   basePrise: number;
   roomPrise: number;
   bedroomPrise: number;
-  VAT: 1;
+  VAT: false;
   totalPrise: number;
 
   constructor() {

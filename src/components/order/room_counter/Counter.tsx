@@ -10,7 +10,7 @@ interface ICounter {
 export default function Counter({ title, rooms, inc, dec }: ICounter) {
   console.log("Counter", title);
   return (
-    <div className='flex gap-x-4 items-stretch justify-between text-lg lg:text-2xl font-bold bg-slate-50  '>
+    <div className='flex-1 flex gap-x-4 items-stretch justify-between text-lg lg:text-2xl font-bold bg-slate-50 drop-shadow-xl min-w-[350px] max-w-lg '>
       <button
         className='py-6 px-8 hover:bg-slate-100 transition-transform lg:text-4xl'
         onClick={() => {
@@ -19,7 +19,7 @@ export default function Counter({ title, rooms, inc, dec }: ICounter) {
       >
         -
       </button>
-      <div className='flex gap-x-4 justify-center items-center py-6 w-[300px] tracking-widest'>
+      <div className='flex gap-x-4 justify-center items-center py-6  tracking-widest'>
         <div>{rooms}</div>
         <div>{setWordInRightWay(title, rooms)}</div>
       </div>
