@@ -1,4 +1,4 @@
-import { observable, action } from "mobx";
+// import { observable, action } from "mobx";
 
 import { makeAutoObservable } from "mobx";
 
@@ -9,11 +9,41 @@ export default class Store {
   basePrise: number;
   roomPrise: number;
   bedroomPrise: number;
-  VAT: false;
-  totalPrise: number;
+  isVAT: boolean;
+  VATvalue:number;
+  rate:number;
 
   constructor() {
     makeAutoObservable(this);
+    this.rooms=1;
+    this.bedrooms=1;
+    this.bedroomPrise=30;
+    this.roomPrise=40;
+    this.basePrise=80;
+  }
+
+  calculateTotalPrise(){
+    return  this.basePrise + (this.roomPrise*this.rooms) + (this.bedroomPrise*this.bedrooms)
+  }
+
+  setBasePrice(basePrise:number){
+    this.basePrise = basePrise;
+  }
+
+  setRoomPrice(roomPrise:number){
+    this.roomPrise = roomPrise;
+  }
+
+  setBedPrice(bedroomPrise:number){
+    this.bedroomPrise = bedroomPrise;
+  }
+
+  setIsVat(isVat:boolean){
+    this.isVAT = isVat
+  }
+
+  setVATvalue(VATvalue:number){
+    this.VATvalue = VATvalue
   }
 
   setRooms(rooms: number) {
