@@ -1,3 +1,5 @@
+import { IAddons } from "../types";
+
 import window from "../images/services/windows.png";
 import area from "../images/addons/area.webp";
 import dish from "../images/addons/dish-washing.webp";
@@ -20,31 +22,34 @@ import kitchen from "../images/services/kitchen.png";
 import balcony from "../images/addons/balcony.png";
 import iron from "../images/addons/iron.png";
 
-export const addons = [
+export const addons:IAddons[] = [
   {
     id: 1,
     title: "Mycie okien po remoncie",
     price: 45,
     src: window,
     slug: "/test",
+    isOrderPage:false 
   },
-  { id: 2, title: "Powierzchnia", price: 6, src: area, slug: "/test" },
-  { id: 3, title: "Mycie piekarnika", price: 40, src: baking, slug: "/test" },
-  { id: 4, title: "Mycie okapu", price: 40, src: hood, slug: "/test" },
+  { id: 2, title: "Powierzchnia", price: 6, src: area, slug: "/test",isOrderPage:false },
+  { id: 3, title: "Mycie piekarnika", price: 40, src: baking, slug: "/test" ,isOrderPage:true},
+  { id: 4, title: "Mycie okapu", price: 40, src: hood, slug: "/test",isOrderPage:true },
   {
     id: 5,
     title: "Sprzątanie wnętrza szafek kuchennych",
     price: 55,
     src: kitchen,
     slug: "/test",
+    isOrderPage:true
   },
-  { id: 6, title: "Mycie naczyń", price: 25, src: dish, slug: "/test" },
+  { id: 6, title: "Mycie naczyń", price: 25, src: dish, slug: "/test", isOrderPage:true},
   {
     id: 8,
     title: "Czyszczenie lodówki",
     price: 30,
     src: refrigerator,
     slug: "/test",
+    isOrderPage:true
   },
   {
     id: 9,
@@ -52,6 +57,7 @@ export const addons = [
     price: 15,
     src: microwave,
     slug: "/test",
+    isOrderPage:true
   },
   {
     id: 10,
@@ -59,16 +65,18 @@ export const addons = [
     price: 25,
     src: balcony,
     slug: "/test",
+    isOrderPage:true
   },
-  { id: 11, title: "Prasowanie", price: 45, src: iron, slug: "/test" },
+  { id: 11, title: "Prasowanie", price: 45, src: iron, slug: "/test",isOrderPage:true },
   // { id: 12, title: "Sprzątanie kuwety", price: 10, src: window, slug: "/test" },
-  { id: 13, title: "Dodatkowe godziny", price: 45, src: window, slug: "/test" },
+  { id: 13, title: "Dodatkowe godziny", price: 45, src: window, slug: "/test" ,isOrderPage:true},
   {
     id: 14,
     title: "Sprzątanie garderoby",
     price: 20,
     src: window,
     slug: "/test",
+    isOrderPage:true
   },
   {
     id: 15,
@@ -76,6 +84,7 @@ export const addons = [
     price: 40,
     src: window,
     slug: "/test",
+    isOrderPage:true
   },
   {
     id: 16,
@@ -83,6 +92,7 @@ export const addons = [
     price: 120,
     src: window,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 17,
@@ -90,6 +100,7 @@ export const addons = [
     price: 140,
     src: sofa,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 18,
@@ -97,6 +108,7 @@ export const addons = [
     price: 160,
     src: foursofa,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 19,
@@ -104,6 +116,7 @@ export const addons = [
     price: 180,
     src: fivesofa,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 20,
@@ -111,6 +124,7 @@ export const addons = [
     price: 200,
     src: fivesofa,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 21,
@@ -118,6 +132,7 @@ export const addons = [
     price: 60,
     src: window,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 22,
@@ -125,6 +140,7 @@ export const addons = [
     price: 120,
     src: window,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 23,
@@ -132,6 +148,7 @@ export const addons = [
     price: 120,
     src: mattress,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 24,
@@ -139,16 +156,18 @@ export const addons = [
     price: 220,
     src: window,
     slug: "/test",
+    isOrderPage:false
   },
-  { id: 25, title: "Pranie dywanów", price: 7, src: carpet, slug: "/test" },
-  { id: 26, title: "Pranie wykładziny", price: 6, src: rug, slug: "/test" },
-  { id: 27, title: "Pranie fotela", price: 35, src: armchair, slug: "/test" },
+  { id: 25, title: "Pranie dywanów", price: 7, src: carpet, slug: "/test" ,isOrderPage:false},
+  { id: 26, title: "Pranie wykładziny", price: 6, src: rug, slug: "/test" ,isOrderPage:false},
+  { id: 27, title: "Pranie fotela", price: 35, src: armchair, slug: "/test",isOrderPage:false },
   {
     id: 28,
     title: "Pranie krzeseł, taboretów",
     price: 15,
     src: wooden_chair,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 29,
@@ -156,6 +175,7 @@ export const addons = [
     price: 15,
     src: chair,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 30,
@@ -163,6 +183,7 @@ export const addons = [
     price: 120,
     src: bed,
     slug: "/test",
+    isOrderPage:false
   },
   {
     id: 31,
@@ -170,5 +191,6 @@ export const addons = [
     price: 60,
     src: stroller,
     slug: "/test",
+    isOrderPage:false
   },
 ];

@@ -46,3 +46,19 @@ export interface IOurServices {
   target?: string;
   text: string;
 }
+
+
+export interface IAddons {
+  id:number
+  title: string;
+  price: number;
+  slug: string;
+  src:string;
+  isOrderPage:boolean 
+}
+
+export interface IAddonReciver{
+  hash:string,
+  title:string,
+  price:number, 
+}
