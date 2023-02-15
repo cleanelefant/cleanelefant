@@ -1,6 +1,6 @@
-// import { observable, action } from "mobx";
-
+import { rateType } from './../../../types';
 import { makeAutoObservable } from "mobx";
+
 
 export default class Store {
   naming = { pokoj: "pokój", lazienka: "łazienka" };
@@ -11,6 +11,9 @@ export default class Store {
   bedroomPrise: number;
   VATvalue:number;
   rate:number;
+  actualRate:number;
+  rates:rateType[];
+  homeRate:number;
 
   constructor() {
     makeAutoObservable(this);
@@ -20,10 +23,36 @@ export default class Store {
     this.roomPrise=40;
     this.basePrise=80;
     this.VATvalue=1
+    this.actualRate=1
+    this.homeRate=1
   }
 
   calculateTotalPrise(){
+    const  number = (this.basePrise + (this.roomPrise*this.rooms) + (this.bedroomPrise*this.bedrooms))*this.homeRate*this.VATvalue*this.actualRate
+    const roundedNumber = parseFloat(number.toFixed(2));
+    return roundedNumber
+  }
+
+  calculateTotalPriseWithoutRate(){
     return  (this.basePrise + (this.roomPrise*this.rooms) + (this.bedroomPrise*this.bedrooms))*this.VATvalue
+  }
+
+  setHomeRate(homeRate:number){
+    this.homeRate=homeRate
+  }
+
+  setActualRate(actualRate:number) {
+
+    this.actualRate = 1-(actualRate/100)
+  }
+
+  changeRatesIsCurentValue(id:number){
+    this.rates.forEach((rate)=>{rate.isCurent=false});
+    this.rates[id].isCurent = true;
+  }
+
+  setRates(rates:rateType[]){
+    this.rates= rates
   }
 
   setBasePrice(basePrise:number){

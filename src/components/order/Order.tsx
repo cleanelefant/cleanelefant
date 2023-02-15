@@ -4,6 +4,9 @@ import { Context } from "./index";
 import RoomCounter from "./room_counter/RoomCounter";
 import BedroomCounter from "./room_counter/BedroomCounter";
 import Launcher from "./launcher/Launcher";
+import { fetchedRates } from "../../utils/rates";
+import Rates from "./rates/Rates";
+import HomeOption from "./home_option/HomeOption";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -21,9 +24,8 @@ function OrderComponent() {
     store.setBasePrice(data.basePrice);
     store.setRoomPrice(data.roomPrice);
     store.setBedPrice(data.bedroomPrice);
-    store.calculateTotalPrise()
-    
-    console.log("useEffect");
+    const mapedFetchedRates=fetchedRates.map((r,i)=>{if(i===fetchedRates.length-1){return {...r,isCurent:true}} else {return {...r,isCurent:false}}})   
+    store.setRates(mapedFetchedRates)
   }, []);
 
   
@@ -31,7 +33,7 @@ function OrderComponent() {
     <div className="flex flex-col lg:flex-row gap-y-10 lg:gap-x-10">
       <div className="basis-3/4">
         <Launcher/>
-        <div className="uppercase lg:text-3xl font-extrabold text-gray-700">
+        <div className="uppercase lg:text-3xl font-extrabold text-gray-700 text-center">
           TWOJE MIESZKANIE
         </div>
 
@@ -39,10 +41,13 @@ function OrderComponent() {
           <RoomCounter />
           <BedroomCounter />
         </div>
+        <HomeOption/>
+        <Rates/>
       </div>
       <div className="basis-1/4">      
         <div className="my-10 p-5 text-xl bg-slate-400/75">
-          <div className="text-center">{store.calculateTotalPrise()} zł.</div>          
+          <div className="text-center">{store.calculateTotalPrise()} zł.</div> 
+          <div className="text-center line-through text-lg">{store.actualRate !== 1 && store.calculateTotalPriseWithoutRate()+" "+ "zł."} </div>          
         </div>
       </div>
     </div>

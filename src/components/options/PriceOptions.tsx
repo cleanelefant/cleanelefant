@@ -1,5 +1,6 @@
 import React from "react";
 import { rateType, priceType } from "../../types";
+import { fetchedRates } from "../../utils/rates";
 
 function setActualPrice(basePrice: number, actualDiscount: number) {
   const multiplicator = (100 - actualDiscount) / 100;
@@ -25,36 +26,7 @@ export default function PriceOptions() {
   }
 
   React.useEffect(() => {
-    const fetchedRates: rateType[] = [
-      {
-        id: 1,
-        title: "Raz w tygodniu",
-        discount: 20,
-        link: "week",
-        isCurent: true,
-      },
-      {
-        id: 2,
-        title: "Raz na dwa tygodnie",
-        discount: 15,
-        link: "twiceperweek",
-        isCurent: false,
-      },
-      {
-        id: 3,
-        title: "Raz w miesiącu",
-        discount: 10,
-        link: "month",
-        isCurent: false,
-      },
-      {
-        id: 4,
-        title: "Jednorazowe sprzątanie",
-        discount: 0,
-        link: "once",
-        isCurent: false,
-      },
-    ];
+   
     const fetchedPrices = [
       {
         id: 1,
