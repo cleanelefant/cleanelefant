@@ -39,14 +39,44 @@ function AddServices() {
     });
   };
 
-  console.log("AddServices", toJS(store.addonReciver));
+  const cardMultiplyClickHandler =(obj:ExtendedIAddons)=>{
+  
+    setState((s) => {
+      return [...s].map(item=>{
+        if(obj.id===item.id){return {...item,isActive:!item.isActive}}
+        return item});
+    });
+    
+  }
+
+  console.log("AddServices");
   return (
     <div>
       <div className="uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer">
         Dodaj usługi
       </div>
       <div className="flex flex-wrap gap-4 my-10">
-        {state?.map((item) => (
+        {state?.map((item) =>{
+          if (item.isMultiply) {
+            return  (
+              <div                     
+                className={`${
+                  item.isActive ? "bg-blue-500 text-white" : "bg-white"
+                } p-5  drop-shadow-xl sm:w-1/2 md:w-1/4 lg:w-1/5 font-bold flex flex-col gap-y-2 justify-center items-center`}
+                key={item.id}
+                onClick={()=>{cardMultiplyClickHandler(item)}}
+              >
+                <img src={item.src} alt={item.title} width={64} height={64} />
+                <p className="text-center">{item.title}</p>
+                <p className="lg:text-xl">{item.price} zł.</p> 
+                {item.isActive&&<div className="flex gap-x-4"><button>-</button><div>1</div><button>+</button></div>}       
+              </div>
+            )
+          }
+          
+          
+          
+          return  (
           <div 
                 
             className={`${
@@ -59,7 +89,7 @@ function AddServices() {
             <p className="text-center">{item.title}</p>
             <p className="lg:text-xl">{item.price} zł.</p>        
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );

@@ -54,7 +54,9 @@ export interface IAddons {
   price: number;
   slug: string;
   src:string;
-  isOrderPage:boolean 
+  isOrderPage:boolean;
+  isPreHours:boolean;
+  isMultiply:boolean; 
 }
 
 export interface IAddonReciver{

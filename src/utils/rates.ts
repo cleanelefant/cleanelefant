@@ -12,7 +12,7 @@ export const fetchedRates: rateType[] = [
       id: 2,
       title: "Raz na dwa tygodnie",
       discount: 15,
-      link: "twiceperweek",
+      link: "twicepermonth",
       isCurent: false,
     },
     {

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "./index";
 import RoomCounter from "./room_counter/RoomCounter";
@@ -6,10 +6,10 @@ import BedroomCounter from "./room_counter/BedroomCounter";
 import Launcher from "./launcher/Launcher";
 import Rates from "./rates/Rates";
 import HomeOption from "./home_option/HomeOption";
-
 import { fetchedRates } from "../../utils/rates";
 import { addons } from "../../utils/addons";
 import AddService from "./additional_services/AddService";
+import { rateType } from "../../types";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -22,18 +22,46 @@ function OrderComponent() {
     const queryParams = new URLSearchParams(window.location.search);
     const rooms = queryParams.get("rooms");
     const bedrooms = queryParams.get("bedrooms");
+    const discount = queryParams.get("discount");
+    console.log("DISCOUNT=",discount)
     store.setRooms(Number(rooms));
     store.setBedrooms(Number(bedrooms));
     store.setBasePrice(data.basePrice);
     store.setRoomPrice(data.roomPrice);
     store.setBedPrice(data.bedroomPrice);
-    const mapedFetchedRates = fetchedRates.map((r, i) => {
-      if (i === fetchedRates.length - 1) {
-        return { ...r, isCurent: true };
+    let mapedFetchedRates:rateType[] = []
+    if(!discount){
+      mapedFetchedRates = fetchedRates.map((r, i) => {
+        if (i === fetchedRates.length - 1) {
+          return { ...r, isCurent: true };
+        } else {
+          return { ...r, isCurent: false };
+        }
+      });
+    } else {
+      const findDiscount = fetchedRates.find(d=>d.link===discount);
+      if(findDiscount) {
+        mapedFetchedRates = fetchedRates.map((r, i) => {
+          if (r.link === findDiscount.link) {
+            store.setActualRate(r.discount)
+            return { ...r, isCurent: true };
+          } else {
+            return { ...r, isCurent: false };
+          }
+        });
       } else {
-        return { ...r, isCurent: false };
+        mapedFetchedRates = fetchedRates.map((r, i) => {
+          if (i === fetchedRates.length - 1) {
+            return { ...r, isCurent: true };
+          } else {
+            return { ...r, isCurent: false };
+          }
+        });
       }
-    });
+     
+
+    }
+  
     store.setRates(mapedFetchedRates);
     store.setAddons(addons);
   }, []);
