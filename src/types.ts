@@ -72,4 +72,15 @@ export interface IAddonReciver{
   multyId?:number 
 }
 
+export interface ITime {
+  id:number,
+  hours:string,
+  minutes:string
+}
+
+export interface ExtendedITime extends ITime {
+  isActive: boolean; 
+  isModal: boolean;
+}
+
 

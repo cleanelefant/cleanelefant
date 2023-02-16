@@ -1,15 +1,21 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
+// Context
 import { Context } from "./index";
+// Components
 import RoomCounter from "./room_counter/RoomCounter";
 import BedroomCounter from "./room_counter/BedroomCounter";
 import Launcher from "./launcher/Launcher";
 import Rates from "./rates/Rates";
 import HomeOption from "./home_option/HomeOption";
+import AddService from "./additional_services/AddService";
+import TimePicker from "./time_picker/TimePicker";
+// Data
 import { fetchedRates } from "../../utils/rates";
 import { addons } from "../../utils/addons";
-import AddService from "./additional_services/AddService";
-import { rateType } from "../../types";
+import { ExtendedITime, rateType } from "../../types";
+import { times } from "../../utils/times";
+
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -23,12 +29,18 @@ function OrderComponent() {
     const rooms = queryParams.get("rooms");
     const bedrooms = queryParams.get("bedrooms");
     const discount = queryParams.get("discount");
-    console.log("DISCOUNT=",discount)
     store.setRooms(Number(rooms));
     store.setBedrooms(Number(bedrooms));
     store.setBasePrice(data.basePrice);
     store.setRoomPrice(data.roomPrice);
     store.setBedPrice(data.bedroomPrice);
+    store.setAddons(addons);
+
+    // prepare data for TimePicker
+    const mapedTimes:ExtendedITime[] = times.map(t=>{return {...t,isActive:false,isModal:false}})
+    store.setTimes(mapedTimes);
+    
+    
     let mapedFetchedRates:rateType[] = []
     if(!discount){
       mapedFetchedRates = fetchedRates.map((r, i) => {
@@ -58,12 +70,9 @@ function OrderComponent() {
           }
         });
       }
-     
-
-    }
-  
+    }  
     store.setRates(mapedFetchedRates);
-    store.setAddons(addons);
+   
   }, []);
 
   return (
@@ -81,6 +90,7 @@ function OrderComponent() {
         <HomeOption />
         <Rates />
         <AddService />
+        <TimePicker/>
       </div>
       <div className="basis-1/4">
         <div className="lg:relative">
@@ -90,6 +100,7 @@ function OrderComponent() {
               {store.actualRate !== 1 &&
                 store.calculateTotalPriseWithoutRate() + " " + "zł."}{" "}
             </div>
+            <div>{store.time&&store.time}</div>
           </div>
         </div>
       </div>

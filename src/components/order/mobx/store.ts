@@ -1,4 +1,4 @@
-import { rateType, IAddons, IAddonReciver } from "./../../../types";
+import { rateType, IAddons, IAddonReciver, ITime,ExtendedITime } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
 export default class Store {
@@ -15,6 +15,8 @@ export default class Store {
   homeRate: number;
   addons: IAddons[];
   addonReciver: IAddonReciver[];
+  time:string;
+  times:ExtendedITime[]
 
 
   constructor() {
@@ -28,6 +30,7 @@ export default class Store {
     this.actualRate = 1;
     this.homeRate = 1;
     this.addonReciver = [];
+    this.time="";
   
   }
 
@@ -52,6 +55,14 @@ export default class Store {
       this.VATvalue ; 
     const roundedNumber = parseFloat(number.toFixed(2));
     return roundedNumber;
+  }
+
+  setTime(time:string){
+    this.time = time
+  }
+
+  setTimes(times:ExtendedITime[]){
+    this.times = times
   }
 
   addItemToAddonReciver(item: IAddonReciver) {
