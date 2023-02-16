@@ -86,7 +86,7 @@ export const addons:IAddons[] = [
   { id: 12, title: "Sprzątanie kuwety", price: 10, src: window, slug: "/test",isOrderPage:true, isPreHours:false,
   isMultiply:true },
   { id: 13, title: "Dodatkowe godziny", price: 45, src: window, slug: "/test" ,isOrderPage:true,  isPreHours:false,
-  isMultiply:false},
+  isMultiply:true},
   {
     id: 14,
     title: "Sprzątanie garderoby",

@@ -1,16 +1,11 @@
 import React, { useContext } from "react";
-import uuid from 'react-uuid';
+import uuid from "react-uuid";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { toJS } from "mobx";
-import { IAddons } from "../../../types";
-import { IAddonReciver } from "../../../types";
-
-
-interface ExtendedIAddons extends IAddons {
-  isActive: boolean;
-  hash: string;
-}
+import { ExtendedIAddons, IAddons } from "../../../types";
+import MultyCard from "./MultyCard";
+import SingleCard from "./SingleCard";
 
 function AddServices() {
   const { store } = useContext(Context);
@@ -20,7 +15,7 @@ function AddServices() {
       let addons = toJS(store.addons);
       const mapedAddons: ExtendedIAddons[] = addons
         .map((a) => {
-          return { ...a, isActive: false, hash:uuid() };
+          return { ...a, isActive: false, hash: uuid() };
         })
         .filter((a) => a.isOrderPage === true);
 
@@ -28,26 +23,25 @@ function AddServices() {
     }
   }, [store.addons]);
 
-  const cardClickHandler = (obj:ExtendedIAddons) => {
-    if (obj.isActive){
-        store.deleteItemFromAddonReciver(obj.hash)
-    } else{ store.addItemToAddonReciver({hash:obj.hash, title: obj.title,price:obj.price}) }
+  const cardClickHandler = (obj: ExtendedIAddons) => {
+    if (obj.isActive) {
+      store.deleteItemFromAddonReciver(obj.hash);
+    } else {
+      store.addItemToAddonReciver({
+        hash: obj.hash,
+        title: obj.title,
+        price: obj.price,
+      });
+    }
     setState((s) => {
-      return [...s].map(item=>{
-        if(obj.id===item.id){return {...item,isActive:!item.isActive}}
-        return item});
+      return [...s].map((item) => {
+        if (obj.id === item.id) {
+          return { ...item, isActive: !item.isActive };
+        }
+        return item;
+      });
     });
   };
-
-  const cardMultiplyClickHandler =(obj:ExtendedIAddons)=>{
-  
-    setState((s) => {
-      return [...s].map(item=>{
-        if(obj.id===item.id){return {...item,isActive:!item.isActive}}
-        return item});
-    });
-    
-  }
 
   console.log("AddServices");
   return (
@@ -56,40 +50,13 @@ function AddServices() {
         Dodaj usługi
       </div>
       <div className="flex flex-wrap gap-4 my-10">
-        {state?.map((item) =>{
+        {state?.map((item) => {
           if (item.isMultiply) {
-            return  (
-              <div                     
-                className={`${
-                  item.isActive ? "bg-blue-500 text-white" : "bg-white"
-                } p-5  drop-shadow-xl sm:w-1/2 md:w-1/4 lg:w-1/5 font-bold flex flex-col gap-y-2 justify-center items-center`}
-                key={item.id}
-                onClick={()=>{cardMultiplyClickHandler(item)}}
-              >
-                <img src={item.src} alt={item.title} width={64} height={64} />
-                <p className="text-center">{item.title}</p>
-                <p className="lg:text-xl">{item.price} zł.</p> 
-                {item.isActive&&<div className="flex gap-x-4"><button>-</button><div>1</div><button>+</button></div>}       
-              </div>
-            )
+            return <MultyCard key={item.id} setState={setState} item={item} />;
           }
-          
-          
-          
-          return  (
-          <div 
-                
-            className={`${
-              item.isActive ? "bg-blue-500 text-white" : "bg-white"
-            } p-5  drop-shadow-xl sm:w-1/2 md:w-1/4 lg:w-1/5 font-bold flex flex-col gap-y-2 justify-center items-center`}
-            key={item.id}
-            onClick={()=>{cardClickHandler(item)}}
-          >
-            <img src={item.src} alt={item.title} width={64} height={64} />
-            <p className="text-center">{item.title}</p>
-            <p className="lg:text-xl">{item.price} zł.</p>        
-          </div>
-        )})}
+
+          return <SingleCard key={item.id} item={item} cardClickHandler={cardClickHandler} />;
+        })}
       </div>
     </div>
   );

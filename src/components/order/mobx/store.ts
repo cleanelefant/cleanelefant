@@ -1,4 +1,3 @@
-import { addons } from "./../../../utils/addons";
 import { rateType, IAddons, IAddonReciver } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
@@ -61,6 +60,13 @@ export default class Store {
 
   deleteItemFromAddonReciver(hash: string) {
     const index = this.addonReciver.findIndex((addon) => addon.hash === hash);
+    if (index !== -1) {
+      this.addonReciver.splice(index, 1);
+    }
+  }
+
+  deleteMultyItemFromAddonReciver(hash: string, multyId:number) {
+    const index = this.addonReciver.findIndex((addon) => addon.hash === hash && addon.multyId === multyId);
     if (index !== -1) {
       this.addonReciver.splice(index, 1);
     }

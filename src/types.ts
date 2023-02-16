@@ -59,8 +59,17 @@ export interface IAddons {
   isMultiply:boolean; 
 }
 
+export interface ExtendedIAddons extends IAddons {
+  isActive: boolean;
+  hash: string;
+}
+
+
 export interface IAddonReciver{
   hash:string,
   title:string,
-  price:number, 
+  price:number,
+  multyId?:number 
 }
+
+
