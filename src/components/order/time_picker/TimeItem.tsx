@@ -2,44 +2,44 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { ExtendedITime } from "../../../types";
+import MinutesPicker from "./MinutesPicker";
 
 interface ITimeItem {
     item: ExtendedITime;
     isActive: boolean;
     setTimes: React.Dispatch<React.SetStateAction<ExtendedITime[]>>;
-   
 }
 
 function TimeItem({ item, isActive, setTimes}: ITimeItem) {
     const { store } = useContext(Context);
    
     const timeClickHandler = (item: ExtendedITime) => {
-        if (item.isActive) {
-            store.setTime('')
-            setTimes((t) => {
-                return [...t].map((time) => {
+        // if (item.isActive) {
+        //     store.setTime('')
+        //     setTimes((t) => {
+        //         return [...t].map((time) => {
 
-                    return { ...time, isActive: false };
+        //             return { ...time, isActive: false };
 
-                });
-            });
-        } else {
-            store.setTime(`${item.hours}:${item.minutes}`)
-            setTimes((t) => {
-                return [...t].map((time) => {
-                    if (time.id === item.id) {
-                        return { ...time, isActive: true };
-                    } else {
-                        return { ...time, isActive: false };
-                    }
-                });
-            });
+        //         });
+        //     });
+        // } else {
+        //     store.setTime(`${item.hours}:${item.minutes}`)
+        //     setTimes((t) => {
+        //         return [...t].map((time) => {
+        //             if (time.id === item.id) {
+        //                 return { ...time, isActive: true };
+        //             } else {
+        //                 return { ...time, isActive: false };
+        //             }
+        //         });
+        //     });
 
-        }
+        // }
        
     };
     const timeMouseOnHandler = (item: ExtendedITime) => {
-        console.log("timeMouseOnHandler")
+      
         setTimes((t) => {
             return [...t].map((time) => {
                 if (time.id === item.id) {
@@ -61,7 +61,7 @@ function TimeItem({ item, isActive, setTimes}: ITimeItem) {
                 }`}
         >
             {item.hours}:{item.minutes}
-            {item.isModal&&<div className="bg-red-500 p-1 absolute z-40">Modal</div>}
+            {item.isModal&&<div className=" p-1 absolute top-6 z-40"><MinutesPicker hour={item}/></div>}
         </div>
     );
 }

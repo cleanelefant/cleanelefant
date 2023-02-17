@@ -83,4 +83,13 @@ export interface ExtendedITime extends ITime {
   isModal: boolean;
 }
 
+export interface IMinutes {
+  id:number;
+  value:string;
+}
+
+export interface ExtendedIMinutes extends IMinutes {
+  isActive: boolean;   
+}
+
 

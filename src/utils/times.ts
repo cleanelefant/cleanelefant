@@ -1,4 +1,4 @@
-import { ITime } from "../types"
+import { IMinutes, ITime } from "../types"
 
 
 export const times:ITime[] =[
@@ -16,4 +16,11 @@ export const times:ITime[] =[
     {id:12, hours:"18", minutes:"00"},
     {id:13, hours:"19", minutes:"00"},
     {id:14, hours:"20", minutes:"00"}, 
+]
+
+export const minutes:IMinutes[] = [
+    {id:1,value:"00"},
+    {id:2,value:"15"},
+    {id:3,value:"30"},
+    {id:4,value:"45"},
 ]

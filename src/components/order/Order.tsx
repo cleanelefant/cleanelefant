@@ -13,8 +13,9 @@ import TimePicker from "./time_picker/TimePicker";
 // Data
 import { fetchedRates } from "../../utils/rates";
 import { addons } from "../../utils/addons";
-import { ExtendedITime, rateType } from "../../types";
-import { times } from "../../utils/times";
+import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
+import { times,minutes } from "../../utils/times";
+import DatePickear from "./datepicker/Datepicker";
 
 
 function OrderComponent() {
@@ -39,7 +40,8 @@ function OrderComponent() {
     // prepare data for TimePicker
     const mapedTimes:ExtendedITime[] = times.map(t=>{return {...t,isActive:false,isModal:false}})
     store.setTimes(mapedTimes);
-    
+    const mapedMinutes:ExtendedIMinutes[]=minutes.map(m=>{return {...m,isActive:false}});
+    store.setMinutes(mapedMinutes);
     
     let mapedFetchedRates:rateType[] = []
     if(!discount){
@@ -90,7 +92,11 @@ function OrderComponent() {
         <HomeOption />
         <Rates />
         <AddService />
+        <div className="flex">
+         <DatePickear/>
         <TimePicker/>
+        </div>
+       
       </div>
       <div className="basis-1/4">
         <div className="lg:relative">
