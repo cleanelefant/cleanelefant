@@ -18,6 +18,7 @@ export default class Store {
   time:string;
   times:ExtendedITime[];
   minutes:ExtendedIMinutes[];
+  serviceDay:string;
 
 
   constructor() {
@@ -32,7 +33,9 @@ export default class Store {
     this.homeRate = 1;
     this.addonReciver = [];
     this.time="";
-    this.minutes=[]
+    this.minutes=[];
+    this.serviceDay='';
+
   
   }
 
@@ -57,6 +60,10 @@ export default class Store {
       this.VATvalue ; 
     const roundedNumber = parseFloat(number.toFixed(2));
     return roundedNumber;
+  }
+
+  setServiceDay(day:string){
+ this.serviceDay=day
   }
 
   setMinutes(minutes:ExtendedIMinutes[]){

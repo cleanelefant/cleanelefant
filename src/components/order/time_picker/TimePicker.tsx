@@ -14,8 +14,7 @@ function TimePicker() {
 
 
   return (
-    <div className="w-1/2 my-10">
-      <div className="mb-5">Time Picker</div>
+    <div className="w-1/2 my-10">    
       <div className="flex flex-wrap gap-x-3 gap-y-4 cursor-pointer">
         {times?.map(item=><TimeItem key={item.id} item={item} isActive={item.isActive} setTimes={setTimes} />)}        
       </div>

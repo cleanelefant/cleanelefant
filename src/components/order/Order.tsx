@@ -14,9 +14,8 @@ import TimePicker from "./time_picker/TimePicker";
 import { fetchedRates } from "../../utils/rates";
 import { addons } from "../../utils/addons";
 import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
-import { times,minutes } from "../../utils/times";
+import { times, minutes } from "../../utils/times";
 import DatePickear from "./datepicker/Datepicker";
-
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -38,13 +37,17 @@ function OrderComponent() {
     store.setAddons(addons);
 
     // prepare data for TimePicker
-    const mapedTimes:ExtendedITime[] = times.map(t=>{return {...t,isActive:false,isModal:false}})
+    const mapedTimes: ExtendedITime[] = times.map((t) => {
+      return { ...t, isActive: false, isModal: false };
+    });
     store.setTimes(mapedTimes);
-    const mapedMinutes:ExtendedIMinutes[]=minutes.map(m=>{return {...m,isActive:false}});
+    const mapedMinutes: ExtendedIMinutes[] = minutes.map((m) => {
+      return { ...m, isActive: false };
+    });
     store.setMinutes(mapedMinutes);
-    
-    let mapedFetchedRates:rateType[] = []
-    if(!discount){
+
+    let mapedFetchedRates: rateType[] = [];
+    if (!discount) {
       mapedFetchedRates = fetchedRates.map((r, i) => {
         if (i === fetchedRates.length - 1) {
           return { ...r, isCurent: true };
@@ -53,11 +56,11 @@ function OrderComponent() {
         }
       });
     } else {
-      const findDiscount = fetchedRates.find(d=>d.link===discount);
-      if(findDiscount) {
+      const findDiscount = fetchedRates.find((d) => d.link === discount);
+      if (findDiscount) {
         mapedFetchedRates = fetchedRates.map((r, i) => {
           if (r.link === findDiscount.link) {
-            store.setActualRate(r.discount)
+            store.setActualRate(r.discount);
             return { ...r, isCurent: true };
           } else {
             return { ...r, isCurent: false };
@@ -72,9 +75,8 @@ function OrderComponent() {
           }
         });
       }
-    }  
+    }
     store.setRates(mapedFetchedRates);
-   
   }, []);
 
   return (
@@ -92,11 +94,10 @@ function OrderComponent() {
         <HomeOption />
         <Rates />
         <AddService />
-        <div className="flex">
-         <DatePickear/>
-        <TimePicker/>
+        <div className="flex flex-col 2xl:flex-row gap-x-5">
+          <DatePickear />
+          <TimePicker />
         </div>
-       
       </div>
       <div className="basis-1/4">
         <div className="lg:relative">
@@ -106,7 +107,8 @@ function OrderComponent() {
               {store.actualRate !== 1 &&
                 store.calculateTotalPriseWithoutRate() + " " + "zł."}{" "}
             </div>
-            <div>{store.time&&store.time}</div>
+            <div>{store.time && store.time}</div>
+            <div>{store.serviceDay && store.serviceDay}</div>
           </div>
         </div>
       </div>
