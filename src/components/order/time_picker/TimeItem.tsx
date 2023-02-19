@@ -12,8 +12,7 @@ interface ITimeItem {
 function TimeItem({ item, isActive, setTimes}: ITimeItem) {
   
 
-    const timeMouseOnHandler = (item: ExtendedITime) => {
-      
+    const timeMouseOnMouseEnter = (item: ExtendedITime) => {      
         setTimes((t) => {
             return [...t].map((time) => {
                 if (time.id === item.id) {
@@ -23,11 +22,22 @@ function TimeItem({ item, isActive, setTimes}: ITimeItem) {
                 }
             });
         });
-
     }
+
+    const timeMouseOnMouseLeave = () => {      
+        setTimes((t) => {
+            return [...t].map((time) => {               
+                    return { ...time, isModal: false };                
+            });
+        });
+    }
+
+  
+
     return (
         <div          
-            onMouseEnter={()=>{timeMouseOnHandler(item)}}
+            onMouseEnter={()=>{timeMouseOnMouseEnter(item)}}
+            onMouseLeave={()=>{timeMouseOnMouseLeave()}}
             className={`relative px-4 py-2 font-medium rounded ${isActive ? "bg-blue-500 text-white" : "bg-slate-500"
                 }`}
         >
