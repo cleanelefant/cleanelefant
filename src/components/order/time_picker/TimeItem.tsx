@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "../index";
 import { ExtendedITime } from "../../../types";
 import MinutesPicker from "./MinutesPicker";
 
@@ -11,33 +10,8 @@ interface ITimeItem {
 }
 
 function TimeItem({ item, isActive, setTimes}: ITimeItem) {
-    const { store } = useContext(Context);
-   
-    const timeClickHandler = (item: ExtendedITime) => {
-        // if (item.isActive) {
-        //     store.setTime('')
-        //     setTimes((t) => {
-        //         return [...t].map((time) => {
+  
 
-        //             return { ...time, isActive: false };
-
-        //         });
-        //     });
-        // } else {
-        //     store.setTime(`${item.hours}:${item.minutes}`)
-        //     setTimes((t) => {
-        //         return [...t].map((time) => {
-        //             if (time.id === item.id) {
-        //                 return { ...time, isActive: true };
-        //             } else {
-        //                 return { ...time, isActive: false };
-        //             }
-        //         });
-        //     });
-
-        // }
-       
-    };
     const timeMouseOnHandler = (item: ExtendedITime) => {
       
         setTimes((t) => {
@@ -52,10 +26,7 @@ function TimeItem({ item, isActive, setTimes}: ITimeItem) {
 
     }
     return (
-        <div
-            onClick={() => {
-                timeClickHandler(item);
-            }}
+        <div          
             onMouseEnter={()=>{timeMouseOnHandler(item)}}
             className={`relative px-4 py-2 font-medium rounded ${isActive ? "bg-blue-500 text-white" : "bg-slate-500"
                 }`}

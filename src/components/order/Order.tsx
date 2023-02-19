@@ -107,8 +107,10 @@ function OrderComponent() {
               {store.actualRate !== 1 &&
                 store.calculateTotalPriseWithoutRate() + " " + "zł."}{" "}
             </div>
-            <div>{store.time && store.time}</div>
-            <div>{store.serviceDay && store.serviceDay}</div>
+            <div className="flex gap-x-2">             
+              <div>{store.serviceDay && store.serviceDay}</div>
+              <div>{store.time && store.time}</div>
+            </div>
           </div>
         </div>
       </div>
