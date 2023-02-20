@@ -67,7 +67,8 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 interface IFormInput {
-  name: string;
+  street: string;
+  zip:string;
   email: string;
   phone: string;
   status: string;
@@ -94,22 +95,40 @@ const AdressForm = () => {
   return (
     <div className='bg-white my-5'>
       <div className='text-3xl text-center font-bold pb-5'>
-        Formularz kontaktowy
+      WPROWADŹ SWÓJ ADRES
       </div>
       <form id='myform' onSubmit={handleSubmit(onSubmit)}>
         <div className='lg:flex'>
           <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>
-              Imię i Nazwisko
+            Ulica
             </label>
             <Input
-              placeholder='Imię i Nazwisko'
+              placeholder='Ulica'
               className={inputGroupStyles.input}
-              id='name'
+              id='street'
               type='text'
-              {...register("name", { required: true })}
+              {...register("street", { required: true })}
             />
-            {errors?.name?.type === "required" && (
+            {errors?.street?.type === "required" && (
+              <p className={inputGroupStyles.errorParagraf}>
+                Please fill out this field.
+              </p>
+            )}
+          </div>
+
+          <div className={inputGroupStyles.div}>
+            <label className={inputGroupStyles.label} htmlFor='name'>
+            Kod pocztowy
+            </label>
+            <Input
+              placeholder='Zip'
+              className={inputGroupStyles.input}
+              id='zip'
+              type='text'
+              {...register("zip", { required: true })}
+            />
+            {errors?.zip?.type === "required" && (
               <p className={inputGroupStyles.errorParagraf}>
                 Please fill out this field.
               </p>
