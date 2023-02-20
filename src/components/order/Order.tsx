@@ -16,6 +16,7 @@ import { addons } from "../../utils/addons";
 import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
 import { times, minutes } from "../../utils/times";
 import DatePickear from "./datepicker/Datepicker";
+import Form from "./adress_form/AdressForm";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -98,6 +99,7 @@ function OrderComponent() {
           <DatePickear />
           <TimePicker />
         </div>
+        <Form/>
       </div>
       <div className="basis-1/4">
         <div className="lg:relative">
