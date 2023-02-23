@@ -2,9 +2,9 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-
+import { useForm, Controller } from "react-hook-form";
+import InputMask from "react-input-mask";
+// import axios from "axios";
 
 const inputGroupStyles = {
   div: "w-full  px-3 mb-4 ",
@@ -20,11 +20,24 @@ type InputProps = React.DetailedHTMLProps<
 >;
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => (
-  <input ref={ref} {...props} onChange= {(e) => {
-    if(e.target.id === "phone"){
-      e.target.value=e.target.value.replace(/\s/g, "").match(/.{1,3}/g)?.join(" ").substr(0, 11) || ""
-      console.log(e.target.value)}
-    }}/>
+  <input
+    ref={ref}
+    {...props}
+    onFocus={(e) => {
+      console.log(e.target.id);
+      if (e.target.id === "zip") {
+        console.log(e.target.selectionStart, e.target.selectionEnd);
+        e.target.setSelectionRange(0, 0);
+        e.target.value = "__ : ___";
+      }
+    }}
+    onChange={(e) => {
+      if (e.target.id === "zip") {
+      }
+      // if(e.target.id === "phone"){
+      //   e.target.value=e.target.value.replace(/\s/g, "").match(/.{1,3}/g)?.join(" ").substr(0, 11) || ""
+    }}
+  />
 ));
 
 type Option = {
@@ -68,7 +81,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 
 interface IFormInput {
   street: string;
-  zip:string;
+  zip: string;
   email: string;
   phone: string;
   status: string;
@@ -76,32 +89,31 @@ interface IFormInput {
 }
 
 const AdressForm = () => {
-    const { store } = useContext(Context);
+  const { store } = useContext(Context);
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-    control
+    control,
   } = useForm<IFormInput>();
 
   const onSubmit = (data: IFormInput) => {
-    
-   console.log(data)
-    
+    console.log(data);
+
     reset();
-  }
+  };
 
   return (
     <div className='bg-white my-5'>
       <div className='text-3xl text-center font-bold pb-5'>
-      WPROWADŹ SWÓJ ADRES
+        WPROWADŹ SWÓJ ADRES
       </div>
       <form id='myform' onSubmit={handleSubmit(onSubmit)}>
         <div className='lg:flex'>
           <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>
-            Ulica
+              Ulica
             </label>
             <Input
               placeholder='Ulica'
@@ -117,9 +129,9 @@ const AdressForm = () => {
             )}
           </div>
 
-          <div className={inputGroupStyles.div}>
+          {/* <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>
-            Kod pocztowy
+              Kod pocztowy
             </label>
             <Input
               placeholder='Zip'
@@ -133,6 +145,26 @@ const AdressForm = () => {
                 Please fill out this field.
               </p>
             )}
+          </div> */}
+
+          <div className={inputGroupStyles.div}>
+            <label className={inputGroupStyles.label} htmlFor='name'>
+              Kod pocztowy
+            </label>
+            <Controller
+              name={"zip"}
+              control={control}
+              defaultValue=''
+              render={({ field }) => (
+                <InputMask
+                  class={
+                    " block w-full p-4 text-white text-3xl border-2 border-rose-500 focus:border-blue-500 hover:border-slate-400 rounded-lg bg-gray-700 outline-none"
+                  }
+                  mask='99-999'
+                  {...field}
+                />
+              )}
+            />
           </div>
 
           <div className={inputGroupStyles.div}>
@@ -162,18 +194,23 @@ const AdressForm = () => {
             )}
           </div>
         </div>
+
         <div className={inputGroupStyles.div}>
-          <label className={inputGroupStyles.label} htmlFor='phone'>
+          <label className={inputGroupStyles.label} htmlFor='name'>
             Telefon kontaktowy
           </label>
-          <Input
-            placeholder='Telefon'
-            className={inputGroupStyles.input}
-            id='phone'
-            type='tel'       
-            {...register("phone", { required: true,  minLength: 11 })}
+          <Controller
+            name={"phone"}
+            control={control}
+            defaultValue=''
+            render={({ field }) => (
+              <InputMask
+                className={inputGroupStyles.input}
+                mask={"+48\\ 999 999 999"}
+                {...field}
+              />
+            )}
           />
-        
           {errors?.phone?.type === "minLength" && (
             <p className={inputGroupStyles.errorParagraf}>
               Proszę wpisać poprawny numer telefonu
@@ -234,4 +271,4 @@ const AdressForm = () => {
   );
 };
 
-export default AdressForm ;
+export default AdressForm;
