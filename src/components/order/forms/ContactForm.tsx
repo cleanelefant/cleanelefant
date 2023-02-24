@@ -125,38 +125,6 @@ const ContactForm = () => {
             )}
           </div>
 
-          {/* <div className={inputGroupStyles.div}>
-            <label className={inputGroupStyles.label} htmlFor='name'>
-              Kod pocztowy
-            </label>
-            <Input
-              placeholder='Zip'
-              className={inputGroupStyles.input}
-              id='zip'
-              type='text'
-              {...register("zip", { required: true })}
-            />
-            {errors?.zip?.type === "required" && (
-              <p className={inputGroupStyles.errorParagraf}>
-                Please fill out this field.
-              </p>
-            )}
-          </div> */}
-
-          {/* <div className={inputGroupStyles.div}>
-            <label className={inputGroupStyles.label} htmlFor='name'>
-              Kod pocztowy
-            </label>
-            <Controller
-              name={"zip"}
-              control={control}
-              defaultValue=''
-              render={({ field }) => (
-                <InputMask class={""} mask='99-999' {...field} />
-              )}
-            />
-          </div> */}
-
           <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>
               Telefon kontaktowy
@@ -214,49 +182,6 @@ const ContactForm = () => {
           </div>
         </div>
 
-        {/* <div className={inputGroupStyles.div}>
-          <label className={inputGroupStyles.label} htmlFor='status'>
-            Status
-          </label>
-          <Select
-            {...register("status")}
-            options={[
-              { label: "Jesteś klientem?", value: "unknown" },
-              {
-                label: "Tak, jestem nowym potencjalnym klientem.",
-                value: "new",
-              },
-              { label: "Tak, jestem obecnym klientem.", value: "current" },
-              { label: "Nie jestem klientem", value: "neither" },
-            ]}
-          />
-        </div> */}
-
-        {/* <div className={inputGroupStyles.div}>
-          <label className={inputGroupStyles.label} htmlFor='message'>
-            Wiadomość
-          </label>
-          <textarea
-            placeholder='Wiadomość'
-            className='w-full h-36 appearance-none block bg-gray-100 focus:bg-white  text-gray-700 border border-grey-100 rounded py-5 px-5  leading-tight focus:outline-none '
-            id='message'
-            {...register("message", { required: true })}
-          />
-          {errors?.message?.type === "required" && (
-            <p className={inputGroupStyles.errorParagraf}>
-              Proszę wypełnić to pole
-            </p>
-          )}
-        </div>
-        <div className={`${inputGroupStyles.div}`}>
-          <div className='flex justify-end items-center'>
-            <input
-              className='cursor-pointer border border-blue-700 text-blue-700 bg-white hover:text-white hover:bg-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5 uppercase'
-              type='submit'
-              value='wyślij'
-            />
-          </div>
-        </div> */}
         <div className={`${inputGroupStyles.div}`}>
           <div className='flex justify-end items-center'>
             <input
