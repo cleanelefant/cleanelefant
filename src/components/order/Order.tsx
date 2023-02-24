@@ -119,6 +119,7 @@ function OrderComponent() {
               <div>{store.serviceDay && store.serviceDay}</div>
               <div>{store.time && store.time}</div>
             </div>
+            <div>{store.isCash ? "Gotówka" : "Karta"}</div>
           </div>
         </div>
       </div>
