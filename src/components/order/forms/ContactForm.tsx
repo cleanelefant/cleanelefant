@@ -10,7 +10,7 @@ const inputGroupStyles = {
   div: "w-full  px-3 mb-4 ",
   label: "block uppercase tracking-wide text-gray-700 text-xs font-bold py-2",
   input:
-    "appearance-none block w-full bg-gray-100 text-gray-700  focus:border  focus:border-grey-500 rounded p-5 mb-3 leading-tight focus:outline-none focus:bg-white",
+    "appearance-none block w-full focus:outline-none focus:bg-gray-700 bg-gray-100 text-gray-700 rounded p-5 mb-3  text-3xl border-2  focus:border-blue-500 hover:border-slate-400 rounded-lg focus:text-white ",
   errorParagraf: "text-red-500 text-xs italic",
 };
 
@@ -34,8 +34,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>((props, ref) => (
     onChange={(e) => {
       if (e.target.id === "zip") {
       }
-      // if(e.target.id === "phone"){
-      //   e.target.value=e.target.value.replace(/\s/g, "").match(/.{1,3}/g)?.join(" ").substr(0, 11) || ""
     }}
   />
 ));
@@ -80,7 +78,7 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
 );
 
 interface IFormInput {
-  street: string;
+  name: string;
   zip: string;
   email: string;
   phone: string;
@@ -88,7 +86,7 @@ interface IFormInput {
   message: string;
 }
 
-const AdressForm = () => {
+const ContactForm = () => {
   const { store } = useContext(Context);
   const {
     register,
@@ -106,23 +104,21 @@ const AdressForm = () => {
 
   return (
     <div className='bg-white my-5'>
-      <div className='text-3xl text-center font-bold pb-5'>
-        WPROWADŹ SWÓJ ADRES
-      </div>
+      <div className='text-3xl text-center font-bold p-5'>DANE KONTAKTOWE</div>
       <form id='myform' onSubmit={handleSubmit(onSubmit)}>
         <div className='lg:flex'>
           <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>
-              Ulica
+              Imię
             </label>
             <Input
-              placeholder='Ulica'
+              placeholder='Imię'
               className={inputGroupStyles.input}
               id='street'
               type='text'
-              {...register("street", { required: true })}
+              {...register("name", { required: true })}
             />
-            {errors?.street?.type === "required" && (
+            {errors?.name?.type === "required" && (
               <p className={inputGroupStyles.errorParagraf}>
                 Please fill out this field.
               </p>
@@ -147,7 +143,7 @@ const AdressForm = () => {
             )}
           </div> */}
 
-          <div className={inputGroupStyles.div}>
+          {/* <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>
               Kod pocztowy
             </label>
@@ -156,15 +152,38 @@ const AdressForm = () => {
               control={control}
               defaultValue=''
               render={({ field }) => (
+                <InputMask class={""} mask='99-999' {...field} />
+              )}
+            />
+          </div> */}
+
+          <div className={inputGroupStyles.div}>
+            <label className={inputGroupStyles.label} htmlFor='name'>
+              Telefon kontaktowy
+            </label>
+            <Controller
+              name={"phone"}
+              control={control}
+              defaultValue=''
+              render={({ field }) => (
                 <InputMask
-                  class={
-                    " block w-full p-4 text-white text-3xl border-2 border-rose-500 focus:border-blue-500 hover:border-slate-400 rounded-lg bg-gray-700 outline-none"
-                  }
-                  mask='99-999'
+                  className={inputGroupStyles.input}
+                  mask={"+48\\ 999 999 999"}
+                  placeholder=' Telefon kontaktowy'
                   {...field}
                 />
               )}
             />
+            {errors?.phone?.type === "minLength" && (
+              <p className={inputGroupStyles.errorParagraf}>
+                Proszę wpisać poprawny numer telefonu
+              </p>
+            )}
+            {errors?.phone?.type === "required" && (
+              <p className={inputGroupStyles.errorParagraf}>
+                Proszę podać numer telefonu
+              </p>
+            )}
           </div>
 
           <div className={inputGroupStyles.div}>
@@ -195,34 +214,6 @@ const AdressForm = () => {
           </div>
         </div>
 
-        <div className={inputGroupStyles.div}>
-          <label className={inputGroupStyles.label} htmlFor='name'>
-            Telefon kontaktowy
-          </label>
-          <Controller
-            name={"phone"}
-            control={control}
-            defaultValue=''
-            render={({ field }) => (
-              <InputMask
-                className={inputGroupStyles.input}
-                mask={"+48\\ 999 999 999"}
-                {...field}
-              />
-            )}
-          />
-          {errors?.phone?.type === "minLength" && (
-            <p className={inputGroupStyles.errorParagraf}>
-              Proszę wpisać poprawny numer telefonu
-            </p>
-          )}
-          {errors?.phone?.type === "required" && (
-            <p className={inputGroupStyles.errorParagraf}>
-              Proszę podać numer telefonu
-            </p>
-          )}
-        </div>
-
         {/* <div className={inputGroupStyles.div}>
           <label className={inputGroupStyles.label} htmlFor='status'>
             Status
@@ -241,7 +232,7 @@ const AdressForm = () => {
           />
         </div> */}
 
-        <div className={inputGroupStyles.div}>
+        {/* <div className={inputGroupStyles.div}>
           <label className={inputGroupStyles.label} htmlFor='message'>
             Wiadomość
           </label>
@@ -265,10 +256,19 @@ const AdressForm = () => {
               value='wyślij'
             />
           </div>
+        </div> */}
+        <div className={`${inputGroupStyles.div}`}>
+          <div className='flex justify-end items-center'>
+            <input
+              className='cursor-pointer border border-blue-700 text-blue-700 bg-white hover:text-white hover:bg-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-10 py-5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-5 uppercase'
+              type='submit'
+              value='wyślij'
+            />
+          </div>
         </div>
       </form>
     </div>
   );
 };
 
-export default AdressForm;
+export default ContactForm;

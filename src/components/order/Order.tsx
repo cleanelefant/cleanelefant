@@ -16,7 +16,8 @@ import { addons } from "../../utils/addons";
 import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
 import { times, minutes } from "../../utils/times";
 import DatePickear from "./datepicker/Datepicker";
-import Form from "./adress_form/AdressForm";
+import ContactForm from "./forms/ContactForm";
+import AdressForm from "./forms/AdressForm";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -81,35 +82,36 @@ function OrderComponent() {
   }, []);
 
   return (
-    <div className="flex flex-col lg:flex-row gap-y-10 lg:gap-x-10">
-      <div className="basis-3/4">
+    <div className='flex flex-col lg:flex-row gap-y-10 lg:gap-x-10'>
+      <div className='basis-3/4'>
         <Launcher />
-        <div className="uppercase lg:text-3xl font-extrabold text-gray-700 text-center">
+        <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
           TWOJE MIESZKANIE
         </div>
 
-        <div className=" flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10">
+        <div className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10'>
           <RoomCounter />
           <BedroomCounter />
         </div>
         <HomeOption />
         <Rates />
         <AddService />
-        <div className="flex flex-col 2xl:flex-row gap-x-5">
+        <div className='flex flex-col 2xl:flex-row gap-x-5'>
           <DatePickear />
           <TimePicker />
         </div>
-        <Form/>
+        <AdressForm />
+        <ContactForm />
       </div>
-      <div className="basis-1/4">
-        <div className="lg:relative">
-          <div className="my-10 p-5 text-xl bg-white drop-shadow-xl lg:fixed lg:w-1/5">
-            <div className="text-center">{store.calculateTotalPrise()} zł.</div>
-            <div className="text-center line-through text-lg">
+      <div className='basis-1/4'>
+        <div className='lg:relative'>
+          <div className='my-10 p-5 text-xl bg-white drop-shadow-xl lg:fixed lg:w-1/5'>
+            <div className='text-center'>{store.calculateTotalPrise()} zł.</div>
+            <div className='text-center line-through text-lg'>
               {store.actualRate !== 1 &&
                 store.calculateTotalPriseWithoutRate() + " " + "zł."}{" "}
             </div>
-            <div className="flex gap-x-2">             
+            <div className='flex gap-x-2'>
               <div>{store.serviceDay && store.serviceDay}</div>
               <div>{store.time && store.time}</div>
             </div>
