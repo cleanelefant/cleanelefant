@@ -112,7 +112,6 @@ const ContactForm = () => {
               Imię
             </label>
             <Input
-              placeholder='Imię'
               className={inputGroupStyles.input}
               id='street'
               type='text'
@@ -137,7 +136,6 @@ const ContactForm = () => {
                 <InputMask
                   className={inputGroupStyles.input}
                   mask={"+48\\ 999 999 999"}
-                  placeholder=' Telefon kontaktowy'
                   {...field}
                 />
               )}
@@ -159,7 +157,6 @@ const ContactForm = () => {
               Email
             </label>
             <Input
-              placeholder='Email'
               className={inputGroupStyles.input}
               id='email'
               type='text'

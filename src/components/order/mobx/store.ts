@@ -1,4 +1,10 @@
-import { rateType, IAddons, IAddonReciver, ExtendedIMinutes,ExtendedITime} from "./../../../types";
+import {
+  rateType,
+  IAddons,
+  IAddonReciver,
+  ExtendedIMinutes,
+  ExtendedITime,
+} from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
 export default class Store {
@@ -15,11 +21,11 @@ export default class Store {
   homeRate: number;
   addons: IAddons[];
   addonReciver: IAddonReciver[];
-  time:string;
-  times:ExtendedITime[];
-  minutes:ExtendedIMinutes[];
-  serviceDay:string;
-
+  time: string;
+  times: ExtendedITime[];
+  minutes: ExtendedIMinutes[];
+  serviceDay: string;
+  isCash: boolean;
 
   constructor() {
     makeAutoObservable(this);
@@ -32,18 +38,18 @@ export default class Store {
     this.actualRate = 1;
     this.homeRate = 1;
     this.addonReciver = [];
-    this.time="";
-    this.minutes=[];
-    this.serviceDay='';
-
-  
+    this.time = "";
+    this.minutes = [];
+    this.serviceDay = "";
+    this.isCash = true;
   }
 
   calculateTotalPrise() {
     const number =
       (this.basePrise +
         this.roomPrise * this.rooms +
-        this.bedroomPrise * this.bedrooms+this.getAddonTotalPrice()) *
+        this.bedroomPrise * this.bedrooms +
+        this.getAddonTotalPrice()) *
       this.homeRate *
       this.VATvalue *
       this.actualRate;
@@ -55,27 +61,32 @@ export default class Store {
     const number =
       (this.basePrise +
         this.roomPrise * this.rooms +
-        this.bedroomPrise * this.bedrooms+this.getAddonTotalPrice()) *
+        this.bedroomPrise * this.bedrooms +
+        this.getAddonTotalPrice()) *
       this.homeRate *
-      this.VATvalue ; 
+      this.VATvalue;
     const roundedNumber = parseFloat(number.toFixed(2));
     return roundedNumber;
   }
 
-  setServiceDay(day:string){
- this.serviceDay=day
+  setIsCash(value: boolean) {
+    this.isCash = value;
   }
 
-  setMinutes(minutes:ExtendedIMinutes[]){
-    this.minutes = minutes
+  setServiceDay(day: string) {
+    this.serviceDay = day;
   }
 
-  setTime(time:string){
-    this.time = time
+  setMinutes(minutes: ExtendedIMinutes[]) {
+    this.minutes = minutes;
   }
 
-  setTimes(times:ExtendedITime[]){
-    this.times = times
+  setTime(time: string) {
+    this.time = time;
+  }
+
+  setTimes(times: ExtendedITime[]) {
+    this.times = times;
   }
 
   addItemToAddonReciver(item: IAddonReciver) {
@@ -89,14 +100,16 @@ export default class Store {
     }
   }
 
-  deleteMultyItemFromAddonReciver(hash: string, multyId:number) {
-    const index = this.addonReciver.findIndex((addon) => addon.hash === hash && addon.multyId === multyId);
+  deleteMultyItemFromAddonReciver(hash: string, multyId: number) {
+    const index = this.addonReciver.findIndex(
+      (addon) => addon.hash === hash && addon.multyId === multyId
+    );
     if (index !== -1) {
       this.addonReciver.splice(index, 1);
     }
   }
 
-  getAddonTotalPrice(){
+  getAddonTotalPrice() {
     return this.addonReciver.reduce((sum, obj) => sum + obj.price, 0);
   }
 

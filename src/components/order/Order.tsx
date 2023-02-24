@@ -18,6 +18,8 @@ import { times, minutes } from "../../utils/times";
 import DatePickear from "./datepicker/Datepicker";
 import ContactForm from "./forms/ContactForm";
 import AdressForm from "./forms/AdressForm";
+import AddWashing from "./additional_services/AddWashing";
+import ChoosePayment from "./payment/ChoosePayment";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -100,8 +102,10 @@ function OrderComponent() {
           <DatePickear />
           <TimePicker />
         </div>
+        <AddWashing />
         <AdressForm />
         <ContactForm />
+        <ChoosePayment />
       </div>
       <div className='basis-1/4'>
         <div className='lg:relative'>
