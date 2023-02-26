@@ -20,6 +20,7 @@ import ContactForm from "./forms/ContactForm";
 import AdressForm from "./forms/AdressForm";
 import AddWashing from "./additional_services/AddWashing";
 import ChoosePayment from "./payment/ChoosePayment";
+import OrderCard from "./order/OrderCard";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -108,20 +109,7 @@ function OrderComponent() {
         <ChoosePayment />
       </div>
       <div className='basis-1/4'>
-        <div className='lg:relative'>
-          <div className='my-10 p-5 text-xl bg-white drop-shadow-xl lg:fixed lg:w-1/5'>
-            <div className='text-center'>{store.calculateTotalPrise()} zł.</div>
-            <div className='text-center line-through text-lg'>
-              {store.actualRate !== 1 &&
-                store.calculateTotalPriseWithoutRate() + " " + "zł."}{" "}
-            </div>
-            <div className='flex gap-x-2'>
-              <div>{store.serviceDay && store.serviceDay}</div>
-              <div>{store.time && store.time}</div>
-            </div>
-            <div>{store.isCash ? "Gotówka" : "Karta"}</div>
-          </div>
-        </div>
+       <OrderCard/>
       </div>
     </div>
   );
