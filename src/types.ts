@@ -47,16 +47,15 @@ export interface IOurServices {
   text: string;
 }
 
-
 export interface IAddons {
-  id:number
+  id: number;
   title: string;
   price: number;
   slug: string;
-  src:string;
-  isOrderPage:boolean;
-  isPreHours:boolean;
-  isMultiply:boolean; 
+  src: string;
+  isOrderPage: boolean;
+  isPreHours: boolean;
+  isMultiply: boolean;
 }
 
 export interface ExtendedIAddons extends IAddons {
@@ -64,32 +63,30 @@ export interface ExtendedIAddons extends IAddons {
   hash: string;
 }
 
-
-export interface IAddonReciver{
-  hash:string,
-  title:string,
-  price:number,
-  multyId?:number 
+export interface IAddonReciver {
+  hash: string;
+  title: string;
+  price: number;
+  multyId?: number;
+  src: string;
 }
 
 export interface ITime {
-  id:number,
-  hours:string,
-  minutes:string
+  id: number;
+  hours: string;
+  minutes: string;
 }
 
 export interface ExtendedITime extends ITime {
-  isActive: boolean; 
+  isActive: boolean;
   isModal: boolean;
 }
 
 export interface IMinutes {
-  id:number;
-  value:string;
+  id: number;
+  value: string;
 }
 
 export interface ExtendedIMinutes extends IMinutes {
-  isActive: boolean;   
+  isActive: boolean;
 }
-
-

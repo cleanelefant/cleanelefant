@@ -16,7 +16,7 @@ export default class Store {
   bedroomPrise: number;
   VATvalue: number;
   rate: number;
-  actualRate: number;
+  actualRate: rateType;
   rates: rateType[];
   homeRate: number;
   addons: IAddons[];
@@ -35,7 +35,13 @@ export default class Store {
     this.roomPrise = 40;
     this.basePrise = 80;
     this.VATvalue = 1;
-    this.actualRate = 1;
+    this.actualRate = {
+      id: 4,
+      title: "Jednorazowe sprzątanie",
+      discount: 0,
+      link: "once",
+      isCurent: false,
+    };
     this.homeRate = 1;
     this.addonReciver = [];
     this.time = "";
@@ -52,7 +58,7 @@ export default class Store {
         this.getAddonTotalPrice()) *
       this.homeRate *
       this.VATvalue *
-      this.actualRate;
+      (1 - this.actualRate.discount / 100);
     const roundedNumber = parseFloat(number.toFixed(2));
     return roundedNumber;
   }
@@ -121,8 +127,8 @@ export default class Store {
     this.homeRate = homeRate;
   }
 
-  setActualRate(actualRate: number) {
-    this.actualRate = 1 - actualRate / 100;
+  setActualRate(actualRate: rateType) {
+    this.actualRate = actualRate;
   }
 
   changeRatesIsCurentValue(id: number) {

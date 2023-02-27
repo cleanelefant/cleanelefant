@@ -65,7 +65,7 @@ function OrderComponent() {
       if (findDiscount) {
         mapedFetchedRates = fetchedRates.map((r, i) => {
           if (r.link === findDiscount.link) {
-            store.setActualRate(r.discount);
+            store.setActualRate(r);
             return { ...r, isCurent: true };
           } else {
             return { ...r, isCurent: false };
@@ -109,7 +109,7 @@ function OrderComponent() {
         <ChoosePayment />
       </div>
       <div className='basis-1/4'>
-       <OrderCard/>
+        <OrderCard />
       </div>
     </div>
   );

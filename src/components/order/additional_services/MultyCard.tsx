@@ -32,6 +32,7 @@ function MultyCard({ item, setState }: IMultyCard) {
             hash: obj.hash,
             title: obj.title,
             price: obj.price,
+            src: obj.src,
           });
         }
         setState((s) => {
@@ -70,6 +71,7 @@ function MultyCard({ item, setState }: IMultyCard) {
       title: obj.title,
       price: obj.price,
       multyId: total,
+      src: obj.src,
     });
     setTotal((t) => t + 1);
   };
@@ -84,21 +86,21 @@ function MultyCard({ item, setState }: IMultyCard) {
       }}
     >
       <img src={item.src} alt={item.title} width={64} height={64} />
-      <p className="text-center">{item.title}</p>
-      <p className="lg:text-xl">{item.price} zł.</p>
+      <p className='text-center'>{item.title}</p>
+      <p className='lg:text-xl'>{item.price} zł.</p>
       {item.isActive && (
-        <div className="flex">
+        <div className='flex'>
           <button
-            className="my-class cursor-pointer p-2 border"
+            className='my-class cursor-pointer p-2 border'
             onClick={() => {
               buttonDecreaseClickHandler(item);
             }}
           >
             -
           </button>
-          <div className="py-2 px-4">{total}</div>
+          <div className='py-2 px-4'>{total}</div>
           <button
-            className="my-class cursor-pointer p-2 border"
+            className='my-class cursor-pointer p-2 border'
             onClick={() => {
               buttonIncreaseClickHandler(item);
             }}
