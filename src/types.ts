@@ -90,3 +90,18 @@ export interface IMinutes {
 export interface ExtendedIMinutes extends IMinutes {
   isActive: boolean;
 }
+
+type TDateErrors = {
+  isDateError: boolean;
+  text: string;
+};
+
+type TTimeErrors = {
+  isTimeError: boolean;
+  text: string;
+};
+
+export interface IErrors {
+  dateError: TDateErrors;
+  timeError: TTimeErrors;
+}

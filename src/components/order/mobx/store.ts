@@ -4,6 +4,7 @@ import {
   IAddonReciver,
   ExtendedIMinutes,
   ExtendedITime,
+  IErrors,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
@@ -26,6 +27,7 @@ export default class Store {
   minutes: ExtendedIMinutes[];
   serviceDay: string;
   isCash: boolean;
+  pageErrors: IErrors;
 
   constructor() {
     makeAutoObservable(this);
@@ -48,6 +50,10 @@ export default class Store {
     this.minutes = [];
     this.serviceDay = "";
     this.isCash = true;
+    this.pageErrors = {
+      dateError: { isDateError: false, text: "Wybierz datę" },
+      timeError: { isTimeError: false, text: "Wybierz czas" },
+    };
   }
 
   calculateTotalPrise() {
