@@ -87,14 +87,22 @@ function DatePickear() {
   const dayClickHandler = (item: ExtendedIDays) => {
     if (item.isActive === false) {
       store.setServiceDay(item.month + " " + item.date);
-      store.setTime("")
-      store.setTimes([...store.times].map(t=>{return {...t,isModal:false}}))
+      store.setTime("");
+      store.setTimes(
+        [...store.times].map((t) => {
+          return { ...t, isModal: false };
+        })
+      );
     }
 
     if (item.isActive === true) {
       store.setServiceDay("");
-      store.setTime("")
-      store.setTimes([...store.times].map(t=>{return {...t,isModal:false}}))
+      store.setTime("");
+      store.setTimes(
+        [...store.times].map((t) => {
+          return { ...t, isModal: false };
+        })
+      );
     }
 
     setDays((d) => {
@@ -196,10 +204,10 @@ function DatePickear() {
   }, [month]);
 
   return (
-    <div>
-      <div className="flex justify-between text-xl font-bold">
+    <div className='border-amber-400 border-4 p-2'>
+      <div className='flex justify-between text-xl font-bold'>
         {month > startMonth ? (
-          <div className="text-center w-5">
+          <div className='text-center w-5'>
             <div
               onClick={() => {
                 setMonth((m) => m - 1);
@@ -207,36 +215,36 @@ function DatePickear() {
             >{`<`}</div>
           </div>
         ) : (
-          <div className="w-5 p-5"></div>
+          <div className='w-5 p-5'></div>
         )}
-        <div className="">{monthsOfYear[month]}</div>
+        <div className=''>{monthsOfYear[month]}</div>
         {month < 11 ? (
           <div
-            className=""
+            className=''
             onClick={() => {
               setMonth((m) => m + 1);
             }}
           >{`>`}</div>
         ) : (
-          <div className="w-5 p-5"></div>
+          <div className='w-5 p-5'></div>
         )}
       </div>
-      <div className="grid grid-cols-7">
+      <div className='grid grid-cols-7'>
         {daysOfWeek.map((d, index) => (
-          <div className="py-2" key={index}>
-            <p className="text-center font-medium">{d}</p>
+          <div className='py-2' key={index}>
+            <p className='text-center font-medium'>{d}</p>
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-7 gap-4">
+      <div className='grid grid-cols-7 gap-4'>
         {days.map((d) => {
           if (d.dayStatus === "previous") {
             return (
-              <div key={d.id} className="flex items-center justify-center">
-                <div className="w-10 h-10 flex items-center justify-center text-slate-200 font-bold text-sm relative">
-                  <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-0.5 bg-slate-200"></span>
-                  <span className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full">
-                    {d.date}                  
+              <div key={d.id} className='flex items-center justify-center'>
+                <div className='w-10 h-10 flex items-center justify-center text-slate-200 font-bold text-sm relative'>
+                  <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-0.5 bg-slate-200'></span>
+                  <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full'>
+                    {d.date}
                   </span>
                 </div>
               </div>
@@ -255,11 +263,9 @@ function DatePickear() {
               } items-center cursor-pointer rounded-md`}
             >
               {d.dayStatus === "today" && (
-                <p className="font-normal text-sm">today</p>
+                <p className='font-normal text-sm'>today</p>
               )}
-              <p>
-                {d.date}         
-              </p>
+              <p>{d.date}</p>
             </div>
           );
         })}

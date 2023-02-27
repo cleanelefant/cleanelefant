@@ -6,17 +6,23 @@ import { ExtendedITime } from "../../../types";
 
 function TimePicker() {
   const { store } = useContext(Context);
-  const [times,setTimes] = React.useState<ExtendedITime[]>([])
+  const [times, setTimes] = React.useState<ExtendedITime[]>([]);
 
-  React.useEffect(()=>{
-    setTimes(store.times)
-  },[store.times])
-
+  React.useEffect(() => {
+    setTimes(store.times);
+  }, [store.times]);
 
   return (
-    <div className="w-1/2 my-10">    
-      <div className="flex flex-wrap gap-x-3 gap-y-4 cursor-pointer">
-        {times?.map(item=><TimeItem key={item.id} item={item} isActive={item.isActive} setTimes={setTimes} />)}        
+    <div className='w-1/2 border-amber-200/75 border-4 p-2'>
+      <div className='flex flex-wrap gap-x-3 gap-y-4 cursor-pointer'>
+        {times?.map((item) => (
+          <TimeItem
+            key={item.id}
+            item={item}
+            isActive={item.isActive}
+            setTimes={setTimes}
+          />
+        ))}
       </div>
     </div>
   );

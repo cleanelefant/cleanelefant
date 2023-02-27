@@ -10,17 +10,17 @@ import Rates from "./rates/Rates";
 import HomeOption from "./home_option/HomeOption";
 import AddService from "./additional_services/AddService";
 import TimePicker from "./time_picker/TimePicker";
-// Data
-import { fetchedRates } from "../../utils/rates";
-import { addons } from "../../utils/addons";
-import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
-import { times, minutes } from "../../utils/times";
 import DatePickear from "./datepicker/Datepicker";
 import ContactForm from "./forms/ContactForm";
 import AdressForm from "./forms/AdressForm";
 import AddWashing from "./additional_services/AddWashing";
 import ChoosePayment from "./payment/ChoosePayment";
 import OrderCard from "./order/OrderCard";
+// Data
+import { fetchedRates } from "../../utils/rates";
+import { addons } from "../../utils/addons";
+import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
+import { times, minutes } from "../../utils/times";
 
 function OrderComponent() {
   const { store } = useContext(Context);

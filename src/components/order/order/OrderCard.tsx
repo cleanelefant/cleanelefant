@@ -28,8 +28,11 @@ function findInArray(addon: IAddonReciver, targetArr: ITarget[]) {
 function OrderCard() {
   const { store } = useContext(Context);
   const addonsArr = toJS(store.addonReciver);
-
   const targetArr: ITarget[] = [];
+
+  const clickHandler = () => {
+    console.log("OrderCard");
+  };
 
   addonsArr.forEach((addon) => {
     if (findInArray(addon, targetArr)) {
@@ -131,9 +134,14 @@ function OrderCard() {
             </div>
           )}
         </div>
-        {addonsArr.length > 0 && (
-          <div className='text-center font-mono text-sm'></div>
-        )}
+        <div className='flex justify-center'>
+          <button
+            onClick={clickHandler}
+            className='bg-blue-500 text-white px-4 py-2'
+          >
+            Zamiawam
+          </button>
+        </div>
       </div>
     </div>
   );
