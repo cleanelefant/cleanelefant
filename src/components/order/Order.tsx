@@ -105,7 +105,7 @@ function OrderComponent() {
         </div>
         <AddWashing />
         <AdressForm />
-        <ContactForm />
+        {/* <ContactForm /> */}
         <ChoosePayment />
       </div>
       <div className='basis-1/4'>

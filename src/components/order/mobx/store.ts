@@ -6,6 +6,8 @@ import {
   ExtendedITime,
   IErrors,
   IFormInput,
+  IAdressForm,
+  IContactForm,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 import { UseFormGetValues } from "react-hook-form/dist/types/form";
@@ -30,6 +32,8 @@ export default class Store {
   serviceDay: string;
   isCash: boolean;
   pageErrors: IErrors;
+  adressFormData: IAdressForm;
+  contactFormData: IContactForm;
 
   constructor() {
     makeAutoObservable(this);
@@ -70,9 +74,12 @@ export default class Store {
   }
 
   // forms handler
-  adressFormHandler(data: IFormInput) {
-    console.log(data);
-    // getValues();
+  adressFormHandler(key: string, value: string) {
+    this.adressFormHandler[key] = value;
+  }
+
+  contactFormHandler(key: string, value: string) {
+    this.contactFormHandler[key] = value;
   }
 
   calculateTotalPrise() {

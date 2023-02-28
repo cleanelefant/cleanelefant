@@ -119,3 +119,17 @@ export interface IFormInput {
   status: string;
   message: string;
 }
+
+export interface IAdressForm {
+  street: string;
+  zip: string;
+  house: string;
+  local: string;
+  level: string;
+}
+
+export interface IContactForm {
+  name: string;
+  phone: string;
+  email: string;
+}
