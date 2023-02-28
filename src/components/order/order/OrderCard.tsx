@@ -31,7 +31,12 @@ function OrderCard() {
   const targetArr: ITarget[] = [];
 
   const clickHandler = () => {
+    store.setDatePickerError(!!!store.serviceDay);
+    store.setTimePickerError(!!!store.time);
     console.log("OrderCard");
+    console.log(store.pageErrors.dateError.isDateError);
+    if (store.pageErrors.dateError.isDateError) {
+    }
   };
 
   addonsArr.forEach((addon) => {

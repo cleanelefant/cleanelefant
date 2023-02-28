@@ -83,10 +83,12 @@ function DatePickear() {
   const { store } = useContext(Context);
   const [month, setMonth] = React.useState(today.getMonth());
   const [days, setDays] = React.useState<ExtendedIDays[]>([]);
+  const myRef = React.useRef(null);
 
   const dayClickHandler = (item: ExtendedIDays) => {
     if (item.isActive === false) {
       store.setServiceDay(item.month + " " + item.date);
+      store.setDatePickerError(false);
       store.setTime("");
       store.setTimes(
         [...store.times].map((t) => {
@@ -203,8 +205,23 @@ function DatePickear() {
     setDays(allDays);
   }, [month]);
 
+  React.useEffect(() => {
+    if (store.pageErrors.dateError.isDateError) {
+      myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+      return;
+    }
+  }, [store.pageErrors.dateError.isDateError]);
+
   return (
-    <div className='border-amber-400 border-4 p-2'>
+    <div
+      ref={myRef}
+      className={`${
+        store.pageErrors.dateError.isDateError
+          ? "border-red-500"
+          : "border-amber-500"
+      } border-4 p-2`}
+      id='datepicker_order_page'
+    >
       <div className='flex justify-between text-xl font-bold'>
         {month > startMonth ? (
           <div className='text-center w-5'>

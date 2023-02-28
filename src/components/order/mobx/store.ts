@@ -5,8 +5,10 @@ import {
   ExtendedIMinutes,
   ExtendedITime,
   IErrors,
+  IFormInput,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
+import { UseFormGetValues } from "react-hook-form/dist/types/form";
 
 export default class Store {
   naming = { pokoj: "pokój", lazienka: "łazienka" };
@@ -53,7 +55,24 @@ export default class Store {
     this.pageErrors = {
       dateError: { isDateError: false, text: "Wybierz datę" },
       timeError: { isTimeError: false, text: "Wybierz czas" },
+      streetError: { isStreetError: false, text: "Wprowadz ulicę" },
     };
+  }
+
+  // Errors
+
+  setDatePickerError(value: boolean) {
+    this.pageErrors.dateError.isDateError = value;
+  }
+
+  setTimePickerError(value: boolean) {
+    this.pageErrors.timeError.isTimeError = value;
+  }
+
+  // forms handler
+  adressFormHandler(data: IFormInput) {
+    console.log(data);
+    // getValues();
   }
 
   calculateTotalPrise() {

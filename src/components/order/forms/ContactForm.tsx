@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { useForm, Controller } from "react-hook-form";
 import InputMask from "react-input-mask";
+import { IFormInput } from "../../../types";
 // import axios from "axios";
 
 const inputGroupStyles = {
@@ -77,15 +78,6 @@ const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
   )
 );
 
-interface IFormInput {
-  name: string;
-  zip: string;
-  email: string;
-  phone: string;
-  status: string;
-  message: string;
-}
-
 const ContactForm = () => {
   const { store } = useContext(Context);
   const {
@@ -94,6 +86,7 @@ const ContactForm = () => {
     reset,
     formState: { errors },
     control,
+    getValues,
   } = useForm<IFormInput>();
 
   const onSubmit = (data: IFormInput) => {
@@ -105,7 +98,7 @@ const ContactForm = () => {
   return (
     <div className='bg-white my-5'>
       <div className='text-3xl text-center font-bold p-5'>DANE KONTAKTOWE</div>
-      <form id='myform' onSubmit={handleSubmit(onSubmit)}>
+      <form id='myform' onSubmit={handleSubmit(store.adressFormHandler)}>
         <div className='lg:flex'>
           <div className={inputGroupStyles.div}>
             <label className={inputGroupStyles.label} htmlFor='name'>

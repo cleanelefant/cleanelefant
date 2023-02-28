@@ -100,8 +100,22 @@ type TTimeErrors = {
   isTimeError: boolean;
   text: string;
 };
+type TStreetErrors = {
+  isStreetError: boolean;
+  text: string;
+};
 
 export interface IErrors {
   dateError: TDateErrors;
   timeError: TTimeErrors;
+  streetError: TStreetErrors;
+}
+
+export interface IFormInput {
+  name: string;
+  zip: string;
+  email: string;
+  phone: string;
+  status: string;
+  message: string;
 }
