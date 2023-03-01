@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 // Context
 import { Context } from "./index";
+//Types
+import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
 // Components
 import RoomCounter from "./room_counter/RoomCounter";
 import BedroomCounter from "./room_counter/BedroomCounter";
@@ -19,7 +21,6 @@ import OrderCard from "./order/OrderCard";
 // Data
 import { fetchedRates } from "../../utils/rates";
 import { addons } from "../../utils/addons";
-import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
 import { times, minutes } from "../../utils/times";
 
 function OrderComponent() {

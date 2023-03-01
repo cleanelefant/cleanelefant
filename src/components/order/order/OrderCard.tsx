@@ -34,7 +34,7 @@ function OrderCard() {
     store.setDatePickerError(!!!store.serviceDay);
     store.setTimePickerError(!!!store.time);
     console.log("OrderCard");
-    console.log(store.pageErrors.dateError.isDateError);
+    console.log(toJS(store.adressFormData));
     if (store.pageErrors.dateError.isDateError) {
     }
   };

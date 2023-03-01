@@ -105,10 +105,38 @@ type TStreetErrors = {
   text: string;
 };
 
+type TZipErrors = {
+  isZipError: boolean;
+  text: string;
+};
+
+type THouseErrors = {
+  isHouseError: boolean;
+  text: string;
+};
+
+type TLocalErrors = {
+  isLocalError: boolean;
+  text: string;
+};
+type TLevelErrors = {
+  isLevelError: boolean;
+  text: string;
+};
+type TIntercomErrors = {
+  isIntercomError: boolean;
+  text: string;
+};
+
 export interface IErrors {
   dateError: TDateErrors;
   timeError: TTimeErrors;
   streetError: TStreetErrors;
+  zipError: TZipErrors;
+  houseError: THouseErrors;
+  localErrors: TLocalErrors;
+  levelErrors: TLevelErrors;
+  intercomErrors: TIntercomErrors;
 }
 
 export interface IFormInput {
@@ -126,6 +154,7 @@ export interface IAdressForm {
   house: string;
   local: string;
   level: string;
+  intercom: string;
 }
 
 export interface IContactForm {

@@ -56,10 +56,23 @@ export default class Store {
     this.minutes = [];
     this.serviceDay = "";
     this.isCash = true;
+    this.adressFormData = {
+      street: "",
+      house: "",
+      level: "",
+      local: "",
+      intercom: "",
+      zip: "",
+    };
     this.pageErrors = {
       dateError: { isDateError: false, text: "Wybierz datę" },
       timeError: { isTimeError: false, text: "Wybierz czas" },
       streetError: { isStreetError: false, text: "Wprowadz ulicę" },
+      zipError: { isZipError: false, text: "Wprowadz ulicę" },
+      houseError: { isHouseError: false, text: "Wprowadz ulicę" },
+      localErrors: { isLocalError: false, text: "Wprowadz ulicę" },
+      levelErrors: { isLevelError: false, text: "Wprowadz ulicę" },
+      intercomErrors: { isIntercomError: false, text: "Wprowadz ulicę" },
     };
   }
 
@@ -75,7 +88,7 @@ export default class Store {
 
   // forms handler
   adressFormHandler(key: string, value: string) {
-    this.adressFormHandler[key] = value;
+    this.adressFormData[key] = value;
   }
 
   contactFormHandler(key: string, value: string) {

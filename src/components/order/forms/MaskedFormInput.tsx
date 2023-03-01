@@ -1,14 +1,15 @@
 import React, { useContext, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
+import InputMask from "react-input-mask";
 
 interface IFormInput {
   mykey: string;
+  cl: string;
   type: "adress" | "contact";
-  isError: boolean;
 }
 
-function FormInput({ mykey, type, isError }: IFormInput) {
+function MaskedFormInput({ mykey, cl, type }: IFormInput) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const { store } = useContext(Context);
 
@@ -23,16 +24,10 @@ function FormInput({ mykey, type, isError }: IFormInput) {
   };
 
   return (
-    <input
-      className={`${
-        isError ? "bg-rose-300 " : "bg-gray-100"
-      } appearance-none block w-full focus:outline-none focus:bg-gray-700 text-gray-700 p-5 mb-3  text-3xl border-2  focus:border-blue-500 hover:border-slate-400 rounded-lg focus:text-white`}
-      id={type}
-      type='text'
-      ref={inputRef}
-      onChange={handleInputChange}
-    />
+    <InputMask mask='99-999' onChange={handleInputChange}>
+      {() => <input className={cl} id={type} type='text' ref={inputRef} />}
+    </InputMask>
   );
 }
 
-export default observer(FormInput);
+export default observer(MaskedFormInput);
