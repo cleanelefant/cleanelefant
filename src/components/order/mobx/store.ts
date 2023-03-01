@@ -86,6 +86,30 @@ export default class Store {
     this.pageErrors.timeError.isTimeError = value;
   }
 
+  setStreetError(value: boolean) {
+    this.pageErrors.streetError.isStreetError = value;
+  }
+
+  setZipError(value: boolean) {
+    this.pageErrors.zipError.isZipError = value;
+  }
+
+  setHouseError(value: boolean) {
+    this.pageErrors.houseError.isHouseError = value;
+  }
+
+  setLevelError(value: boolean) {
+    this.pageErrors.levelErrors.isLevelError = value;
+  }
+
+  setLocalError(value: boolean) {
+    this.pageErrors.localErrors.isLocalError = value;
+  }
+
+  setIntercomeError(value: boolean) {
+    this.pageErrors.intercomErrors.isIntercomError = value;
+  }
+
   // forms handler
   adressFormHandler(key: string, value: string) {
     this.adressFormData[key] = value;

@@ -33,10 +33,16 @@ function OrderCard() {
   const clickHandler = () => {
     store.setDatePickerError(!!!store.serviceDay);
     store.setTimePickerError(!!!store.time);
-    console.log("OrderCard");
-    console.log(toJS(store.adressFormData));
-    if (store.pageErrors.dateError.isDateError) {
-    }
+    store.setStreetError(!!!store.adressFormData.street);
+    store.setHouseError(!!!store.adressFormData.house);
+    store.setLocalError(!!!store.adressFormData.local);
+    // store.setLevelError(!!!store.adressFormData.level);
+    // store.setZipError(!!!store.adressFormData.zip);
+    // store.setIntercomeError(!!!store.adressFormData.zip);
+
+    // console.log("OrderCard");
+    // console.log(toJS(store.adressFormData));
+    console.log(store.pageErrors.timeError.isTimeError);
   };
 
   addonsArr.forEach((addon) => {

@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
+import { toJS } from "mobx";
 
 interface IFormInput {
   mykey: string;
@@ -14,6 +15,13 @@ function FormInput({ mykey, type, isError }: IFormInput) {
 
   const handleInputChange = () => {
     const value = inputRef.current?.value;
+
+    if (value.length > 2) {
+      if (mykey === "street") {
+        store.setStreetError(false);
+      }
+    }
+
     if ((type = "adress")) {
       store.adressFormHandler(mykey, value);
     }

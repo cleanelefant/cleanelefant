@@ -22,8 +22,15 @@ const getInputGroupStyles = () => {
 function AdressForm() {
   const inputGroupStyles = getInputGroupStyles();
   const { store } = useContext(Context);
+  const myRef = React.useRef(null);
+  React.useEffect(() => {
+    if (store.pageErrors.streetError.isStreetError) {
+      myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+      return;
+    }
+  }, [store.pageErrors.streetError.isStreetError]);
   return (
-    <div className='bg-white my-5'>
+    <div className='bg-white my-5' ref={myRef}>
       <div className='text-3xl text-center font-bold p-5'>
         WPROWADŹ SWÓJ ADRES
       </div>
