@@ -141,6 +141,7 @@ type TPhoneErrors = {
 type TEmailErrors = {
   isEmailError: boolean;
   text: string;
+  isEmailValidDataError: boolean;
 };
 
 export interface IErrors {

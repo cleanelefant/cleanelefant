@@ -63,7 +63,7 @@ function ContactForm() {
           <FormInput
             mykey={"email"}
             type='contact'
-            isError={store.pageErrors.houseError.isHouseError}
+            isError={store.pageErrors.emailErrors.isEmailError}
           />
         </div>
         <div className={"px-3 mb-4 col-span-3 "}>

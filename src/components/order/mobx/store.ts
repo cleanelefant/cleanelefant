@@ -80,7 +80,11 @@ export default class Store {
       levelErrors: { isLevelError: false, text: "Wprowadz piętro" },
       intercomErrors: { isIntercomError: false, text: "Wprowadz kod domofonu" },
       nameErrors: { isNameError: false, text: "Wprowadz imię" },
-      emailErrors: { isEmailError: false, text: "Wprowadz email" },
+      emailErrors: {
+        isEmailError: false,
+        text: "Wprowadz email",
+        isEmailValidDataError: false,
+      },
       phoneErrors: { isPhoneError: false, text: "Wprowadz numer telefonu" },
     };
   }
@@ -129,6 +133,10 @@ export default class Store {
 
   setEmailError(value: boolean) {
     this.pageErrors.emailErrors.isEmailError = value;
+  }
+
+  setIsEmailValidDataError(value: boolean) {
+    this.pageErrors.emailErrors.isEmailValidDataError = value;
   }
 
   // forms handler
