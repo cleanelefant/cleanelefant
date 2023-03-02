@@ -36,13 +36,12 @@ function OrderCard() {
     store.setStreetError(!!!store.adressFormData.street);
     store.setHouseError(!!!store.adressFormData.house);
     store.setLocalError(!!!store.adressFormData.local);
-    // store.setLevelError(!!!store.adressFormData.level);
-    // store.setZipError(!!!store.adressFormData.zip);
-    // store.setIntercomeError(!!!store.adressFormData.zip);
-
-    // console.log("OrderCard");
-    // console.log(toJS(store.adressFormData));
-    console.log(store.pageErrors.timeError.isTimeError);
+    store.setLevelError(!!!store.adressFormData.level);
+    store.setZipError(!!!store.adressFormData.zip);
+    store.setIntercomeError(!!!store.adressFormData.zip);
+    store.setNameError(!!!store.contactFormData.name);
+    store.setEmailError(!!!store.contactFormData.email);
+    store.setPhoneError(!!!store.contactFormData.phone);
   };
 
   addonsArr.forEach((addon) => {

@@ -64,15 +64,23 @@ export default class Store {
       intercom: "",
       zip: "",
     };
+    this.contactFormData = {
+      name: "",
+      email: "",
+      phone: "",
+    };
     this.pageErrors = {
       dateError: { isDateError: false, text: "Wybierz datę" },
       timeError: { isTimeError: false, text: "Wybierz czas" },
       streetError: { isStreetError: false, text: "Wprowadz ulicę" },
-      zipError: { isZipError: false, text: "Wprowadz ulicę" },
-      houseError: { isHouseError: false, text: "Wprowadz ulicę" },
-      localErrors: { isLocalError: false, text: "Wprowadz ulicę" },
-      levelErrors: { isLevelError: false, text: "Wprowadz ulicę" },
-      intercomErrors: { isIntercomError: false, text: "Wprowadz ulicę" },
+      zipError: { isZipError: false, text: "Wprowadz kod pocztowy" },
+      houseError: { isHouseError: false, text: "Wprowadz numer domu" },
+      localErrors: { isLocalError: false, text: "Wprowadz numer mieszkania" },
+      levelErrors: { isLevelError: false, text: "Wprowadz piętro" },
+      intercomErrors: { isIntercomError: false, text: "Wprowadz kod domofonu" },
+      nameErrors: { isNameError: false, text: "Wprowadz imię" },
+      emailErrors: { isEmailError: false, text: "Wprowadz email" },
+      phoneErrors: { isPhoneError: false, text: "Wprowadz numer telefonu" },
     };
   }
 
@@ -108,6 +116,18 @@ export default class Store {
 
   setIntercomeError(value: boolean) {
     this.pageErrors.intercomErrors.isIntercomError = value;
+  }
+
+  setNameError(value: boolean) {
+    this.pageErrors.nameErrors.isNameError = value;
+  }
+
+  setPhoneError(value: boolean) {
+    this.pageErrors.phoneErrors.isPhoneError = value;
+  }
+
+  setEmailError(value: boolean) {
+    this.pageErrors.emailErrors.isEmailError = value;
   }
 
   // forms handler

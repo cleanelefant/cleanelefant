@@ -7,8 +7,6 @@ import { Context } from "../index";
 import FormInput from "./FormInput";
 import MaskedFormInput from "./MaskedFormInput";
 
-// import axios from "axios";
-
 const getInputGroupStyles = () => {
   return {
     div: "px-3 mb-4 ",
@@ -48,13 +46,14 @@ function AdressForm() {
         </div>
         {/* Zip Code */}
         <div className={inputGroupStyles.div}>
-          <label className={inputGroupStyles.label} htmlFor='name'>
+          <label className={inputGroupStyles.label} htmlFor='zip'>
             Kod pocztowy
           </label>
           <MaskedFormInput
             mykey={"zip"}
-            cl={inputGroupStyles.input}
             type='adress'
+            mask='99-999'
+            isError={store.pageErrors.zipError.isZipError}
           />
         </div>
         {/* House Number*/}

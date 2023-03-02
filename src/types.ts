@@ -128,6 +128,21 @@ type TIntercomErrors = {
   text: string;
 };
 
+type TNameErrors = {
+  isNameError: boolean;
+  text: string;
+};
+
+type TPhoneErrors = {
+  isPhoneError: boolean;
+  text: string;
+};
+
+type TEmailErrors = {
+  isEmailError: boolean;
+  text: string;
+};
+
 export interface IErrors {
   dateError: TDateErrors;
   timeError: TTimeErrors;
@@ -137,6 +152,9 @@ export interface IErrors {
   localErrors: TLocalErrors;
   levelErrors: TLevelErrors;
   intercomErrors: TIntercomErrors;
+  nameErrors: TNameErrors;
+  phoneErrors: TPhoneErrors;
+  emailErrors: TEmailErrors;
 }
 
 export interface IFormInput {
