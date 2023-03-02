@@ -68,6 +68,7 @@ export default class Store {
       name: "",
       email: "",
       phone: "",
+      notes: "",
     };
     this.pageErrors = {
       dateError: { isDateError: false, text: "Wybierz datę" },

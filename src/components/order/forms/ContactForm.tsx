@@ -6,6 +6,7 @@ import { Context } from "../index";
 // Components
 import FormInput from "./FormInput";
 import MaskedFormInput from "./MaskedFormInput";
+import FormTextarea from "./FormTextarea";
 
 const getInputGroupStyles = () => {
   return {
@@ -54,7 +55,7 @@ function ContactForm() {
             isError={store.pageErrors.phoneErrors.isPhoneError}
           />
         </div>
-        {/* House Number*/}
+        {/* Email*/}
         <div className={inputGroupStyles.div}>
           <label className={inputGroupStyles.label} htmlFor='name'>
             Email
@@ -64,6 +65,12 @@ function ContactForm() {
             type='contact'
             isError={store.pageErrors.houseError.isHouseError}
           />
+        </div>
+        <div className={"px-3 mb-4 col-span-3 "}>
+          <label className={inputGroupStyles.label} htmlFor='name'>
+            Dodatkowa informacja do zamówienia
+          </label>
+          <FormTextarea />
         </div>
       </section>
     </div>
