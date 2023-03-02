@@ -145,7 +145,7 @@ export default class Store {
   }
 
   contactFormHandler(key: string, value: string) {
-    this.contactFormHandler[key] = value;
+    this.contactFormData[key] = value;
   }
 
   calculateTotalPrise() {

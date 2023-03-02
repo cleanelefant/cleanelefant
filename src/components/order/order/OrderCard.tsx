@@ -42,6 +42,11 @@ function OrderCard() {
     // store.setNameError(!!!store.contactFormData.name);
     store.setEmailError(!!!store.contactFormData.email);
     store.setPhoneError(!!!store.contactFormData.phone);
+    console.log(
+      "hello",
+      toJS(store.adressFormData),
+      toJS(store.contactFormData)
+    );
   };
 
   addonsArr.forEach((addon) => {
