@@ -33,6 +33,7 @@ function MultyCard({ item, setState }: IMultyCard) {
             title: obj.title,
             price: obj.price,
             src: obj.src,
+            minutes: obj.minutes,
           });
         }
         setState((s) => {
@@ -72,6 +73,7 @@ function MultyCard({ item, setState }: IMultyCard) {
       price: obj.price,
       multyId: total,
       src: obj.src,
+      minutes: obj.minutes,
     });
     setTotal((t) => t + 1);
   };
