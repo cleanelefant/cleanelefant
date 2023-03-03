@@ -8,17 +8,22 @@ import {
   IFormInput,
   IAdressForm,
   IContactForm,
+  ITime,
+  IServiceTime,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
-import { UseFormGetValues } from "react-hook-form/dist/types/form";
 
 export default class Store {
   naming = { pokoj: "pokój", lazienka: "łazienka" };
   rooms: number;
   bedrooms: number;
   basePrise: number;
+  baseMinutes: number;
   roomPrise: number;
   bedroomPrise: number;
+  roomMinutes: number;
+  bedroomMinutes: number;
+  totalMinutes: number;
   VATvalue: number;
   rate: number;
   actualRate: rateType;
@@ -42,6 +47,10 @@ export default class Store {
     this.bedroomPrise = 30;
     this.roomPrise = 40;
     this.basePrise = 80;
+    this.baseMinutes = 90;
+    this.roomMinutes = 30;
+    this.bedroomMinutes = 60;
+    this.totalMinutes = 180;
     this.VATvalue = 1;
     this.actualRate = {
       id: 4,
@@ -87,6 +96,32 @@ export default class Store {
       },
       phoneErrors: { isPhoneError: false, text: "Wprowadz numer telefonu" },
     };
+  }
+  // Minutes
+
+  setBaseMinutes(minutes: number) {
+    this.baseMinutes = minutes;
+  }
+  setRoomMinutes(minutes: number) {
+    this.roomMinutes = minutes;
+  }
+  setBedroomMinutes(minutes: number) {
+    this.bedroomMinutes = minutes;
+  }
+
+  setTotalMinutes() {
+    this.totalMinutes =
+      this.baseMinutes +
+      this.roomMinutes * this.rooms +
+      this.bedroomMinutes * this.bedrooms +
+      this.getAddonTotalMinutes();
+  }
+
+  setTotalTime() {
+    let totalTime: IServiceTime = { hours: 0, minutes: 0 };
+    totalTime.hours = Math.floor(this.totalMinutes / 60);
+    totalTime.minutes = this.totalMinutes % 60;
+    return totalTime;
   }
 
   // Errors
@@ -215,6 +250,11 @@ export default class Store {
 
   getAddonTotalPrice() {
     return this.addonReciver.reduce((sum, obj) => sum + obj.price, 0);
+  }
+
+  getAddonTotalMinutes() {
+    console.log("getAddonTotalMinutes", this.addonReciver);
+    return this.addonReciver.reduce((sum, obj) => sum + obj.minutes, 0);
   }
 
   setAddons(addons: IAddons[]) {

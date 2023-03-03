@@ -32,6 +32,7 @@ function AddServices() {
         title: obj.title,
         price: obj.price,
         src: obj.src,
+        minutes: obj.minutes,
       });
     }
     setState((s) => {

@@ -28,8 +28,11 @@ function OrderComponent() {
   React.useEffect(() => {
     const data = {
       basePrice: 80,
+      baseMinutes: 90,
       roomPrice: 30,
+      roomMinutes: 30,
       bedroomPrice: 40,
+      bedroomsMinutes: 60,
     };
     const queryParams = new URLSearchParams(window.location.search);
     const rooms = queryParams.get("rooms");
@@ -40,6 +43,9 @@ function OrderComponent() {
     store.setBasePrice(data.basePrice);
     store.setRoomPrice(data.roomPrice);
     store.setBedPrice(data.bedroomPrice);
+    store.setBaseMinutes(data.baseMinutes);
+    store.setRoomMinutes(data.roomMinutes);
+    store.setBedroomMinutes(data.bedroomsMinutes);
     store.setAddons(addons);
 
     // prepare data for TimePicker

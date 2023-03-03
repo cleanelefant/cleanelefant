@@ -63,6 +63,12 @@ function OrderCard() {
     }
   });
 
+  React.useEffect(() => {
+    store.setTotalMinutes();
+  }, [store.rooms, store.bedrooms, store.addonReciver.length]);
+
+  const time = store.setTotalTime();
+
   return (
     <div className='lg:relative'>
       <div className='my-10 p-5 text-xl bg-white drop-shadow-xl lg:fixed lg:w-1/5'>
@@ -78,6 +84,11 @@ function OrderCard() {
         </div>
         <div className='text-center font-mono text-sm'>
           {1 - store.actualRate.discount / 100 !== 1 && store.actualRate.title}
+        </div>
+        <div className='my-2 text-sm font-bold text-center '>
+          <span className='font-normal'>Przybliżony czas pracy</span>{" "}
+          {time.hours} {time.hours > 4 ? "godzin " : "godziny "}
+          {time.minutes ? time.minutes : null} {time.minutes ? " minut" : null}
         </div>
 
         <div className='text-sm'>

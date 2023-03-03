@@ -20,6 +20,11 @@ export type priceType = {
   itemPropName: string;
 };
 
+export interface IServiceTime {
+  hours: number;
+  minutes: number;
+}
+
 export type questionsType = {
   id: number;
   question: string;
@@ -56,6 +61,7 @@ export interface IAddons {
   isOrderPage: boolean;
   isPreHours: boolean;
   isMultiply: boolean;
+  minutes: number;
 }
 
 export interface ExtendedIAddons extends IAddons {
@@ -69,6 +75,7 @@ export interface IAddonReciver {
   price: number;
   multyId?: number;
   src: string;
+  minutes: number;
 }
 
 export interface ITime {
