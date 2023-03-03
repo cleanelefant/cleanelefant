@@ -37,6 +37,7 @@ interface ExtendedIDays extends IDays {
   dayStatus: string;
   monthStatus: string;
   isActive: boolean;
+  rate?: number;
 }
 
 const today = new Date();
