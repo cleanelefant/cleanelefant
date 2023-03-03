@@ -253,7 +253,6 @@ export default class Store {
   }
 
   getAddonTotalMinutes() {
-    console.log("getAddonTotalMinutes", this.addonReciver);
     return this.addonReciver.reduce((sum, obj) => sum + obj.minutes, 0);
   }
 
