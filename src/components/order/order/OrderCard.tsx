@@ -14,14 +14,14 @@ import bedroom from "../../../images/services/bedroom.png";
 import { IAddonReciver } from "../../../types";
 
 interface ITarget {
-  id: string;
+  hash: string;
   title: string;
   total: number;
   src: string;
 }
 
 function findInArray(addon: IAddonReciver, targetArr: ITarget[]) {
-  const find = targetArr.find((item) => item.id === addon.hash);
+  const find = targetArr.find((item) => item.hash === addon.hash);
   return !!find;
 }
 
@@ -46,11 +46,11 @@ function OrderCard() {
 
   addonsArr.forEach((addon) => {
     if (findInArray(addon, targetArr)) {
-      const index = targetArr.findIndex((item) => item.id === addon.hash);
+      const index = targetArr.findIndex((item) => item.hash === addon.hash);
       targetArr[index].total += 1;
     } else {
       targetArr.push({
-        id: addon.hash,
+        hash: addon.hash,
         title: addon.title,
         total: 1,
         src: addon.src,
@@ -125,6 +125,7 @@ function OrderCard() {
                   <p>
                     {item.title}-<span>{item.total}</span>
                   </p>
+                  <div className="cursor-pointer" onClick={()=>{ store.deleteItemFromAddonReciver(item.hash); store.setActivityInAddons(item.hash)}}>&#10060;</div>
                 </div>
               ))}
             </div>

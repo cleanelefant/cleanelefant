@@ -6,27 +6,30 @@ import { toJS } from "mobx";
 import { ExtendedIAddons } from "../../../types";
 import MultyCard from "./MultyCard";
 import SingleCard from "./SingleCard";
+import {addons} from "../../../utils/addons"
 
 function AddServices() {
   const { store } = useContext(Context);
-  const [state, setState] = React.useState<ExtendedIAddons[]>();
+ 
+
   React.useEffect(() => {
-    if (store.addons) {
-      let addons = toJS(store.addons);
+    
       const mapedAddons: ExtendedIAddons[] = addons
         .map((a) => {
           return { ...a, isActive: false, hash: uuid() };
         })
         .filter((a) => a.isOrderPage === true);
 
-      setState(mapedAddons);
-    }
-  }, [store.addons]);
+      store.setAddons(mapedAddons)
+    
+  }, []);
 
   const cardClickHandler = (obj: ExtendedIAddons) => {
     if (obj.isActive) {
       store.deleteItemFromAddonReciver(obj.hash);
+      store.setActivityInAddons(obj.hash)
     } else {
+      store.setActivityInAddons(obj.hash)
       store.addItemToAddonReciver({
         hash: obj.hash,
         title: obj.title,
@@ -35,14 +38,7 @@ function AddServices() {
         minutes: obj.minutes,
       });
     }
-    setState((s) => {
-      return [...s].map((item) => {
-        if (obj.id === item.id) {
-          return { ...item, isActive: !item.isActive };
-        }
-        return item;
-      });
-    });
+ 
   };
 
   console.log("AddServices");
@@ -52,9 +48,9 @@ function AddServices() {
         Dodaj usługi
       </div>
       <div className='flex flex-wrap gap-4 my-10'>
-        {state?.map((item) => {
+        {store.addons?.map((item) => {
           if (item.isMultiply) {
-            return <MultyCard key={item.id} setState={setState} item={item} />;
+            return <MultyCard key={item.id}  item={item} />;
           }
 
           return (

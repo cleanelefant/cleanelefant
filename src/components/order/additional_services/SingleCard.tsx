@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { ExtendedIAddons } from "../../../types"
 
 interface ISingleCard {
@@ -8,7 +9,7 @@ interface ISingleCard {
 
 
 
-export default function SingleCard({item,cardClickHandler}:ISingleCard){
+function SingleCard({item,cardClickHandler}:ISingleCard){
     
     return (
         <div
@@ -27,3 +28,5 @@ export default function SingleCard({item,cardClickHandler}:ISingleCard){
     )
 
 }
+
+export default observer(SingleCard)

@@ -46,7 +46,7 @@ function OrderComponent() {
     store.setBaseMinutes(data.baseMinutes);
     store.setRoomMinutes(data.roomMinutes);
     store.setBedroomMinutes(data.bedroomsMinutes);
-    store.setAddons(addons);
+   
 
     // prepare data for TimePicker
     const mapedTimes: ExtendedITime[] = times.map((t) => {

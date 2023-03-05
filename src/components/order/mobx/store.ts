@@ -10,6 +10,7 @@ import {
   IContactForm,
   ITime,
   IServiceTime,
+  ExtendedIAddons,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
@@ -29,7 +30,7 @@ export default class Store {
   actualRate: rateType;
   rates: rateType[];
   homeRate: number;
-  addons: IAddons[];
+  addons: ExtendedIAddons[];
   addonReciver: IAddonReciver[];
   time: string;
   times: ExtendedITime[];
@@ -228,6 +229,13 @@ export default class Store {
     this.times = times;
   }
 
+  setActivityInAddons(hash:string){
+    console.log(hash)
+    const index = this.addons.findIndex((addon) => addon.hash === hash);
+    console.log( this.addons[index])
+    this.addons[index].isActive = !this.addons[index].isActive
+  }
+
   addItemToAddonReciver(item: IAddonReciver) {
     this.addonReciver.push(item);
   }
@@ -256,7 +264,7 @@ export default class Store {
     return this.addonReciver.reduce((sum, obj) => sum + obj.minutes, 0);
   }
 
-  setAddons(addons: IAddons[]) {
+  setAddons(addons: ExtendedIAddons[]) {
     this.addons = addons;
   }
 

@@ -6,10 +6,10 @@ import { toJS } from "mobx";
 
 interface IMultyCard {
   item: ExtendedIAddons;
-  setState: React.Dispatch<React.SetStateAction<ExtendedIAddons[]>>;
+  
 }
 
-function MultyCard({ item, setState }: IMultyCard) {
+function MultyCard({ item}: IMultyCard) {
   const { store } = useContext(Context);
   const [total, setTotal] = React.useState(1);
 
@@ -36,14 +36,8 @@ function MultyCard({ item, setState }: IMultyCard) {
             minutes: obj.minutes,
           });
         }
-        setState((s) => {
-          return [...s].map((item) => {
-            if (obj.id === item.id) {
-              return { ...item, isActive: !item.isActive };
-            }
-            return item;
-          });
-        });
+        store.setActivityInAddons(obj.hash)
+       
       }
     }
   };
@@ -51,14 +45,7 @@ function MultyCard({ item, setState }: IMultyCard) {
   const buttonDecreaseClickHandler = (obj: ExtendedIAddons) => {
     if (total === 1) {
       store.deleteItemFromAddonReciver(obj.hash);
-      setState((s) => {
-        return [...s].map((item) => {
-          if (obj.id === item.id) {
-            return { ...item, isActive: !item.isActive };
-          }
-          return item;
-        });
-      });
+      store.setActivityInAddons(obj.hash)
     }
     if (total > 1) {
       store.deleteMultyItemFromAddonReciver(obj.hash, total - 1);
