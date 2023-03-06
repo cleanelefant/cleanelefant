@@ -125,7 +125,16 @@ function OrderCard() {
                   <p>
                     {item.title}-<span>{item.total}</span>
                   </p>
-                  <div className="cursor-pointer" onClick={()=>{ store.deleteItemFromAddonReciver(item.hash); store.setActivityInAddons(item.hash)}}>&#10060;</div>
+                  <div
+                    className='cursor-pointer'
+                    onClick={() => {
+                      // store.deleteItemFromAddonReciver(item.hash);
+                      store.deleteItemsWithSameHashFromAddonReciver(item.hash);
+                      store.setActivityInAddons(item.hash);
+                    }}
+                  >
+                    &#10060;
+                  </div>
                 </div>
               ))}
             </div>

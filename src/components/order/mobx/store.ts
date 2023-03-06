@@ -229,11 +229,11 @@ export default class Store {
     this.times = times;
   }
 
-  setActivityInAddons(hash:string){
-    console.log(hash)
+  setActivityInAddons(hash: string) {
+    console.log(hash);
     const index = this.addons.findIndex((addon) => addon.hash === hash);
-    console.log( this.addons[index])
-    this.addons[index].isActive = !this.addons[index].isActive
+    console.log(this.addons[index]);
+    this.addons[index].isActive = !this.addons[index].isActive;
   }
 
   addItemToAddonReciver(item: IAddonReciver) {
@@ -245,6 +245,12 @@ export default class Store {
     if (index !== -1) {
       this.addonReciver.splice(index, 1);
     }
+  }
+
+  deleteItemsWithSameHashFromAddonReciver(hash: string) {
+    this.addonReciver = [...this.addonReciver].filter(
+      (addon) => addon.hash !== hash
+    );
   }
 
   deleteMultyItemFromAddonReciver(hash: string, multyId: number) {

@@ -6,10 +6,9 @@ import { toJS } from "mobx";
 
 interface IMultyCard {
   item: ExtendedIAddons;
-  
 }
 
-function MultyCard({ item}: IMultyCard) {
+function MultyCard({ item }: IMultyCard) {
   const { store } = useContext(Context);
   const [total, setTotal] = React.useState(1);
 
@@ -20,13 +19,13 @@ function MultyCard({ item}: IMultyCard) {
     const { target } = e;
     if (target) {
       const isButton = (target as HTMLButtonElement).classList.contains(
-        "my-class"
+        "my-button"
       );
       if (isButton) {
         return;
       } else {
         if (obj.isActive) {
-          store.deleteItemFromAddonReciver(obj.hash);
+          store.deleteItemsWithSameHashFromAddonReciver(obj.hash);
         } else {
           store.addItemToAddonReciver({
             hash: obj.hash,
@@ -36,8 +35,7 @@ function MultyCard({ item}: IMultyCard) {
             minutes: obj.minutes,
           });
         }
-        store.setActivityInAddons(obj.hash)
-       
+        store.setActivityInAddons(obj.hash);
       }
     }
   };
@@ -45,7 +43,7 @@ function MultyCard({ item}: IMultyCard) {
   const buttonDecreaseClickHandler = (obj: ExtendedIAddons) => {
     if (total === 1) {
       store.deleteItemFromAddonReciver(obj.hash);
-      store.setActivityInAddons(obj.hash)
+      store.setActivityInAddons(obj.hash);
     }
     if (total > 1) {
       store.deleteMultyItemFromAddonReciver(obj.hash, total - 1);
@@ -80,7 +78,7 @@ function MultyCard({ item}: IMultyCard) {
       {item.isActive && (
         <div className='flex'>
           <button
-            className='my-class cursor-pointer p-2 border'
+            className='my-button cursor-pointer p-2 border'
             onClick={() => {
               buttonDecreaseClickHandler(item);
             }}
@@ -89,7 +87,7 @@ function MultyCard({ item}: IMultyCard) {
           </button>
           <div className='py-2 px-4'>{total}</div>
           <button
-            className='my-class cursor-pointer p-2 border'
+            className='my-button cursor-pointer p-2 border'
             onClick={() => {
               buttonIncreaseClickHandler(item);
             }}
