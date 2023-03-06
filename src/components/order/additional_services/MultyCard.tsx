@@ -26,6 +26,7 @@ function MultyCard({ item }: IMultyCard) {
       } else {
         if (obj.isActive) {
           store.deleteItemsWithSameHashFromAddonReciver(obj.hash);
+          setTotal(1);
         } else {
           store.addItemToAddonReciver({
             hash: obj.hash,

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
+
 const daysOfWeek = [
   "Monday",
   "Tuesday",
@@ -33,6 +34,19 @@ interface IDays {
   dayOfWeek: string;
 }
 
+interface IDaysRate {
+  id: number;
+  date: number;
+  month: string;
+  rate: number;
+}
+const rates: IDaysRate[] = [
+  { id: 1, date: 10, month: "March", rate: 20 },
+  { id: 1, date: 15, month: "March", rate: 10 },
+  { id: 2, date: 19, month: "March", rate: 20 },
+  { id: 3, date: 22, month: "March", rate: 15 },
+];
+
 interface ExtendedIDays extends IDays {
   dayStatus: string;
   monthStatus: string;
@@ -43,7 +57,7 @@ interface ExtendedIDays extends IDays {
 const today = new Date();
 const actualYear = today.getFullYear();
 let date = new Date(`January 1, ${actualYear}`);
-let data: IDays[] = [];
+let dayData: IDays[] = [];
 const startMonth = today.getMonth();
 const day = today.getDate();
 
@@ -60,7 +74,7 @@ for (let i = 0; i < 365; i++) {
     dayOfWeek: dayOfWeek,
   };
 
-  data.push(object);
+  dayData.push(object);
 
   date.setDate(date.getDate() + 1);
 }
@@ -87,6 +101,9 @@ function DatePickear() {
   const myRef = React.useRef(null);
 
   const dayClickHandler = (item: ExtendedIDays) => {
+    if (item.rate) {
+      console.log(item.rate);
+    }
     if (item.isActive === false) {
       store.setServiceDay(item.month + " " + item.date);
       store.setDatePickerError(false);
@@ -125,15 +142,16 @@ function DatePickear() {
   };
 
   React.useEffect(() => {
-    const currentMonthDays = data.filter(
+    const fetchedRates = [...rates];
+    const currentMonthDays = dayData.filter(
       (day) => day.month === monthsOfYear[month]
     );
     const firstDayOfCurrentMonth = currentMonthDays[0].dayOfWeek;
     const firstDayIndex = daysOfWeek.indexOf(firstDayOfCurrentMonth);
-    const previousMonthDays = data
+    const previousMonthDays = dayData
       .filter((day) => day.month === monthsOfYear[month - 1])
       .slice(-firstDayIndex);
-    const nextMonthDays = data.filter(
+    const nextMonthDays = dayData.filter(
       (day) => day.month === monthsOfYear[month + 1]
     );
     const mapedPreviousMonthDays: ExtendedIDays[] = previousMonthDays.map(
@@ -202,8 +220,18 @@ function DatePickear() {
     );
     allDays = [...allDays, ...sliceFronMapedNextMonthDays];
     allDays.shift();
+    const addRatesToAllDays = [...allDays].map((day) => {
+      const find = fetchedRates.find(
+        (item) => item.date === day.date && item.month === day.month
+      );
+      if (find) {
+        return { ...day, rate: find.rate };
+      } else {
+        return day;
+      }
+    });
 
-    setDays(allDays);
+    setDays(addRatesToAllDays);
   }, [month]);
 
   React.useEffect(() => {
@@ -284,6 +312,7 @@ function DatePickear() {
                 <p className='font-normal text-sm'>today</p>
               )}
               <p>{d.date}</p>
+              <p>{d.rate && `${d.rate}%`}</p>
             </div>
           );
         })}
