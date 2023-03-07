@@ -20,7 +20,6 @@ import ChoosePayment from "./payment/ChoosePayment";
 import OrderCard from "./order/OrderCard";
 // Data
 import { fetchedRates } from "../../utils/rates";
-import { addons } from "../../utils/addons";
 import { times, minutes } from "../../utils/times";
 
 function OrderComponent() {
@@ -46,7 +45,6 @@ function OrderComponent() {
     store.setBaseMinutes(data.baseMinutes);
     store.setRoomMinutes(data.roomMinutes);
     store.setBedroomMinutes(data.bedroomsMinutes);
-   
 
     // prepare data for TimePicker
     const mapedTimes: ExtendedITime[] = times.map((t) => {

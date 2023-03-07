@@ -28,10 +28,13 @@ export default class Store {
   VATvalue: number;
   rate: number;
   actualRate: rateType;
+  ocassionalRate: number;
   rates: rateType[];
   homeRate: number;
   addons: ExtendedIAddons[];
   addonReciver: IAddonReciver[];
+  washingAddons: ExtendedIAddons[];
+  washingAddonReciver: IAddonReciver[];
   time: string;
   times: ExtendedITime[];
   minutes: ExtendedIMinutes[];
@@ -43,6 +46,7 @@ export default class Store {
 
   constructor() {
     makeAutoObservable(this);
+    this.ocassionalRate = 0;
     this.rooms = 1;
     this.bedrooms = 1;
     this.bedroomPrise = 30;
@@ -62,6 +66,7 @@ export default class Store {
     };
     this.homeRate = 1;
     this.addonReciver = [];
+    this.washingAddonReciver = [];
     this.time = "";
     this.minutes = [];
     this.serviceDay = "";
@@ -185,14 +190,19 @@ export default class Store {
   }
 
   calculateTotalPrise() {
+    const rate =
+      this.actualRate.discount > this.ocassionalRate
+        ? this.actualRate.discount
+        : this.ocassionalRate;
     const number =
       (this.basePrise +
         this.roomPrise * this.rooms +
         this.bedroomPrise * this.bedrooms +
+        this.getWashingAddonTotalPrice() +
         this.getAddonTotalPrice()) *
       this.homeRate *
       this.VATvalue *
-      (1 - this.actualRate.discount / 100);
+      (1 - rate / 100);
     const roundedNumber = parseFloat(number.toFixed(2));
     return roundedNumber;
   }
@@ -202,6 +212,7 @@ export default class Store {
       (this.basePrise +
         this.roomPrise * this.rooms +
         this.bedroomPrise * this.bedrooms +
+        this.getWashingAddonTotalPrice() +
         this.getAddonTotalPrice()) *
       this.homeRate *
       this.VATvalue;
@@ -232,8 +243,13 @@ export default class Store {
   setActivityInAddons(hash: string) {
     console.log(hash);
     const index = this.addons.findIndex((addon) => addon.hash === hash);
-    console.log(this.addons[index]);
     this.addons[index].isActive = !this.addons[index].isActive;
+  }
+
+  setActivityInWashingAddons(hash: string) {
+    console.log(hash);
+    const index = this.washingAddons.findIndex((addon) => addon.hash === hash);
+    this.washingAddons[index].isActive = !this.washingAddons[index].isActive;
   }
 
   addItemToAddonReciver(item: IAddonReciver) {
@@ -247,8 +263,36 @@ export default class Store {
     }
   }
 
+  deleteItemFromWashingAddonReciver(hash: string) {
+    const index = this.washingAddonReciver.findIndex(
+      (addon) => addon.hash === hash
+    );
+    if (index !== -1) {
+      this.washingAddonReciver.splice(index, 1);
+    }
+  }
+
+  addItemToWashingAddonReciver(item: IAddonReciver) {
+    this.washingAddonReciver.push(item);
+  }
+
+  deleteItemFromWashingReciver(hash: string) {
+    const index = this.washingAddonReciver.findIndex(
+      (addon) => addon.hash === hash
+    );
+    if (index !== -1) {
+      this.washingAddonReciver.splice(index, 1);
+    }
+  }
+
   deleteItemsWithSameHashFromAddonReciver(hash: string) {
     this.addonReciver = [...this.addonReciver].filter(
+      (addon) => addon.hash !== hash
+    );
+  }
+
+  deleteItemsWithSameHashFromWashingAddonReciver(hash: string) {
+    this.washingAddonReciver = [...this.washingAddonReciver].filter(
       (addon) => addon.hash !== hash
     );
   }
@@ -262,16 +306,37 @@ export default class Store {
     }
   }
 
+  deleteMultyItemFromWashingAddonReciver(hash: string, multyId: number) {
+    const index = this.washingAddonReciver.findIndex(
+      (addon) => addon.hash === hash && addon.multyId === multyId
+    );
+    if (index !== -1) {
+      this.washingAddonReciver.splice(index, 1);
+    }
+  }
+
   getAddonTotalPrice() {
     return this.addonReciver.reduce((sum, obj) => sum + obj.price, 0);
+  }
+
+  getWashingAddonTotalPrice() {
+    return this.washingAddonReciver.reduce((sum, obj) => sum + obj.price, 0);
   }
 
   getAddonTotalMinutes() {
     return this.addonReciver.reduce((sum, obj) => sum + obj.minutes, 0);
   }
 
+  getWashingAddonTotalMinutes() {
+    return this.washingAddonReciver.reduce((sum, obj) => sum + obj.minutes, 0);
+  }
+
   setAddons(addons: ExtendedIAddons[]) {
     this.addons = addons;
+  }
+
+  setWashingAddons(washingAddons: ExtendedIAddons[]) {
+    this.washingAddons = washingAddons;
   }
 
   setHomeRate(homeRate: number) {
@@ -280,6 +345,10 @@ export default class Store {
 
   setActualRate(actualRate: rateType) {
     this.actualRate = actualRate;
+  }
+
+  setOcassionalRate(ocassionalRate: number) {
+    this.ocassionalRate = ocassionalRate;
   }
 
   changeRatesIsCurentValue(id: number) {

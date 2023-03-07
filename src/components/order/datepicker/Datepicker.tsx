@@ -101,10 +101,12 @@ function DatePickear() {
   const myRef = React.useRef(null);
 
   const dayClickHandler = (item: ExtendedIDays) => {
-    if (item.rate) {
-      console.log(item.rate);
-    }
     if (item.isActive === false) {
+      if (item.rate) {
+        store.setOcassionalRate(item.rate);
+      } else {
+        store.setOcassionalRate(0);
+      }
       store.setServiceDay(item.month + " " + item.date);
       store.setDatePickerError(false);
       store.setTime("");
@@ -116,6 +118,7 @@ function DatePickear() {
     }
 
     if (item.isActive === true) {
+      store.setOcassionalRate(0);
       store.setServiceDay("");
       store.setTime("");
       store.setTimes(

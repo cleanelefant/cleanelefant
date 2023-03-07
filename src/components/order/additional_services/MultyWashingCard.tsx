@@ -7,7 +7,7 @@ interface IMultyCard {
   item: ExtendedIAddons;
 }
 
-function MultyCard({ item }: IMultyCard) {
+function MultyWashingCard({ item }: IMultyCard) {
   const { store } = useContext(Context);
   const [total, setTotal] = React.useState(1);
 
@@ -24,10 +24,10 @@ function MultyCard({ item }: IMultyCard) {
         return;
       } else {
         if (obj.isActive) {
-          store.deleteItemsWithSameHashFromAddonReciver(obj.hash);
+          store.deleteItemsWithSameHashFromWashingAddonReciver(obj.hash);
           setTotal(1);
         } else {
-          store.addItemToAddonReciver({
+          store.addItemToWashingAddonReciver({
             hash: obj.hash,
             title: obj.title,
             price: obj.price,
@@ -35,24 +35,24 @@ function MultyCard({ item }: IMultyCard) {
             minutes: obj.minutes,
           });
         }
-        store.setActivityInAddons(obj.hash);
+        store.setActivityInWashingAddons(obj.hash);
       }
     }
   };
 
   const buttonDecreaseClickHandler = (obj: ExtendedIAddons) => {
     if (total === 1) {
-      store.deleteItemFromAddonReciver(obj.hash);
-      store.setActivityInAddons(obj.hash);
+      store.deleteItemFromWashingAddonReciver(obj.hash);
+      store.setActivityInWashingAddons(obj.hash);
     }
     if (total > 1) {
-      store.deleteMultyItemFromAddonReciver(obj.hash, total - 1);
+      store.deleteMultyItemFromWashingAddonReciver(obj.hash, total - 1);
       setTotal((t) => t - 1);
     }
   };
 
   const buttonIncreaseClickHandler = (obj: ExtendedIAddons) => {
-    store.addItemToAddonReciver({
+    store.addItemToWashingAddonReciver({
       hash: obj.hash,
       title: obj.title,
       price: obj.price,
@@ -100,4 +100,4 @@ function MultyCard({ item }: IMultyCard) {
   );
 }
 
-export default observer(MultyCard);
+export default observer(MultyWashingCard);
