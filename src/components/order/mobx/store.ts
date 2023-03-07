@@ -25,6 +25,7 @@ export default class Store {
   roomMinutes: number;
   bedroomMinutes: number;
   totalMinutes: number;
+  persons: number;
   VATvalue: number;
   rate: number;
   actualRate: rateType;
@@ -56,6 +57,7 @@ export default class Store {
     this.roomMinutes = 30;
     this.bedroomMinutes = 60;
     this.totalMinutes = 180;
+    this.persons = 1;
     this.VATvalue = 1;
     this.actualRate = {
       id: 4,
@@ -241,13 +243,11 @@ export default class Store {
   }
 
   setActivityInAddons(hash: string) {
-    console.log(hash);
     const index = this.addons.findIndex((addon) => addon.hash === hash);
     this.addons[index].isActive = !this.addons[index].isActive;
   }
 
   setActivityInWashingAddons(hash: string) {
-    console.log(hash);
     const index = this.washingAddons.findIndex((addon) => addon.hash === hash);
     this.washingAddons[index].isActive = !this.washingAddons[index].isActive;
   }

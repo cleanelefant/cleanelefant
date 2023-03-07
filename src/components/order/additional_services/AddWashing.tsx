@@ -11,6 +11,11 @@ import { addons } from "../../../utils/addons";
 
 function AddWashing() {
   const { store } = useContext(Context);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  const clickHandler = () => {
+    setIsVisible((s) => !s);
+  };
 
   React.useEffect(() => {
     const mapedAddons: ExtendedIAddons[] = addons
@@ -40,24 +45,29 @@ function AddWashing() {
 
   return (
     <div>
-      <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'>
+      <div
+        onClick={clickHandler}
+        className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'
+      >
         ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE SPRZĄTANIEM
       </div>
-      <div className='flex flex-wrap gap-4 my-10'>
-        {store.washingAddons?.map((item) => {
-          if (item.isMultiply) {
-            return <MultyWashingCard key={item.id} item={item} />;
-          }
+      {isVisible && (
+        <div className='flex flex-wrap gap-4 my-10'>
+          {store.washingAddons?.map((item) => {
+            if (item.isMultiply) {
+              return <MultyWashingCard key={item.id} item={item} />;
+            }
 
-          return (
-            <SingleCard
-              key={item.id}
-              item={item}
-              cardClickHandler={cardClickHandler}
-            />
-          );
-        })}
-      </div>
+            return (
+              <SingleCard
+                key={item.id}
+                item={item}
+                cardClickHandler={cardClickHandler}
+              />
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
