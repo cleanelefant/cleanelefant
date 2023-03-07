@@ -186,7 +186,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 17,
@@ -197,7 +197,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 18,
@@ -208,7 +208,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 19,
@@ -219,7 +219,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 20,
@@ -230,7 +230,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 21,
@@ -241,7 +241,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 22,
@@ -252,7 +252,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 23,
@@ -263,7 +263,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 24,
@@ -274,7 +274,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 25,
@@ -341,7 +341,7 @@ export const addons: IAddons[] = [
     isOrderPage: false,
     isPreHours: false,
     isMultiply: true,
-    minutes: 180,
+    minutes: 60,
   },
   {
     id: 31,
