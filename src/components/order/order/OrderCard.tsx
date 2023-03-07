@@ -177,8 +177,10 @@ function OrderCard() {
                     className='cursor-pointer'
                     onClick={() => {
                       // store.deleteItemFromAddonReciver(item.hash);
-                      store.deleteItemsWithSameHashFromAddonReciver(item.hash);
-                      store.setActivityInAddons(item.hash);
+                      store.deleteItemsWithSameHashFromWashingAddonReciver(
+                        item.hash
+                      );
+                      store.setActivityInWashingAddons(item.hash);
                     }}
                   >
                     &#10060;
