@@ -1,14 +1,11 @@
 import {
   rateType,
-  IAddons,
   IAddonReciver,
   ExtendedIMinutes,
   ExtendedITime,
   IErrors,
-  IFormInput,
   IAdressForm,
   IContactForm,
-  ITime,
   IServiceTime,
   ExtendedIAddons,
 } from "./../../../types";
@@ -118,12 +115,33 @@ export default class Store {
   }
 
   setTotalMinutes() {
-    this.totalMinutes =
+    const limit = 5;
+    const baseTime =
       this.baseMinutes +
       this.roomMinutes * this.rooms +
       this.bedroomMinutes * this.bedrooms +
-      this.getAddonTotalMinutes() +
-      this.getWashingAddonTotalMinutes();
+      this.getAddonTotalMinutes();
+    const washingTime = this.getWashingAddonTotalMinutes();
+    if (washingTime) {
+      const washPersons = Math.trunc(washingTime / 60 / limit);
+      console.log("washingTime", washingTime);
+      console.log("washPersons", washPersons);
+      if (washPersons) {
+        this.setPersons(this.persons);
+      } else {
+        this.setPersons(2);
+      }
+    }
+    const delta = washingTime - baseTime;
+    this.totalMinutes = baseTime > washingTime ? baseTime : baseTime + delta;
+  }
+
+  setPersons(persons: number) {
+    this.persons = persons;
+  }
+
+  addPersons(persons: number) {
+    this.persons = this.persons + persons;
   }
 
   setTotalTime() {
