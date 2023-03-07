@@ -122,7 +122,8 @@ export default class Store {
       this.baseMinutes +
       this.roomMinutes * this.rooms +
       this.bedroomMinutes * this.bedrooms +
-      this.getAddonTotalMinutes();
+      this.getAddonTotalMinutes() +
+      this.getWashingAddonTotalMinutes();
   }
 
   setTotalTime() {

@@ -28,7 +28,9 @@ function findInArray(addon: IAddonReciver, targetArr: ITarget[]) {
 function OrderCard() {
   const { store } = useContext(Context);
   const addonsArr = toJS(store.addonReciver);
+  const washingAddonsArr = toJS(store.washingAddonReciver);
   const targetArr: ITarget[] = [];
+  const washingTargetArr: ITarget[] = [];
 
   const clickHandler = () => {
     store.setDatePickerError(!!!store.serviceDay);
@@ -58,9 +60,30 @@ function OrderCard() {
     }
   });
 
+  washingAddonsArr.forEach((addon) => {
+    if (findInArray(addon, washingTargetArr)) {
+      const index = washingTargetArr.findIndex(
+        (item) => item.hash === addon.hash
+      );
+      washingTargetArr[index].total += 1;
+    } else {
+      washingTargetArr.push({
+        hash: addon.hash,
+        title: addon.title,
+        total: 1,
+        src: addon.src,
+      });
+    }
+  });
+
   React.useEffect(() => {
     store.setTotalMinutes();
-  }, [store.rooms, store.bedrooms, store.addonReciver.length]);
+  }, [
+    store.rooms,
+    store.bedrooms,
+    store.addonReciver.length,
+    store.washingAddonReciver.length,
+  ]);
 
   const time = store.setTotalTime();
 
@@ -117,6 +140,31 @@ function OrderCard() {
           {addonsArr.length > 0 && (
             <div className='text-center font-mono text-sm'>
               {targetArr.map((item, index) => (
+                <div
+                  key={index}
+                  className='flex gap-x-2 justify-start items-center'
+                >
+                  <img src={item.src} width={20} height={20} />
+                  <p>
+                    {item.title}-<span>{item.total}</span>
+                  </p>
+                  <div
+                    className='cursor-pointer'
+                    onClick={() => {
+                      // store.deleteItemFromAddonReciver(item.hash);
+                      store.deleteItemsWithSameHashFromAddonReciver(item.hash);
+                      store.setActivityInAddons(item.hash);
+                    }}
+                  >
+                    &#10060;
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {washingAddonsArr.length > 0 && (
+            <div className='text-center font-mono text-sm'>
+              {washingTargetArr.map((item, index) => (
                 <div
                   key={index}
                   className='flex gap-x-2 justify-start items-center'
