@@ -108,7 +108,7 @@ function OrderCard() {
           {time.hours} {time.hours > 4 ? "godzin " : "godziny "}
           {time.minutes ? time.minutes : null} {time.minutes ? " minut" : null}
         </div>
-        <div className='text-center'>Persons:{store.persons}</div>
+        <div className='text-center'>Persons:{store.getPersons()}</div>
 
         <div className='text-sm'>
           <div>Zamówienie sprzątania obejmuje:</div>

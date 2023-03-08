@@ -1,0 +1,86 @@
+---
+import Contact from "../components/layout/Contact.astro";
+import Burger from "../components/menu/Burger.astro";
+import Menu from "../components/menu/Menu";
+import Join from "../components/menu/Join.astro";
+import MobileBurger from "../components/menu/MobileBurger.astro";
+import MobileMenu from "../components/menu/MobileMenu.astro";
+import Footer from "../components/layout/Footer.astro";
+import MobileContact from "../components/layout/MobileContact.astro";
+import Logo from "../components/layout/Logo.astro";
+import RightMenu from "../components/menu/RightMenu";
+
+export interface Props {
+  title: string;
+  description: string;
+  keywords: string;
+}
+
+const { title, description, keywords } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+    <meta name='description' content={description} />
+    <meta name='keywords' content={keywords} />
+  </head>
+  <body>
+    <header id='header_123' class='bg-gradient-to-b from-white overflow-auto'>
+      <div class='mx-2 lg:mx-8'>
+        <div class='flex justify-between items-center lg:pb-10'>
+          <div class='flex gap-x-5 lg:gap-x-5 items-center'>
+            <Logo />
+            <Burger />
+          </div>
+          <Contact />
+          <RightMenu client:load />
+          <MobileContact />
+          <Join />
+          <MobileBurger />
+        </div>
+      </div>
+      <Menu client:load />
+      <MobileMenu />
+    </header>
+    <main id='main'><slot /></main>
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+  }
+  html {
+    /* font-family: system-ui, sans-serif; */
+    /* font-family: Lucida Console; */
+    font-family: Goudy Bookletter 1911;
+    background-color: #f6f6f6;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  .menu-button {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 100%;
+  }
+  .right-menu {
+    /* border-radius: 100%; */
+  }
+  .dropdowm-menu {
+    display: none;
+    background-color: white;
+  }
+  .dropdowm-menu a:hover {
+    text-decoration: underline;
+  }
+</style>

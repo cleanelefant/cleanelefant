@@ -21,6 +21,7 @@ import OrderCard from "./order/OrderCard";
 // Data
 import { fetchedRates } from "../../utils/rates";
 import { times, minutes } from "../../utils/times";
+import Steps from "./steps/Steps";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -90,31 +91,39 @@ function OrderComponent() {
   }, []);
 
   return (
-    <div className='flex flex-col lg:flex-row gap-y-10 lg:gap-x-10'>
-      <div className='basis-3/4'>
-        <Launcher />
-        <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
-          TWOJE MIESZKANIE
-        </div>
+    <div>
+      <Steps />
+      <div className='mx-4 lg:mx-10'>
+        <h1 className='text-lg lg:text-3xl font-extrabold uppercase text-center'>
+          Sprzątanie mieszkania Zielona Góra
+        </h1>
+        <div className='flex flex-col lg:flex-row gap-y-10 lg:gap-x-10'>
+          <div className='basis-3/4'>
+            <Launcher />
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
+              TWOJE MIESZKANIE
+            </div>
 
-        <div className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10'>
-          <RoomCounter />
-          <BedroomCounter />
+            <div className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10'>
+              <RoomCounter />
+              <BedroomCounter />
+            </div>
+            <HomeOption />
+            <Rates />
+            <AddService />
+            <div className='flex flex-col 2xl:flex-row gap-x-5'>
+              <DatePickear />
+              <TimePicker />
+            </div>
+            <AddWashing />
+            <AdressForm />
+            <ContactForm />
+            <ChoosePayment />
+          </div>
+          <div className='basis-1/4'>
+            <OrderCard />
+          </div>
         </div>
-        <HomeOption />
-        <Rates />
-        <AddService />
-        <div className='flex flex-col 2xl:flex-row gap-x-5'>
-          <DatePickear />
-          <TimePicker />
-        </div>
-        <AddWashing />
-        <AdressForm />
-        <ContactForm />
-        <ChoosePayment />
-      </div>
-      <div className='basis-1/4'>
-        <OrderCard />
       </div>
     </div>
   );

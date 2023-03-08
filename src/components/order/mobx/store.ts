@@ -22,6 +22,8 @@ export default class Store {
   roomMinutes: number;
   bedroomMinutes: number;
   totalMinutes: number;
+  cleaningPersons: number;
+  washingPersons: number;
   persons: number;
   VATvalue: number;
   rate: number;
@@ -54,7 +56,8 @@ export default class Store {
     this.roomMinutes = 30;
     this.bedroomMinutes = 60;
     this.totalMinutes = 180;
-    this.persons = 1;
+    this.cleaningPersons = 1;
+    this.washingPersons = 0;
     this.VATvalue = 1;
     this.actualRate = {
       id: 4,
@@ -121,27 +124,40 @@ export default class Store {
       this.roomMinutes * this.rooms +
       this.bedroomMinutes * this.bedrooms +
       this.getAddonTotalMinutes();
+
+    const cleaningPersons = Math.trunc(baseTime / 60 / limit);
+
+    console.log("calculateCleaningPersons", cleaningPersons);
+
+    if (cleaningPersons > 1) {
+      this.setCleaningPersons(cleaningPersons);
+    }
+
     const washingTime = this.getWashingAddonTotalMinutes();
+
     if (washingTime) {
-      const washPersons = Math.trunc(washingTime / 60 / limit);
-      console.log("washingTime", washingTime);
-      console.log("washPersons", washPersons);
-      if (washPersons) {
-        this.setPersons(this.persons);
-      } else {
-        this.setPersons(2);
+      const washingPersons = Math.trunc(washingTime / 60 / limit);
+      if (washingPersons < 2) {
+        this.setWashingPersons(1);
       }
+      if (washingPersons > 1) {
+        this.setWashingPersons(washingPersons);
+      }
+      console.log("washingPersons", washingPersons);
     }
     const delta = washingTime - baseTime;
     this.totalMinutes = baseTime > washingTime ? baseTime : baseTime + delta;
   }
 
-  setPersons(persons: number) {
-    this.persons = persons;
+  getPersons() {
+    return this.cleaningPersons + this.washingPersons;
   }
 
-  addPersons(persons: number) {
-    this.persons = this.persons + persons;
+  setCleaningPersons(persons: number) {
+    this.cleaningPersons = persons;
+  }
+  setWashingPersons(persons: number) {
+    this.washingPersons = persons;
   }
 
   setTotalTime() {
