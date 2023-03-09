@@ -39,8 +39,14 @@ function OrderComponent() {
     const rooms = queryParams.get("rooms");
     const bedrooms = queryParams.get("bedrooms");
     const discount = queryParams.get("discount");
-    store.setRooms(Number(rooms));
-    store.setBedrooms(Number(bedrooms));
+
+    if (Number(rooms)) {
+      console.log(Number(rooms));
+      store.setRooms(Number(rooms));
+    }
+    if (Number(bedrooms)) {
+      store.setBedrooms(Number(bedrooms));
+    }
     store.setBasePrice(data.basePrice);
     store.setRoomPrice(data.roomPrice);
     store.setBedPrice(data.bedroomPrice);
