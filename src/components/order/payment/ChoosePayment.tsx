@@ -13,8 +13,32 @@ function ChoosePayment() {
     store.setIsCash(false);
   };
 
+  const topRef = React.useRef<HTMLDivElement>(null);
+  const bottomRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#payment_order_page");
+      }
+    });
+    const bottomObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#payment_order_page");
+      }
+    });
+    if (topRef.current) {
+      observer.observe(topRef.current);
+    }
+    if (bottomRef.current) {
+      bottomObserver.observe(bottomRef.current);
+    }
+  }, []);
+
   return (
-    <div className='bg-white my-5'>
+    <div className='bg-white my-5' id='payment_order_page'>
+      <div ref={topRef}></div>
       <div>
         <div className='text-3xl text-center font-bold p-5'>
           WYBIERZ METODĘ PŁATNOŚCI
@@ -42,6 +66,7 @@ function ChoosePayment() {
           Kartą online
         </div>
       </div>
+      <div ref={bottomRef}></div>
     </div>
   );
 }

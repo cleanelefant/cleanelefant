@@ -189,3 +189,10 @@ export interface IContactForm {
   email: string;
   notes: string;
 }
+
+export interface IStep {
+  id: number;
+  title: string;
+  target: string;
+  isActive: boolean;
+}

@@ -252,7 +252,6 @@ function DatePickear() {
           ? "border-red-500"
           : "border-amber-500"
       } border-4 p-2`}
-      id='datepicker_order_page'
     >
       <div className='flex justify-between text-xl font-bold'>
         {month > startMonth ? (

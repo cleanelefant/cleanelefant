@@ -22,6 +22,7 @@ import OrderCard from "./order/OrderCard";
 import { fetchedRates } from "../../utils/rates";
 import { times, minutes } from "../../utils/times";
 import Steps from "./steps/Steps";
+import { steps } from "./../../utils/data/steps";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -46,6 +47,7 @@ function OrderComponent() {
     store.setBaseMinutes(data.baseMinutes);
     store.setRoomMinutes(data.roomMinutes);
     store.setBedroomMinutes(data.bedroomsMinutes);
+    store.setSteps(steps);
 
     // prepare data for TimePicker
     const mapedTimes: ExtendedITime[] = times.map((t) => {
@@ -90,8 +92,79 @@ function OrderComponent() {
     store.setRates(mapedFetchedRates);
   }, []);
 
+  const topContactRef = React.useRef<HTMLDivElement>(null);
+  const bottomContactRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#adress_order_page");
+      }
+    });
+    const bottomObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#adress_order_page");
+      }
+    });
+    if (topContactRef.current) {
+      observer.observe(topContactRef.current);
+    }
+    if (bottomContactRef.current) {
+      bottomObserver.observe(bottomContactRef.current);
+    }
+  }, []);
+
+  const topTimeRef = React.useRef<HTMLDivElement>(null);
+  const bottomTimeRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#datepicker_order_page");
+      }
+    });
+    const bottomObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#datepicker_order_page");
+      }
+    });
+    if (topTimeRef.current) {
+      console.log("topTimeRef.current", topTimeRef.current);
+      observer.observe(topTimeRef.current);
+    }
+    if (bottomTimeRef.current) {
+      bottomObserver.observe(bottomTimeRef.current);
+    }
+  }, []);
+
+  const topServiceRef = React.useRef<HTMLDivElement>(null);
+  const bottomServiceRef = React.useRef<HTMLDivElement>(null);
+  React.useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#countres_order_page");
+      }
+    });
+    const bottomObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        store.clickStepHandler("#countres_order_page");
+      }
+    });
+    if (topServiceRef.current) {
+      console.log("topTimeRef.current", topTimeRef.current);
+      observer.observe(topServiceRef.current);
+    }
+    if (bottomServiceRef.current) {
+      bottomObserver.observe(bottomServiceRef.current);
+    }
+  }, []);
+
   return (
-    <div>
+    <div className='scroll-smooth'>
       <Steps />
       <div className='mx-4 lg:mx-10'>
         <h1 className='text-lg lg:text-3xl font-extrabold uppercase text-center'>
@@ -103,21 +176,34 @@ function OrderComponent() {
             <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
               TWOJE MIESZKANIE
             </div>
-
-            <div className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10'>
+            <div ref={topServiceRef}></div>
+            <div
+              className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10'
+              id='countres_order_page'
+            >
               <RoomCounter />
               <BedroomCounter />
             </div>
             <HomeOption />
             <Rates />
             <AddService />
-            <div className='flex flex-col 2xl:flex-row gap-x-5'>
+            <div ref={bottomServiceRef}></div>
+            <div
+              className='flex flex-col 2xl:flex-row gap-x-5'
+              id='datepicker_order_page'
+            >
+              <div ref={topTimeRef}></div>
               <DatePickear />
               <TimePicker />
+              <div ref={bottomTimeRef}></div>
             </div>
             <AddWashing />
-            <AdressForm />
-            <ContactForm />
+            <div id='adress_order_page'>
+              <div ref={topContactRef}></div>
+              <AdressForm />
+              <ContactForm />
+              <div ref={bottomContactRef}></div>
+            </div>
             <ChoosePayment />
           </div>
           <div className='basis-1/4'>

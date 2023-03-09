@@ -8,6 +8,7 @@ import {
   IContactForm,
   IServiceTime,
   ExtendedIAddons,
+  IStep,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
@@ -43,6 +44,7 @@ export default class Store {
   pageErrors: IErrors;
   adressFormData: IAdressForm;
   contactFormData: IContactForm;
+  steps: IStep[];
 
   constructor() {
     makeAutoObservable(this);
@@ -104,7 +106,23 @@ export default class Store {
       },
       phoneErrors: { isPhoneError: false, text: "Wprowadz numer telefonu" },
     };
+    this.steps = [] as IStep[];
   }
+  // Steps
+
+  setSteps(steps: IStep[]) {
+    this.steps = steps;
+  }
+
+  clickStepHandler(target: string) {
+    this.steps = [...this.steps].map((item) => {
+      if (item.target === target) {
+        return { ...item, isActive: true };
+      }
+      return { ...item, isActive: false };
+    });
+  }
+
   // Minutes
 
   setBaseMinutes(minutes: number) {
@@ -127,8 +145,6 @@ export default class Store {
 
     const cleaningPersons = Math.trunc(baseTime / 60 / limit);
 
-    console.log("calculateCleaningPersons", cleaningPersons);
-
     if (cleaningPersons > 1) {
       this.setCleaningPersons(cleaningPersons);
     }
@@ -143,7 +159,6 @@ export default class Store {
       if (washingPersons > 1) {
         this.setWashingPersons(washingPersons);
       }
-      console.log("washingPersons", washingPersons);
     }
     const delta = washingTime - baseTime;
     this.totalMinutes = baseTime > washingTime ? baseTime : baseTime + delta;
