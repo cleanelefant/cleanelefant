@@ -429,6 +429,7 @@ export default class Store {
   }
 
   setRooms(rooms: number) {
+    console.log("hello ooo dddd");
     this.rooms = rooms;
   }
   setBedrooms(bedrooms: number) {
