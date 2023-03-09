@@ -22,9 +22,14 @@ function AdressForm() {
   const { store } = useContext(Context);
   const myRef = React.useRef(null);
   React.useEffect(() => {
-    if (store.pageErrors.streetError.isStreetError) {
-      myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      return;
+    if (!store.pageErrors.dateError.isDateError) {
+      if (store.pageErrors.streetError.isStreetError)
+        myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+    if (!store.pageErrors.timeError.isTimeError) {
+      if (store.pageErrors.streetError.isStreetError) {
+        myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+      }
     }
   }, [store.pageErrors.streetError.isStreetError]);
   return (
