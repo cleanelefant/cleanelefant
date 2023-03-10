@@ -21,15 +21,15 @@ const getInputGroupStyles = () => {
 function ContactForm() {
   const inputGroupStyles = getInputGroupStyles();
   const { store } = useContext(Context);
-  const myRef = React.useRef(null);
-  React.useEffect(() => {
-    if (store.pageErrors.streetError.isStreetError) {
-      myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      return;
-    }
-  }, [store.pageErrors.streetError.isStreetError]);
+  // const myRef = React.useRef(null);
+  // React.useEffect(() => {
+  //   if (store.pageErrors.streetError.isError) {
+  //     myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  //     return;
+  //   }
+  // }, [store.pageErrors.streetError.isError]);
   return (
-    <div className='bg-white my-5' ref={myRef}>
+    <div className='bg-white my-5' id='contact_form_order_page'>
       <div className='text-3xl text-center font-bold p-5'>DANE KONTAKTOWE</div>
       <section className='grid-cols-1 lg:grid lg:grid-cols-3 gap-4'>
         {/* Name */}
@@ -40,7 +40,7 @@ function ContactForm() {
           <FormInput
             mykey={"name"}
             type={"contact"}
-            isError={store.pageErrors.nameErrors.isNameError}
+            isError={store.pageErrors.nameErrors.isError}
           />
         </div>
         {/* Phone */}
@@ -52,7 +52,7 @@ function ContactForm() {
             mykey={"phone"}
             type='contact'
             mask='+48\ 999-999-999'
-            isError={store.pageErrors.phoneErrors.isPhoneError}
+            isError={store.pageErrors.phoneErrors.isError}
           />
         </div>
         {/* Email*/}
@@ -63,7 +63,7 @@ function ContactForm() {
           <FormInput
             mykey={"email"}
             type='contact'
-            isError={store.pageErrors.emailErrors.isEmailError}
+            isError={store.pageErrors.emailErrors.isError}
           />
         </div>
         <div className={"px-3 mb-4 col-span-3 "}>

@@ -20,20 +20,9 @@ const getInputGroupStyles = () => {
 function AdressForm() {
   const inputGroupStyles = getInputGroupStyles();
   const { store } = useContext(Context);
-  const myRef = React.useRef(null);
-  React.useEffect(() => {
-    if (!store.pageErrors.dateError.isDateError) {
-      if (store.pageErrors.streetError.isStreetError)
-        myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-    }
-    if (!store.pageErrors.timeError.isTimeError) {
-      if (store.pageErrors.streetError.isStreetError) {
-        myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      }
-    }
-  }, [store.pageErrors.streetError.isStreetError]);
+
   return (
-    <div className='bg-white my-5' ref={myRef}>
+    <div className='bg-white my-5' id='adress_form_order_page'>
       <div className='text-3xl text-center font-bold p-5'>
         WPROWADŹ SWÓJ ADRES
       </div>
@@ -46,7 +35,7 @@ function AdressForm() {
           <FormInput
             mykey={"street"}
             type='adress'
-            isError={store.pageErrors.streetError.isStreetError}
+            isError={store.pageErrors.streetError.isError}
           />
         </div>
         {/* Zip Code */}
@@ -58,7 +47,7 @@ function AdressForm() {
             mykey={"zip"}
             type='adress'
             mask='99-999'
-            isError={store.pageErrors.zipError.isZipError}
+            isError={store.pageErrors.zipError.isError}
           />
         </div>
         {/* House Number*/}
@@ -69,7 +58,7 @@ function AdressForm() {
           <FormInput
             mykey={"house"}
             type='adress'
-            isError={store.pageErrors.houseError.isHouseError}
+            isError={store.pageErrors.houseError.isError}
           />
         </div>
         {/* Piętro*/}
@@ -80,7 +69,7 @@ function AdressForm() {
           <FormInput
             mykey={"local"}
             type='adress'
-            isError={store.pageErrors.localErrors.isLocalError}
+            isError={store.pageErrors.localErrors.isError}
           />
         </div>
         {/* Flat Number*/}
@@ -91,7 +80,7 @@ function AdressForm() {
           <FormInput
             mykey={"level"}
             type='adress'
-            isError={store.pageErrors.levelErrors.isLevelError}
+            isError={store.pageErrors.levelErrors.isError}
           />
         </div>
         {/* Flat Number*/}
@@ -102,7 +91,7 @@ function AdressForm() {
           <FormInput
             mykey={"intercom"}
             type='adress'
-            isError={store.pageErrors.intercomErrors.isIntercomError}
+            isError={store.pageErrors.intercomErrors.isError}
           />
         </div>
       </section>

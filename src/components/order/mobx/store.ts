@@ -9,10 +9,11 @@ import {
   IServiceTime,
   ExtendedIAddons,
   IStep,
+  IErrorOrderPage,
 } from "./../../../types";
 import { makeAutoObservable } from "mobx";
 
-export default class Store {
+export default class This {
   naming = { pokoj: "pokój", lazienka: "łazienka" };
   rooms: number;
   bedrooms: number;
@@ -42,6 +43,7 @@ export default class Store {
   serviceDay: string;
   isCash: boolean;
   pageErrors: IErrors;
+  errorArray: IErrorOrderPage[];
   adressFormData: IAdressForm;
   contactFormData: IContactForm;
   steps: IStep[];
@@ -90,22 +92,77 @@ export default class Store {
       notes: "",
     };
     this.pageErrors = {
-      dateError: { isDateError: false, text: "Wybierz datę" },
-      timeError: { isTimeError: false, text: "Wybierz czas" },
-      streetError: { isStreetError: false, text: "Wprowadz ulicę" },
-      zipError: { isZipError: false, text: "Wprowadz kod pocztowy" },
-      houseError: { isHouseError: false, text: "Wprowadz numer domu" },
-      localErrors: { isLocalError: false, text: "Wprowadz numer mieszkania" },
-      levelErrors: { isLevelError: false, text: "Wprowadz piętro" },
-      intercomErrors: { isIntercomError: false, text: "Wprowadz kod domofonu" },
-      nameErrors: { isNameError: false, text: "Wprowadz imię" },
+      dateError: {
+        isError: false,
+        text: "Wybierz datę",
+        level: 1,
+        target: "datepicker_order_page",
+      },
+      timeError: {
+        isError: false,
+        text: "Wybierz czas",
+        level: 2,
+        target: "timepicker_order_page",
+      },
+      streetError: {
+        isError: false,
+        text: "Wprowadz ulicę",
+        level: 3,
+        target: "adress_form_order_page",
+      },
+      zipError: {
+        isError: false,
+        text: "Wprowadz kod pocztowy",
+        level: 4,
+        target: "adress_form_order_page",
+      },
+      houseError: {
+        isError: false,
+        text: "Wprowadz numer domu",
+        level: 5,
+        target: "adress_form_order_page",
+      },
+      localErrors: {
+        isError: false,
+        text: "Wprowadz numer mieszkania",
+        level: 6,
+        target: "adress_form_order_page",
+      },
+      levelErrors: {
+        isError: false,
+        text: "Wprowadz piętro",
+        level: 7,
+        target: "adress_form_order_page",
+      },
+      intercomErrors: {
+        isError: false,
+        text: "Wprowadz kod domofonu",
+        level: 8,
+        target: "adress_form_order_page",
+      },
+      nameErrors: {
+        isError: false,
+        text: "Wprowadz imię",
+        level: 9,
+        target: "contact_form_order_page",
+      },
       emailErrors: {
-        isEmailError: false,
+        isError: false,
         text: "Wprowadz email",
         isEmailValidDataError: false,
+        level: 10,
+        target: "contact_form_order_page",
       },
-      phoneErrors: { isPhoneError: false, text: "Wprowadz numer telefonu" },
+      phoneErrors: {
+        isError: false,
+        text: "Wprowadz numer telefonu",
+        level: 11,
+        target: "contact_form_order_page",
+      },
     };
+
+    this.errorArray = [] as IErrorOrderPage[];
+
     this.steps = [] as IStep[];
   }
   // Steps
@@ -184,48 +241,71 @@ export default class Store {
 
   // Errors
 
+  errrorHandler() {
+    this.setDatePickerError(!!!this.serviceDay);
+    this.setTimePickerError(!!!this.time);
+    this.setStreetError(!!!this.adressFormData.street);
+    this.setHouseError(!!!this.adressFormData.house);
+    // this.setLocalError(!!!this.adressFormData.local);
+    // this.setLevelError(!!!this.adressFormData.level);
+    // this.setZipError(!!!this.adressFormData.zip);
+    // this.setIntercomeError(!!!this.adressFormData.zip);
+    // this.setNameError(!!!this.contactFormData.name);
+    this.setEmailError(!!!this.contactFormData.email);
+    this.setPhoneError(!!!this.contactFormData.phone);
+    for (const item in this.pageErrors) {
+      this.errorArray.push(this.pageErrors[item]);
+    }
+    const activeErrorFilterArr = this.errorArray.filter((item) => item.isError);
+    const higestLevel = activeErrorFilterArr.reduce(function (prev, current) {
+      return prev.level < current.level ? prev : current;
+    });
+    const target = document.getElementById(higestLevel.target);
+    target?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }
+
   setDatePickerError(value: boolean) {
-    this.pageErrors.dateError.isDateError = value;
+    this.pageErrors.dateError.isError = value;
   }
 
   setTimePickerError(value: boolean) {
-    this.pageErrors.timeError.isTimeError = value;
+    this.pageErrors.timeError.isError = value;
   }
 
   setStreetError(value: boolean) {
-    this.pageErrors.streetError.isStreetError = value;
+    this.pageErrors.streetError.isError = value;
   }
 
   setZipError(value: boolean) {
-    this.pageErrors.zipError.isZipError = value;
+    this.pageErrors.zipError.isError = value;
   }
 
   setHouseError(value: boolean) {
-    this.pageErrors.houseError.isHouseError = value;
+    this.pageErrors.houseError.isError = value;
   }
 
   setLevelError(value: boolean) {
-    this.pageErrors.levelErrors.isLevelError = value;
+    this.pageErrors.levelErrors.isError = value;
   }
 
   setLocalError(value: boolean) {
-    this.pageErrors.localErrors.isLocalError = value;
+    this.pageErrors.localErrors.isError = value;
   }
 
   setIntercomeError(value: boolean) {
-    this.pageErrors.intercomErrors.isIntercomError = value;
+    this.pageErrors.intercomErrors.isError = value;
   }
 
   setNameError(value: boolean) {
-    this.pageErrors.nameErrors.isNameError = value;
+    this.pageErrors.nameErrors.isError = value;
   }
 
   setPhoneError(value: boolean) {
-    this.pageErrors.phoneErrors.isPhoneError = value;
+    this.pageErrors.phoneErrors.isError = value;
   }
 
   setEmailError(value: boolean) {
-    this.pageErrors.emailErrors.isEmailError = value;
+    this.pageErrors.emailErrors.isError = value;
   }
 
   setIsEmailValidDataError(value: boolean) {
@@ -429,7 +509,6 @@ export default class Store {
   }
 
   setRooms(rooms: number) {
-    console.log("hello ooo dddd");
     this.rooms = rooms;
   }
   setBedrooms(bedrooms: number) {

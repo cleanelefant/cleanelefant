@@ -7,24 +7,16 @@ import { ExtendedITime } from "../../../types";
 function TimePicker() {
   const { store } = useContext(Context);
   const [times, setTimes] = React.useState<ExtendedITime[]>([]);
-  const myRef = React.useRef(null);
 
   React.useEffect(() => {
     setTimes(store.times);
   }, [store.times]);
 
-  React.useEffect(() => {
-    if (store.pageErrors.timeError.isTimeError) {
-      myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      return;
-    }
-  }, [store.pageErrors.timeError.isTimeError]);
-
   return (
     <div
-      ref={myRef}
+      id='timepicker_order_page'
       className={`${
-        store.pageErrors.timeError.isTimeError
+        store.pageErrors.timeError.isError
           ? "border-red-500"
           : "border-amber-500"
       } border-4 p-2 basis-1/3`}

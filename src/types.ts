@@ -98,71 +98,39 @@ export interface ExtendedIMinutes extends IMinutes {
   isActive: boolean;
 }
 
-type TDateErrors = {
-  isDateError: boolean;
+export interface IErrorOrderPage {
+  isError: boolean;
   text: string;
-};
+  target: string;
+  level: number;
+}
 
-type TTimeErrors = {
-  isTimeError: boolean;
-  text: string;
-};
-type TStreetErrors = {
-  isStreetError: boolean;
-  text: string;
-};
-
-type TZipErrors = {
-  isZipError: boolean;
-  text: string;
-};
-
-type THouseErrors = {
-  isHouseError: boolean;
-  text: string;
-};
-
-type TLocalErrors = {
-  isLocalError: boolean;
-  text: string;
-};
-type TLevelErrors = {
-  isLevelError: boolean;
-  text: string;
-};
-type TIntercomErrors = {
-  isIntercomError: boolean;
-  text: string;
-};
-
-type TNameErrors = {
-  isNameError: boolean;
-  text: string;
-};
-
-type TPhoneErrors = {
-  isPhoneError: boolean;
-  text: string;
-};
-
-type TEmailErrors = {
-  isEmailError: boolean;
-  text: string;
+interface IDateErrors extends IErrorOrderPage {}
+interface ITimeErrors extends IErrorOrderPage {}
+interface IStreetErrors extends IErrorOrderPage {}
+interface IZipErrors extends IErrorOrderPage {}
+interface IHouseErrors extends IErrorOrderPage {}
+interface ILocalErrors extends IErrorOrderPage {}
+interface ILevelErrors extends IErrorOrderPage {}
+interface IIntercomErrors extends IErrorOrderPage {}
+interface INameErrors extends IErrorOrderPage {}
+interface IPhoneErrors extends IErrorOrderPage {}
+interface IEmailErrors extends IErrorOrderPage {
   isEmailValidDataError: boolean;
-};
+}
 
 export interface IErrors {
-  dateError: TDateErrors;
-  timeError: TTimeErrors;
-  streetError: TStreetErrors;
-  zipError: TZipErrors;
-  houseError: THouseErrors;
-  localErrors: TLocalErrors;
-  levelErrors: TLevelErrors;
-  intercomErrors: TIntercomErrors;
-  nameErrors: TNameErrors;
-  phoneErrors: TPhoneErrors;
-  emailErrors: TEmailErrors;
+  dateError: IDateErrors;
+  timeError: ITimeErrors;
+  streetError: IStreetErrors;
+  zipError: IZipErrors;
+  houseError: IHouseErrors;
+  localErrors: ILocalErrors;
+  levelErrors: ILevelErrors;
+  intercomErrors: IIntercomErrors;
+  nameErrors: INameErrors;
+  phoneErrors: IPhoneErrors;
+  emailErrors: IEmailErrors;
 }
 
 export interface IFormInput {

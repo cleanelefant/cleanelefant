@@ -98,7 +98,7 @@ function DatePickear() {
   const { store } = useContext(Context);
   const [month, setMonth] = React.useState(today.getMonth());
   const [days, setDays] = React.useState<ExtendedIDays[]>([]);
-  const myRef = React.useRef(null);
+  // const myRef = React.useRef(null);
 
   const dayClickHandler = (item: ExtendedIDays) => {
     if (item.isActive === false) {
@@ -237,21 +237,14 @@ function DatePickear() {
     setDays(addRatesToAllDays);
   }, [month]);
 
-  React.useEffect(() => {
-    if (store.pageErrors.dateError.isDateError) {
-      myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-      return;
-    }
-  }, [store.pageErrors.dateError.isDateError]);
-
   return (
     <div
-      ref={myRef}
       className={`${
-        store.pageErrors.dateError.isDateError
+        store.pageErrors.dateError.isError
           ? "border-red-500"
           : "border-amber-500"
       } border-4 p-2`}
+      id='datepicker_order_page'
     >
       <div className='flex justify-between text-xl font-bold'>
         {month > startMonth ? (
