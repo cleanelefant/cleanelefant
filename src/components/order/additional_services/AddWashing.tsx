@@ -52,7 +52,7 @@ function AddWashing() {
         ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE SPRZĄTANIEM
       </div>
       {isVisible && (
-        <div className='flex flex-wrap gap-4 my-10'>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 my-10'>
           {store.washingAddons?.map((item) => {
             if (item.isMultiply) {
               return <MultyWashingCard key={item.id} item={item} />;

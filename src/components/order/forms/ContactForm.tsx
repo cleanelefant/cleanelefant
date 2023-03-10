@@ -21,13 +21,6 @@ const getInputGroupStyles = () => {
 function ContactForm() {
   const inputGroupStyles = getInputGroupStyles();
   const { store } = useContext(Context);
-  // const myRef = React.useRef(null);
-  // React.useEffect(() => {
-  //   if (store.pageErrors.streetError.isError) {
-  //     myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-  //     return;
-  //   }
-  // }, [store.pageErrors.streetError.isError]);
   return (
     <div className='bg-white my-5' id='contact_form_order_page'>
       <div className='text-3xl text-center font-bold p-5'>DANE KONTAKTOWE</div>
@@ -63,7 +56,10 @@ function ContactForm() {
           <FormInput
             mykey={"email"}
             type='contact'
-            isError={store.pageErrors.emailErrors.isError}
+            isError={
+              store.pageErrors.emailErrors.isError ||
+              store.pageErrors.emailErrors.isEmailValidDataError
+            }
           />
         </div>
         <div className={"px-3 mb-4 col-span-3 "}>

@@ -161,7 +161,6 @@ function OrderComponent() {
       }
     });
     if (topServiceRef.current) {
-      console.log("topTimeRef.current", topTimeRef.current);
       observer.observe(topServiceRef.current);
     }
     if (bottomServiceRef.current) {

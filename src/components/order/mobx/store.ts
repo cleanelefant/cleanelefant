@@ -257,11 +257,17 @@ export default class This {
       this.errorArray.push(this.pageErrors[item]);
     }
     const activeErrorFilterArr = this.errorArray.filter((item) => item.isError);
-    const higestLevel = activeErrorFilterArr.reduce(function (prev, current) {
-      return prev.level < current.level ? prev : current;
-    });
-    const target = document.getElementById(higestLevel.target);
-    target?.scrollIntoView({ behavior: "smooth", block: "end" });
+    if (activeErrorFilterArr.length > 0) {
+      const higestLevel = activeErrorFilterArr.reduce(function (prev, current) {
+        return prev.level < current.level ? prev : current;
+      });
+      const target = document.getElementById(higestLevel.target);
+      target?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+    if (this.pageErrors.emailErrors.isEmailValidDataError) {
+      const target = document.getElementById("contact_form_order_page");
+      target?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
   }
 
   setDatePickerError(value: boolean) {
