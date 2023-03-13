@@ -32,7 +32,7 @@ const PostsSlider = () => {
         >
           {blog.map((post) => {
             return (
-              <SwiperSlide key={post.id}>
+              <SwiperSlide key={post.id} style={{ height: "100%" }}>
                 <PostCard
                   slug={post.slug}
                   title={post.title}

@@ -10,7 +10,7 @@ interface IPostCard {
 export default function PostCard(props: IPostCard) {
   const { slug, title, description, src, double, intersection } = props;
   return (
-    <a href={"blog/" + slug} className='flex items-stretch min-h-full'>
+    <a href={"blog/" + slug} className='flex'>
       <div className='rounded-lg shadow-lg bg-white'>
         <div>
           <img

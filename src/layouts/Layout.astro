@@ -35,14 +35,14 @@ const { title, description, keywords } = Astro.props;
       id='header_123'
       class='fixed z-50 top-0 left-0 right-0 bg-gradient-to-b from-white overflow-auto'
     >
-      <div class='mx-2 lg:mx-8 py-3'>
-        <div class='flex justify-between items-center lg:pb-10 '>         
+      <div class='relative mx-2 lg:mx-8 py-3'>
+        <div class='flex justify-between items-center lg:pb-10'>
           <div class='flex gap-x-5 lg:gap-x-5 items-center'>
             <Logo />
             <Burger />
           </div>
           <Contact />
-          <RightMenu client:load />
+          <!-- <RightMenu client:load /> -->
           <MobileContact />
           <Join />
           <MobileBurger />

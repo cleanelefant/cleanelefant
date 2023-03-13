@@ -175,7 +175,7 @@ function OrderComponent() {
         <h1 className='text-lg lg:text-3xl font-extrabold uppercase text-center'>
           Sprzątanie mieszkania Zielona Góra
         </h1>
-        <div className='flex flex-col lg:flex-row gap-y-10 lg:gap-x-10'>
+        <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-10'>
           <div className='basis-3/4'>
             <Launcher />
             <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
@@ -211,7 +211,7 @@ function OrderComponent() {
             </div>
             <ChoosePayment />
           </div>
-          <div className='basis-1/4'>
+          <div className='basis-1/4 flex '>
             <OrderCard />
           </div>
         </div>

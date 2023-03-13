@@ -78,8 +78,8 @@ function OrderCard() {
   const time = store.setTotalTime();
 
   return (
-    <div className='lg:relative'>
-      <div className='my-10 p-5 text-xl bg-white drop-shadow-xl lg:fixed lg:w-1/5'>
+    <div className='w-full relative'>
+      <div className='p-5 text-xl bg-white drop-shadow-xl lg:fixed xl:w-[400px]'>
         <div className='text-center font-mono text-sm'>
           {store.VATvalue > 1 ? "Firma" : "Osoba prywatna"}
         </div>
