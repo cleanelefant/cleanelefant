@@ -172,13 +172,13 @@ function OrderComponent() {
     <div className='scroll-smooth'>
       <Steps />
       <div className='mx-4 lg:mx-10'>
-        <h1 className='text-lg lg:text-3xl font-extrabold uppercase text-center'>
+        <h1 className='text-lg my-10 lg:text-4xl font-extrabold uppercase text-center'>
           Sprzątanie mieszkania Zielona Góra
         </h1>
         <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-10'>
           <div className='basis-3/4'>
             <Launcher />
-            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-10'>
               TWOJE MIESZKANIE
             </div>
             <div ref={topServiceRef}></div>

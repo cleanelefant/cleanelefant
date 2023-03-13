@@ -5,7 +5,6 @@ import { Context } from "../index";
 function Launcher() {
   const [isCliced, setIsCliced] = React.useState(false);
   const { store } = useContext(Context);
-  console.log("Launcher");
   const privateClickHandler = () => {
     setIsCliced(false);
     store.setVATvalue(1);
@@ -15,7 +14,7 @@ function Launcher() {
     store.setVATvalue(1.23);
   };
   return (
-    <div className='flex gap-x-4   text-lg lg:text-3xl font-bold'>
+    <div className='flex gap-x-4 text-lg lg:text-3xl font-bold '>
       <button
         className={`py-6 px-8  transition-transform drop-shadow-xl rounded ${
           isCliced ? "bg-slate-200" : "bg-blue-700 text-white"
