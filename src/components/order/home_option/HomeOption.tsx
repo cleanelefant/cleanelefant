@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import React from "react";
+import house from "../../../images/services/home_house.png";
 
 function HomeOption() {
   const { store } = useContext(Context);
@@ -20,8 +21,8 @@ function HomeOption() {
   }, [isChecked]);
 
   return (
-    <div className='flex items-center'>
-      <div>
+    <div className='flex items-center justify-center'>
+      <div className='mb-4'>
         <label className='flex items-center cursor-pointer'>
           <div className='relative'>
             <input
@@ -43,8 +44,10 @@ function HomeOption() {
           </div>
         </label>
       </div>
-      <div className='ml-10 mt-8 text-gray-700 select-none font-extrabold text-lg lg:text-2xl'>
-        Dom Prywatny <span>x1.2</span>
+      <div className='ml-10 flex justify-center items-center gap-x-3 mt-4 text-gray-700 select-none font-extrabold text-lg lg:text-2xl '>
+        <p>Dom prywatny</p>
+        <img src={house} height={64} width={64} alt='home icom' />
+        <p className='p-2 bg-amber-700 text-bold text-black'>x1.2</p>
       </div>
     </div>
   );

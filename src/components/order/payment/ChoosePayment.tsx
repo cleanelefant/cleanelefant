@@ -37,31 +37,27 @@ function ChoosePayment() {
   }, []);
 
   return (
-    <div className='bg-white my-5' id='payment_order_page'>
+    <div className=' mt-20' id='payment_order_page'>
       <div ref={topRef}></div>
-      <div>
-        <div className='text-3xl text-center font-bold p-5'>
-          WYBIERZ METODĘ PŁATNOŚCI
-        </div>
+
+      <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
+        WYBIERZ METODĘ PŁATNOŚCI
       </div>
-      <div className='grid grid-cols-2 gap-4 my-10'>
+
+      <div className='grid grid-cols-2 gap-4 my-10 bg-white mt-10'>
         <div
           onClick={clickHandlerCash}
-          className={
-            store.isCash
-              ? "bg-blue-500 text-white cursor-pointer p-4"
-              : "cursor-pointer p-4"
-          }
+          className={`${
+            store.isCash && "bg-blue-500 text-white "
+          } cursor-pointer p-8 font-bold text-2xl text-center`}
         >
           Gotówką
         </div>
         <div
           onClick={clickHandlerCard}
-          className={
-            store.isCash
-              ? "cursor-pointer p-4"
-              : "bg-blue-500 text-white cursor-pointer p-4"
-          }
+          className={`${
+            !store.isCash && "bg-blue-500 text-white "
+          } cursor-pointer p-8 font-bold text-2xl text-center`}
         >
           Kartą online
         </div>

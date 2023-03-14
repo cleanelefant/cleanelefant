@@ -37,13 +37,12 @@ function AddServices() {
     }
   };
 
-  console.log("AddServices");
   return (
-    <div>
+    <div className='mt-20'>
       <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'>
         Dodaj usługi
       </div>
-      <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 my-10'>
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10'>
         {store.addons?.map((item) => {
           if (item.isMultiply) {
             return <MultyCard key={item.id} item={item} />;

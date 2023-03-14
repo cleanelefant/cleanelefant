@@ -9,10 +9,10 @@ import MaskedFormInput from "./MaskedFormInput";
 
 const getInputGroupStyles = () => {
   return {
-    div: "px-3 mb-4 ",
+    div: "",
     label: "block uppercase tracking-wide text-gray-700 text-xs font-bold py-2",
     input:
-      "appearance-none block w-full focus:outline-none focus:bg-gray-700 bg-gray-100 text-gray-700 rounded p-5 mb-3  text-3xl border-2  focus:border-blue-500 hover:border-slate-400 rounded-lg focus:text-white ",
+      "appearance-none block w-full focus:outline-none focus:bg-gray-700 bg-gray-100 text-gray-700 rounded p-5  text-3xl border-2  focus:border-blue-500 hover:border-slate-400 rounded-lg focus:text-white ",
     errorParagraf: "text-red-500 text-xs italic",
   };
 };
@@ -22,11 +22,11 @@ function AdressForm() {
   const { store } = useContext(Context);
 
   return (
-    <div className='bg-white my-5' id='adress_form_order_page'>
-      <div className='text-3xl text-center font-bold p-5'>
+    <div className='mt-20' id='adress_form_order_page'>
+      <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
         WPROWADŹ SWÓJ ADRES
       </div>
-      <section className='grid-cols-1 lg:grid lg:grid-cols-4 gap-4'>
+      <section className='grid-cols-1 lg:grid lg:grid-cols-4 gap-4 bg-white mt-10 p-5'>
         {/* Street */}
         <div className={inputGroupStyles.div}>
           <label className={inputGroupStyles.label} htmlFor='name'>

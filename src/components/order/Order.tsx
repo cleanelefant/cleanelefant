@@ -178,26 +178,34 @@ function OrderComponent() {
         <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-10'>
           <div className='basis-3/4'>
             <Launcher />
-            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-10'>
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-20'>
               TWOJE MIESZKANIE
             </div>
             <div ref={topServiceRef}></div>
             <div
-              className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:my-10'
+              className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:mt-10 lg:mb-2'
               id='countres_order_page'
             >
               <RoomCounter />
               <BedroomCounter />
             </div>
+            <div className='text-center text-slate-600 text-lg'>
+              * Kompleksowe sprzątanie całego mieszkania, w tym kuchni, toalety
+              oraz łazienki
+            </div>
             <HomeOption />
             <Rates />
             <AddService />
             <div ref={bottomServiceRef}></div>
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-20'>
+              Wybór terminu
+            </div>
             <div
-              className='flex flex-col 2xl:flex-row gap-x-5'
-              id='datepicker_order_page'
+              className='flex flex-col 2xl:flex-row gap-x-5 mt-10'
+              id='datepicker_order_page '
             >
               <div ref={topTimeRef}></div>
+
               <DatePickear />
               <TimePicker />
               <div ref={bottomTimeRef}></div>

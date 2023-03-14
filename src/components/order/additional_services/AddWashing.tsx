@@ -44,15 +44,15 @@ function AddWashing() {
   };
 
   return (
-    <div>
+    <div className='mt-20 border-slate-700 border-4 p-4'>
       <div
         onClick={clickHandler}
-        className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'
+        className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer  '
       >
         ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE SPRZĄTANIEM
       </div>
       {isVisible && (
-        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 my-10'>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10'>
           {store.washingAddons?.map((item) => {
             if (item.isMultiply) {
               return <MultyWashingCard key={item.id} item={item} />;

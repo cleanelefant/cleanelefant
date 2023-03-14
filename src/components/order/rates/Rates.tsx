@@ -8,14 +8,14 @@ function Rates() {
   const rates = toJS(store.rates);
   console.log("Rates");
   return (
-    <div>
+    <div className='mt-20'>
       <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
         Częstsze sprzątanie - większa zniżka
       </div>
       <div className='text-center'>
         Koszt Twojego następnego zamówienia, jeśli wybierzesz abonament
       </div>
-      <div className='flex flex-wrap gap-4  my-2 lg:my-10 text-lg lg:text-xl '>
+      <div className='flex flex-wrap gap-4  my-2 lg:my-0 lg:mt-10 text-lg lg:text-xl '>
         {rates?.map((rate, index) => (
           <button
             key={rate.id}
