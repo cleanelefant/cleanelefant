@@ -78,7 +78,7 @@ function MultyCard({ item }: IMultyCard) {
       {item.isActive && (
         <div className='flex items-center justify-center'>
           <button
-            className='my-button cursor-pointer p-2 lg:py-3 lg:px-4 border-2'
+            className='my-button cursor-pointer p-2 lg:py-3 lg:px-5 border-2 lg:text-2xl'
             onClick={() => {
               buttonDecreaseClickHandler(item);
             }}
@@ -87,7 +87,7 @@ function MultyCard({ item }: IMultyCard) {
           </button>
           <div className='py-2 lg:py-3 px-4 lg:px-6 lg:text-2xl'>{total}</div>
           <button
-            className='my-button cursor-pointer p-2 lg:py-3 lg:px-4 border-2'
+            className='my-button cursor-pointer p-2 lg:py-3 lg:px-4 border-2 lg:text-2xl'
             onClick={() => {
               buttonIncreaseClickHandler(item);
             }}
