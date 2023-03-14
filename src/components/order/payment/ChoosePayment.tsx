@@ -37,9 +37,7 @@ function ChoosePayment() {
   }, []);
 
   return (
-    <div className=' mt-20' id='payment_order_page'>
-      <div ref={topRef}></div>
-
+    <div className=' mt-20' id='payment_order_page' ref={topRef}>
       <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
         WYBIERZ METODĘ PŁATNOŚCI
       </div>

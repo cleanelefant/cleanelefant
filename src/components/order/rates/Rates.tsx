@@ -23,7 +23,7 @@ function Rates() {
               store.changeRatesIsCurentValue(rate.id - 1);
               store.setActualRate(rate);
             }}
-            className={`flex-1 py-6 px-8 justify-center items-center  transition-transform drop-shadow-xl rounded ${
+            className={`flex-1 py-3 px-8 justify-center items-center  transition-transform drop-shadow-xl rounded ${
               !rate.isCurent ? "bg-white" : "bg-blue-700 text-white"
             }`}
           >
@@ -31,8 +31,8 @@ function Rates() {
               <div>{rate.title}</div>
               {index === rates.length - 1 ? null : (
                 <div className='my-4'>
-                  <p className='bg-orange-700 py-2 px-4 max-w-fit mx-auto'>
-                    -{rate.discount}
+                  <p className='px-4 py-2 text-2xl bg-amber-700 font-bold text-black max-w-fit mx-auto'>
+                    -{rate.discount}%
                   </p>
                 </div>
               )}
