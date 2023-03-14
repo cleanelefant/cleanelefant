@@ -76,18 +76,18 @@ function MultyCard({ item }: IMultyCard) {
       <p className='text-center'>{item.title}</p>
       <p className='lg:text-xl'>{item.price} zł.</p>
       {item.isActive && (
-        <div className='flex'>
+        <div className='flex items-center justify-center'>
           <button
-            className='my-button cursor-pointer p-2 border'
+            className='my-button cursor-pointer p-2 lg:py-3 lg:px-4 border-2'
             onClick={() => {
               buttonDecreaseClickHandler(item);
             }}
           >
             -
           </button>
-          <div className='py-2 px-4'>{total}</div>
+          <div className='py-2 lg:py-3 px-4 lg:px-6 lg:text-2xl'>{total}</div>
           <button
-            className='my-button cursor-pointer p-2 border'
+            className='my-button cursor-pointer p-2 lg:py-3 lg:px-4 border-2'
             onClick={() => {
               buttonIncreaseClickHandler(item);
             }}

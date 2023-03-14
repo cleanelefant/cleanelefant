@@ -268,7 +268,7 @@ function DatePickear() {
     >
       <div className='flex justify-between items-center text-xl font-bold'>
         {month > startMonth ? (
-          <div className='text-center w-5 lg:text-5xl'>
+          <div className=' lg:text-5xl cursor-pointer'>
             <div
               onClick={() => {
                 setMonth((m) => m - 1);
@@ -281,7 +281,7 @@ function DatePickear() {
         <div className='lg:text-3xl'>{monthsOfYear[month]}</div>
         {month < 11 ? (
           <div
-            className='lg:text-5xl'
+            className='lg:text-5xl cursor-pointer'
             onClick={() => {
               setMonth((m) => m + 1);
             }}
