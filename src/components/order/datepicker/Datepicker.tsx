@@ -12,6 +12,8 @@ const daysOfWeek = [
   "Sunday",
 ];
 
+const shortDaysOfWeek = ["PON", "WT", "ŚR", "CZW", "PT", "SOB", "NIEDZ"];
+
 const monthsOfYear = [
   "January",
   "February",
@@ -45,6 +47,8 @@ const rates: IDaysRate[] = [
   { id: 1, date: 15, month: "March", rate: 10 },
   { id: 2, date: 19, month: "March", rate: 20 },
   { id: 3, date: 22, month: "March", rate: 15 },
+  { id: 4, date: 2, month: "April", rate: 15 },
+  { id: 5, date: 8, month: "April", rate: 20 },
 ];
 
 interface ExtendedIDays extends IDays {
@@ -81,7 +85,7 @@ for (let i = 0; i < 365; i++) {
 
 function setItemClass(item: ExtendedIDays) {
   if (item.monthStatus === "current") {
-    return "bg-green-200 ";
+    return "bg-stone-400";
   }
   if (item.monthStatus === "next" && item.dayStatus === "previousNext") {
     return "bg-gray-400";
@@ -241,9 +245,9 @@ function DatePickear() {
     <div
       className={`${
         store.pageErrors.dateError.isError
-          ? "border-red-500"
-          : "border-amber-500"
-      } border-4 p-2`}
+          ? "border-red-500 border-4"
+          : "border-amber-200 border-2"
+      }  p-2`}
       id='datepicker_order_page'
     >
       <div className='flex justify-between text-xl font-bold'>
@@ -271,18 +275,18 @@ function DatePickear() {
         )}
       </div>
       <div className='grid grid-cols-7'>
-        {daysOfWeek.map((d, index) => (
+        {shortDaysOfWeek.map((d, index) => (
           <div className='py-2' key={index}>
             <p className='text-center font-medium'>{d}</p>
           </div>
         ))}
       </div>
-      <div className='grid grid-cols-7 gap-4'>
+      <div className='grid grid-cols-7 gap-2'>
         {days.map((d) => {
           if (d.dayStatus === "previous") {
             return (
               <div key={d.id} className='flex items-center justify-center'>
-                <div className='w-10 h-10 flex items-center justify-center text-slate-200 font-bold text-sm relative'>
+                <div className='w-9 h-9 flex items-center border justify-center text-slate-200 font-bold text-sm relative rounded-md'>
                   <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-0.5 bg-slate-200'></span>
                   <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full'>
                     {d.date}
@@ -297,17 +301,19 @@ function DatePickear() {
                 dayClickHandler(d);
               }}
               key={d.id}
-              className={`${
-                d.dayStatus === "today" ? "p-1" : "p-4"
+              className={` ${
+                d.rate > 0 || d.dayStatus === "today" ? "py-0" : "py-3"
               } ${setItemClass(d)} flex flex-col justify-center ${
                 d.isActive ? "font-bold" : "font-thin"
-              } items-center cursor-pointer rounded-md`}
+              } items-center cursor-pointer rounded-md leading-none`}
             >
               {d.dayStatus === "today" && (
-                <p className='font-normal text-sm'>today</p>
+                <p className='font-bold text-[10px] leading-none'>dzisiaj</p>
               )}
+              <p className=' text-[10px] font-bold leading-none'>
+                {d.rate && `${d.rate}%`}
+              </p>
               <p>{d.date}</p>
-              <p>{d.rate && `${d.rate}%`}</p>
             </div>
           );
         })}

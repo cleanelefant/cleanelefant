@@ -201,11 +201,10 @@ function OrderComponent() {
               Wybór terminu
             </div>
             <div
-              className='flex flex-col 2xl:flex-row gap-x-5 mt-10'
+              className='flex flex-col 2xl:flex-row gap-y-5 mt-10'
               id='datepicker_order_page '
             >
               <div ref={topTimeRef}></div>
-
               <DatePickear />
               <TimePicker />
               <div ref={bottomTimeRef}></div>
