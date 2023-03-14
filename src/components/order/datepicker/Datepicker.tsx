@@ -85,13 +85,21 @@ for (let i = 0; i < 365; i++) {
 
 function setItemClass(item: ExtendedIDays) {
   if (item.monthStatus === "current") {
-    return "bg-stone-400";
+    if (item.isActive) {
+      return "bg-blue-500";
+    } else {
+      return "bg-stone-400";
+    }
   }
   if (item.monthStatus === "next" && item.dayStatus === "previousNext") {
-    return "bg-gray-400";
+    return "bg-gray-400 ";
   }
   if (item.monthStatus === "nextNext") {
-    return "bg-gray-400";
+    if (item.isActive) {
+      return "bg-blue-500 lg:px-8";
+    } else {
+      return "bg-gray-400 lg:px-8";
+    }
   }
   if (item.monthStatus === "next") {
     return "bg-gray-200";
@@ -246,7 +254,7 @@ function DatePickear() {
       className={`${
         store.pageErrors.dateError.isError
           ? "border-red-500 border-4"
-          : "border-amber-200 border-2"
+          : "text-gray-700 border-2"
       }  p-2`}
       id='datepicker_order_page'
     >
@@ -286,7 +294,7 @@ function DatePickear() {
           if (d.dayStatus === "previous") {
             return (
               <div key={d.id} className='flex items-center justify-center'>
-                <div className='w-9 h-9 flex items-center border justify-center text-slate-200 font-bold text-sm relative rounded-md'>
+                <div className='w-9 lg:w-16 h-9 lg:h-16 flex items-center border justify-center text-slate-200 font-bold text-sm relative rounded-md'>
                   <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-0.5 bg-slate-200'></span>
                   <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full'>
                     {d.date}
@@ -302,9 +310,9 @@ function DatePickear() {
               }}
               key={d.id}
               className={` ${
-                d.rate > 0 || d.dayStatus === "today" ? "py-0" : "py-3"
+                d.rate > 0 || d.dayStatus === "today" ? "py-0" : "py-3 lg:py-6"
               } ${setItemClass(d)} flex flex-col justify-center ${
-                d.isActive ? "font-bold" : "font-thin"
+                d.isActive ? "font-bold  text-white" : "font-thin"
               } items-center cursor-pointer rounded-md leading-none`}
             >
               {d.dayStatus === "today" && (

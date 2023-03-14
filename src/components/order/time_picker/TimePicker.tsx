@@ -17,9 +17,9 @@ function TimePicker() {
       id='timepicker_order_page'
       className={`${
         store.pageErrors.timeError.isError
-          ? "border-red-500"
-          : "border-amber-500"
-      } border-4 p-2 basis-1/3`}
+          ? "border-red-500 border-4"
+          : "text-gray-700"
+      } border-2 p-2 basis-1/3`}
     >
       <div className='flex flex-wrap gap-x-3 gap-y-4 cursor-pointer'>
         {times?.map((item) => (

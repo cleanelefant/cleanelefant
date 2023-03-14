@@ -42,12 +42,12 @@ function ChoosePayment() {
         WYBIERZ METODĘ PŁATNOŚCI
       </div>
 
-      <div className='grid grid-cols-2 gap-4 my-10 bg-white mt-10'>
+      <div className='grid grid-cols-2 gap-4 my-10  mt-10 justify-center items-center'>
         <div
           onClick={clickHandlerCash}
           className={`${
             store.isCash && "bg-blue-500 text-white "
-          } cursor-pointer p-8 font-bold text-2xl text-center`}
+          } cursor-pointer p-8 font-bold lg:text-2xl text-center bg-white`}
         >
           Gotówką
         </div>
@@ -55,7 +55,7 @@ function ChoosePayment() {
           onClick={clickHandlerCard}
           className={`${
             !store.isCash && "bg-blue-500 text-white "
-          } cursor-pointer p-8 font-bold text-2xl text-center`}
+          } cursor-pointer p-8 font-bold lg:text-2xl text-center bg-white`}
         >
           Kartą online
         </div>
