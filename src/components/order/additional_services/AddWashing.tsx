@@ -47,7 +47,7 @@ function AddWashing() {
     <div className='mt-20 border-slate-700 border-4 p-4'>
       <div
         onClick={clickHandler}
-        className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer  '
+        className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'
       >
         ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE SPRZĄTANIEM
       </div>

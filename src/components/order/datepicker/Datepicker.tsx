@@ -92,17 +92,25 @@ function setItemClass(item: ExtendedIDays) {
     }
   }
   if (item.monthStatus === "next" && item.dayStatus === "previousNext") {
-    return "bg-gray-400 ";
+    if (item.isActive) {
+      return "bg-blue-500 ";
+    } else {
+      return "bg-gray-400 ";
+    }
   }
   if (item.monthStatus === "nextNext") {
     if (item.isActive) {
-      return "bg-blue-500 lg:px-8";
+      return "bg-blue-500 lg:px-12";
     } else {
-      return "bg-gray-400 lg:px-8";
+      return "bg-gray-400 lg:px-12";
     }
   }
   if (item.monthStatus === "next") {
-    return "bg-gray-200";
+    if (item.isActive) {
+      return "bg-blue-500";
+    } else {
+      return "bg-gray-200";
+    }
   }
 }
 
@@ -258,9 +266,9 @@ function DatePickear() {
       }  p-2`}
       id='datepicker_order_page'
     >
-      <div className='flex justify-between text-xl font-bold'>
+      <div className='flex justify-between items-center text-xl font-bold'>
         {month > startMonth ? (
-          <div className='text-center w-5'>
+          <div className='text-center w-5 lg:text-5xl'>
             <div
               onClick={() => {
                 setMonth((m) => m - 1);
@@ -270,10 +278,10 @@ function DatePickear() {
         ) : (
           <div className='w-5 p-5'></div>
         )}
-        <div className=''>{monthsOfYear[month]}</div>
+        <div className='lg:text-3xl'>{monthsOfYear[month]}</div>
         {month < 11 ? (
           <div
-            className=''
+            className='lg:text-5xl'
             onClick={() => {
               setMonth((m) => m + 1);
             }}
@@ -316,12 +324,14 @@ function DatePickear() {
               } items-center cursor-pointer rounded-md leading-none`}
             >
               {d.dayStatus === "today" && (
-                <p className='font-bold text-[10px] leading-none'>dzisiaj</p>
+                <p className='font-extrabold text-[10px] lg:text-[16px] leading-none'>
+                  dzisiaj
+                </p>
               )}
-              <p className=' text-[10px] font-bold leading-none'>
+              <p className=' text-[10px] lg:text-[16px] font-extrabold leading-none'>
                 {d.rate && `${d.rate}%`}
               </p>
-              <p>{d.date}</p>
+              <p className='lg:text-xl font-medium'>{d.date}</p>
             </div>
           );
         })}
