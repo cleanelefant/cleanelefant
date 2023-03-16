@@ -98,7 +98,9 @@ function OrderCard() {
           {time.hours} {time.hours > 4 ? "godzin " : "godziny "}
           {time.minutes ? time.minutes : null} {time.minutes ? " minut" : null}
         </div>
-        <div className='text-center'>Persons:{store.getPersons()}</div>
+        <div className='text-center'>
+          Osoby do spszantania:{store.getPersons()}
+        </div>
 
         <div className='text-sm'>
           <div>Zamówienie sprzątania obejmuje:</div>
@@ -181,7 +183,7 @@ function OrderCard() {
             </div>
           )}
         </div>
-        <div className='flex justify-center gap-x-2'>
+        <div className='flex justify-center gap-x-2 my-2'>
           {store.serviceDay && (
             <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
               {store.serviceDay}
@@ -193,7 +195,7 @@ function OrderCard() {
             </div>
           )}
         </div>
-        <div className='text-center font-mono text-sm'>
+        <div className='text-center font-mono text-sm my-2'>
           {store.isCash ? (
             <div className='flex gap-x-1 justify-center items-center'>
               <p>opłata gotówką</p>
