@@ -179,7 +179,7 @@ function OrderComponent() {
         <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-10'>
           <div className='basis-3/4'>
             <Launcher />
-            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-20'>
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-10 lg:mt-20 '>
               TWOJE MIESZKANIE
             </div>
             <div ref={topServiceRef}></div>
@@ -198,7 +198,7 @@ function OrderComponent() {
             <Rates />
             <AddService />
             <div ref={bottomServiceRef}></div>
-            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-20'>
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-10 lg:mt-20 '>
               Wybór terminu
             </div>
             <div
