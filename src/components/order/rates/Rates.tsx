@@ -8,7 +8,7 @@ function Rates() {
   const rates = toJS(store.rates);
   console.log("Rates");
   return (
-    <div className='mt-20'>
+    <div className='mt-10 lg:mt-20'>
       <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
         Częstsze sprzątanie - większa zniżka
       </div>

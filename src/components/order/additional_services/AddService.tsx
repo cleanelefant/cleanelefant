@@ -38,7 +38,7 @@ function AddServices() {
   };
 
   return (
-    <div className='mt-20'>
+    <div className='mt-10 lg:mt-20'>
       <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'>
         Dodaj usługi
       </div>
