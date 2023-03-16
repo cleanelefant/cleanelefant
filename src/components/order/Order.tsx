@@ -23,6 +23,7 @@ import { fetchedRates } from "../../utils/rates";
 import { times, minutes } from "../../utils/times";
 import Steps from "./steps/Steps";
 import { steps } from "./../../utils/data/steps";
+import MobileOrderButton from "./order/mobile_order_button/MobileOrderButton";
 
 function OrderComponent() {
   const { store } = useContext(Context);
@@ -221,6 +222,7 @@ function OrderComponent() {
           <div className='basis-1/4 flex '>
             <OrderCard />
           </div>
+          <MobileOrderButton />
         </div>
       </div>
     </div>
