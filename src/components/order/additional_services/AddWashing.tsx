@@ -3,6 +3,7 @@ import uuid from "react-uuid";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { ExtendedIAddons } from "../../../types";
+import arrow from "../../../images/up-arrow.webp";
 
 import SingleCard from "./SingleCard";
 import MultyWashingCard from "./MultyWashingCard";
@@ -50,6 +51,16 @@ function AddWashing() {
         className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'
       >
         ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE SPRZĄTANIEM
+      </div>
+      <div className='flex justify-center mt-5 cursor-pointer'>
+        <img
+          onClick={clickHandler}
+          className={`${isVisible && "rotate-180"} transition duration-300 `}
+          src={arrow}
+          alt='arrow'
+          width={32}
+          height={32}
+        />
       </div>
       {isVisible && (
         <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 mt-10'>

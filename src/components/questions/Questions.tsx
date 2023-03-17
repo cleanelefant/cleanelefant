@@ -56,7 +56,7 @@ export default function Questions(props: IQuestions) {
       itemType='https://schema.org/FAQPage'
     >
       <div className='absolute top-[-120px] h-px' ref={topRef}></div>
-      {state.map((q, index) => (
+      {state.map((q) => (
         <div
           key={q.id}
           itemScope
