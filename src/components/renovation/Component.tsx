@@ -6,7 +6,7 @@ import Launcher from "./launcher/Launcher";
 import AreaCounter from "./counters/AreaCounter";
 import WindowCounter from "./counters/WindowCounter";
 import Datepicker from "../renovation/datepicker/DatePicker";
-import TimePicker from "../order/time_picker/TimePicker";
+import TimePicker from "../renovation/time_picker/TimePicker";
 import { ExtendedITime } from "../../types";
 import { times } from "../../utils/times";
 

@@ -14,7 +14,8 @@ function TimePicker() {
       return { ...t, isActive: false, isModal: false };
     });
     store.setTimes(mapedTimes);
-    setTimes(store.times);
+
+    setTimes(mapedTimes);
   }, []);
 
   return (
