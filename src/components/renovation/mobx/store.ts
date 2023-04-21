@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { ExtendedITime, IErrors } from "../../../types";
+import { ExtendedIMinutes, ExtendedITime, IErrors } from "../../../types";
 
 export default class This {
   area: number;
@@ -8,6 +8,7 @@ export default class This {
   serviceDay: string;
   time: string;
   times: ExtendedITime[];
+  minutes: ExtendedIMinutes[];
   pageErrors: IErrors;
   constructor() {
     makeAutoObservable(this);
@@ -17,6 +18,7 @@ export default class This {
     this.serviceDay = "";
     this.time = "";
     this.times = [];
+    this.minutes = [];
     this.pageErrors = {
       dateError: {
         isError: false,
@@ -124,5 +126,9 @@ export default class This {
 
   setDatePickerError(value: boolean) {
     this.pageErrors.dateError.isError = value;
+  }
+
+  setMinutes(minutes: ExtendedIMinutes[]) {
+    this.minutes = minutes;
   }
 }

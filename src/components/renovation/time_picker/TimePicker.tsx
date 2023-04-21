@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import TimeItem from "./TimeItem";
-import { ExtendedITime } from "../../../types";
-import { times } from "../../../utils/times";
+import { ExtendedIMinutes, ExtendedITime } from "../../../types";
+import { minutes, times } from "../../../utils/times";
 
 function TimePicker() {
   const { store } = useContext(Context);
@@ -14,8 +14,11 @@ function TimePicker() {
       return { ...t, isActive: false, isModal: false };
     });
     store.setTimes(mapedTimes);
-
     setTimes(mapedTimes);
+    const mapedMinutes: ExtendedIMinutes[] = minutes.map((m) => {
+      return { ...m, isActive: false };
+    });
+    store.setMinutes(mapedMinutes);
   }, []);
 
   return (
