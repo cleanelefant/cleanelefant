@@ -3,14 +3,19 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import TimeItem from "./TimeItem";
 import { ExtendedITime } from "../../../types";
+import { times } from "../../../utils/times";
 
 function TimePicker() {
   const { store } = useContext(Context);
-  const [times, setTimes] = React.useState<ExtendedITime[]>([]);
+  const [mtimes, setTimes] = React.useState<ExtendedITime[]>([]);
 
   React.useEffect(() => {
+    const mapedTimes: ExtendedITime[] = times.map((t) => {
+      return { ...t, isActive: false, isModal: false };
+    });
+    store.setTimes(mapedTimes);
     setTimes(store.times);
-  }, [store.times]);
+  }, []);
 
   return (
     <div
@@ -22,7 +27,7 @@ function TimePicker() {
       } border-2 p-2 basis-1/3`}
     >
       <div className='flex flex-wrap gap-x-3 gap-y-4 cursor-pointer'>
-        {times?.map((item) => (
+        {mtimes?.map((item) => (
           <TimeItem
             key={item.id}
             item={item}

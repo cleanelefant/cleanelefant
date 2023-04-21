@@ -16,6 +16,7 @@ export default class This {
     this.ocassionalRate = 0;
     this.serviceDay = "";
     this.time = "";
+    this.times = [];
     this.pageErrors = {
       dateError: {
         isError: false,
@@ -117,7 +118,7 @@ export default class This {
   }
 
   setTimes(times: ExtendedITime[]) {
-    console.log("setTimes");
+    console.log("setTimes", times);
     this.times = times;
   }
 

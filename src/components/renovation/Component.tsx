@@ -1,17 +1,20 @@
-// import React, { useContext } from "react";
+import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 // Context
-// import { Context } from "./index";
+import { Context } from "./index";
 import Launcher from "./launcher/Launcher";
 import AreaCounter from "./counters/AreaCounter";
 import WindowCounter from "./counters/WindowCounter";
 import Datepicker from "../renovation/datepicker/DatePicker";
 import TimePicker from "../order/time_picker/TimePicker";
+import { ExtendedITime } from "../../types";
+import { times } from "../../utils/times";
 
 // Components
 
 function Component() {
-  // const { store } = useContext(Context);
+  const { store } = useContext(Context);
+  React.useEffect(() => {}, []);
 
   return (
     <div className='my-20 mx-10'>
