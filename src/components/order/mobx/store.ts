@@ -375,6 +375,7 @@ export default class This {
   }
 
   setTimes(times: ExtendedITime[]) {
+    console.log("setTimes");
     this.times = times;
   }
 

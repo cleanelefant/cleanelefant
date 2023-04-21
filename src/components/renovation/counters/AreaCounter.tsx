@@ -14,8 +14,24 @@ function AreaCounter() {
       >
         -
       </button>
-      <div className='flex gap-x-4 justify-center items-center py-6'>
-        {store.area ? store.area : "Powierzchnia"} m2
+      <div className='flex gap-x-2 justify-center items-center py-6'>
+        <div>
+          <input
+            value={store.area ? store.area : "Powierzchnia"}
+            style={{
+              width:
+                store.area === 0
+                  ? "160px"
+                  : `${(store.area.toString().length + 1) * 14}px`,
+            }}
+            maxLength={255}
+            className={`focus:outline-none text-center`}
+            onChange={(e) => {
+              store.setArea(e);
+            }}
+          />
+        </div>
+        <p>m2</p>
       </div>
       <button
         className='py-6 px-8 hover:bg-slate-100 transition-transform lg:text-4xl'

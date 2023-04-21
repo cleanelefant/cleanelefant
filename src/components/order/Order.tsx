@@ -184,7 +184,7 @@ function OrderComponent() {
             </div>
             <div ref={topServiceRef}></div>
             <div
-              className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:mt-10 lg:mb-2'
+              className='flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 lg:mt-10 lg:mb-2'
               id='countres_order_page'
             >
               <RoomCounter />
