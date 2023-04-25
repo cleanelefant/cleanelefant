@@ -131,4 +131,8 @@ export default class This {
   setMinutes(minutes: ExtendedIMinutes[]) {
     this.minutes = minutes;
   }
+
+  setTimePickerError(value: boolean) {
+    this.pageErrors.timeError.isError = value;
+  }
 }
