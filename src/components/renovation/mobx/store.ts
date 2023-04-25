@@ -4,6 +4,8 @@ import { ExtendedIMinutes, ExtendedITime, IErrors } from "../../../types";
 export default class This {
   area: number;
   windows: number;
+  area_price: number;
+  window_price: number;
   ocassionalRate: number;
   serviceDay: string;
   time: string;
@@ -19,6 +21,8 @@ export default class This {
     this.time = "";
     this.times = [];
     this.minutes = [];
+    this.area_price = 0;
+    this.window_price = 0;
     this.pageErrors = {
       dateError: {
         isError: false,
@@ -120,7 +124,6 @@ export default class This {
   }
 
   setTimes(times: ExtendedITime[]) {
-    console.log("setTimes", times);
     this.times = times;
   }
 
@@ -134,5 +137,16 @@ export default class This {
 
   setTimePickerError(value: boolean) {
     this.pageErrors.timeError.isError = value;
+  }
+  setAreaPrice(area_price: number) {
+    this.area_price = area_price;
+  }
+  setWindowPrice(window_price: number) {
+    this.window_price = window_price;
+  }
+  getTotalPrice() {
+    // const result =  this.area * this.area_price + this.windows * this.window_price;
+    const result = this.area * this.area_price;
+    return result;
   }
 }
