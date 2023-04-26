@@ -7,11 +7,11 @@ function Launcher() {
   const { store } = useContext(Context);
   const privateClickHandler = () => {
     setIsCliced(false);
-    // store.setVATvalue(1);
+    store.setVat(1);
   };
   const companyClickHandler = () => {
     setIsCliced(true);
-    // store.setVATvalue(1.23);
+    store.setVat(1.23);
   };
   return (
     <div className='flex gap-x-4 text-lg lg:text-3xl font-bold '>

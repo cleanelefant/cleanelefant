@@ -6,6 +6,7 @@ export default class This {
   windows: number;
   area_price: number;
   window_price: number;
+  vat: number;
   ocassionalRate: number;
   serviceDay: string;
   time: string;
@@ -16,6 +17,7 @@ export default class This {
     makeAutoObservable(this);
     this.area = 0;
     this.windows = 0;
+    this.vat = 1;
     this.ocassionalRate = 0;
     this.serviceDay = "";
     this.time = "";
@@ -144,9 +146,22 @@ export default class This {
   setWindowPrice(window_price: number) {
     this.window_price = window_price;
   }
+  setVat(value: number) {
+    this.vat = value;
+  }
   getTotalPrice() {
-    // const result =  this.area * this.area_price + this.windows * this.window_price;
-    const result = this.area * this.area_price;
+    let result =
+      (this.area * this.area_price + this.windows * this.window_price) *
+      this.vat *
+      ((100 - this.ocassionalRate) / 100);
+    result = parseFloat(result.toFixed(2));
+    return result;
+  }
+  getTotalPriceWithoutRate() {
+    let result =
+      (this.area * this.area_price + this.windows * this.window_price) *
+      this.vat;
+    result = parseFloat(result.toFixed(2));
     return result;
   }
 }

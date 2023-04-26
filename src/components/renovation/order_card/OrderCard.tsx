@@ -98,9 +98,28 @@ function OrderCard() {
   return (
     <div className='w-full relative'>
       <div>Sprzątanie po remoncie</div>
-      <div>{store.area}</div>
-      <div>{store.windows}</div>
-      <div>Total:{is_price_data ? store.getTotalPrice() : "LOADING..."}</div>
+      <div>Powierzchnia: {store.area}</div>
+      <div>Ilość okien: {store.windows}</div>
+      <div className='flex justify-center gap-x-2 my-2'>
+        {store.serviceDay && (
+          <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
+            {store.serviceDay}
+          </div>
+        )}
+        {store.time && (
+          <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
+            {store.time}
+          </div>
+        )}
+      </div>
+      <div>
+        Do zapłaty:{" "}
+        {is_price_data ? store.getTotalPrice() + " zł." : "LOADING..."}
+        <span className='line-through'>
+          {store.ocassionalRate > 0 &&
+            " " + store.getTotalPriceWithoutRate() + " zł."}
+        </span>
+      </div>
 
       <div className='flex justify-center'>
         <button

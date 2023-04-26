@@ -43,12 +43,10 @@ interface IDaysRate {
   rate: number;
 }
 const rates: IDaysRate[] = [
-  { id: 1, date: 10, month: "March", rate: 20 },
-  { id: 1, date: 15, month: "March", rate: 10 },
-  { id: 2, date: 19, month: "March", rate: 20 },
-  { id: 3, date: 22, month: "March", rate: 15 },
-  { id: 4, date: 2, month: "April", rate: 15 },
-  { id: 5, date: 8, month: "April", rate: 20 },
+  { id: 1, date: 28, month: "April", rate: 10 },
+  { id: 2, date: 30, month: "April", rate: 20 },
+  { id: 3, date: 3, month: "May", rate: 15 },
+  { id: 4, date: 5, month: "May", rate: 20 },
 ];
 
 interface ExtendedIDays extends IDays {
@@ -329,7 +327,7 @@ function DatePickear() {
                 </p>
               )}
               <p className=' text-[10px] lg:text-[16px] font-extrabold leading-none'>
-                {d.rate && `${d.rate}%`}
+                {d.rate && `-${d.rate}%`}
               </p>
               <p className='lg:text-xl font-medium'>{d.date}</p>
             </div>
