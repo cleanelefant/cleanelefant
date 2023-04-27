@@ -43,7 +43,7 @@ function OrderCard() {
   }, []); // Only run once, on mount
 
   const clickHandler = () => {
-    // store.errrorHandler();
+    store.errrorHandler();
   };
   // const addonsArr = toJS(store.addonReciver);
   // const washingAddonsArr = toJS(store.washingAddonReciver);

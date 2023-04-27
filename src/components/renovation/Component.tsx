@@ -10,6 +10,8 @@ import TimePicker from "../renovation/time_picker/TimePicker";
 import { ExtendedITime } from "../../types";
 import { times } from "../../utils/times";
 import OrderCard from "./order_card/OrderCard";
+import AdressForm from "./forms/AdressForm";
+import ContactForm from "./forms/ContactForm";
 
 // Components
 
@@ -18,7 +20,7 @@ function Component() {
   React.useEffect(() => {}, []);
 
   return (
-    <div className='my-20 mx-10'>
+    <div className='mx-2'>
       <div className='text-lg my-10 lg:text-4xl font-extrabold uppercase text-center'>
         Sprzątanie po remoncie Zielona Góra
       </div>
@@ -41,6 +43,12 @@ function Component() {
           >
             <Datepicker />
             <TimePicker />
+          </div>
+          <div id='adress_order_page'>
+            {/* <div ref={topContactRef}></div> */}
+            <AdressForm />
+            <ContactForm />
+            {/* <div ref={bottomContactRef}></div> */}
           </div>
         </div>
         <div className='basis-1/4 flex '>

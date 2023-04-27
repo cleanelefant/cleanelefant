@@ -15,14 +15,12 @@ function TimeItem({ item, isActive, setTimes }: ITimeItem) {
     setTimes((t) => {
       return [...t].map((time) => {
         if (time.id === item.id) {
-          console.log("t,", time);
           return { ...time, isModal: true };
         } else {
           return { ...time, isModal: false };
         }
       });
     });
-    console.log("after", item.isModal);
   };
 
   const timeMouseOnMouseLeave = () => {

@@ -1,5 +1,12 @@
 import { makeAutoObservable } from "mobx";
-import { ExtendedIMinutes, ExtendedITime, IErrors } from "../../../types";
+import {
+  ExtendedIMinutes,
+  ExtendedITime,
+  IAdressForm,
+  IContactForm,
+  IErrorOrderPage,
+  IErrors,
+} from "../../../types";
 
 export default class This {
   area: number;
@@ -12,7 +19,10 @@ export default class This {
   time: string;
   times: ExtendedITime[];
   minutes: ExtendedIMinutes[];
+  adressFormData: IAdressForm;
+  contactFormData: IContactForm;
   pageErrors: IErrors;
+  errorArray: IErrorOrderPage[];
   constructor() {
     makeAutoObservable(this);
     this.area = 0;
@@ -25,6 +35,20 @@ export default class This {
     this.minutes = [];
     this.area_price = 0;
     this.window_price = 0;
+    this.adressFormData = {
+      street: "",
+      house: "",
+      level: "",
+      local: "",
+      intercom: "",
+      zip: "",
+    };
+    this.contactFormData = {
+      name: "",
+      email: "",
+      phone: "",
+      notes: "",
+    };
     this.pageErrors = {
       dateError: {
         isError: false,
@@ -94,6 +118,7 @@ export default class This {
         target: "contact_form_order_page",
       },
     };
+    this.errorArray = [] as IErrorOrderPage[];
   }
   setArea(event: any) {
     const enteredValue = event.target.value.replace(/[^0-9]/g, "");
@@ -163,5 +188,55 @@ export default class This {
       this.vat;
     result = parseFloat(result.toFixed(2));
     return result;
+  }
+  // Errors
+
+  errrorHandler() {
+    this.setDatePickerError(!!!this.serviceDay);
+    this.setTimePickerError(!!!this.time);
+    this.setStreetError(!!!this.adressFormData.street);
+    this.setHouseError(!!!this.adressFormData.house);
+    // this.setLocalError(!!!this.adressFormData.local);
+    // this.setLevelError(!!!this.adressFormData.level);
+    // this.setZipError(!!!this.adressFormData.zip);
+    // this.setIntercomeError(!!!this.adressFormData.zip);
+    // this.setNameError(!!!this.contactFormData.name);
+    this.setEmailError(!!!this.contactFormData.email);
+    this.setPhoneError(!!!this.contactFormData.phone);
+    for (const item in this.pageErrors) {
+      this.errorArray.push(this.pageErrors[item]);
+    }
+    const activeErrorFilterArr = this.errorArray.filter((item) => item.isError);
+    if (activeErrorFilterArr.length > 0) {
+      const higestLevel = activeErrorFilterArr.reduce(function (prev, current) {
+        return prev.level < current.level ? prev : current;
+      });
+      const target = document.getElementById(higestLevel.target);
+      target?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+    if (this.pageErrors.emailErrors.isEmailValidDataError) {
+      const target = document.getElementById("contact_form_order_page");
+      target?.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  }
+  setStreetError(value: boolean) {
+    this.pageErrors.streetError.isError = value;
+  }
+  setHouseError(value: boolean) {
+    this.pageErrors.houseError.isError = value;
+  }
+  setPhoneError(value: boolean) {
+    this.pageErrors.phoneErrors.isError = value;
+  }
+  setEmailError(value: boolean) {
+    this.pageErrors.emailErrors.isError = value;
+  }
+  // forms handler
+  adressFormHandler(key: string, value: string) {
+    this.adressFormData[key] = value;
+  }
+
+  contactFormHandler(key: string, value: string) {
+    this.contactFormData[key] = value;
   }
 }
