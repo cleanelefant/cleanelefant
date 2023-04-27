@@ -21,6 +21,7 @@ export default class This {
   minutes: ExtendedIMinutes[];
   adressFormData: IAdressForm;
   contactFormData: IContactForm;
+  isCash: boolean;
   pageErrors: IErrors;
   errorArray: IErrorOrderPage[];
   constructor() {
@@ -32,6 +33,7 @@ export default class This {
     this.serviceDay = "";
     this.time = "";
     this.times = [];
+    this.isCash = true;
     this.minutes = [];
     this.area_price = 0;
     this.window_price = 0;
