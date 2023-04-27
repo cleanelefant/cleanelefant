@@ -12,6 +12,7 @@ import { times } from "../../utils/times";
 import OrderCard from "./order_card/OrderCard";
 import AdressForm from "./forms/AdressForm";
 import ContactForm from "./forms/ContactForm";
+import ChoosePayment from "./payment/ChoosePayment";
 
 // Components
 
@@ -45,14 +46,13 @@ function Component() {
             <TimePicker />
           </div>
           <div id='adress_order_page'>
-            {/* <div ref={topContactRef}></div> */}
             <AdressForm />
             <ContactForm />
-            {/* <div ref={bottomContactRef}></div> */}
           </div>
+          <ChoosePayment />
         </div>
         <div className='basis-1/4 flex '>
-          <OrderCard />{" "}
+          <OrderCard />
         </div>
       </div>
     </div>
