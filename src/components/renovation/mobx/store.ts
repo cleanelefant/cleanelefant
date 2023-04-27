@@ -176,6 +176,11 @@ export default class This {
   setVat(value: number) {
     this.vat = value;
   }
+
+  setIsCash(value: boolean) {
+    this.isCash = value;
+  }
+
   getTotalPrice() {
     let result =
       (this.area * this.area_price + this.windows * this.window_price) *
