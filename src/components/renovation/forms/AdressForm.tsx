@@ -26,7 +26,7 @@ function AdressForm() {
       <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
         WPROWADŹ SWÓJ ADRES
       </div>
-      <section className='grid-cols-1 lg:grid lg:grid-cols-4 gap-4 bg-white mt-10 p-5'>
+      <section className='grid-cols-1 lg:grid lg:grid-cols-4 gap-4 drop-shadow-xl bg-slate-50 mt-10 p-5'>
         {/* Street */}
         <div className={inputGroupStyles.div}>
           <label className={inputGroupStyles.label} htmlFor='name'>

@@ -260,8 +260,8 @@ function DatePickear() {
       className={`${
         store.pageErrors.dateError.isError
           ? "border-red-500 border-4"
-          : "text-gray-700 border-2"
-      }  p-2`}
+          : "text-gray-700 drop-shadow-xl bg-slate-50"
+      }  p-4`}
       id='datepicker_order_page'
     >
       <div className='flex justify-between items-center text-xl font-bold'>

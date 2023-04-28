@@ -18,11 +18,6 @@ interface IPriceData {
   window_price: number;
 }
 
-// function findInArray(addon: IAddonReciver, targetArr: ITarget[]) {
-//   const find = targetArr.find((item) => item.hash === addon.hash);
-//   return !!find;
-// }
-
 function OrderCard() {
   const { store } = useContext(Context);
   const [is_price_data, setIsPriceData] = React.useState(false);
@@ -45,89 +40,58 @@ function OrderCard() {
   const clickHandler = () => {
     store.errrorHandler();
   };
-  // const addonsArr = toJS(store.addonReciver);
-  // const washingAddonsArr = toJS(store.washingAddonReciver);
-  // const targetArr: ITarget[] = [];
-  // const washingTargetArr: ITarget[] = [];
-
-  // const clickHandler = () => {
-  //   store.errrorHandler();
-  // };
-
-  // addonsArr.forEach((addon) => {
-  //   if (findInArray(addon, targetArr)) {
-  //     const index = targetArr.findIndex((item) => item.hash === addon.hash);
-  //     targetArr[index].total += 1;
-  //   } else {
-  //     targetArr.push({
-  //       hash: addon.hash,
-  //       title: addon.title,
-  //       total: 1,
-  //       src: addon.src,
-  //     });
-  //   }
-  // });
-
-  // washingAddonsArr.forEach((addon) => {
-  //   if (findInArray(addon, washingTargetArr)) {
-  //     const index = washingTargetArr.findIndex(
-  //       (item) => item.hash === addon.hash
-  //     );
-  //     washingTargetArr[index].total += 1;
-  //   } else {
-  //     washingTargetArr.push({
-  //       hash: addon.hash,
-  //       title: addon.title,
-  //       total: 1,
-  //       src: addon.src,
-  //     });
-  //   }
-  // });
-
-  // React.useEffect(() => {
-  //   store.setTotalMinutes();
-  // }, [
-  //   store.rooms,
-  //   store.bedrooms,
-  //   store.addonReciver.length,
-  //   store.washingAddonReciver.length,
-  // ]);
-
-  // const time = store.setTotalTime();
 
   return (
-    <div className='w-full relative'>
-      <div>Sprzątanie po remoncie</div>
-      <div>Powierzchnia: {store.area}</div>
-      <div>Ilość okien: {store.windows}</div>
-      <div className='flex justify-center gap-x-2 my-2'>
-        {store.serviceDay && (
-          <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
-            {store.serviceDay}
-          </div>
-        )}
-        {store.time && (
-          <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
-            {store.time}
-          </div>
-        )}
-      </div>
-      <div>
-        Do zapłaty:{" "}
-        {is_price_data ? store.getTotalPrice() + " zł." : "LOADING..."}
-        <span className='line-through'>
-          {store.ocassionalRate > 0 &&
-            " " + store.getTotalPriceWithoutRate() + " zł."}
-        </span>
-      </div>
+    <div className='w-full relative '>
+      <div className='drop-shadow-xl bg-slate-50 p-4 lg:fixed xl:w-[400px]'>
+        <div className='text-center font-bold text-xl'>
+          Sprzątanie po remoncie
+        </div>
+        <div className='font-mono pt-2'>Powierzchnia: {store.area}</div>
+        <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
 
-      <div className='flex justify-center'>
-        <button
-          onClick={clickHandler}
-          className='bg-blue-500 text-white px-4 py-2'
-        >
-          Zamawiam
-        </button>
+        <div className='font-bold pt-1'>
+          Do zapłaty:{" "}
+          {is_price_data ? store.getTotalPrice() + " zł." : "LOADING..."}
+          <span className='line-through'>
+            {store.ocassionalRate > 0 &&
+              " " + store.getTotalPriceWithoutRate() + " zł."}
+          </span>
+        </div>
+        <div className='flex justify-center gap-x-2 '>
+          {store.serviceDay && (
+            <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
+              {store.serviceDay}
+            </div>
+          )}
+          {store.time && (
+            <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
+              {store.time}
+            </div>
+          )}
+        </div>
+        <div className='text-center font-mono text-sm my-2'>
+          {store.isCash ? (
+            <div className='flex gap-x-1 justify-center items-center'>
+              <p>opłata gotówką</p>
+              <img src={cash} width={24} height={24} />
+            </div>
+          ) : (
+            <div className='flex gap-x-1 justify-center items-center'>
+              <p>opłata kartá</p>
+              <img src={card} width={24} height={24} />
+            </div>
+          )}
+        </div>
+
+        <div className='flex justify-center'>
+          <button
+            onClick={clickHandler}
+            className='bg-blue-500 text-white px-4 py-2 font-bold text-2xl'
+          >
+            Zamawiam
+          </button>
+        </div>
       </div>
     </div>
   );

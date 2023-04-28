@@ -27,8 +27,8 @@ function TimePicker() {
       className={`${
         store.pageErrors.timeError.isError
           ? "border-red-500 border-4"
-          : "text-gray-700"
-      } border-2 p-2 basis-1/3`}
+          : "drop-shadow-xl bg-slate-50"
+      }  p-4 basis-1/3`}
     >
       <div className='flex flex-wrap gap-x-3 gap-y-4 cursor-pointer'>
         {mtimes?.map((item) => (

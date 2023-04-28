@@ -1,27 +1,18 @@
-import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
-// Context
-import { Context } from "./index";
+// Components
 import Launcher from "./launcher/Launcher";
 import AreaCounter from "./counters/AreaCounter";
 import WindowCounter from "./counters/WindowCounter";
 import Datepicker from "../renovation/datepicker/DatePicker";
 import TimePicker from "../renovation/time_picker/TimePicker";
-import { ExtendedITime } from "../../types";
-import { times } from "../../utils/times";
 import OrderCard from "./order_card/OrderCard";
 import AdressForm from "./forms/AdressForm";
 import ContactForm from "./forms/ContactForm";
 import ChoosePayment from "./payment/ChoosePayment";
 
-// Components
-
 function Component() {
-  const { store } = useContext(Context);
-  React.useEffect(() => {}, []);
-
   return (
-    <div className='mx-2'>
+    <div className='mx-8'>
       <div className='text-lg my-10 lg:text-4xl font-extrabold uppercase text-center'>
         Sprzątanie po remoncie Zielona Góra
       </div>
