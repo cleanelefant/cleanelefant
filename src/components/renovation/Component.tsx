@@ -9,6 +9,7 @@ import OrderCard from "./order_card/OrderCard";
 import AdressForm from "./forms/AdressForm";
 import ContactForm from "./forms/ContactForm";
 import ChoosePayment from "./payment/ChoosePayment";
+import MobileOrderButton from "./mobile_order_button/MobileOrderButton";
 
 function Component() {
   return (
@@ -46,6 +47,7 @@ function Component() {
           <OrderCard />
         </div>
       </div>
+      <MobileOrderButton />
     </div>
   );
 }
