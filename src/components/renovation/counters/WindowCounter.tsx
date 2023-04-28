@@ -20,7 +20,7 @@ function setPoland(windows: number) {
 function WindowsCounter() {
   const { store } = useContext(Context);
   return (
-    <div className='flex-1 flex gap-x-4 items-stretch justify-between text-lg lg:text-2xl font-bold bg-slate-50 drop-shadow-xl min-w-[350px] max-w-lg '>
+    <div className='flex-1 flex gap-x-4 items-stretch justify-between text-lg lg:text-2xl font-bold bg-slate-50 drop-shadow-xl max-w-lg '>
       <button
         className='py-6 px-8 hover:bg-slate-100 transition-transform lg:text-4xl'
         onClick={() => {
