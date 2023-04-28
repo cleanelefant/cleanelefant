@@ -25,7 +25,9 @@ function AreaCounter() {
                   : `${(store.area.toString().length + 1) * 14}px`,
             }}
             maxLength={255}
-            className={`focus:outline-none text-center `}
+            className={`focus:outline-none text-center ${
+              store.area === 0 ? "text-lg" : "text-2xl"
+            }`}
             onChange={(e) => {
               store.setArea(e);
             }}

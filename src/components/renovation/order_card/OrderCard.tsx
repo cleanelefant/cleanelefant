@@ -60,12 +60,12 @@ function OrderCard() {
         </div>
         <div className='flex justify-center gap-x-2 '>
           {store.serviceDay && (
-            <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
+            <div className='py-1 px-2 bg-amber-500 text-sm font-bold  mt-2'>
               {store.serviceDay}
             </div>
           )}
           {store.time && (
-            <div className='py-1 px-2 bg-amber-500 text-sm font-bold'>
+            <div className='py-1 px-2 bg-amber-500 text-sm font-bold  mt-2'>
               {store.time}
             </div>
           )}
