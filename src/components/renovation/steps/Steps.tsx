@@ -1,9 +1,13 @@
 import React, { FC, useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "..";
+import { steps } from "../../../utils/data/steps";
 
 function Steps() {
   const { store } = useContext(Context);
+  React.useEffect(() => {
+    store.setSteps(steps);
+  }, []);
 
   return (
     <div className='sticky top-0 z-50 flex flex-col lg:flex-row bg-cyan-400 font-mono'>

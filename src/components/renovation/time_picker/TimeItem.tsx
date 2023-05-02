@@ -11,7 +11,6 @@ interface ITimeItem {
 
 function TimeItem({ item, isActive, setTimes }: ITimeItem) {
   const timeMouseOnMouseEnter = (item: ExtendedITime) => {
-    console.log("before", item.isModal);
     setTimes((t) => {
       return [...t].map((time) => {
         if (time.id === item.id) {
@@ -40,7 +39,7 @@ function TimeItem({ item, isActive, setTimes }: ITimeItem) {
         timeMouseOnMouseLeave();
       }}
       className={`relative px-4 py-2 font-medium rounded ${
-        isActive ? "bg-blue-500 text-white" : "bg-slate-500"
+        isActive ? "bg-blue-500 text-white" : "bg-gray-200"
       }`}
     >
       {item.hours}:{item.minutes}

@@ -86,7 +86,7 @@ function setItemClass(item: ExtendedIDays) {
     if (item.isActive) {
       return "bg-blue-500";
     } else {
-      return "bg-stone-400";
+      return "bg-gray-200";
     }
   }
   if (item.monthStatus === "next" && item.dayStatus === "previousNext") {

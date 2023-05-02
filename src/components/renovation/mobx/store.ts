@@ -6,6 +6,7 @@ import {
   IContactForm,
   IErrorOrderPage,
   IErrors,
+  IStep,
 } from "../../../types";
 
 export default class This {
@@ -24,6 +25,7 @@ export default class This {
   isCash: boolean;
   pageErrors: IErrors;
   errorArray: IErrorOrderPage[];
+  steps: IStep[];
   constructor() {
     makeAutoObservable(this);
     this.area = 0;
@@ -121,6 +123,8 @@ export default class This {
       },
     };
     this.errorArray = [] as IErrorOrderPage[];
+
+    this.steps = [] as IStep[];
   }
   setArea(event: any) {
     const enteredValue = event.target.value.replace(/[^0-9]/g, "");
@@ -238,12 +242,19 @@ export default class This {
   setEmailError(value: boolean) {
     this.pageErrors.emailErrors.isError = value;
   }
-  // forms handler
+
+  // Forms handler
   adressFormHandler(key: string, value: string) {
     this.adressFormData[key] = value;
   }
 
   contactFormHandler(key: string, value: string) {
     this.contactFormData[key] = value;
+  }
+
+  // Steps
+
+  setSteps(steps: IStep[]) {
+    this.steps = steps;
   }
 }

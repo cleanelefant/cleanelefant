@@ -43,7 +43,7 @@ function MinutesItem({ item, hour, setMinutes }: IMinutesItem) {
       onClick={(e) => {
         minutesClickHandler(item, e);
       }}
-      className={`minutesButton px-1 ${
+      className={`minutesButton p-2 ${
         item.isActive ? "bg-blue-500 text-white " : "bg-red-500"
       }`}
     >
