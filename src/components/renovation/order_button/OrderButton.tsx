@@ -5,7 +5,9 @@ import { Context } from "..";
 function OrderButton() {
   const { store } = useContext(Context);
 
-  const clickHandler = () => {};
+  const clickHandler = () => {
+    store.errrorHandler();
+  };
 
   return (
     <div className='hidden  my-20 lg:flex justify-center'>
@@ -18,6 +20,11 @@ function OrderButton() {
           {store.ocassionalRate > 0 && " " + store.getTotalPriceWithoutRate()}
         </span>{" "}
         zł.
+        {store.pageErrors.comercialDataError.isError && (
+          <div className='text-red-500 font-bold text-sm'>
+            {store.pageErrors.comercialDataError.text}
+          </div>
+        )}
       </button>
     </div>
   );
