@@ -118,6 +118,13 @@ interface IPhoneErrors extends IErrorOrderPage {}
 interface IEmailErrors extends IErrorOrderPage {
   isEmailValidDataError: boolean;
 }
+interface IRulesErrors {
+  isError: boolean;
+  target: string;
+  level: number;
+}
+
+interface IComercialDataErrors extends IErrorOrderPage {}
 
 export interface IErrors {
   dateError: IDateErrors;
@@ -131,6 +138,8 @@ export interface IErrors {
   nameErrors: INameErrors;
   phoneErrors: IPhoneErrors;
   emailErrors: IEmailErrors;
+  rulesError: IRulesErrors;
+  comercialDataError: IComercialDataErrors;
 }
 
 export interface IFormInput {

@@ -12,6 +12,8 @@ import ChoosePayment from "./payment/ChoosePayment";
 import MobileOrderButton from "./mobile_order_button/MobileOrderButton";
 import Steps from "./steps/Steps";
 import OrderButton from "./order_button/OrderButton";
+import React from "react";
+import CheckRules from "./rules/CheckRules";
 
 function Component() {
   return (
@@ -49,6 +51,7 @@ function Component() {
               <ContactForm />
             </div>
             <ChoosePayment />
+            <CheckRules />
             <OrderButton />
           </div>
           <div className='basis-1/4 flex '>

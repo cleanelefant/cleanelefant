@@ -26,6 +26,7 @@ export default class This {
   pageErrors: IErrors;
   errorArray: IErrorOrderPage[];
   steps: IStep[];
+  isRulesChecked: boolean;
   constructor() {
     makeAutoObservable(this);
     this.area = 0;
@@ -39,6 +40,7 @@ export default class This {
     this.minutes = [];
     this.area_price = 0;
     this.window_price = 0;
+    this.isRulesChecked = false;
     this.adressFormData = {
       street: "",
       house: "",
@@ -54,6 +56,17 @@ export default class This {
       notes: "",
     };
     this.pageErrors = {
+      rulesError: {
+        isError: false,
+        level: 13,
+        target: "rules_order_page",
+      },
+      comercialDataError: {
+        isError: false,
+        text: "Minimalna suma zamówienia przy remoncie 200.00 zł",
+        level: 13,
+        target: "commercial_data_order_page",
+      },
       dateError: {
         isError: false,
         text: "Wybierz datę",
@@ -164,6 +177,15 @@ export default class This {
     this.pageErrors.dateError.isError = value;
   }
 
+  setRulesError(value: boolean) {
+    this.pageErrors.rulesError.isError = value;
+  }
+
+  setCommercialDataError(value: boolean) {
+    console.log("setCommercialDataError", value);
+    this.pageErrors.comercialDataError.isError = value;
+  }
+
   setMinutes(minutes: ExtendedIMinutes[]) {
     this.minutes = minutes;
   }
@@ -183,6 +205,10 @@ export default class This {
 
   setIsCash(value: boolean) {
     this.isCash = value;
+  }
+
+  setIsRulesChecked(value: boolean) {
+    this.isRulesChecked = value;
   }
 
   getTotalPrice() {
@@ -214,6 +240,8 @@ export default class This {
     // this.setNameError(!!!this.contactFormData.name);
     this.setEmailError(!!!this.contactFormData.email);
     this.setPhoneError(!!!this.contactFormData.phone);
+    this.setCommercialDataError(!(this.getTotalPrice() > 200));
+    this.setRulesError(!this.isRulesChecked);
     for (const item in this.pageErrors) {
       this.errorArray.push(this.pageErrors[item]);
     }

@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "..";
+import React from "react";
 
 function AreaCounter() {
   const { store } = useContext(Context);
@@ -30,6 +31,10 @@ function AreaCounter() {
             }`}
             onChange={(e) => {
               store.setArea(e);
+              const total = store.getTotalPrice();
+              if (total > 199) {
+                store.setCommercialDataError(false);
+              }
             }}
           />
         </div>
@@ -39,6 +44,10 @@ function AreaCounter() {
         className='py-6 px-8 hover:bg-slate-100 transition-transform lg:text-4xl'
         onClick={() => {
           store.increaseArea();
+          const total = store.getTotalPrice();
+          if (total > 199) {
+            store.setCommercialDataError(false);
+          }
         }}
       >
         +

@@ -47,6 +47,11 @@ function OrderCard() {
         <div className='text-center font-bold text-xl'>
           Sprzątanie po remoncie
         </div>
+        {store.pageErrors.comercialDataError.isError && (
+          <div className='text-red-500 font-bold'>
+            {store.pageErrors.comercialDataError.text}
+          </div>
+        )}
         <div className='font-mono pt-2'>Powierzchnia: {store.area}</div>
         <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
 

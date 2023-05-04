@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "..";
+import React from "react";
 
 function setPoland(windows: number) {
   if (!windows) {
@@ -36,6 +37,10 @@ function WindowsCounter() {
         className='py-6 px-8 hover:bg-slate-100 transition-transform lg:text-4xl'
         onClick={() => {
           store.increaseWindows();
+          const total = store.getTotalPrice();
+          if (total > 199) {
+            store.setCommercialDataError(false);
+          }
         }}
       >
         +
