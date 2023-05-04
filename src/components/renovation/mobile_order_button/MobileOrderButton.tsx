@@ -15,7 +15,7 @@ function MobileOrderButton() {
     <div className='fixed bottom-2 left-0 right-0 lg:hidden flex justify-center font-bold text-xl '>
       <button
         onClick={clickHandler}
-        className='flex-1  py-4 px-4 bg-blue-500 text-white flex justify-center gap-x-2 mx-4'
+        className='flex-1  py-4 px-4 bg-blue-500 text-white flex flex-col justify-center items-center gap-x-2 mx-4'
       >
         <div className='font-bold pt-1'>
           Do zapłaty: {store.getTotalPrice() + " zł."}
@@ -24,6 +24,11 @@ function MobileOrderButton() {
               " " + store.getTotalPriceWithoutRate() + " zł."}
           </span>
         </div>
+        {store.pageErrors.comercialDataError.isError && (
+          <div className='text-red-500 font-bold text-sm'>
+            {store.pageErrors.comercialDataError.text}
+          </div>
+        )}
       </button>
     </div>
   );

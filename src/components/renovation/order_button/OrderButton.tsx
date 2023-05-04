@@ -8,7 +8,7 @@ function OrderButton() {
   const clickHandler = () => {};
 
   return (
-    <div className='my-20 flex justify-center'>
+    <div className='hidden  my-20 lg:flex justify-center'>
       <button
         onClick={clickHandler}
         className='bg-blue-500 text-white px-20 py-8 font-bold text-4xl'
