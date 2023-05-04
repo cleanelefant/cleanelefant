@@ -27,6 +27,8 @@ export default class This {
   errorArray: IErrorOrderPage[];
   steps: IStep[];
   isRulesChecked: boolean;
+  isRodoChecked: boolean;
+
   constructor() {
     makeAutoObservable(this);
     this.area = 0;
@@ -41,6 +43,7 @@ export default class This {
     this.area_price = 0;
     this.window_price = 0;
     this.isRulesChecked = false;
+    this.isRodoChecked = false;
     this.adressFormData = {
       street: "",
       house: "",
@@ -209,6 +212,10 @@ export default class This {
 
   setIsRulesChecked(value: boolean) {
     this.isRulesChecked = value;
+  }
+
+  setIsRodoChecked(value: boolean) {
+    this.isRodoChecked = value;
   }
 
   getTotalPrice() {

@@ -14,6 +14,7 @@ import Steps from "./steps/Steps";
 import OrderButton from "./order_button/OrderButton";
 import React from "react";
 import CheckRules from "./rules/CheckRules";
+import Rodo from "./rules/Rodo";
 
 function Component() {
   return (
@@ -52,6 +53,7 @@ function Component() {
             </div>
             <ChoosePayment />
             <CheckRules />
+            <Rodo />
             <OrderButton />
           </div>
           <div className='basis-1/4 flex '>
