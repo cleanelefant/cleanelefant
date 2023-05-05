@@ -19,10 +19,14 @@ import { Context } from "./index";
 
 function Component() {
   const { store } = React.useContext(Context);
-  const topAdressDataRef = React.useRef<HTMLDivElement>(null);
-  const bottomAdressDataRef = React.useRef<HTMLDivElement>(null);
   const topComercialDataRef = React.useRef<HTMLDivElement>(null);
   const bottomComercialDataRef = React.useRef<HTMLDivElement>(null);
+  const topTimeDataRef = React.useRef<HTMLDivElement>(null);
+  const bottomTimeDataRef = React.useRef<HTMLDivElement>(null);
+  const topAdressDataRef = React.useRef<HTMLDivElement>(null);
+  const bottomAdressDataRef = React.useRef<HTMLDivElement>(null);
+  const topPaymentDataRef = React.useRef<HTMLDivElement>(null);
+  const bottomPaymentDataRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     const position = 1;
@@ -57,6 +61,34 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
+        console.log("topTimeObserver");
+        store.setActualStep(position);
+      }
+    });
+    const bottomObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        console.log("bottomTimeObserver");
+        store.setActualStep(position);
+      }
+    });
+    if (topTimeDataRef.current) {
+      topObserver.observe(topTimeDataRef.current);
+    }
+    if (bottomTimeDataRef.current) {
+      bottomObserver.observe(bottomTimeDataRef.current);
+    }
+    return () => {
+      topObserver.disconnect();
+      bottomObserver.disconnect();
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const position = 3;
+    const topObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
         console.log("topAdressObserver");
         store.setActualStep(position);
       }
@@ -68,11 +100,38 @@ function Component() {
         store.setActualStep(position);
       }
     });
-    if (topAdressDataRef.current) {
+    if (topTimeDataRef.current) {
       topObserver.observe(topAdressDataRef.current);
     }
-    if (bottomAdressDataRef.current) {
+    if (bottomTimeDataRef.current) {
       bottomObserver.observe(bottomAdressDataRef.current);
+    }
+    return () => {
+      topObserver.disconnect();
+      bottomObserver.disconnect();
+    };
+  }, []);
+  React.useEffect(() => {
+    const position = 4;
+    const topObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        console.log("topAdressObserver");
+        store.setActualStep(position);
+      }
+    });
+    const bottomObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        console.log("bottomAdressObserver");
+        store.setActualStep(position);
+      }
+    });
+    if (topTimeDataRef.current) {
+      topObserver.observe(topPaymentDataRef.current);
+    }
+    if (bottomTimeDataRef.current) {
+      bottomObserver.observe(bottomPaymentDataRef.current);
     }
     return () => {
       topObserver.disconnect();
@@ -107,17 +166,21 @@ function Component() {
             >
               Wybór terminu
             </div>
-            <div ref={topAdressDataRef}></div>
+            <div ref={topTimeDataRef}></div>
             <div className='flex flex-col 2xl:flex-row gap-5 mt-10 '>
               <Datepicker />
               <TimePicker />
             </div>
+            <div ref={bottomTimeDataRef}></div>
+            <div ref={topAdressDataRef}></div>
             <div id='adress_order_page' className='scroll-mt-40'>
               <AdressForm />
               <ContactForm />
             </div>
             <div ref={bottomAdressDataRef}></div>
+            <div ref={topPaymentDataRef}></div>
             <ChoosePayment />
+            <div ref={bottomPaymentDataRef}></div>
             <CheckRules />
             <Rodo />
             <OrderButton />
