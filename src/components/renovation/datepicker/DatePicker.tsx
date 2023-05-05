@@ -116,7 +116,6 @@ function DatePickear() {
   const { store } = useContext(Context);
   const [month, setMonth] = React.useState(today.getMonth());
   const [days, setDays] = React.useState<ExtendedIDays[]>([]);
-  // const myRef = React.useRef(null);
 
   const dayClickHandler = (item: ExtendedIDays) => {
     if (item.isActive === false) {
@@ -128,11 +127,6 @@ function DatePickear() {
       store.setServiceDay(item.month + " " + item.date);
       store.setDatePickerError(false);
       store.setTime("");
-      // store.setTimes(
-      //   [...store.times].map((t) => {
-      //     return { ...t, isModal: false };
-      //   })
-      // );
     }
 
     if (item.isActive === true) {

@@ -233,6 +233,7 @@ export default class This {
     result = parseFloat(result.toFixed(2));
     return result;
   }
+
   // Errors
 
   errrorHandler() {
@@ -287,7 +288,14 @@ export default class This {
     this.contactFormData[key] = value;
   }
 
-  // Steps
+  // Order steps
+  setActualStep(id: number) {
+    const result = this.steps.find((x) => x.id === id);
+    this.steps.forEach((step) => {
+      step.isActive = false;
+    });
+    result.isActive = true;
+  }
 
   setSteps(steps: IStep[]) {
     this.steps = steps;

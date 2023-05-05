@@ -5,7 +5,7 @@ export const steps: IStep[] = [
     id: 1,
     title: "Wybór usług",
     target: "#countres_order_page",
-    isActive: false,
+    isActive: true,
   },
   {
     id: 2,

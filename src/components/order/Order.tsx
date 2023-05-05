@@ -42,7 +42,6 @@ function OrderComponent() {
     const discount = queryParams.get("discount");
 
     if (Number(rooms)) {
-      console.log(Number(rooms));
       store.setRooms(Number(rooms));
     }
     if (Number(bedrooms)) {

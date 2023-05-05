@@ -12,7 +12,7 @@ function Rodo() {
   return (
     <div className='flex items-center justify-center'>
       <div className='mb-4'>
-        <label className='flex items-center justify-center cursor-pointer'>
+        <label className='flex items-center  cursor-pointer'>
           <div className='relative'>
             <input
               type='checkbox'
@@ -21,9 +21,7 @@ function Rodo() {
               className='sr-only'
             />
             <div
-              className={`w-8 h-8 ${
-                store.pageErrors.rulesError.isError ? "bg-rose-300" : "bg-white"
-              } rounded-sm border border-black transition-all duration-200 ease-out absolute left-0`}
+              className={`w-8 h-8 bg-white  rounded-sm border border-black transition-all duration-200 ease-out absolute left-0`}
             ></div>
             {store.isRodoChecked && (
               <svg
@@ -38,7 +36,7 @@ function Rodo() {
         </label>
       </div>
       <div
-        className={`ml-10 flex justify-center items-center gap-x-3 mt-4text-gray-700  select-none  text-lg lg:text-xl`}
+        className={`ml-10 flex justify-center items-center gap-x-3 mt-4 text-gray-700  select-none  text-lg lg:text-xl`}
       >
         <p>
           Nie wyrażam zgody na wykorzystanie moich danych osobowych do celów
