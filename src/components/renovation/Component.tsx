@@ -16,6 +16,7 @@ import React from "react";
 import CheckRules from "./rules/CheckRules";
 import Rodo from "./rules/Rodo";
 import { Context } from "./index";
+import AddWashing from "./additional_services/AddWashing";
 
 function Component() {
   const { store } = React.useContext(Context);
@@ -61,14 +62,13 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("topTimeObserver");
+      
         store.setActualStep(position);
       }
     });
     const bottomObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      if (entry.isIntersecting) {
-        console.log("bottomTimeObserver");
+      if (entry.isIntersecting) {      
         store.setActualStep(position);
       }
     });
@@ -116,14 +116,14 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("topAdressObserver");
+        console.log("topAPaymentObserver");
         store.setActualStep(position);
       }
     });
     const bottomObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("bottomAdressObserver");
+        console.log("bottomPaymentObserver");
         store.setActualStep(position);
       }
     });
@@ -159,6 +159,7 @@ function Component() {
               <AreaCounter />
               <WindowCounter />
             </div>
+            <AddWashing/>
             <div ref={bottomComercialDataRef}></div>
             <div
               id='datepicker_order_page'
@@ -180,7 +181,7 @@ function Component() {
             <div ref={bottomAdressDataRef}></div>
             <div ref={topPaymentDataRef}></div>
             <ChoosePayment />
-            <div ref={bottomPaymentDataRef}></div>
+            <div ref={bottomPaymentDataRef} ></div>
             <CheckRules />
             <Rodo />
             <OrderButton />

@@ -1,7 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import {
+  ExtendedIAddons,
   ExtendedIMinutes,
   ExtendedITime,
+  IAddonReciver,
   IAdressForm,
   IContactForm,
   IErrorOrderPage,
@@ -28,6 +30,9 @@ export default class This {
   steps: IStep[];
   isRulesChecked: boolean;
   isRodoChecked: boolean;
+  // washing addons
+  washingAddons: ExtendedIAddons[];
+  washingAddonReciver: IAddonReciver[];
 
   constructor() {
     makeAutoObservable(this);
@@ -141,6 +146,10 @@ export default class This {
     this.errorArray = [] as IErrorOrderPage[];
 
     this.steps = [] as IStep[];
+    this.washingAddons = [] as ExtendedIAddons[];
+    this.washingAddonReciver = [] as IAddonReciver[];
+
+    
   }
   setArea(event: any) {
     const enteredValue = event.target.value.replace(/[^0-9]/g, "");
@@ -220,7 +229,7 @@ export default class This {
 
   getTotalPrice() {
     let result =
-      (this.area * this.area_price + this.windows * this.window_price) *
+      (this.area * this.area_price + this.windows * this.window_price+this.getWashingAddonTotalPrice()) *
       this.vat *
       ((100 - this.ocassionalRate) / 100);
     result = parseFloat(result.toFixed(2));
@@ -300,4 +309,48 @@ export default class This {
   setSteps(steps: IStep[]) {
     this.steps = steps;
   }
+
+  // Washing addons
+
+  setWashingAddons(washingAddons: ExtendedIAddons[]) {
+    this.washingAddons = washingAddons;
+  }
+
+  setActivityInWashingAddons(hash: string) {
+    console.log(hash)
+    const index = this.washingAddons.findIndex((addon) => addon.hash === hash);
+    this.washingAddons[index].isActive = !this.washingAddons[index].isActive;
+  }
+
+  deleteItemFromWashingAddonReciver(hash: string) {
+    const index = this.washingAddonReciver.findIndex(
+      (addon) => addon.hash === hash
+    );
+    if (index !== -1) {
+      this.washingAddonReciver.splice(index, 1);
+    }
+  }
+
+  addItemToWashingAddonReciver(item: IAddonReciver) {
+    this.washingAddonReciver.push(item);
+  }
+  
+  deleteItemsWithSameHashFromWashingAddonReciver(hash: string) {
+    this.washingAddonReciver = [...this.washingAddonReciver].filter(
+      (addon) => addon.hash !== hash
+    );
+  }
+
+  deleteMultyItemFromWashingAddonReciver(hash: string, multyId: number) {
+    const index = this.washingAddonReciver.findIndex(
+      (addon) => addon.hash === hash && addon.multyId === multyId
+    );
+    if (index !== -1) {
+      this.washingAddonReciver.splice(index, 1);
+    }
+  }
+  getWashingAddonTotalPrice() {
+    return this.washingAddonReciver.reduce((sum, obj) => sum + obj.price, 0);
+  }
+  //------------------------------------------------------------
 }

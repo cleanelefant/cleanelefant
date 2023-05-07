@@ -448,7 +448,7 @@ export default class This {
       (addon) => addon.hash === hash && addon.multyId === multyId
     );
     if (index !== -1) {
-      this.washingAddonReciver.splice(index, 1);
+      this.washingAddonReciver.splice(index, 1); 
     }
   }
 
