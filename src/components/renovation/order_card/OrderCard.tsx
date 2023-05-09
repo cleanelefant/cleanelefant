@@ -94,7 +94,7 @@ function OrderCard() {
             onClick={clickHandler}
             className='bg-blue-500 text-white px-4 py-2 font-bold text-2xl'
           >
-            Zamawiam
+            Zamawiam Yoooo
           </button>
         </div>
       </div>
