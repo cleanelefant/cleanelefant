@@ -43,10 +43,21 @@ interface IDaysRate {
   rate: number;
 }
 const rates: IDaysRate[] = [
-  { id: 1, date: 28, month: "April", rate: 10 },
-  { id: 2, date: 30, month: "April", rate: 20 },
-  { id: 3, date: 3, month: "May", rate: 15 },
-  { id: 4, date: 5, month: "May", rate: 20 },
+  { id: 1, date: 11, month: "May", rate: 10 },
+  { id: 2, date: 12, month: "May", rate: 20 },
+  { id: 3, date: 14, month: "May", rate: 15 },
+  { id: 4, date: 15, month: "May", rate: 20 },
+  { id: 5, date: 18, month: "May", rate: 15 },
+  { id: 6, date: 21, month: "May", rate: 20 },
+  { id: 10, date: 21, month: "May", rate: 25 },
+  { id: 11, date: 21, month: "May", rate: 26 },
+  { id: 7, date: 23, month: "May", rate: 15 },
+  { id: 8, date: 28, month: "May", rate: 20 },
+  { id: 9, date: 30, month: "May", rate: 10 },
+  { id: 12, date: 1, month: "June", rate: 20 },
+  { id: 13, date: 3, month: "June", rate: 10 },
+  { id: 14, date: 5, month: "June", rate: 20 },
+  { id: 15, date: 6, month: "June", rate: 10 },
 ];
 
 interface ExtendedIDays extends IDays {
@@ -293,10 +304,13 @@ function DatePickear() {
         {days.map((d) => {
           if (d.dayStatus === "previous") {
             return (
-              <div key={d.id} className='flex items-center justify-center'>
-                <div className='w-9 lg:w-16 h-9 lg:h-16 flex items-center border justify-center text-slate-200 font-bold text-sm relative rounded-md'>
+              <div
+                key={d.id}
+                className='flex flex-col items-center justify-center lg:py-2 border text-slate-200 rounded-md'
+              >
+                <div className='w-9 lg:w-16 h-9 lg:h-16 flex items-center justify-center text-slate-200  text-[18px] relative rounded-md'>
                   <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-7 h-0.5 bg-slate-200'></span>
-                  <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full'>
+                  <span className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full '>
                     {d.date}
                   </span>
                 </div>
@@ -320,7 +334,7 @@ function DatePickear() {
                   dzisiaj
                 </p>
               )}
-              <p className=' text-[10px] lg:text-[16px] font-extrabold leading-none'>
+              <p className=' text-[10px] lg:text-[18px] font-thin leading-none text-green-700'>
                 {d.rate && `-${d.rate}%`}
               </p>
               <p className='lg:text-xl font-medium'>{d.date}</p>

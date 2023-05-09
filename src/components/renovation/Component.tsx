@@ -1,4 +1,7 @@
+import React from "react";
 import { observer } from "mobx-react-lite";
+//Context
+import { Context } from "./index";
 // Components
 import Launcher from "./launcher/Launcher";
 import AreaCounter from "./counters/AreaCounter";
@@ -12,10 +15,8 @@ import ChoosePayment from "./payment/ChoosePayment";
 import MobileOrderButton from "./mobile_order_button/MobileOrderButton";
 import Steps from "./steps/Steps";
 import OrderButton from "./order_button/OrderButton";
-import React from "react";
 import CheckRules from "./rules/CheckRules";
 import Rodo from "./rules/Rodo";
-import { Context } from "./index";
 import AddWashing from "./additional_services/AddWashing";
 
 function Component() {
@@ -34,23 +35,21 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("topCommObserver");
         store.setActualStep(position);
       }
     });
     const bottomObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("bottomCommObserver");
         store.setActualStep(position);
       }
     });
     if (topComercialDataRef.current) {
       topObserver.observe(topComercialDataRef.current);
     }
-    // if (bottomComercialDataRef.current) {
-    //   bottomObserver.observe(bottomComercialDataRef.current);
-    // }
+    if (bottomComercialDataRef.current) {
+      bottomObserver.observe(bottomComercialDataRef.current);
+    }
     return () => {
       topObserver.disconnect();
       bottomObserver.disconnect();
@@ -62,13 +61,12 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-      
         store.setActualStep(position);
       }
     });
     const bottomObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      if (entry.isIntersecting) {      
+      if (entry.isIntersecting) {
         store.setActualStep(position);
       }
     });
@@ -89,14 +87,12 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("topAdressObserver");
         store.setActualStep(position);
       }
     });
     const bottomObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("bottomAdressObserver");
         store.setActualStep(position);
       }
     });
@@ -116,14 +112,12 @@ function Component() {
     const topObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("topAPaymentObserver");
         store.setActualStep(position);
       }
     });
     const bottomObserver = new IntersectionObserver((entries) => {
       const entry = entries[0];
       if (entry.isIntersecting) {
-        console.log("bottomPaymentObserver");
         store.setActualStep(position);
       }
     });
@@ -159,7 +153,7 @@ function Component() {
               <AreaCounter />
               <WindowCounter />
             </div>
-            <AddWashing/>
+            <AddWashing />
             <div ref={bottomComercialDataRef}></div>
             <div
               id='datepicker_order_page'
@@ -181,7 +175,7 @@ function Component() {
             <div ref={bottomAdressDataRef}></div>
             <div ref={topPaymentDataRef}></div>
             <ChoosePayment />
-            <div ref={bottomPaymentDataRef} ></div>
+            <div ref={bottomPaymentDataRef}></div>
             <CheckRules />
             <Rodo />
             <OrderButton />
