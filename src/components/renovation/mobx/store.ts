@@ -33,6 +33,9 @@ export default class This {
   // washing addons
   washingAddons: ExtendedIAddons[];
   washingAddonReciver: IAddonReciver[];
+  //calculate job time and personal
+  areaMinuteRate: number;
+  windowMinuteRate: number;
 
   constructor() {
     makeAutoObservable(this);
@@ -149,7 +152,9 @@ export default class This {
     this.washingAddons = [] as ExtendedIAddons[];
     this.washingAddonReciver = [] as IAddonReciver[];
 
-    
+    //Calculate job time and personal
+    this.areaMinuteRate = 0;
+    this.windowMinuteRate = 0;
   }
   setArea(event: any) {
     const enteredValue = event.target.value.replace(/[^0-9]/g, "");
@@ -229,7 +234,9 @@ export default class This {
 
   getTotalPrice() {
     let result =
-      (this.area * this.area_price + this.windows * this.window_price+this.getWashingAddonTotalPrice()) *
+      (this.area * this.area_price +
+        this.windows * this.window_price +
+        this.getWashingAddonTotalPrice()) *
       this.vat *
       ((100 - this.ocassionalRate) / 100);
     result = parseFloat(result.toFixed(2));
@@ -317,7 +324,7 @@ export default class This {
   }
 
   setActivityInWashingAddons(hash: string) {
-    console.log(hash)
+    console.log(hash);
     const index = this.washingAddons.findIndex((addon) => addon.hash === hash);
     this.washingAddons[index].isActive = !this.washingAddons[index].isActive;
   }
@@ -334,7 +341,7 @@ export default class This {
   addItemToWashingAddonReciver(item: IAddonReciver) {
     this.washingAddonReciver.push(item);
   }
-  
+
   deleteItemsWithSameHashFromWashingAddonReciver(hash: string) {
     this.washingAddonReciver = [...this.washingAddonReciver].filter(
       (addon) => addon.hash !== hash
@@ -351,6 +358,14 @@ export default class This {
   }
   getWashingAddonTotalPrice() {
     return this.washingAddonReciver.reduce((sum, obj) => sum + obj.price, 0);
+  }
+  //------------------------------------------------------------
+  //Calculate job time and personal
+  setAreaMinutesRate(value: number) {
+    this.areaMinuteRate = value;
+  }
+  setWindowMinutesRate(value: number) {
+    this.windowMinuteRate = value;
   }
   //------------------------------------------------------------
 }

@@ -12,6 +12,7 @@ import hallway from "../../../images/services/hallway.png";
 import room from "../../../images/services/living-room.png";
 import bedroom from "../../../images/services/bedroom.png";
 import { IAddonReciver } from "../../../types";
+import TimeOrderVisualisator from "./TimeOrderVisualisator";
 
 interface IPriceData {
   area_price: number;
@@ -54,6 +55,7 @@ function OrderCard() {
         )}
         <div className='font-mono pt-2'>Powierzchnia: {store.area}</div>
         <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
+        <TimeOrderVisualisator />
 
         <div className='font-bold pt-1'>
           Do zapłaty:{" "}
@@ -94,7 +96,7 @@ function OrderCard() {
             onClick={clickHandler}
             className='bg-blue-500 text-white px-4 py-2 font-bold text-2xl'
           >
-            Zamawiam Yoooo
+            Zamawiam
           </button>
         </div>
       </div>
