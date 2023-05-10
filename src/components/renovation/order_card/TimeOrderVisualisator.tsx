@@ -15,6 +15,11 @@ interface IStateData {
   persons: number;
 }
 
+function areaDivisionRemainderToMinutes(value: number) {
+  // Assume number is between 1 and 10
+  return value * 6; // Multiply by 6 to get the equivalent number of minutes
+}
+
 function setTimeData(
   area: number,
   window: number,
@@ -22,7 +27,13 @@ function setTimeData(
   areaRate: number,
   windowRate: number
 ): IStateData {
-  return { hours: 8, minutes: 20, persons: 1 };
+  const areaPerTen = Math.floor(area / 10);
+  const areaDivisionRemainder = area % 10;
+  return {
+    hours: (areaPerTen * areaRate) / 60,
+    minutes: areaDivisionRemainderToMinutes(areaDivisionRemainder),
+    persons: 1,
+  };
 }
 
 function setGodziny(hours: number): string {
