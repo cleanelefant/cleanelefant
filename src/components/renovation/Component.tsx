@@ -134,6 +134,7 @@ function Component() {
   }, []);
   return (
     <div className='scroll-smooth'>
+      <h1>Hello</h1>
       <Steps />
       <div className='mx-4 lg:mx-10'>
         <h1
