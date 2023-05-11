@@ -42,12 +42,23 @@ function OrderCard() {
     store.errrorHandler();
   };
 
+  const renovationPrise = store.getRenovationPrice();
+  const washingPrise = store.getWashingPrice();
+
   return (
     <div className='w-full relative '>
       <div className='drop-shadow-xl bg-slate-50 p-4 lg:fixed xl:w-[400px]'>
         <div className='text-center font-bold text-xl'>
-          Sprzątanie po remoncie
+          Sprzątanie po remoncie{" "}
+          {renovationPrise ? renovationPrise + " " + "zł" : ""}
         </div>
+        {washingPrise ? (
+          <div className='text-center font-bold text-xl'>
+            Pranie mebli {washingPrise ? washingPrise : ""} zł.
+          </div>
+        ) : (
+          ""
+        )}
         {store.pageErrors.comercialDataError.isError && (
           <div className='text-red-500 font-bold'>
             {store.pageErrors.comercialDataError.text}

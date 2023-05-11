@@ -232,6 +232,23 @@ export default class This {
     this.isRodoChecked = value;
   }
 
+  getRenovationPrice() {
+    let result =
+      (this.area * this.area_price + this.windows * this.window_price) *
+      this.vat *
+      ((100 - this.ocassionalRate) / 100);
+    result = parseFloat(result.toFixed(2));
+    return result;
+  }
+  getWashingPrice() {
+    let result =
+      this.getWashingAddonTotalPrice() *
+      this.vat *
+      ((100 - this.ocassionalRate) / 100);
+    result = parseFloat(result.toFixed(2));
+    return result;
+  }
+
   getTotalPrice() {
     let result =
       (this.area * this.area_price +
@@ -242,6 +259,7 @@ export default class This {
     result = parseFloat(result.toFixed(2));
     return result;
   }
+
   getTotalPriceWithoutRate() {
     let result =
       (this.area * this.area_price + this.windows * this.window_price) *

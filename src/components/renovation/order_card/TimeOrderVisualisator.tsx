@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { IAddonReciver } from "../../../types";
+import { addons } from "./../../../utils/addons";
 
 interface ITimeRateData {
   area_time_price: number;
@@ -15,9 +16,41 @@ interface IStateData {
   persons: number;
 }
 
-function areaDivisionRemainderToMinutes(value: number) {
-  // Assume number is between 1 and 10
-  return value * 6; // Multiply by 6 to get the equivalent number of minutes
+function DevidedTime(totalTime: number, persons: number) {
+  if (persons < 2) {
+    return totalTime;
+  } else {
+    return totalTime / persons;
+  }
+}
+
+function roundToNext(value: number) {
+  if (value === 0) {
+    return 0;
+  }
+  if (value < 10) {
+    return 10;
+  } else if (value < 20) {
+    return 20;
+  } else if (value < 30) {
+    return 30;
+  } else if (value < 45) {
+    return 40;
+  }
+  if (value < 59) {
+    return 50;
+  }
+  return 60;
+}
+
+function setPersonal(totalMinutes: number) {
+  return Math.ceil(totalMinutes / 480);
+}
+
+function convertMinutesToHoursAndMinutes(minutes: number) {
+  var hours = Math.floor(minutes / 60);
+  var remainingMinutes = minutes % 60;
+  return { hours, minutes: remainingMinutes };
 }
 
 function setTimeData(
@@ -29,10 +62,24 @@ function setTimeData(
 ): IStateData {
   const areaPerTen = Math.floor(area / 10);
   const areaDivisionRemainder = area % 10;
+  const areaMinutes =
+    areaPerTen * areaRate + areaDivisionRemainder * (areaRate / 10);
+  const windowMinutes = window * windowRate;
+  const totalMinutes = areaMinutes + windowMinutes;
+  const persons = setPersonal(totalMinutes);
+  const addonsMinutes = addons.reduce((sum, addon) => {
+    return sum + addon.minutes;
+  }, 0);
+  const washingPersonal = setPersonal(addonsMinutes);
+
+  const displaedTime =
+    DevidedTime(totalMinutes, persons) +
+    DevidedTime(addonsMinutes, washingPersonal);
+  const convertedTime = convertMinutesToHoursAndMinutes(displaedTime);
   return {
-    hours: (areaPerTen * areaRate) / 60,
-    minutes: areaDivisionRemainderToMinutes(areaDivisionRemainder),
-    persons: 1,
+    hours: convertedTime.hours,
+    minutes: roundToNext(convertedTime.minutes),
+    persons: persons + washingPersonal,
   };
 }
 
@@ -64,7 +111,7 @@ function TimeOrderVisualisator() {
         // Imitation data fetching
         const imitationData = await new Promise<ITimeRateData>((resolve) => {
           setTimeout(() => {
-            resolve({ area_time_price: 60, window_time_price: 50 });
+            resolve({ area_time_price: 60, window_time_price: 60 });
           }, 2000); // Wait for 2 seconds
         });
         setIsTimeData(true);
@@ -110,7 +157,7 @@ function TimeOrderVisualisator() {
           state.minutes ? "minut" : ""
         }`}
       </div>
-      {state.persons ? (
+      {state.persons > 1 ? (
         <div className='pt-1'>Kilkoro sprzątaczy {state.persons}</div>
       ) : null}
     </div>
