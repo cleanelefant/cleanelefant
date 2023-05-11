@@ -19,9 +19,40 @@ interface IPriceData {
   window_price: number;
 }
 
+interface ITarget {
+  hash: string;
+  title: string;
+  total: number;
+  src: string;
+}
+
+function findInArray(addon: IAddonReciver, targetArr: ITarget[]) {
+  const find = targetArr.find((item) => item.hash === addon.hash);
+  return !!find;
+}
+
 function OrderCard() {
   const { store } = useContext(Context);
+  const washingAddonsArr = toJS(store.washingAddonReciver);
+  const washingTargetArr: ITarget[] = [];
   const [is_price_data, setIsPriceData] = React.useState(false);
+
+  washingAddonsArr.forEach((addon) => {
+    if (findInArray(addon, washingTargetArr)) {
+      const index = washingTargetArr.findIndex(
+        (item) => item.hash === addon.hash
+      );
+      washingTargetArr[index].total += 1;
+    } else {
+      washingTargetArr.push({
+        hash: addon.hash,
+        title: addon.title,
+        total: 1,
+        src: addon.src,
+      });
+    }
+  });
+
   React.useEffect(() => {
     const fetchData = async () => {
       // Imitation data fetching
@@ -66,9 +97,36 @@ function OrderCard() {
         )}
         <div className='font-mono pt-2'>Powierzchnia: {store.area}</div>
         <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
+        {washingAddonsArr.length > 0 && (
+          <div className='text-center font-mono text-sm'>
+            {washingTargetArr.map((item, index) => (
+              <div
+                key={index}
+                className='flex gap-x-2 justify-start items-center pt-1'
+              >
+                <img src={item.src} width={20} height={20} />
+                <p>
+                  {item.title}-<span>{item.total}</span>
+                </p>
+                <div
+                  className='cursor-pointer'
+                  onClick={() => {
+                    // store.deleteItemFromAddonReciver(item.hash);
+                    store.deleteItemsWithSameHashFromWashingAddonReciver(
+                      item.hash
+                    );
+                    store.setActivityInWashingAddons(item.hash);
+                  }}
+                >
+                  &#10060;
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         <TimeOrderVisualisator />
 
-        <div className='font-bold pt-1'>
+        <div className='font-bold pt-1 text-xl'>
           Do zapłaty:{" "}
           {is_price_data ? store.getTotalPrice() + " zł." : "LOADING..."}
           <span className='line-through'>
