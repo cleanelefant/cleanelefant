@@ -150,8 +150,12 @@ function Component() {
               className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 mt-10 lg:mb-2'
               id='countres_order_page'
             >
-              <AreaCounter />
-              <WindowCounter />
+              <div>
+                <AreaCounter />
+              </div>
+              <div>
+                <WindowCounter />
+              </div>
             </div>
             <AddWashing />
             <div ref={bottomComercialDataRef}></div>

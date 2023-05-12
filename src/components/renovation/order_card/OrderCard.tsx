@@ -53,7 +53,7 @@ function OrderCard() {
   const washingPrise = store.getWashingPrice();
 
   return (
-    <div className='w-full relative '>
+    <div className='w-full relative mb-5'>
       <div className='drop-shadow-xl bg-slate-50 p-4 lg:fixed xl:w-[400px]'>
         <div className=' font-bold text-xl'>
           Sprzątanie po remoncie{" "}
