@@ -144,16 +144,36 @@ function Component() {
         </h1>
         <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-10'>
           <div className='basis-3/4'>
-            <Launcher />
+            <div className='flex justify-center'>
+              <Launcher />
+            </div>
             <div ref={topComercialDataRef}></div>
             <div
-              className=' flex flex-col lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 mt-10 lg:mb-2'
+              className=' flex flex-col justify-center lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 mt-10 lg:mb-2'
               id='countres_order_page'
             >
               <div>
+                {store.area_price ? (
+                  <div className='flex justify-center items-center'>
+                    <div className='px-6 py-4 my-8 bg-orange-500 font-bold text-xl'>
+                      {store.area_price} zł./m2
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
                 <AreaCounter />
               </div>
               <div>
+                {store.window_price ? (
+                  <div className='flex justify-center items-center'>
+                    <div className='px-6 py-4 my-8 bg-orange-500 font-bold text-xl'>
+                      {store.window_price} zł.
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
                 <WindowCounter />
               </div>
             </div>
