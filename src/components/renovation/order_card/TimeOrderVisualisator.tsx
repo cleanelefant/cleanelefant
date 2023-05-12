@@ -3,8 +3,7 @@ import { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { IAddonReciver } from "../../../types";
-import { addons } from "./../../../utils/addons";
-import { generatePath } from "react-router-dom";
+import man from "../../../images/man.png";
 
 interface ITimeRateData {
   area_time_price: number;
@@ -151,7 +150,7 @@ function TimeOrderVisualisator() {
       setState(data);
     }
   }, [store.area, store.windows, store.washingAddonReciver.length]);
-
+  const personal = Array.from({ length: state.persons }, (v, i) => i);
   if (error) {
     // If there is an error, render it
     return <div>Error: {error}</div>;
@@ -171,7 +170,12 @@ function TimeOrderVisualisator() {
         }`}
       </div>
       {state.persons > 1 ? (
-        <div className='pt-1'>Kilkoro sprzątaczy {state.persons}</div>
+        <div className='pt-1 flex items-center'>
+          Kilkoro sprzątaczy{" "}
+          {personal.map((person) => (
+            <img key={person} src={man} width={32} height={32} />
+          ))}
+        </div>
       ) : null}
     </div>
   );

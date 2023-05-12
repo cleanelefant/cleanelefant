@@ -55,12 +55,12 @@ function OrderCard() {
   return (
     <div className='w-full relative '>
       <div className='drop-shadow-xl bg-slate-50 p-4 lg:fixed xl:w-[400px]'>
-        <div className='text-center font-bold text-xl'>
+        <div className=' font-bold text-xl'>
           Sprzątanie po remoncie{" "}
-          {renovationPrise ? renovationPrise + " " + "zł" : ""}
+          {renovationPrise ? renovationPrise + " " + "zł." : ""}
         </div>
         {washingPrise ? (
-          <div className='text-center font-bold text-xl'>
+          <div className=' font-bold text-xl'>
             Pranie mebli {washingPrise ? washingPrise : ""} zł.
           </div>
         ) : (
@@ -75,7 +75,7 @@ function OrderCard() {
         <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
         <AddonsList />
         <TimeOrderVisualisator />
-        <div className='font-bold pt-1 text-xl'>
+        <div className='font-bold pt-1 text-2xl'>
           Do zapłaty:{" "}
           {is_price_data ? store.getTotalPrice() + " zł." : "LOADING..."}
           <span className='line-through'>
