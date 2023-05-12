@@ -2,30 +2,52 @@ import React, { useContext } from "react";
 import uuid from "react-uuid";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
-import { ExtendedIAddons } from "../../../types";
-import arrow from "../../../images/up-arrow.webp";
-
+//Types
+import { ExtendedIAddons, IAddons } from "../../../types";
+//Components
 import SingleCard from "./SingleCard";
 import MultyWashingCard from "./MultyWashingCard";
-
+//hardcode for imitation
 import { addons } from "../../../utils/addons";
+//images
+import arrow from "../../../images/up-arrow.webp";
 
 function AddWashing() {
   const { store } = useContext(Context);
   const [isVisible, setIsVisible] = React.useState(true);
+  const [is_addons_data, setIsAddonData] = React.useState(false);
+  const [error, setError] = React.useState(null);
 
   const clickHandler = () => {
     setIsVisible((s) => !s);
   };
 
   React.useEffect(() => {
-    const mapedAddons: ExtendedIAddons[] = addons
-      .map((a) => {
-        return { ...a, isActive: false, hash: uuid() };
-      })
-      .filter((a) => a.isOrderPage === false);
+    const fetchData = async () => {
+      try {
+        // Imitation data fetching
+        const imitationAddonsData = await new Promise<IAddons[]>((resolve) => {
+          setTimeout(() => {
+            resolve(addons);
+          }, 2000); // Wait for 2 seconds
+        });
+        const mapedAddons: ExtendedIAddons[] = imitationAddonsData
+          .map((a) => {
+            return { ...a, isActive: false, hash: uuid() };
+          })
+          .filter(
+            (a) => a.isOrderPage === false && a.isRenovationPage !== false
+          );
 
-    store.setWashingAddons(mapedAddons);
+        store.setWashingAddons(mapedAddons);
+        setIsAddonData(true);
+      } catch (err) {
+        // Catch any errors and set the error state
+        setError(err.message);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const cardClickHandler = (obj: ExtendedIAddons) => {
@@ -43,6 +65,14 @@ function AddWashing() {
       });
     }
   };
+
+  if (error) {
+    // If there is an error, render it
+    return <div>Error: {error}</div>;
+  }
+  if (!is_addons_data) {
+    return <div>...LOADING</div>;
+  }
 
   return (
     <div className='mt-20 border-slate-700 border-4 p-4'>

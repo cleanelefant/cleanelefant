@@ -59,6 +59,7 @@ export interface IAddons {
   slug: string;
   src: string;
   isOrderPage: boolean;
+  isRenovationPage?: boolean;
   isPreHours: boolean;
   isMultiply: boolean;
   minutes: number;

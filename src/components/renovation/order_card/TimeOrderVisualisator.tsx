@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 import { IAddonReciver } from "../../../types";
 import { addons } from "./../../../utils/addons";
+import { generatePath } from "react-router-dom";
 
 interface ITimeRateData {
   area_time_price: number;
@@ -43,8 +44,8 @@ function roundToNext(value: number) {
   return 60;
 }
 
-function setPersonal(totalMinutes: number) {
-  return Math.ceil(totalMinutes / 480);
+function setPersonal(totalMinutes: number, shiftTime: number) {
+  return Math.ceil(totalMinutes / shiftTime);
 }
 
 function convertMinutesToHoursAndMinutes(minutes: number) {
@@ -58,24 +59,34 @@ function setTimeData(
   window: number,
   addons: IAddonReciver[],
   areaRate: number,
-  windowRate: number
+  windowRate: number,
+  commonShiftTime: number,
+  additionalShiftTime: number
 ): IStateData {
+  //User time dada treatment
   const areaPerTen = Math.floor(area / 10);
   const areaDivisionRemainder = area % 10;
   const areaMinutes =
     areaPerTen * areaRate + areaDivisionRemainder * (areaRate / 10);
   const windowMinutes = window * windowRate;
+
+  // Common and Additional Time Calculating
   const totalMinutes = areaMinutes + windowMinutes;
-  const persons = setPersonal(totalMinutes);
   const addonsMinutes = addons.reduce((sum, addon) => {
     return sum + addon.minutes;
   }, 0);
-  const washingPersonal = setPersonal(addonsMinutes);
 
-  const displaedTime =
+  //Personal Calculating
+  const persons = setPersonal(totalMinutes, commonShiftTime);
+  const washingPersonal = setPersonal(addonsMinutes, additionalShiftTime);
+
+  //Total Time Calculating
+  const totalTime =
     DevidedTime(totalMinutes, persons) +
     DevidedTime(addonsMinutes, washingPersonal);
-  const convertedTime = convertMinutesToHoursAndMinutes(displaedTime);
+
+  const convertedTime = convertMinutesToHoursAndMinutes(totalTime);
+
   return {
     hours: convertedTime.hours,
     minutes: roundToNext(convertedTime.minutes),
@@ -133,7 +144,9 @@ function TimeOrderVisualisator() {
         store.windows,
         store.washingAddonReciver,
         store.areaMinuteRate,
-        store.windowMinuteRate
+        store.windowMinuteRate,
+        store.commonShiftTime,
+        store.additionalShiftTime
       );
       setState(data);
     }

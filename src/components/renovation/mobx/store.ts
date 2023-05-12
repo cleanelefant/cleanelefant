@@ -36,6 +36,8 @@ export default class This {
   //calculate job time and personal
   areaMinuteRate: number;
   windowMinuteRate: number;
+  commonShiftTime: number;
+  additionalShiftTime: number;
 
   constructor() {
     makeAutoObservable(this);
@@ -155,6 +157,8 @@ export default class This {
     //Calculate job time and personal
     this.areaMinuteRate = 0;
     this.windowMinuteRate = 0;
+    this.commonShiftTime = 0;
+    this.commonShiftTime = 0;
   }
   setArea(event: any) {
     const enteredValue = event.target.value.replace(/[^0-9]/g, "");
@@ -384,6 +388,12 @@ export default class This {
   }
   setWindowMinutesRate(value: number) {
     this.windowMinuteRate = value;
+  }
+  setCommonShiftTime(value: number) {
+    this.commonShiftTime = value;
+  }
+  setAdditionalShiftTime(value: number) {
+    this.additionalShiftTime = value;
   }
   //------------------------------------------------------------
 }
