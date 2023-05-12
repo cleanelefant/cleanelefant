@@ -334,7 +334,7 @@ function DatePickear() {
                   dzisiaj
                 </p>
               )}
-              <p className=' text-[10px] lg:text-[18px] font-thin leading-none text-green-700'>
+              <p className=' text-[10px] lg:text-[18px]  font-medium leading-none text-green-700'>
                 {d.rate && `-${d.rate}%`}
               </p>
               <p className='lg:text-xl font-medium'>{d.date}</p>
