@@ -170,7 +170,7 @@ function TimeOrderVisualisator() {
         }`}
       </div>
       {state.persons > 1 ? (
-        <div className='pt-1 flex items-center'>
+        <div className='pt-1 flex flex-wrap items-center'>
           Kilkoro sprzątaczy{" "}
           {personal.map((person) => (
             <img key={person} src={man} width={32} height={32} />

@@ -135,48 +135,48 @@ function Component() {
   return (
     <div className='scroll-smooth'>
       <Steps />
-      <div className='mx-4 lg:mx-10'>
+      <div className='mx-4 lg:mx-20'>
         <h1
-          className='text-lg my-10 lg:text-4xl font-extrabold uppercase text-center scroll-mt-20'
+          className='text-lg my-10 lg:text-4xl font-extrabold uppercase scroll-mt-20'
           id='countres_order_page'
         >
           Sprzątanie po remoncie Zielona Góra
         </h1>
-        <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-10'>
-          <div className='basis-3/4'>
-            <div className='flex justify-center'>
+        <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-5'>
+          <div className='basis-2/3'>
+          <div ref={topComercialDataRef}></div>
+          <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
+          MIESZKANIE PO REMONCIE
+      </div>
+            <div className="mt-10">
               <Launcher />
             </div>
-            <div ref={topComercialDataRef}></div>
-            <div
-              className=' flex flex-col justify-center lg:flex-row  flex-wrap gap-y-2 lg:gap-x-10  my-2 mt-10 lg:mb-2'
-              id='countres_order_page'
-            >
-              <div>
-                {store.area_price ? (
+           <div className="flex flex-col lg:flex-row mt-20"   id='countres_order_page'>
+            <div className="flex-1">
+              <AreaCounter /> 
+              {store.area_price ? (
                   <div className='flex justify-center items-center'>
-                    <div className='px-6 py-4 my-8 bg-orange-500 font-bold text-xl'>
+                    <div className='px-12 py-4 my-10 bg-yellow-500 font-bold text-xl'>
                       {store.area_price} zł./m2
                     </div>
                   </div>
                 ) : (
                   ""
                 )}
-                <AreaCounter />
-              </div>
-              <div>
-                {store.window_price ? (
+                </div>
+            <div className="flex-1">
+              <WindowCounter /> 
+              {store.window_price ? (
                   <div className='flex justify-center items-center'>
-                    <div className='px-6 py-4 my-8 bg-orange-500 font-bold text-xl'>
+                    <div className='px-12 py-4 my-10 bg-yellow-500 font-bold text-xl'>
                       {store.window_price} zł.
                     </div>
                   </div>
                 ) : (
                   ""
                 )}
-                <WindowCounter />
-              </div>
-            </div>
+                </div>
+           </div>         
             <AddWashing />
             <div ref={bottomComercialDataRef}></div>
             <div
@@ -204,7 +204,7 @@ function Component() {
             <Rodo />
             <OrderButton />
           </div>
-          <div className='basis-1/4 flex '>
+          <div className='basis-1/3 flex '>
             <OrderCard />
           </div>
         </div>

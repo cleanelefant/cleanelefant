@@ -53,8 +53,8 @@ function OrderCard() {
   const washingPrise = store.getWashingPrice();
 
   return (
-    <div className='w-full relative mb-5'>
-      <div className='drop-shadow-xl bg-slate-50 p-4 lg:fixed xl:w-[400px]'>
+    <div className='w-full relative mb-5 text-lg'>
+      <div className='drop-shadow-xl bg-slate-50 p-4 lg:p-8 lg:fixed xl:w-[600px]'>
         <div className=' font-bold text-xl'>
           Sprzątanie po remoncie{" "}
           {renovationPrise ? renovationPrise + " " + "zł." : ""}
@@ -112,7 +112,7 @@ function OrderCard() {
         <div className='flex justify-center'>
           <button
             onClick={clickHandler}
-            className='bg-blue-500 text-white px-4 py-2 font-bold text-2xl'
+            className='bg-blue-500 text-white px-8 py-4 font-bold text-2xl flex-1'
           >
             Zamawiam
           </button>
