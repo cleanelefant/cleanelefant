@@ -95,7 +95,7 @@ function OrderCard() {
             </div>
           )}
         </div>
-        <div className='text-center font-mono text-sm my-2'>
+        <div className='text-center font-mono text-sm lg:text-xl my-2'>
           {store.isCash ? (
             <div className='flex gap-x-1 justify-center items-center'>
               <p>opłata gotówką</p>

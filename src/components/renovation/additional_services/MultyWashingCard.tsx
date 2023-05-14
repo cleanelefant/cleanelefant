@@ -78,7 +78,7 @@ function MultyWashingCard({ item }: IMultyCard) {
       {item.isActive && (
         <div className='flex lg:gap-x-4'>
           <button
-            className='my-button cursor-pointer py-2 px-4 border-4 bg-blue-600 hover:bg-blue-400'
+            className='my-button cursor-pointer py-2 px-2 lg:px-4 border-2 bg-blue-600 hover:bg-blue-400'
             onClick={() => {
               buttonDecreaseClickHandler(item);
             }}
@@ -87,7 +87,7 @@ function MultyWashingCard({ item }: IMultyCard) {
           </button>
           <div className='py-2 px-4 lg:text-xl'>{total}</div>
           <button
-            className='my-button cursor-pointer py-2 px-4 border-4 bg-blue-600 hover:bg-blue-300 '
+            className='my-button cursor-pointer py-2 px-2 lg:px-4 border-2 bg-blue-600 hover:bg-blue-300 '
             onClick={() => {
               buttonIncreaseClickHandler(item);
             }}
