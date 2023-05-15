@@ -75,7 +75,7 @@ function AddWashing() {
   }
 
   return (
-    <div className='mt-20 border-slate-700 border-4 p-4'>
+    <div className='mt-10 lg:mt-20 border-slate-700 border-4 p-4'>
       <div
         onClick={clickHandler}
         className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'

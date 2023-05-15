@@ -15,10 +15,7 @@ function CheckRules() {
   };
 
   return (
-    <div
-      className='flex items-center justify-center'
-      id={store.pageErrors.rulesError.target}
-    >
+    <div className='flex items-center' id={store.pageErrors.rulesError.target}>
       <div className='mb-4'>
         <label className='flex items-center cursor-pointer'>
           <div className='relative'>

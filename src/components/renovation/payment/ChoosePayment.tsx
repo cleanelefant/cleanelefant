@@ -21,12 +21,12 @@ function ChoosePayment() {
         WYBIERZ METODĘ PŁATNOŚCI
       </div>
 
-      <div className='grid grid-cols-2 gap-4 my-10  mt-10 justify-center items-center'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 my-10  mt-10 justify-center items-center'>
         <div
           onClick={clickHandlerCash}
           className={`${
             store.isCash && "bg-blue-500 text-white drop-shadow-xl"
-          } cursor-pointer p-8 font-bold lg:text-2xl text-center bg-white drop-shadow-xl flex gap-x-4 justify-center items-center`}
+          } cursor-pointer p-4 lg:p-8 font-bold lg:text-2xl text-center bg-white drop-shadow-xl flex gap-x-4 justify-center items-center`}
         >
           <img src={money} width={64} height={64} />
           <p>Gotówką</p>
@@ -35,7 +35,7 @@ function ChoosePayment() {
           onClick={clickHandlerCard}
           className={`${
             !store.isCash && "bg-blue-500 text-white drop-shadow-xl "
-          } cursor-pointer p-8 font-bold lg:text-2xl text-center bg-white drop-shadow-xl flex gap-x-4 justify-center items-center`}
+          } cursor-pointer p-4 lg:p-8 font-bold lg:text-2xl text-center bg-white drop-shadow-xl flex gap-x-4 justify-center items-center`}
         >
           <img src={card} width={64} height={64} />
           <p>Kartą online</p>

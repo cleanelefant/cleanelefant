@@ -18,7 +18,7 @@ function OrderButton() {
         Zamawiam za {store.getTotalPrice()}{" "}
         <span className='line-through text-3xl font-light'>
           {store.ocassionalRate > 0 && " " + store.getTotalPriceWithoutRate()}
-        </span>{" "}
+        </span>
         zł.
         {store.pageErrors.comercialDataError.isError && (
           <div className='text-red-500 font-bold text-sm'>

@@ -10,9 +10,9 @@ function Rodo() {
   };
 
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center'>
       <div className='mb-4'>
-        <label className='flex items-center  cursor-pointer'>
+        <label className='flex items-center cursor-pointer'>
           <div className='relative'>
             <input
               type='checkbox'

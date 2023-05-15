@@ -137,46 +137,49 @@ function Component() {
       <Steps />
       <div className='mx-4 lg:mx-20'>
         <h1
-          className='text-lg my-10 lg:text-4xl font-extrabold uppercase scroll-mt-20'
+          className='text-lg mt-10 mb-5 lg:mb-10 lg:text-4xl font-extrabold uppercase scroll-mt-20 text-center'
           id='countres_order_page'
         >
           Sprzątanie po remoncie Zielona Góra
         </h1>
         <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-5'>
           <div className='basis-2/3'>
-          <div ref={topComercialDataRef}></div>
-          <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
-          MIESZKANIE PO REMONCIE
-      </div>
-            <div className="mt-10">
+            <div ref={topComercialDataRef}></div>
+            <div className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center'>
+              MIESZKANIE PO REMONCIE
+            </div>
+            <div className='mt-5 lg:mt-10'>
               <Launcher />
             </div>
-           <div className="flex flex-col lg:flex-row mt-20"   id='countres_order_page'>
-            <div className="flex-1">
-              <AreaCounter /> 
-              {store.area_price ? (
+            <div
+              className='flex flex-col lg:flex-row mt-10 lg:mt-20'
+              id='countres_order_page'
+            >
+              <div className='flex-1'>
+                <AreaCounter />
+                {store.area_price ? (
                   <div className='flex justify-center items-center'>
-                    <div className='px-12 py-4 my-10 bg-yellow-500 font-bold text-xl'>
+                    <div className='px-12 py-2 lg:py-4 my-5 lg:my-10 bg-yellow-500 font-bold lg:text-xl rounded'>
                       {store.area_price} zł./m2
                     </div>
                   </div>
                 ) : (
                   ""
                 )}
-                </div>
-            <div className="flex-1">
-              <WindowCounter /> 
-              {store.window_price ? (
+              </div>
+              <div className='flex-1'>
+                <WindowCounter />
+                {store.window_price ? (
                   <div className='flex justify-center items-center'>
-                    <div className='px-12 py-4 my-10 bg-yellow-500 font-bold text-xl'>
+                    <div className='px-12 py-2 lg:py-4 mt-5  lg:my-10 bg-yellow-500 font-bold lg:text-xl rounded'>
                       {store.window_price} zł.
                     </div>
                   </div>
                 ) : (
                   ""
                 )}
-                </div>
-           </div>         
+              </div>
+            </div>
             <AddWashing />
             <div ref={bottomComercialDataRef}></div>
             <div

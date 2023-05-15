@@ -1,3 +1,4 @@
+import React from "react";
 import start from "../../images/start.webp";
 
 export default function Menu() {

@@ -19,7 +19,7 @@ function SingleCard({ item, cardClickHandler }: ISingleCard) {
       }}
     >
       <img src={item.src} alt={item.title} width={64} height={64} />
-      <p className='text-center'>{item.title}</p>
+      <p className='text-center text-sm lg:text-xl'>{item.title}</p>
       <p className='lg:text-xl'>{item.price} zł.</p>
     </div>
   );

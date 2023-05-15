@@ -46,8 +46,6 @@ function WindowsCounter() {
         +
       </button>
     </div>
-   
-
   );
 }
 export default observer(WindowsCounter);

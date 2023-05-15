@@ -71,7 +71,7 @@ function OrderCard() {
             {store.pageErrors.comercialDataError.text}
           </div>
         )}
-        <div className='font-mono pt-2'>Powierzchnia: {store.area}</div>
+        <div className='font-mono pt-2'>Powierzchnia: {store.area} m2</div>
         <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
         <AddonsList />
         <TimeOrderVisualisator />
