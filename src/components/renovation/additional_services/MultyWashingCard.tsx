@@ -66,7 +66,7 @@ function MultyWashingCard({ item }: IMultyCard) {
     <div
       className={`${
         item.isActive ? "bg-blue-500 text-white" : "bg-white"
-      } p-5  drop-shadow-xl  font-bold flex flex-col gap-y-2 justify-center items-center `}
+      } p-5  drop-shadow-xl  font-bold flex flex-col gap-y-2 justify-center items-center cursor-pointer `}
       key={item.id}
       onClick={(e) => {
         cardMultiplyClickHandler(item, e);
