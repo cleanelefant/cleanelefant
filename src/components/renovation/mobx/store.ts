@@ -401,10 +401,26 @@ export default class This {
   }
   fetchClientData() {
     const clientData = {
+      isCompany: false,
       area: 0,
       windows: 0,
       rateHash: "",
+      addons: [],
+      day: "",
+      time: "",
+      street: "",
+      zip: "",
+      house: "",
+      floor: "",
+      doorphone: "",
+      name: "",
+      phone: "",
+      email: "",
+      additional_info: "",
+      isCash: true,
+      doConsent: false,
     };
+    clientData.isCompany = true;
     clientData.area = this.area;
     clientData.windows = this.area;
     clientData.rateHash = this.ocassionalRateHash;
