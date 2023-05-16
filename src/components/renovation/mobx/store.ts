@@ -401,7 +401,7 @@ export default class This {
   }
   fetchClientData() {
     const clientData = {
-      isCompany: false,
+      isPerson: false,
       area: 0,
       windows: 0,
       rateHash: "",
@@ -420,9 +420,11 @@ export default class This {
       isCash: true,
       doConsent: false,
     };
-    clientData.isCompany = true;
+    clientData.isPerson = this.vat === 1;
     clientData.area = this.area;
     clientData.windows = this.area;
+    clientData.day = this.serviceDay;
+    clientData.time = this.time;
     clientData.rateHash = this.ocassionalRateHash;
     console.log("clientData", clientData);
   }
