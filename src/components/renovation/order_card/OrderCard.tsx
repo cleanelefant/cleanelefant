@@ -47,6 +47,7 @@ function OrderCard() {
 
   const clickHandler = () => {
     store.errrorHandler();
+    store.fetchClientData();
   };
 
   const renovationPrise = store.getRenovationPrice();

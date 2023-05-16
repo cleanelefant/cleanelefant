@@ -7,6 +7,7 @@ function OrderButton() {
 
   const clickHandler = () => {
     store.errrorHandler();
+    store.fetchClientData();
   };
 
   return (

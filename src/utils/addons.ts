@@ -21,6 +21,8 @@ import fivesofa from "../images/addons/sofa5.webp";
 import kitchen from "../images/services/kitchen.png";
 import balcony from "../images/addons/balcony.png";
 import iron from "../images/addons/iron.png";
+import twicesofa from "../images/addons/sofatwice.png";
+import singlematerrace from "../images/addons/mattresssingle.png";
 
 export const addons: IAddons[] = [
   {
@@ -183,7 +185,7 @@ export const addons: IAddons[] = [
     id: 16,
     title: "Pranie kanapy dwuosobowej",
     price: 120,
-    src: window,
+    src: twicesofa,
     slug: "/test",
     isOrderPage: false,
     isPreHours: false,
@@ -238,7 +240,7 @@ export const addons: IAddons[] = [
     id: 21,
     title: "Pranie jednoosobowego materaca",
     price: 60,
-    src: window,
+    src: singlematerrace,
     slug: "/test",
     isOrderPage: false,
     isPreHours: false,
@@ -249,7 +251,7 @@ export const addons: IAddons[] = [
     id: 22,
     title: "Prania jednoosobowego materaca z obu stron",
     price: 120,
-    src: window,
+    src: singlematerrace,
     slug: "/test",
     isOrderPage: false,
     isPreHours: false,
@@ -271,7 +273,7 @@ export const addons: IAddons[] = [
     id: 24,
     title: "Pranie dwuosobowego materaca z obu stron ",
     price: 220,
-    src: window,
+    src: mattress,
     slug: "/test",
     isOrderPage: false,
     isPreHours: false,

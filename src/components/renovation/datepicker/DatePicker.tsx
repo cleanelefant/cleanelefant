@@ -41,23 +41,25 @@ interface IDaysRate {
   date: number;
   month: string;
   rate: number;
+  hash: string;
 }
 const rates: IDaysRate[] = [
-  { id: 1, date: 11, month: "May", rate: 10 },
-  { id: 2, date: 12, month: "May", rate: 20 },
-  { id: 3, date: 14, month: "May", rate: 15 },
-  { id: 4, date: 15, month: "May", rate: 20 },
-  { id: 5, date: 18, month: "May", rate: 15 },
-  { id: 6, date: 21, month: "May", rate: 20 },
-  { id: 10, date: 21, month: "May", rate: 25 },
-  { id: 11, date: 21, month: "May", rate: 26 },
-  { id: 7, date: 23, month: "May", rate: 15 },
-  { id: 8, date: 28, month: "May", rate: 20 },
-  { id: 9, date: 30, month: "May", rate: 10 },
-  { id: 12, date: 1, month: "June", rate: 20 },
-  { id: 13, date: 3, month: "June", rate: 10 },
-  { id: 14, date: 5, month: "June", rate: 20 },
-  { id: 15, date: 6, month: "June", rate: 10 },
+  { id: 1, date: 6, month: "June", rate: 10, hash: "P@ssw0rd123" },
+  { id: 1, date: 6, month: "June", rate: 20, hash: "Secure2023!" },
+  { id: 2, date: 12, month: "May", rate: 20, hash: "N3tw0rkP@ss" },
+  { id: 3, date: 14, month: "May", rate: 15, hash: "P4$$c0d3!21" },
+  { id: 4, date: 15, month: "May", rate: 20, hash: "S3cr3tK3y#@1" },
+  { id: 5, date: 18, month: "May", rate: 15, hash: "L0ckD0wn!2023" },
+  { id: 6, date: 21, month: "May", rate: 20, hash: "P@$$phr@s3!12" },
+  { id: 10, date: 21, month: "May", rate: 25, hash: "C0d3Gu@rd!21" },
+  { id: 11, date: 21, month: "May", rate: 26, hash: "P@ssw0rd$tr0ng" },
+  { id: 7, date: 23, month: "May", rate: 15, hash: "H4ckR3s1st!23" },
+  { id: 8, date: 28, month: "May", rate: 20, hash: "2F@ct0r!Auth" },
+  { id: 9, date: 30, month: "May", rate: 10, hash: "P@ssw0rd123" },
+  { id: 12, date: 25, month: "May", rate: 20, hash: "Pr0t3ct3d#@K3y" },
+  { id: 13, date: 26, month: "May", rate: 10, hash: "C0mpl3xP@$$12" },
+  { id: 14, date: 5, month: "June", rate: 20, hash: "$3cur3P@$$wrd" },
+  { id: 15, date: 6, month: "June", rate: 10, hash: "Unbr34k@ble!" },
 ];
 
 interface ExtendedIDays extends IDays {
@@ -65,6 +67,7 @@ interface ExtendedIDays extends IDays {
   monthStatus: string;
   isActive: boolean;
   rate?: number;
+  rateHash?: string;
 }
 
 const today = new Date();
@@ -102,16 +105,16 @@ function setItemClass(item: ExtendedIDays) {
   }
   if (item.monthStatus === "next" && item.dayStatus === "previousNext") {
     if (item.isActive) {
-      return "bg-blue-500 ";
+      return "bg-blue-500";
     } else {
-      return "bg-gray-400 ";
+      return "bg-gray-400";
     }
   }
   if (item.monthStatus === "nextNext") {
     if (item.isActive) {
-      return "bg-blue-500 lg:px-12";
+      return "bg-blue-500";
     } else {
-      return "bg-gray-400 lg:px-12";
+      return "bg-gray-400";
     }
   }
   if (item.monthStatus === "next") {
@@ -132,8 +135,10 @@ function DatePickear() {
     if (item.isActive === false) {
       if (item.rate) {
         store.setOcassionalRate(item.rate);
+        store.setOcassionalRateHash(item.rateHash);
       } else {
         store.setOcassionalRate(0);
+        store.setOcassionalRateHash("");
       }
       store.setServiceDay(item.month + " " + item.date);
       store.setDatePickerError(false);
@@ -251,7 +256,7 @@ function DatePickear() {
         (item) => item.date === day.date && item.month === day.month
       );
       if (find) {
-        return { ...day, rate: find.rate };
+        return { ...day, rate: find.rate, rateHash: find.hash };
       } else {
         return day;
       }
@@ -266,7 +271,7 @@ function DatePickear() {
         store.pageErrors.dateError.isError
           ? "border-red-500 border-4"
           : "text-gray-700 drop-shadow-xl bg-slate-50"
-      }  p-4`}
+      }  p-4 flex-1`}
       id='datepicker_order_page'
     >
       <div className='flex justify-between items-center text-xl font-bold'>

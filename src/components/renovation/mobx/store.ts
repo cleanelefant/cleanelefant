@@ -18,6 +18,7 @@ export default class This {
   window_price: number;
   vat: number;
   ocassionalRate: number;
+  ocassionalRateHash: string;
   serviceDay: string;
   time: string;
   times: ExtendedITime[];
@@ -45,6 +46,7 @@ export default class This {
     this.windows = 0;
     this.vat = 1;
     this.ocassionalRate = 0;
+    this.ocassionalRateHash = "";
     this.serviceDay = "";
     this.time = "";
     this.times = [];
@@ -183,6 +185,9 @@ export default class This {
   setOcassionalRate(ocassionalRate: number) {
     this.ocassionalRate = ocassionalRate;
   }
+  setOcassionalRateHash(hash: string) {
+    this.ocassionalRateHash = hash;
+  }
   setServiceDay(day: string) {
     this.serviceDay = day;
   }
@@ -203,7 +208,6 @@ export default class This {
   }
 
   setCommercialDataError(value: boolean) {
-    console.log("setCommercialDataError", value);
     this.pageErrors.comercialDataError.isError = value;
   }
 
@@ -394,6 +398,17 @@ export default class This {
   }
   setAdditionalShiftTime(value: number) {
     this.additionalShiftTime = value;
+  }
+  fetchClientData() {
+    const clientData = {
+      area: 0,
+      windows: 0,
+      rateHash: "",
+    };
+    clientData.area = this.area;
+    clientData.windows = this.area;
+    clientData.rateHash = this.ocassionalRateHash;
+    console.log("clientData", clientData);
   }
   //------------------------------------------------------------
 }
