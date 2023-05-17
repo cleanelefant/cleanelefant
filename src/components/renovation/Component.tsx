@@ -18,6 +18,7 @@ import OrderButton from "./order_button/OrderButton";
 import CheckRules from "./rules/CheckRules";
 import Rodo from "./rules/Rodo";
 import AddWashing from "./additional_services/AddWashing";
+import SMSCodeInput from "../common_components/SMSinputs";
 
 function Component() {
   const { store } = React.useContext(Context);
@@ -137,7 +138,7 @@ function Component() {
       {store.isModal && (
         <div className='fixed top-0 bottom-0 left-0 right-0 bg-black/90 z-50 '>
           <div className='bg-white w-1/2 h-40 mx-auto my-20 m px-10 py-5'>
-            Modal{" "}
+            <SMSCodeInput />
             <button
               className='border-4'
               onClick={() => {
