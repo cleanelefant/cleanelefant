@@ -13,7 +13,7 @@ function Steps() {
   };
 
   return (
-    <div className='sticky top-0 z-50 flex flex-col lg:flex-row lg:gap-x-1 font-mono'>
+    <div className='sticky top-0 z-49 flex flex-col lg:flex-row lg:gap-x-1 font-mono'>
       {store.steps?.map((step, i) => (
         <a
           key={step.id}

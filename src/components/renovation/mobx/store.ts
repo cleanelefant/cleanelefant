@@ -11,7 +11,13 @@ import {
   IStep,
 } from "../../../types";
 
+interface IClientDataAddon {
+  title: string;
+  total: number;
+}
+
 export default class This {
+  isModal: boolean;
   area: number;
   windows: number;
   area_price: number;
@@ -42,6 +48,7 @@ export default class This {
 
   constructor() {
     makeAutoObservable(this);
+    this.isModal = true;
     this.area = 0;
     this.windows = 0;
     this.vat = 1;
@@ -79,7 +86,7 @@ export default class This {
       comercialDataError: {
         isError: false,
         text: "Minimalna suma zamówienia przy remoncie 200.00 zł",
-        level: 13,
+        level: 12,
         target: "commercial_data_order_page",
       },
       dateError: {
@@ -161,6 +168,9 @@ export default class This {
     this.windowMinuteRate = 0;
     this.commonShiftTime = 0;
     this.commonShiftTime = 0;
+  }
+  setIsModul(value: boolean) {
+    this.isModal = value;
   }
   setArea(event: any) {
     const enteredValue = event.target.value.replace(/[^0-9]/g, "");
@@ -400,7 +410,44 @@ export default class This {
     this.additionalShiftTime = value;
   }
   fetchClientData() {
-    const clientData = {
+    function findInArray(addon: IAddonReciver, targetArr: IClientDataAddon[]) {
+      const find = targetArr.find((item) => item.title === addon.title);
+      return !!find;
+    }
+
+    function checkPageErrors(errorsObject: IErrors) {
+      let isError = false;
+      for (const item in errorsObject) {
+        if (errorsObject[item].isError === true) {
+          isError = true;
+        }
+      }
+      return isError;
+    }
+
+    interface IClientData {
+      isPerson: boolean;
+      area: number;
+      windows: number;
+      rateHash: string;
+      addons: IClientDataAddon[];
+      day: string;
+      time: string;
+      street: string;
+      zip: string;
+      house: string;
+      floor: string;
+      doorphone: string;
+      name: string;
+      phone: string;
+      email: string;
+      additional_info: string;
+      isCash: boolean;
+      isAgree: boolean;
+      doConsent: boolean;
+    }
+
+    const clientData: IClientData = {
       isPerson: false,
       area: 0,
       windows: 0,
@@ -418,15 +465,52 @@ export default class This {
       email: "",
       additional_info: "",
       isCash: true,
+      isAgree: false,
       doConsent: false,
     };
-    clientData.isPerson = this.vat === 1;
-    clientData.area = this.area;
-    clientData.windows = this.area;
-    clientData.day = this.serviceDay;
-    clientData.time = this.time;
-    clientData.rateHash = this.ocassionalRateHash;
-    console.log("clientData", clientData);
+
+    const isError = checkPageErrors(this.pageErrors);
+
+    if (isError) {
+      console.log("ERRORE");
+      this.setIsModul(true);
+    } else {
+      clientData.isPerson = this.vat === 1;
+      clientData.area = this.area;
+      clientData.windows = this.area;
+      clientData.day = this.serviceDay;
+      clientData.time = this.time;
+      clientData.rateHash = this.ocassionalRateHash;
+      this.washingAddonReciver.forEach((addon) => {
+        if (findInArray(addon, clientData.addons)) {
+          const index = clientData.addons.findIndex(
+            (item) => item.title === addon.title
+          );
+          clientData.addons[index].total += 1;
+        } else {
+          clientData.addons.push({
+            title: addon.title,
+            total: 1,
+          });
+        }
+      });
+      clientData.street = this.adressFormData.street;
+      clientData.zip = this.adressFormData.zip;
+      clientData.house = this.adressFormData.local;
+      clientData.floor = this.adressFormData.level;
+      clientData.doorphone = this.adressFormData.intercom;
+      clientData.name = this.contactFormData.name;
+      clientData.email = this.contactFormData.email;
+      clientData.phone = this.contactFormData.phone;
+      clientData.additional_info = this.contactFormData.notes;
+      clientData.isCash = this.isCash;
+      clientData.doConsent = this.isRodoChecked;
+      clientData.isAgree = this.isRulesChecked;
+
+      this.setIsModul(true);
+
+      console.log("CLIENT DATA", clientData);
+    }
   }
   //------------------------------------------------------------
 }

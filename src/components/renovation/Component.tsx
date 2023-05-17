@@ -134,6 +134,21 @@ function Component() {
   }, []);
   return (
     <div className='scroll-smooth'>
+      {store.isModal && (
+        <div className='fixed top-0 bottom-0 left-0 right-0 bg-black/90 z-50 '>
+          <div className='bg-white w-1/2 h-40 mx-auto my-20 m px-10 py-5'>
+            Modal{" "}
+            <button
+              className='border-4'
+              onClick={() => {
+                store.setIsModul(false);
+              }}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       <Steps />
       <div className='mx-4 lg:mx-20'>
         <h1
