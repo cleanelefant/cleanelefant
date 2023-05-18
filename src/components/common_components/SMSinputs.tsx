@@ -21,6 +21,7 @@ const SMSCodeInput: React.FC = () => {
       } else if (index === 3 && value !== "") {
         // Send smsCode using fetch and post methods
         const smsCode = newCode.join("");
+        console.log("smsCode", smsCode);
         fetch("/api/verify-sms-code", {
           method: "POST",
           body: JSON.stringify({ smsCode }),

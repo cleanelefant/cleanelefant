@@ -133,6 +133,12 @@ function Component() {
       bottomObserver.disconnect();
     };
   }, []);
+
+  const setVat = (value: number) => {
+    store.setVat(value);
+  };
+
+  const launcherProps = { setVat, vat: 1.23 };
   return (
     <div className='scroll-smooth'>
       {store.isModal && (
@@ -165,7 +171,7 @@ function Component() {
               MIESZKANIE PO REMONCIE
             </div>
             <div className='mt-5 lg:mt-10'>
-              <Launcher />
+              <Launcher {...launcherProps} />
             </div>
             <div
               className='flex flex-col lg:flex-row mt-10 lg:mt-20'

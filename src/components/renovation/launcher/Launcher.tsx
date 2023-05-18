@@ -2,22 +2,28 @@ import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
 
-function Launcher() {
-  const [isCliced, setIsCliced] = React.useState(false);
+interface ILauncher {
+  setVat(value: number): void;
+  vat: number;
+}
+
+function Launcher({ setVat, vat }: ILauncher) {
+  const [isActive, setIsActive] = React.useState(false);
   const { store } = useContext(Context);
   const privateClickHandler = () => {
-    setIsCliced(false);
-    store.setVat(1);
+    setIsActive(false);
+    setVat(1);
   };
   const companyClickHandler = () => {
-    setIsCliced(true);
-    store.setVat(1.23);
+    setIsActive(true);
+    setVat(vat);
   };
+
   return (
     <div className='flex gap-x-4 text-lg lg:text-3xl font-bold '>
       <button
         className={`py-6 px-8  transition-transform drop-shadow-xl rounded ${
-          isCliced ? "bg-slate-200" : "bg-blue-700 text-white"
+          isActive ? "bg-slate-200" : "bg-blue-700 text-white"
         }`}
         onClick={privateClickHandler}
       >
@@ -25,7 +31,7 @@ function Launcher() {
       </button>
       <button
         className={`py-6 px-8  transition-transform drop-shadow-xl rounded ${
-          !isCliced ? "bg-slate-200" : "bg-blue-700 text-white"
+          !isActive ? "bg-slate-200" : "bg-blue-700 text-white"
         }`}
         onClick={companyClickHandler}
       >
