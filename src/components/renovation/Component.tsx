@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 //Context
 import { Context } from "./index";
 // Components
-import Launcher from "./launcher/Launcher";
+import Launcher from "../common_components/launcher/Launcher";
 import AreaCounter from "./counters/AreaCounter";
 import WindowCounter from "./counters/WindowCounter";
 import Datepicker from "../renovation/datepicker/DatePicker";
@@ -138,7 +138,7 @@ function Component() {
     store.setVat(value);
   };
 
-  const launcherProps = { setVat, vat: 1.23 };
+  const launcherProps = { setVat };
   return (
     <div className='scroll-smooth'>
       {store.isModal && (
