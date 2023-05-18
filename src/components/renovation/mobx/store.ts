@@ -48,7 +48,7 @@ export default class This {
 
   constructor() {
     makeAutoObservable(this);
-    this.isModal = true;
+    this.isModal = false;
     this.area = 0;
     this.windows = 0;
     this.vat = 1;
