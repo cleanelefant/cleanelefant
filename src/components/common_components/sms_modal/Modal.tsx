@@ -9,6 +9,15 @@ interface ISmsModal {
 }
 
 function SmsModal({ isModal, setIsModal }: ISmsModal) {
+  React.useEffect(() => {
+    if (isModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {};
+  }, [isModal]);
   if (isModal) {
     return (
       <div className='fixed top-0 bottom-0 left-0 right-0 bg-black/90 z-50 '>
