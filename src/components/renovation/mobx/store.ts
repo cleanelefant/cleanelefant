@@ -169,7 +169,7 @@ export default class This {
     this.commonShiftTime = 0;
     this.commonShiftTime = 0;
   }
-  setIsModul(value: boolean) {
+  setIsModal(value: boolean) {
     this.isModal = value;
   }
   setArea(event: any) {
@@ -473,7 +473,7 @@ export default class This {
 
     if (isError) {
       console.log("ERRORE");
-      this.setIsModul(true);
+      this.setIsModal(true);
     } else {
       clientData.isPerson = this.vat === 1;
       clientData.area = this.area;
@@ -507,7 +507,7 @@ export default class This {
       clientData.doConsent = this.isRodoChecked;
       clientData.isAgree = this.isRulesChecked;
 
-      this.setIsModul(true);
+      this.setIsModal(true);
 
       console.log("CLIENT DATA", clientData);
     }

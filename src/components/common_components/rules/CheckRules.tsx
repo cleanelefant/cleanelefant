@@ -1,36 +1,46 @@
-import { useContext } from "react";
-import { observer } from "mobx-react-lite";
-import { Context } from "../index";
 import React from "react";
 
-function CheckRules() {
-  const { store } = useContext(Context);
+interface ICheckRules {
+  isRulesChecked: boolean;
+  setIsRulesChecked(value: boolean): void;
+  setRulesError(value: boolean): void;
+  target: string;
+  isError: boolean;
+}
+
+function CheckRules({
+  isRulesChecked,
+  setIsRulesChecked,
+  setRulesError,
+  target,
+  isError,
+}: ICheckRules) {
   const handleCheckboxChange = () => {
-    if (!store.isRulesChecked) {
-      store.setIsRulesChecked(!store.isRulesChecked);
-      store.setRulesError(false);
+    if (!isRulesChecked) {
+      setIsRulesChecked(!isRulesChecked);
+      setRulesError(false);
     } else {
-      store.setIsRulesChecked(!store.isRulesChecked);
+      setIsRulesChecked(!isRulesChecked);
     }
   };
 
   return (
-    <div className='flex items-center' id={store.pageErrors.rulesError.target}>
+    <div className='flex items-center' id={target}>
       <div className='mb-4'>
         <label className='flex items-center cursor-pointer'>
           <div className='relative'>
             <input
               type='checkbox'
-              checked={store.isRulesChecked}
+              checked={isRulesChecked}
               onChange={handleCheckboxChange}
               className='sr-only'
             />
             <div
               className={`w-8 h-8 ${
-                store.pageErrors.rulesError.isError ? "bg-rose-300" : "bg-white"
+                isError ? "bg-rose-300" : "bg-white"
               } rounded-sm border border-black transition-all duration-200 ease-out absolute left-0`}
             ></div>
-            {store.isRulesChecked && (
+            {isRulesChecked && (
               <svg
                 className='w-7 h-7 text-black fill-current absolute left-0.5 top-0.5'
                 xmlns='http://www.w3.org/2000/svg'
@@ -44,7 +54,7 @@ function CheckRules() {
       </div>
       <div
         className={`ml-10 flex justify-center items-center gap-x-3 mt-4 ${
-          store.pageErrors.rulesError.isError ? "text-red-500" : "text-gray-700"
+          isError ? "text-red-500" : "text-gray-700"
         } select-none  text-lg lg:text-xl`}
       >
         <p>
@@ -62,4 +72,4 @@ function CheckRules() {
   );
 }
 
-export default observer(CheckRules);
+export default CheckRules;

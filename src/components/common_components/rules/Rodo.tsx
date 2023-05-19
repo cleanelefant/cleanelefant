@@ -1,12 +1,14 @@
 import { useContext } from "react";
-import { observer } from "mobx-react-lite";
-import { Context } from "../index";
 import React from "react";
 
-function Rodo() {
-  const { store } = useContext(Context);
+interface IRodo {
+  isRodoChecked: boolean;
+  setIsRodoChecked(value: boolean): void;
+}
+
+function Rodo({ isRodoChecked, setIsRodoChecked }: IRodo) {
   const handleCheckboxChange = () => {
-    store.setIsRodoChecked(!store.isRodoChecked);
+    setIsRodoChecked(!isRodoChecked);
   };
 
   return (
@@ -16,14 +18,14 @@ function Rodo() {
           <div className='relative'>
             <input
               type='checkbox'
-              checked={store.isRodoChecked}
+              checked={isRodoChecked}
               onChange={handleCheckboxChange}
               className='sr-only'
             />
             <div
               className={`w-8 h-8 bg-white  rounded-sm border border-black transition-all duration-200 ease-out absolute left-0`}
             ></div>
-            {store.isRodoChecked && (
+            {isRodoChecked && (
               <svg
                 className='w-7 h-7 text-black fill-current absolute left-0.5 top-0.5'
                 xmlns='http://www.w3.org/2000/svg'
@@ -47,4 +49,4 @@ function Rodo() {
   );
 }
 
-export default observer(Rodo);
+export default Rodo;

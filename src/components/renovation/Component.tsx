@@ -15,10 +15,10 @@ import ChoosePayment from "./payment/ChoosePayment";
 import MobileOrderButton from "./mobile_order_button/MobileOrderButton";
 import Steps from "./steps/Steps";
 import OrderButton from "./order_button/OrderButton";
-import CheckRules from "./rules/CheckRules";
-import Rodo from "./rules/Rodo";
+import CheckRules from "../common_components/rules/CheckRules";
+import Rodo from "../common_components/rules/Rodo";
 import AddWashing from "./additional_services/AddWashing";
-import SMSCodeInput from "../common_components/SMSinputs";
+import SmsModal from "../common_components/sms_modal/Modal";
 
 function Component() {
   const { store } = React.useContext(Context);
@@ -137,25 +137,43 @@ function Component() {
   const setVat = (value: number) => {
     store.setVat(value);
   };
+  const setIsModal = (value: boolean) => {
+    store.setIsModal(value);
+  };
+  const setIsRodoChecked = (value: boolean) => {
+    store.setIsRodoChecked(value);
+  };
+
+  const setIsRulesChecked = (value: boolean) => {
+    store.setIsRulesChecked(value);
+  };
+
+  const setRulesError = (value: boolean) => {
+    store.setRulesError(value);
+  };
 
   const launcherProps = { setVat };
+
+  const smsModalProps = {
+    isModal: store.isModal,
+    setIsModal,
+  };
+  const rodoProps = {
+    isRodoChecked: store.isRodoChecked,
+    setIsRodoChecked,
+  };
+
+  const rulesProps = {
+    isRulesChecked: store.isRulesChecked,
+    setIsRulesChecked,
+    setRulesError,
+    target: store.pageErrors.rulesError.target,
+    isError: store.pageErrors.rulesError.isError,
+  };
+
   return (
     <div className='scroll-smooth'>
-      {store.isModal && (
-        <div className='fixed top-0 bottom-0 left-0 right-0 bg-black/90 z-50 '>
-          <div className='bg-white w-1/2 h-40 mx-auto my-20 m px-10 py-5'>
-            <SMSCodeInput />
-            <button
-              className='border-4'
-              onClick={() => {
-                store.setIsModul(false);
-              }}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      <SmsModal {...smsModalProps} />
       <Steps />
       <div className='mx-4 lg:mx-20'>
         <h1
@@ -225,8 +243,8 @@ function Component() {
             <div ref={topPaymentDataRef}></div>
             <ChoosePayment />
             <div ref={bottomPaymentDataRef}></div>
-            <CheckRules />
-            <Rodo />
+            <CheckRules {...rulesProps} />
+            <Rodo {...rodoProps} />
             <OrderButton />
           </div>
           <div className='basis-1/3 flex '>
