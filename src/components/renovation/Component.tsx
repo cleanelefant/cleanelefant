@@ -11,7 +11,7 @@ import TimePicker from "../renovation/time_picker/TimePicker";
 import OrderCard from "./order_card/OrderCard";
 import AdressForm from "./forms/AdressForm";
 import ContactForm from "./forms/ContactForm";
-import ChoosePayment from "./payment/ChoosePayment";
+import ChoosePayment from "../common_components/payment/ChoosePayment";
 import MobileOrderButton from "./mobile_order_button/MobileOrderButton";
 import Steps from "./steps/Steps";
 import OrderButton from "./order_button/OrderButton";
@@ -152,6 +152,15 @@ function Component() {
     store.setRulesError(value);
   };
 
+  const setIsCash = (value: boolean) => {
+    store.setIsCash(value);
+  };
+
+  const paymentProps = {
+    setIsCash,
+    isCash: store.isCash,
+  };
+
   const launcherProps = { setVat };
 
   const smsModalProps = {
@@ -241,7 +250,7 @@ function Component() {
             </div>
             <div ref={bottomAdressDataRef}></div>
             <div ref={topPaymentDataRef}></div>
-            <ChoosePayment />
+            <ChoosePayment {...paymentProps} />
             <div ref={bottomPaymentDataRef}></div>
             <CheckRules {...rulesProps} />
             <Rodo {...rodoProps} />

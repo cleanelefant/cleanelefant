@@ -1,18 +1,19 @@
-import React, { FC, useContext } from "react";
-import { observer } from "mobx-react-lite";
-import { Context } from "..";
+import React from "react";
 import money from "../../../images/money.png";
 import card from "../../../images/credit-card.png";
 
-function ChoosePayment() {
-  const { store } = useContext(Context);
+interface IChoosePayment {
+  setIsCash(value: boolean): void;
+  isCash: boolean;
+}
 
+function ChoosePayment({ setIsCash, isCash }: IChoosePayment) {
   const clickHandlerCash = () => {
-    store.setIsCash(true);
+    setIsCash(true);
   };
 
   const clickHandlerCard = () => {
-    store.setIsCash(false);
+    setIsCash(false);
   };
 
   return (
@@ -25,7 +26,7 @@ function ChoosePayment() {
         <div
           onClick={clickHandlerCash}
           className={`${
-            store.isCash && "bg-blue-500 text-white drop-shadow-xl"
+            isCash && "bg-blue-500 text-white drop-shadow-xl"
           } cursor-pointer p-4 lg:p-8 font-bold lg:text-2xl text-center bg-white drop-shadow-xl flex gap-x-4 justify-center items-center`}
         >
           <img src={money} width={64} height={64} />
@@ -34,7 +35,7 @@ function ChoosePayment() {
         <div
           onClick={clickHandlerCard}
           className={`${
-            !store.isCash && "bg-blue-500 text-white drop-shadow-xl "
+            !isCash && "bg-blue-500 text-white drop-shadow-xl "
           } cursor-pointer p-4 lg:p-8 font-bold lg:text-2xl text-center bg-white drop-shadow-xl flex gap-x-4 justify-center items-center`}
         >
           <img src={card} width={64} height={64} />
@@ -45,4 +46,4 @@ function ChoosePayment() {
   );
 }
 
-export default observer(ChoosePayment);
+export default ChoosePayment;
