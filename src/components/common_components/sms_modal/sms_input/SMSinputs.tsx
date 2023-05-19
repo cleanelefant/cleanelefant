@@ -53,7 +53,7 @@ const SMSCodeInput: React.FC = () => {
             type='text'
             value={digit}
             maxLength={1}
-            className='w-10 h-10 text-center rounded border focus:outline-none focus:ring focus:border-blue-300'
+            className='w-20 h-20 text-center rounded border focus:outline-none focus:ring focus:border-blue-300'
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               handleChange(e, index)
             }
