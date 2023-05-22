@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/OrderLayout.astro";
 import Container from "../../components/renovation/";
+import TopContainer from "../../components/renovation/top_container/index";
 ---
 
 <Layout
@@ -8,7 +9,7 @@ import Container from "../../components/renovation/";
   description='Potrzebujesz sprzątanie po remoncie? Zobacz, jakie korzyści niesie za sobą wynajęcie firmy sprzątającej i ile to kosztuje.'
   keywords='Sprzątanie po remoncie, sprzątanie po remoncie zielona gora,  sprzątanie po remoncie cennik,sprzątanie mieszkania po remoncie, sprzątanie po remoncie cena, ile kosztuje sprzątanie domu po remoncie '
 >
-  <div class=''>
-    <Container client:load />
-  </div>
+  <TopContainer client:load />
+  <h1>Hello</h1>
+  <Container client:load />
 </Layout>

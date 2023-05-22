@@ -183,7 +183,6 @@ function Component() {
   return (
     <div className='scroll-smooth'>
       <SmsModal {...smsModalProps} />
-      <Steps />
       <div className='mx-4 lg:mx-20'>
         <h1
           className='text-lg mt-10 mb-5 lg:mb-10 lg:text-4xl font-extrabold uppercase scroll-mt-20 text-center'
