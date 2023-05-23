@@ -1,7 +1,6 @@
 import React, { FC, useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../renovation";
-// import { steps } from "../../../utils/data/steps";
 import { IStep } from "../../../types";
 
 interface ISteps {
