@@ -7,8 +7,13 @@ import { Context } from "../index";
 import TimeOrderVisualisator from "./TimeOrderVisualisator";
 import AddonsList from "./AddonsList";
 //Images
+
 import card from "../../../images/payments/atm-card.png";
 import cash from "../../../images/payments/money.png";
+import kitchen from "../../../images/services/kitchen.png";
+import hallway from "../../../images/services/hallway.png";
+import room from "../../../images/services/living-room.png";
+import bedroom from "../../../images/services/bedroom.png";
 
 interface IPriceData {
   area_price: number;
@@ -18,7 +23,7 @@ interface IPriceData {
 }
 
 function OrderCard() {
-  const { store } = useContext(Context);
+  const { store, orderStore } = useContext(Context);
   const [is_price_data, setIsPriceData] = React.useState(false);
 
   React.useEffect(() => {
@@ -74,6 +79,33 @@ function OrderCard() {
         )}
         <div className='font-mono pt-2'>Powierzchnia: {store.area} m2</div>
         <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
+        <div>Zamówienie sprzątania obejmuje:</div>
+        <div>
+          <div className='flex gap-x-2 justify-start items-center'>
+            <img src={kitchen} width={20} height={20} />
+            <p>
+              kuchienka-<span>1</span>
+            </p>
+          </div>
+          <div className='flex gap-x-2 justify-start items-center'>
+            <img src={hallway} width={20} height={20} />
+            <p>
+              przedpokój-<span>1</span>
+            </p>
+          </div>
+          <div className='flex gap-x-2 justify-start items-center'>
+            <img src={room} width={20} height={20} />
+            <p>
+              pokój-<span>{orderStore.rooms}</span>
+            </p>
+          </div>
+          <div className='flex gap-x-2 justify-start items-center'>
+            <img src={bedroom} width={20} height={20} />
+            <p>
+              łazienka-<span>{orderStore.bedrooms}</span>
+            </p>
+          </div>
+        </div>
         <AddonsList />
         <TimeOrderVisualisator />
         <div className='font-bold pt-1 text-2xl'>

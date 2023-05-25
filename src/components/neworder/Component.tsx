@@ -25,7 +25,7 @@ import HomeOption from "./home_option/HomeOption";
 import Rates from "./rates/Rates";
 
 function Component() {
-  const { store } = React.useContext(Context);
+  const { store, orderStore } = React.useContext(Context);
   // console.log("store", store);
   const topComercialDataRef = React.useRef<HTMLDivElement>(null);
   const bottomComercialDataRef = React.useRef<HTMLDivElement>(null);
@@ -35,6 +35,77 @@ function Component() {
   const bottomAdressDataRef = React.useRef<HTMLDivElement>(null);
   const topPaymentDataRef = React.useRef<HTMLDivElement>(null);
   const bottomPaymentDataRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const data = {
+      basePrice: 80,
+      baseMinutes: 90,
+      roomPrice: 30,
+      roomMinutes: 30,
+      bedroomPrice: 40,
+      bedroomsMinutes: 60,
+    };
+    const queryParams = new URLSearchParams(window.location.search);
+    const rooms = queryParams.get("rooms");
+    const bedrooms = queryParams.get("bedrooms");
+    const discount = queryParams.get("discount");
+
+    if (Number(rooms)) {
+      orderStore.setRooms(Number(rooms));
+    }
+    if (Number(bedrooms)) {
+      orderStore.setBedrooms(Number(bedrooms));
+    }
+    store.setBasePrice(data.basePrice);
+    store.setRoomPrice(data.roomPrice);
+    store.setBedPrice(data.bedroomPrice);
+    store.setBaseMinutes(data.baseMinutes);
+    store.setRoomMinutes(data.roomMinutes);
+    store.setBedroomMinutes(data.bedroomsMinutes);
+    store.setSteps(steps);
+
+    // prepare data for TimePicker
+    const mapedTimes: ExtendedITime[] = times.map((t) => {
+      return { ...t, isActive: false, isModal: false };
+    });
+    store.setTimes(mapedTimes);
+    const mapedMinutes: ExtendedIMinutes[] = minutes.map((m) => {
+      return { ...m, isActive: false };
+    });
+    store.setMinutes(mapedMinutes);
+
+    let mapedFetchedRates: rateType[] = [];
+    if (!discount) {
+      mapedFetchedRates = fetchedRates.map((r, i) => {
+        if (i === fetchedRates.length - 1) {
+          return { ...r, isCurent: true };
+        } else {
+          return { ...r, isCurent: false };
+        }
+      });
+    } else {
+      const findDiscount = fetchedRates.find((d) => d.link === discount);
+      if (findDiscount) {
+        mapedFetchedRates = fetchedRates.map((r, i) => {
+          if (r.link === findDiscount.link) {
+            store.setActualRate(r);
+            return { ...r, isCurent: true };
+          } else {
+            return { ...r, isCurent: false };
+          }
+        });
+      } else {
+        mapedFetchedRates = fetchedRates.map((r, i) => {
+          if (i === fetchedRates.length - 1) {
+            return { ...r, isCurent: true };
+          } else {
+            return { ...r, isCurent: false };
+          }
+        });
+      }
+    }
+    store.setRates(mapedFetchedRates);
+  }, []);
 
   React.useEffect(() => {
     const position = 1;
@@ -217,35 +288,6 @@ function Component() {
             </div>
             <HomeOption />
             <Rates />
-            {/* <div
-              className='flex flex-col lg:flex-row mt-10 lg:mt-20'
-              id='countres_order_page'
-            >
-              <div className='flex-1'>
-                <AreaCounter />
-                {store.area_price ? (
-                  <div className='flex justify-center items-center'>
-                    <div className='px-12 py-2 lg:py-4 my-5 lg:my-10 bg-yellow-500 font-bold lg:text-xl rounded'>
-                      {store.area_price} zł./m2
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className='flex-1'>
-                <WindowCounter />
-                {store.window_price ? (
-                  <div className='flex justify-center items-center'>
-                    <div className='px-12 py-2 lg:py-4 mt-5  lg:my-10 bg-yellow-500 font-bold lg:text-xl rounded'>
-                      {store.window_price} zł.
-                    </div>
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-            </div> */}
             <AddWashing />
             <div ref={bottomComercialDataRef}></div>
             <div
