@@ -5,11 +5,11 @@ import { Context } from "./index";
 //Types
 import { ExtendedIMinutes, ExtendedITime, rateType } from "../../types";
 // Components
-import RoomCounter from "./room_counter/RoomCounter";
-import BedroomCounter from "./room_counter/BedroomCounter";
+import RoomCounter from "../neworder/room_counter/RoomCounter";
+import BedroomCounter from "../neworder/room_counter/BedroomCounter";
 import Launcher from "./launcher/Launcher";
-import Rates from "./rates/Rates";
-import HomeOption from "./home_option/HomeOption";
+import Rates from "../neworder/rates/Rates";
+import HomeOption from "../neworder/home_option/HomeOption";
 import AddService from "./additional_services/AddService";
 import TimePicker from "./time_picker/TimePicker";
 import DatePickear from "./datepicker/Datepicker";

@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "..";
+import { Context } from "../../order";
 import Counter from "./Counter";
+import React from "react";
 
 function BedroomCounter() {
   const { store } = useContext(Context);

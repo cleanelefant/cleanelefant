@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "../index";
+import { Context } from "../../order/index";
 import React from "react";
 import house from "../../../images/services/home_house.png";
 
