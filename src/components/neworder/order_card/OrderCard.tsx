@@ -110,11 +110,13 @@ function OrderCard() {
         <TimeOrderVisualisator />
         <div className='font-bold pt-1 text-2xl'>
           Do zapłaty:{" "}
-          {is_price_data ? store.getTotalPrice() + " zł." : "LOADING..."}
-          <span className='line-through'>
+          {is_price_data
+            ? orderStore.calculateTotalPrise() + " zł."
+            : "LOADING..."}
+          {/* <span className='line-through'>
             {store.ocassionalRate > 0 &&
               " " + store.getTotalPriceWithoutRate() + " zł."}
-          </span>
+          </span> */}
         </div>
         <div className='flex justify-center gap-x-2 '>
           {store.serviceDay && (

@@ -23,6 +23,9 @@ import RoomCounter from "./room_counter/RoomCounter";
 import BedroomCounter from "./room_counter/BedroomCounter";
 import HomeOption from "./home_option/HomeOption";
 import Rates from "./rates/Rates";
+import { ExtendedITime, ExtendedIMinutes, rateType } from "../../types";
+import { fetchedRates } from "../../utils/rates";
+import { times, minutes } from "../../utils/times";
 
 function Component() {
   const { store, orderStore } = React.useContext(Context);
@@ -56,15 +59,14 @@ function Component() {
     if (Number(bedrooms)) {
       orderStore.setBedrooms(Number(bedrooms));
     }
-    store.setBasePrice(data.basePrice);
-    store.setRoomPrice(data.roomPrice);
-    store.setBedPrice(data.bedroomPrice);
-    store.setBaseMinutes(data.baseMinutes);
-    store.setRoomMinutes(data.roomMinutes);
-    store.setBedroomMinutes(data.bedroomsMinutes);
-    store.setSteps(steps);
+    orderStore.setBasePrice(data.basePrice);
+    orderStore.setRoomPrice(data.roomPrice);
+    orderStore.setBedroomPrice(data.bedroomPrice);
+    orderStore.setBaseMinutes(data.baseMinutes);
+    orderStore.setRoomMinutes(data.roomMinutes);
+    orderStore.setBedroomMinutes(data.bedroomsMinutes);
+    // orderStore.setSteps(steps);
 
-    // prepare data for TimePicker
     const mapedTimes: ExtendedITime[] = times.map((t) => {
       return { ...t, isActive: false, isModal: false };
     });
@@ -88,7 +90,7 @@ function Component() {
       if (findDiscount) {
         mapedFetchedRates = fetchedRates.map((r, i) => {
           if (r.link === findDiscount.link) {
-            store.setActualRate(r);
+            orderStore.setActualRate(r);
             return { ...r, isCurent: true };
           } else {
             return { ...r, isCurent: false };
@@ -104,7 +106,7 @@ function Component() {
         });
       }
     }
-    store.setRates(mapedFetchedRates);
+    orderStore.setRates(mapedFetchedRates);
   }, []);
 
   React.useEffect(() => {

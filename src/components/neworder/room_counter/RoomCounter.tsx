@@ -1,22 +1,22 @@
 import React, { FC, useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "../../order";
+import { Context } from "../index";
 import Counter from "./Counter";
 
 function RoomCounter() {
-  const { store } = useContext(Context);
+  const { store, orderStore } = useContext(Context);
   console.log("RoomCounter");
   const inc = () => {
-    store.increaseRoom();
+    orderStore.increaseRoom();
   };
   const dec = () => {
-    store.decreaseRoom();
+    orderStore.decreaseRoom();
   };
 
   return (
     <Counter
-      title={store.naming.pokoj}
-      rooms={store.rooms}
+      title={orderStore.naming.pokoj}
+      rooms={orderStore.rooms}
       inc={inc}
       dec={dec}
     />

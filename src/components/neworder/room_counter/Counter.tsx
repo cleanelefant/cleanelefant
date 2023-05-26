@@ -1,3 +1,4 @@
+import React from "react";
 import { setWordInRightWay } from "../../../utils/word";
 
 interface ICounter {
