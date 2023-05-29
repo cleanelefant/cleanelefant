@@ -106,7 +106,7 @@ function setGodziny(hours: number): string {
 }
 
 function TimeOrderVisualisator() {
-  const { store } = useContext(Context);
+  const { store, orderStore } = useContext(Context);
   const [state, setState] = React.useState<IStateData>({
     hours: 0,
     minutes: 0,

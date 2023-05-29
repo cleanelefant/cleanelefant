@@ -65,7 +65,6 @@ function Component() {
     orderStore.setBaseMinutes(data.baseMinutes);
     orderStore.setRoomMinutes(data.roomMinutes);
     orderStore.setBedroomMinutes(data.bedroomsMinutes);
-    // orderStore.setSteps(steps);
 
     const mapedTimes: ExtendedITime[] = times.map((t) => {
       return { ...t, isActive: false, isModal: false };
@@ -213,7 +212,7 @@ function Component() {
   }, []);
 
   const setVat = (value: number) => {
-    store.setVat(value);
+    orderStore.setVat(value);
   };
   const setIsModal = (value: boolean) => {
     store.setIsModal(value);
@@ -266,7 +265,7 @@ function Component() {
           className='text-lg mt-10 mb-5 lg:mb-10 lg:text-4xl font-extrabold uppercase scroll-mt-20 text-center'
           id='countres_order_page'
         >
-          SPRZĄTANIE MIESZKANIA ZIELONA GÓRA 1
+          SPRZĄTANIE MIESZKANIA ZIELONA GÓRA
         </h1>
         <div className='flex flex-col lg:flex-row justify-center gap-y-10 lg:gap-x-5'>
           <div className='basis-2/3'>

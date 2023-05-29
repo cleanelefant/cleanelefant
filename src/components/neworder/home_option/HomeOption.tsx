@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "../../order/index";
+import { Context } from "../index";
 import React from "react";
 import house from "../../../images/services/home_house.png";
 
 function HomeOption() {
-  const { store } = useContext(Context);
+  const { store, orderStore } = useContext(Context);
   const [isChecked, setIsChecked] = React.useState(false);
 
   const handleCheckboxChange = () => {
@@ -14,9 +14,9 @@ function HomeOption() {
 
   React.useEffect(() => {
     if (isChecked) {
-      store.setHomeRate(1.2);
+      orderStore.setHomeRate(1.2);
     } else {
-      store.setHomeRate(1);
+      orderStore.setHomeRate(1);
     }
   }, [isChecked]);
 

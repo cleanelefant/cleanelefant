@@ -113,10 +113,10 @@ function OrderCard() {
           {is_price_data
             ? orderStore.calculateTotalPrise() + " zł."
             : "LOADING..."}
-          {/* <span className='line-through'>
+          <span className='line-through'>
             {store.ocassionalRate > 0 &&
               " " + store.getTotalPriceWithoutRate() + " zł."}
-          </span> */}
+          </span>
         </div>
         <div className='flex justify-center gap-x-2 '>
           {store.serviceDay && (

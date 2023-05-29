@@ -26,7 +26,6 @@ export default function PriceOptions() {
   }
 
   React.useEffect(() => {
-   
     const fetchedPrices = [
       {
         id: 1,
@@ -95,7 +94,7 @@ export default function PriceOptions() {
           <a
             className='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
             key={p.id}
-            href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
+            href={`/neworder?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
             itemType='https://schema.org/Product'
             itemScope
             rel='nofollow'
@@ -108,7 +107,7 @@ export default function PriceOptions() {
             >
               <link
                 itemProp='url'
-                href={`/order?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
+                href={`/neworder?rooms=${p.room}&bedrooms=1&discount=${actualDiscount.link} `}
               />
               <meta
                 itemProp='availability'

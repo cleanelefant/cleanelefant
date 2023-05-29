@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { observer } from "mobx-react-lite";
-import { Context } from "../../order/index";
+import { Context } from "../index";
 import { toJS } from "mobx";
+import React from "react";
 
 function Rates() {
-  const { store } = useContext(Context);
-  const rates = toJS(store.rates);
+  const { store, orderStore } = useContext(Context);
+  const rates = toJS(orderStore.rates);
   console.log("Rates");
   return (
     <div className='mt-10 lg:mt-20'>
@@ -20,8 +21,8 @@ function Rates() {
           <button
             key={rate.id}
             onClick={() => {
-              store.changeRatesIsCurentValue(rate.id - 1);
-              store.setActualRate(rate);
+              orderStore.changeRatesIsCurentValue(rate.id - 1);
+              orderStore.setActualRate(rate);
             }}
             className={`flex-1 py-3 px-8 justify-center items-center  transition-transform drop-shadow-xl rounded ${
               !rate.isCurent ? "bg-white" : "bg-blue-700 text-white"

@@ -38,9 +38,7 @@ const deployhost = "https://cleanelefant.netlify.app";
                     <p class='p-2'>{d.title}</p>
                   </div>
                 ) : (
-                
-                  <div class="">{d.title}</div>
-                
+                  <div class=''>{d.title}</div>
                 )}
               </div>
             </button>
@@ -55,7 +53,7 @@ const deployhost = "https://cleanelefant.netlify.app";
         <!-- First link -->
         <a
           class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
-          href={`/order?rooms=${options[0].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
+          href={`/neworder?rooms=${options[0].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
           itemtype='https://schema.org/Product'
           itemscope
           rel='nofollow'
@@ -64,7 +62,7 @@ const deployhost = "https://cleanelefant.netlify.app";
           <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
             <link
               itemprop='url'
-              href={`${deployhost}/order?rooms=${options[0].room}&bedrooms=1`}
+              href={`${deployhost}/neworder?rooms=${options[0].room}&bedrooms=1`}
             />
             <meta
               itemprop='availability'
@@ -98,7 +96,7 @@ const deployhost = "https://cleanelefant.netlify.app";
         <!-- Second link -->
         <a
           class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
-          href={`/order?rooms=${options[1].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
+          href={`/neworder?rooms=${options[1].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
           itemtype='https://schema.org/Product'
           itemscope
           rel='nofollow'
@@ -141,7 +139,7 @@ const deployhost = "https://cleanelefant.netlify.app";
         <!-- Third link -->
         <a
           class='flex justify-center hover:-translate-y-4 transition ease-in-out delay-150'
-          href={`/order?rooms=${options[2].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
+          href={`/neworder?rooms=${options[2].room}&bedrooms=1&discount=${fetchedRates[0].link}`}
           itemtype='https://schema.org/Product'
           itemscope
           rel='nofollow'
@@ -150,7 +148,7 @@ const deployhost = "https://cleanelefant.netlify.app";
           <div itemprop='offers' itemtype='https://schema.org/Offer' itemscope>
             <link
               itemprop='url'
-              href={`${deployhost}/order?rooms=${options[2].room}&bedrooms=1}`}
+              href={`${deployhost}/neworder?rooms=${options[2].room}&bedrooms=1}`}
             />
             <meta
               itemprop='availability'
@@ -230,7 +228,6 @@ const deployhost = "https://cleanelefant.netlify.app";
           const findActualRate = fetchedRates.find(
             (rate) => rate.id === Number(key)
           );
-    
 
           const option_box = document.querySelector("#options_123");
           const links = option_box.children;

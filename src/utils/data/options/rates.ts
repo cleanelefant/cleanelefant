@@ -6,7 +6,7 @@ export const fetchedRates: rateType[] = [
     title: "Raz w tygodniu",
     discount: 20,
     link: "week",
-    isCurent: true,
+    isCurent: false,
   },
   {
     id: 2,
@@ -27,6 +27,6 @@ export const fetchedRates: rateType[] = [
     title: "Jednorazowe sprzątanie",
     discount: 0,
     link: "once",
-    isCurent: false,
+    isCurent: true,
   },
 ];

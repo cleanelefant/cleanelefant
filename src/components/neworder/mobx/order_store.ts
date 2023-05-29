@@ -112,6 +112,7 @@ export default class This {
       this.actualRate.discount > this.ocassionalRate
         ? this.actualRate.discount
         : this.ocassionalRate;
+    console.log("rate", rate);
     const number =
       (this.basePrise +
         this.roomPrise * this.rooms +
@@ -139,5 +140,19 @@ export default class This {
       this.VATvalue;
     const roundedNumber = parseFloat(number.toFixed(2));
     return roundedNumber;
+  }
+
+  setVat(value: number) {
+    this.VATvalue = value;
+  }
+  setHomeRate(homeRate: number) {
+    this.homeRate = homeRate;
+  }
+
+  changeRatesIsCurentValue(id: number) {
+    this.rates.forEach((rate) => {
+      rate.isCurent = false;
+    });
+    this.rates[id].isCurent = true;
   }
 }
