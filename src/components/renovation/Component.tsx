@@ -22,7 +22,6 @@ import SmsModal from "../common_components/sms_modal/Modal";
 
 function Component() {
   const { store } = React.useContext(Context);
-  // console.log("store", store);
   const topComercialDataRef = React.useRef<HTMLDivElement>(null);
   const bottomComercialDataRef = React.useRef<HTMLDivElement>(null);
   const topTimeDataRef = React.useRef<HTMLDivElement>(null);
