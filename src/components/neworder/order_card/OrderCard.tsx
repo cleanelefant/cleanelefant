@@ -18,8 +18,6 @@ import bedroom from "../../../images/services/bedroom.png";
 interface IPriceData {
   area_price: number;
   window_price: number;
-  washing_shift_time: number;
-  additional_shift_time: number;
 }
 
 function OrderCard() {
@@ -34,16 +32,12 @@ function OrderCard() {
           resolve({
             area_price: 6,
             window_price: 50,
-            washing_shift_time: 480,
-            additional_shift_time: 480,
           });
         }, 2000); // Wait for 2 seconds
       });
 
       store.setAreaPrice(imitationData.area_price);
       store.setWindowPrice(imitationData.window_price);
-      store.setCommonShiftTime(imitationData.washing_shift_time);
-      store.setAdditionalShiftTime(imitationData.additional_shift_time);
       setIsPriceData(true);
     };
 
@@ -55,30 +49,9 @@ function OrderCard() {
     store.fetchClientData();
   };
 
-  const renovationPrise = store.getRenovationPrice();
-  const washingPrise = store.getWashingPrice();
-
   return (
     <div className='w-full relative mb-5 text-lg'>
       <div className='drop-shadow-xl bg-slate-50 p-4 lg:p-8 lg:fixed xl:w-[600px]'>
-        <div className=' font-bold text-xl'>
-          Sprzątanie po remoncie{" "}
-          {renovationPrise ? renovationPrise + " " + "zł." : ""}
-        </div>
-        {washingPrise ? (
-          <div className=' font-bold text-xl'>
-            Pranie mebli {washingPrise ? washingPrise : ""} zł.
-          </div>
-        ) : (
-          ""
-        )}
-        {store.pageErrors.comercialDataError.isError && (
-          <div className='text-red-500 font-bold'>
-            {store.pageErrors.comercialDataError.text}
-          </div>
-        )}
-        <div className='font-mono pt-2'>Powierzchnia: {store.area} m2</div>
-        <div className='font-mono pt-1'>Ilość okien: {store.windows}</div>
         <div>Zamówienie sprzątania obejmuje:</div>
         <div>
           <div className='flex gap-x-2 justify-start items-center'>
@@ -114,8 +87,8 @@ function OrderCard() {
             ? orderStore.calculateTotalPrise() + " zł."
             : "LOADING..."}
           <span className='line-through'>
-            {store.ocassionalRate > 0 &&
-              " " + store.getTotalPriceWithoutRate() + " zł."}
+            {orderStore.actualRate.discount > 0 &&
+              " " + orderStore.calculateTotalPriseWithoutRate() + " zł."}
           </span>
         </div>
         <div className='flex justify-center gap-x-2 '>

@@ -17,21 +17,29 @@ export default class This {
   rooms: number;
   bedrooms: number;
   basePrise: number;
-  baseMinutes: number;
-  roomPrise: number;
   bedroomPrise: number;
+  roomPrise: number;
+
+  baseMinutes: number;
   roomMinutes: number;
   bedroomMinutes: number;
-  totalMinutes: number;
+  // totalMinutes: number;
   cleaningPersons: number;
   washingPersons: number;
   persons: number;
+  commonShiftTime: number;
+  additionalShiftTime: number;
+
+  // rates and vat
   VATvalue: number;
   rate: number;
   actualRate: rateType;
   ocassionalRate: number;
-  rates: rateType[];
   homeRate: number;
+
+  //rates for calendar
+  rates: rateType[];
+
   // addons: ExtendedIAddons[];
   // addonReciver: IAddonReciver[];
   // washingAddons: ExtendedIAddons[];
@@ -48,7 +56,8 @@ export default class This {
     this.baseMinutes = 90;
     this.roomMinutes = 30;
     this.bedroomMinutes = 60;
-    this.totalMinutes = 180;
+    this.commonShiftTime = 0;
+    this.additionalShiftTime = 0;
     this.cleaningPersons = 1;
     this.washingPersons = 0;
     this.VATvalue = 1;
@@ -101,6 +110,12 @@ export default class This {
   setBedroomMinutes(minutes: number) {
     this.bedroomMinutes = minutes;
   }
+  setCommonShiftTime(value: number) {
+    this.commonShiftTime = value;
+  }
+  setAdditionalShiftTime(value: number) {
+    this.additionalShiftTime = value;
+  }
   setActualRate(actualRate: rateType) {
     this.actualRate = actualRate;
   }
@@ -139,6 +154,7 @@ export default class This {
       this.homeRate *
       this.VATvalue;
     const roundedNumber = parseFloat(number.toFixed(2));
+
     return roundedNumber;
   }
 

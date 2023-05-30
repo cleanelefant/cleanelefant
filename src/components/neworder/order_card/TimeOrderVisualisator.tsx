@@ -5,9 +5,12 @@ import { Context } from "../index";
 import { IAddonReciver } from "../../../types";
 import man from "../../../images/man.png";
 
-interface ITimeRateData {
-  area_time_price: number;
-  window_time_price: number;
+interface ITimeOrderRateData {
+  room_time_price: number;
+  bedroom_time_price: number;
+  base_time_price: number;
+  washing_shift_time: number;
+  additional_shift_time: number;
 }
 
 interface IStateData {
@@ -44,7 +47,11 @@ function roundToNext(value: number) {
 }
 
 function setPersonal(totalMinutes: number, shiftTime: number) {
-  return Math.ceil(totalMinutes / shiftTime);
+  if (totalMinutes && shiftTime) {
+    return Math.ceil(totalMinutes / shiftTime);
+  } else {
+    return null;
+  }
 }
 
 function convertMinutesToHoursAndMinutes(minutes: number) {
@@ -54,42 +61,39 @@ function convertMinutesToHoursAndMinutes(minutes: number) {
 }
 
 function setTimeData(
-  area: number,
-  window: number,
-  addons: IAddonReciver[],
-  areaRate: number,
-  windowRate: number,
-  commonShiftTime: number,
-  additionalShiftTime: number
+  rooms: number,
+  bedrooms: number,
+  baseMinute: number,
+  // addons: IAddonReciver[],
+  roomTimeRate: number,
+  bedroomTimeRate: number,
+  commonShiftTime: number
+  // additionalShiftTime: number
 ): IStateData {
-  //User time dada treatment
-  const areaPerTen = Math.floor(area / 10);
-  const areaDivisionRemainder = area % 10;
-  const areaMinutes =
-    areaPerTen * areaRate + areaDivisionRemainder * (areaRate / 10);
-  const windowMinutes = window * windowRate;
-
-  // Common and Additional Time Calculating
-  const totalMinutes = areaMinutes + windowMinutes;
-  const addonsMinutes = addons.reduce((sum, addon) => {
-    return sum + addon.minutes;
-  }, 0);
+  const roomMinutes = rooms * roomTimeRate;
+  const bedroomMinutes = bedrooms * bedroomTimeRate;
+  const totalMinutes = roomMinutes + bedroomMinutes + baseMinute;
+  // const addonsMinutes = addons.reduce((sum, addon) => {
+  //   return sum + addon.minutes;
+  // }, 0);
 
   //Personal Calculating
   const persons = setPersonal(totalMinutes, commonShiftTime);
-  const washingPersonal = setPersonal(addonsMinutes, additionalShiftTime);
+
+  // const washingPersonal = setPersonal(addonsMinutes, additionalShiftTime);
 
   //Total Time Calculating
-  const totalTime =
-    DevidedTime(totalMinutes, persons) +
-    DevidedTime(addonsMinutes, washingPersonal);
+  const totalTime = DevidedTime(totalMinutes, persons);
+  //  +
+  // DevidedTime(addonsMinutes, washingPersonal);
 
   const convertedTime = convertMinutesToHoursAndMinutes(totalTime);
 
   return {
     hours: convertedTime.hours,
     minutes: roundToNext(convertedTime.minutes),
-    persons: persons + washingPersonal,
+    persons: persons,
+    //  + washingPersonal
   };
 }
 
@@ -119,14 +123,26 @@ function TimeOrderVisualisator() {
     const fetchData = async () => {
       try {
         // Imitation data fetching
-        const imitationData = await new Promise<ITimeRateData>((resolve) => {
-          setTimeout(() => {
-            resolve({ area_time_price: 60, window_time_price: 60 });
-          }, 2000); // Wait for 2 seconds
-        });
+        const imitationData = await new Promise<ITimeOrderRateData>(
+          (resolve) => {
+            setTimeout(() => {
+              resolve({
+                room_time_price: 30,
+                bedroom_time_price: 60,
+                base_time_price: 90,
+                washing_shift_time: 480,
+                additional_shift_time: 480,
+              });
+            }, 2000); // Wait for 2 seconds
+          }
+        );
+
+        orderStore.setBaseMinutes(imitationData.base_time_price);
+        orderStore.setRoomMinutes(imitationData.room_time_price);
+        orderStore.setBedroomMinutes(imitationData.bedroom_time_price);
+        orderStore.setCommonShiftTime(imitationData.washing_shift_time);
+        orderStore.setAdditionalShiftTime(imitationData.additional_shift_time);
         setIsTimeData(true);
-        store.setAreaMinutesRate(imitationData.area_time_price);
-        store.setWindowMinutesRate(imitationData.window_time_price);
       } catch (err) {
         // Catch any errors and set the error state
         setError(err.message);
@@ -137,20 +153,24 @@ function TimeOrderVisualisator() {
   }, []); // Only run once, on mount
 
   React.useEffect(() => {
-    if (store.areaMinuteRate && store.windowMinuteRate) {
+    if (orderStore.rooms && orderStore.bedrooms) {
       const data: IStateData = setTimeData(
-        store.area,
-        store.windows,
-        store.washingAddonReciver,
-        store.areaMinuteRate,
-        store.windowMinuteRate,
-        store.commonShiftTime,
-        store.additionalShiftTime
+        orderStore.rooms,
+        orderStore.bedrooms,
+        orderStore.baseMinutes,
+        orderStore.roomMinutes,
+        orderStore.bedroomMinutes,
+        orderStore.commonShiftTime
       );
       setState(data);
     }
-  }, [store.area, store.windows, store.washingAddonReciver.length]);
+  }, [
+    orderStore.rooms,
+    orderStore.bedrooms,
+    // store.washingAddonReciver.length
+  ]);
   const personal = Array.from({ length: state.persons }, (v, i) => i);
+
   if (error) {
     // If there is an error, render it
     return <div>Error: {error}</div>;
@@ -158,6 +178,7 @@ function TimeOrderVisualisator() {
   if (!is_time_rate_data) {
     return <div>...LOADING</div>;
   }
+
   return (
     <div className='font-mono'>
       <div className='pt-1'>
