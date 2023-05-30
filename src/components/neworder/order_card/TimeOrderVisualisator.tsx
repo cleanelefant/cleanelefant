@@ -64,18 +64,19 @@ function setTimeData(
   rooms: number,
   bedrooms: number,
   baseMinute: number,
-  // addons: IAddonReciver[],
   roomTimeRate: number,
   bedroomTimeRate: number,
-  commonShiftTime: number
+  commonShiftTime: number,
+  addons: IAddonReciver[]
   // additionalShiftTime: number
 ): IStateData {
   const roomMinutes = rooms * roomTimeRate;
   const bedroomMinutes = bedrooms * bedroomTimeRate;
-  const totalMinutes = roomMinutes + bedroomMinutes + baseMinute;
-  // const addonsMinutes = addons.reduce((sum, addon) => {
-  //   return sum + addon.minutes;
-  // }, 0);
+  const addonsMinutes = addons.reduce((sum, addon) => {
+    return sum + addon.minutes;
+  }, 0);
+  const totalMinutes =
+    roomMinutes + bedroomMinutes + baseMinute + addonsMinutes;
 
   //Personal Calculating
   const persons = setPersonal(totalMinutes, commonShiftTime);
@@ -160,15 +161,12 @@ function TimeOrderVisualisator() {
         orderStore.baseMinutes,
         orderStore.roomMinutes,
         orderStore.bedroomMinutes,
-        orderStore.commonShiftTime
+        orderStore.commonShiftTime,
+        store.washingAddonReciver
       );
       setState(data);
     }
-  }, [
-    orderStore.rooms,
-    orderStore.bedrooms,
-    // store.washingAddonReciver.length
-  ]);
+  }, [orderStore.rooms, orderStore.bedrooms, store.washingAddonReciver.length]);
   const personal = Array.from({ length: state.persons }, (v, i) => i);
 
   if (error) {

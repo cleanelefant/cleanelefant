@@ -23,6 +23,12 @@ interface IPriceData {
 function OrderCard() {
   const { store, orderStore } = useContext(Context);
   const [is_price_data, setIsPriceData] = React.useState(false);
+  const [washingPrice, setWashingPrice] = React.useState(0);
+
+  React.useEffect(() => {
+    const totalPrise = store.getWashingAddonTotalPrice();
+    setWashingPrice(totalPrise);
+  }, [store.washingAddonReciver.length]);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -84,7 +90,7 @@ function OrderCard() {
         <div className='font-bold pt-1 text-2xl'>
           Do zapłaty:{" "}
           {is_price_data
-            ? orderStore.calculateTotalPrise() + " zł."
+            ? orderStore.calculateTotalPrise(washingPrice) + " zł."
             : "LOADING..."}
           <span className='line-through'>
             {orderStore.actualRate.discount > 0 &&

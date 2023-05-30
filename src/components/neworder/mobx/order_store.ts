@@ -122,16 +122,17 @@ export default class This {
   setRates(rates: rateType[]) {
     this.rates = rates;
   }
-  calculateTotalPrise() {
+  calculateTotalPrise(washingAddonTotalPrice: number) {
     const rate =
       this.actualRate.discount > this.ocassionalRate
         ? this.actualRate.discount
         : this.ocassionalRate;
-    console.log("rate", rate);
+
     const number =
       (this.basePrise +
         this.roomPrise * this.rooms +
-        this.bedroomPrise * this.bedrooms) *
+        this.bedroomPrise * this.bedrooms +
+        washingAddonTotalPrice) *
       //  +
       // this.getWashingAddonTotalPrice()
       //  +
