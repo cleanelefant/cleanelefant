@@ -4,6 +4,12 @@ import { Context } from "..";
 
 function OrderButton() {
   const { store, orderStore } = useContext(Context);
+  const [washingPrice, setWashingPrice] = React.useState(0);
+
+  React.useEffect(() => {
+    const totalPrise = store.getWashingAddonTotalPrice();
+    setWashingPrice(totalPrise);
+  }, [store.washingAddonReciver.length]);
 
   const clickHandler = () => {
     store.errrorHandler();
@@ -16,10 +22,13 @@ function OrderButton() {
         onClick={clickHandler}
         className='bg-blue-500 text-white px-20 py-8 font-bold text-4xl'
       >
-        Zamawiam za {orderStore.calculateTotalPrise()} zł.
+        Zamawiam za {orderStore.calculateTotalPrise(washingPrice)} zł.
         <span className='line-through text-3xl font-light'>
           {orderStore.actualRate.discount > 0 &&
-            " " + orderStore.calculateTotalPriseWithoutRate() + " " + "zł"}
+            " " +
+              orderStore.calculateTotalPriseWithoutRate(washingPrice) +
+              " " +
+              "zł"}
         </span>
         {store.pageErrors.comercialDataError.isError && (
           <div className='text-red-500 font-bold text-sm'>

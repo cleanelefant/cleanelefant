@@ -144,11 +144,12 @@ export default class This {
     return roundedNumber;
   }
 
-  calculateTotalPriseWithoutRate() {
+  calculateTotalPriseWithoutRate(washingAddonTotalPrice: number) {
     const number =
       (this.basePrise +
         this.roomPrise * this.rooms +
-        this.bedroomPrise * this.bedrooms) *
+        this.bedroomPrise * this.bedrooms +
+        washingAddonTotalPrice) *
       //  +
       // this.getWashingAddonTotalPrice() +
       // this.getAddonTotalPrice()) *

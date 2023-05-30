@@ -94,7 +94,9 @@ function OrderCard() {
             : "LOADING..."}
           <span className='line-through'>
             {orderStore.actualRate.discount > 0 &&
-              " " + orderStore.calculateTotalPriseWithoutRate() + " zł."}
+              " " +
+                orderStore.calculateTotalPriseWithoutRate(washingPrice) +
+                " zł."}
           </span>
         </div>
         <div className='flex justify-center gap-x-2 '>
