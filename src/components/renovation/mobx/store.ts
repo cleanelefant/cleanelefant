@@ -199,6 +199,7 @@ export default class This {
     this.ocassionalRateHash = hash;
   }
   setServiceDay(day: string) {
+    console.log("day", day);
     this.serviceDay = day;
   }
   setTime(time: string) {
