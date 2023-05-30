@@ -132,6 +132,7 @@ function DatePickear() {
   const [days, setDays] = React.useState<ExtendedIDays[]>([]);
 
   const dayClickHandler = (item: ExtendedIDays) => {
+    console.log(item);
     if (item.isActive === false) {
       if (item.rate) {
         store.setOcassionalRate(item.rate);

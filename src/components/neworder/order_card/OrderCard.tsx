@@ -54,11 +54,14 @@ function OrderCard() {
     store.errrorHandler();
     store.fetchClientData();
   };
-
+  console.log("store.serviceDay", store.serviceDay);
   return (
     <div className='w-full relative mb-5 text-lg'>
       <div className='drop-shadow-xl bg-slate-50 p-4 lg:p-8 lg:fixed xl:w-[600px]'>
         <div>Zamówienie sprzątania obejmuje:</div>
+        <div className='py-1 px-2 bg-amber-500 text-sm font-bold  mt-2'>
+          {store.serviceDay}
+        </div>
         <div>
           <div className='flex gap-x-2 justify-start items-center'>
             <img src={kitchen} width={20} height={20} />
