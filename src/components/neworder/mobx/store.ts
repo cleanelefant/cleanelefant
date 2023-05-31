@@ -54,7 +54,7 @@ export default class This {
     this.vat = 1;
     this.ocassionalRate = 0;
     this.ocassionalRateHash = "";
-    this.serviceDay = "";
+    this.serviceDay = "ttt ttt hhh";
     this.time = "";
     this.times = [];
     this.isCash = true;
