@@ -54,7 +54,7 @@ export default class This {
     this.vat = 1;
     this.ocassionalRate = 0;
     this.ocassionalRateHash = "";
-    this.serviceDay = "ttt ttt hhh";
+    this.serviceDay = "";
     this.time = "";
     this.times = [];
     this.isCash = true;
@@ -300,7 +300,7 @@ export default class This {
     // this.setNameError(!!!this.contactFormData.name);
     this.setEmailError(!!!this.contactFormData.email);
     this.setPhoneError(!!!this.contactFormData.phone);
-    this.setCommercialDataError(!(this.getTotalPrice() > 200));
+    // this.setCommercialDataError(!(this.getTotalPrice() > 200));
     this.setRulesError(!this.isRulesChecked);
     for (const item in this.pageErrors) {
       this.errorArray.push(this.pageErrors[item]);
@@ -360,7 +360,6 @@ export default class This {
   }
 
   setActivityInWashingAddons(hash: string) {
-    console.log(hash);
     const index = this.washingAddons.findIndex((addon) => addon.hash === hash);
     this.washingAddons[index].isActive = !this.washingAddons[index].isActive;
   }
@@ -472,8 +471,7 @@ export default class This {
     const isError = checkPageErrors(this.pageErrors);
 
     if (isError) {
-      console.log("ERRORE");
-      this.setIsModal(true);
+      // this.setIsModal(true);
     } else {
       clientData.isPerson = this.vat === 1;
       clientData.area = this.area;
@@ -506,11 +504,7 @@ export default class This {
       clientData.isCash = this.isCash;
       clientData.doConsent = this.isRodoChecked;
       clientData.isAgree = this.isRulesChecked;
-
       this.setIsModal(true);
-
-      console.log("CLIENT DATA", clientData);
     }
   }
-  //------------------------------------------------------------
 }

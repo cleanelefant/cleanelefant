@@ -54,7 +54,7 @@ function OrderCard() {
     store.errrorHandler();
     store.fetchClientData();
   };
-  console.log("store.serviceDay", store.serviceDay);
+
   return (
     <div className='w-full relative mb-5 text-lg'>
       <div className='drop-shadow-xl bg-slate-50 p-4 lg:p-8 lg:fixed xl:w-[600px]'>
@@ -101,9 +101,11 @@ function OrderCard() {
           </span>
         </div>
         <div className='flex justify-center gap-x-2 '>
-          <div className='py-1 px-2 bg-amber-500 text-sm font-bold  mt-2'>
-            {store.serviceDay}
-          </div>
+          {store.serviceDay && (
+            <div className='py-1 px-2 bg-amber-500 text-sm font-bold  mt-2'>
+              {store.serviceDay}
+            </div>
+          )}
 
           {store.time && (
             <div className='py-1 px-2 bg-amber-500 text-sm font-bold  mt-2'>

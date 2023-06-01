@@ -30,11 +30,11 @@ function OrderButton() {
               " " +
               "zł"}
         </span>
-        {store.pageErrors.comercialDataError.isError && (
+        {/* {store.pageErrors.comercialDataError.isError && (
           <div className='text-red-500 font-bold text-sm'>
             {store.pageErrors.comercialDataError.text}
           </div>
-        )}
+        )} */}
       </button>
     </div>
   );
