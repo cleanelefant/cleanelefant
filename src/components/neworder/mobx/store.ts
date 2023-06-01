@@ -344,10 +344,7 @@ export default class This {
 
   // Order steps
   setActualStep(id: number) {
-    console.log("ID", id);
-    // console.log("STEPS", this.steps);
     const result = this.steps.find((x) => x.id === id);
-    // console.log("RESULT", result);
     this.steps.forEach((step) => {
       step.isActive = false;
     });
@@ -356,11 +353,9 @@ export default class This {
 
   setSteps(steps: IStep[]) {
     this.steps = steps;
-    console.log("steps", this.steps);
   }
 
   // Washing addons
-
   setWashingAddons(washingAddons: ExtendedIAddons[]) {
     this.washingAddons = washingAddons;
   }

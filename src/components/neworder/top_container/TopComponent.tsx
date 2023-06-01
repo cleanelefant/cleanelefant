@@ -13,9 +13,8 @@ function TopComponent() {
     store.setSteps(steps);
   }, []);
 
-  console.log("steps", toJS(store.steps));
   const stepProps = {
-    steps: store.steps,
+    steps: toJS(store.steps),
     setActualStep: function (id: number) {
       store.setActualStep(id);
     },

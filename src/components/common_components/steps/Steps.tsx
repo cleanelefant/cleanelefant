@@ -21,7 +21,7 @@ function Steps({ steps, setActualStep }: ISteps) {
           key={step.id}
           className={`${
             step.isActive &&
-            "text-white bg-gradient-to-l from-green-300 to-cyan-500"
+            "text-white bg-gradient-to-l from-green-300 to-cyan-500 lg:text-xl"
           } basis-1/4 text-center  p-px lg:py-4 cursor-pointer border tracking-wider bg-gray-200 border-b border-white `}
           href={step.target}
           onClick={() => clickHandler(step.id)}
