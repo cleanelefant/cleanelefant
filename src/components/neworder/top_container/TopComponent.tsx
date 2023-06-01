@@ -5,16 +5,15 @@ import { Context } from "./index";
 // Components
 import Steps from "../../common_components/steps/Steps";
 import { steps } from "../../../utils/data/steps";
-import { IStep } from "../../../types";
 
 function TopComponent() {
   const { store } = React.useContext(Context);
+  React.useEffect(() => {
+    store.setSteps(steps);
+  }, []);
 
   const stepProps = {
-    steps,
-    setSteps: function (steps: IStep[]) {
-      store.setSteps(steps);
-    },
+    steps: store.steps,
     setActualStep: function (id: number) {
       store.setActualStep(id);
     },

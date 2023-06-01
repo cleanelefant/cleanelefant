@@ -293,7 +293,7 @@ function Component() {
             <div ref={bottomComercialDataRef}></div>
             <div
               id='datepicker_order_page'
-              className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-10 lg:mt-20 scroll-mt-40 '
+              className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center mt-10 lg:mt-20 scroll-mb-80 xl:scroll-mb-[600px] '
             >
               Wybór terminu
             </div>

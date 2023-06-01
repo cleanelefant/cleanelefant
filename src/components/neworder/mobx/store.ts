@@ -311,10 +311,12 @@ export default class This {
         return prev.level < current.level ? prev : current;
       });
       const target = document.getElementById(higestLevel.target);
+      console.log("TARGET", target);
       target?.scrollIntoView({ behavior: "smooth", block: "end" });
     }
     if (this.pageErrors.emailErrors.isEmailValidDataError) {
       const target = document.getElementById("contact_form_order_page");
+      console.log("TARGET", target);
       target?.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   }
@@ -342,7 +344,10 @@ export default class This {
 
   // Order steps
   setActualStep(id: number) {
+    console.log("ID", id);
+    // console.log("STEPS", this.steps);
     const result = this.steps.find((x) => x.id === id);
+    // console.log("RESULT", result);
     this.steps.forEach((step) => {
       step.isActive = false;
     });
@@ -351,6 +356,7 @@ export default class This {
 
   setSteps(steps: IStep[]) {
     this.steps = steps;
+    console.log("steps", this.steps);
   }
 
   // Washing addons

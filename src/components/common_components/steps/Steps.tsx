@@ -1,26 +1,22 @@
 import React, { FC, useContext } from "react";
-import { observer } from "mobx-react-lite";
-import { Context } from "../../renovation";
+// import { observer } from "mobx-react-lite";
+// import { Context } from "../steps";
 import { IStep } from "../../../types";
+import { toJS } from "mobx";
 
 interface ISteps {
   steps: IStep[];
-  setSteps(steps: IStep[]): void;
   setActualStep(id: number): void;
 }
 
-function Steps({ steps, setSteps, setActualStep }: ISteps) {
-  const { store } = useContext(Context);
-  React.useEffect(() => {
-    setSteps(steps);
-  }, []);
+function Steps({ steps, setActualStep }: ISteps) {
   const clickHandler = (id: number) => {
     setActualStep(id);
   };
-
+  console.log("steps", toJS(steps));
   return (
     <div className='sticky top-0 z-40 flex flex-col lg:flex-row lg:gap-x-1 font-mono'>
-      {store.steps?.map((step, i) => (
+      {steps?.map((step, i) => (
         <a
           key={step.id}
           className={`${
@@ -39,4 +35,4 @@ function Steps({ steps, setSteps, setActualStep }: ISteps) {
   );
 }
 
-export default observer(Steps);
+export default Steps;
