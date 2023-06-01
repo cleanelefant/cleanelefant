@@ -11,10 +11,11 @@ import MultyWashingCard from "./MultyWashingCard";
 import { addons } from "../../../utils/addons";
 //images
 import arrow from "../../../images/up-arrow.webp";
+import sofa from "../../../images/sofa_big.png";
 
 function AddWashing() {
   const { store } = useContext(Context);
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isVisible, setIsVisible] = React.useState(false);
   const [is_addons_data, setIsAddonData] = React.useState(false);
   const [error, setError] = React.useState(null);
 
@@ -75,21 +76,25 @@ function AddWashing() {
   }
 
   return (
-    <div className='mt-10 lg:mt-20 border-slate-700 border-4 p-4'>
+    <div className='mt-10 lg:mt-20 border-slate-700 border-4 p-4 '>
       <div
         onClick={clickHandler}
-        className='uppercase lg:text-3xl font-extrabold text-gray-700 text-center cursor-pointer'
+        className='uppercase lg:text-2xl font-extrabold text-gray-700 text-center cursor-pointer flex gap-x-5 justify-center items-center lg:mx-20'
       >
-        ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE SPRZĄTANIEM
+        <img src={sofa} width={128} height={128} />
+        <div>
+          ZAMÓW CZYSZCZENIE CHEMICZNE MEBLI I DYWANÓW RÓWNOCZEŚNIE ZE
+          SPRZĄTANIEM
+        </div>
       </div>
-      <div className='flex justify-center mt-5 cursor-pointer'>
+      <div className='flex justify-center  cursor-pointer'>
         <img
           onClick={clickHandler}
           className={`${isVisible && "rotate-180"} transition duration-300 `}
           src={arrow}
           alt='arrow'
-          width={32}
-          height={32}
+          width={48}
+          height={48}
         />
       </div>
       {isVisible && (
