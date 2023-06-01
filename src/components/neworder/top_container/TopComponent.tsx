@@ -5,6 +5,7 @@ import { Context } from "./index";
 // Components
 import Steps from "../../common_components/steps/Steps";
 import { steps } from "../../../utils/data/steps";
+import { toJS } from "mobx";
 
 function TopComponent() {
   const { store } = React.useContext(Context);
@@ -12,6 +13,7 @@ function TopComponent() {
     store.setSteps(steps);
   }, []);
 
+  console.log("steps", toJS(store.steps));
   const stepProps = {
     steps: store.steps,
     setActualStep: function (id: number) {

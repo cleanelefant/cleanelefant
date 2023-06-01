@@ -13,7 +13,7 @@ function Steps({ steps, setActualStep }: ISteps) {
   const clickHandler = (id: number) => {
     setActualStep(id);
   };
-  console.log("steps", toJS(steps));
+
   return (
     <div className='sticky top-0 z-40 flex flex-col lg:flex-row lg:gap-x-1 font-mono'>
       {steps?.map((step, i) => (
