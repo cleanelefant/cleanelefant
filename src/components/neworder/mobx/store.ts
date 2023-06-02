@@ -37,6 +37,9 @@ export default class This {
   steps: IStep[];
   isRulesChecked: boolean;
   isRodoChecked: boolean;
+  //addons
+  addons: ExtendedIAddons[];
+  addonReciver: IAddonReciver[];
   // washing addons
   washingAddons: ExtendedIAddons[];
   washingAddonReciver: IAddonReciver[];
@@ -353,6 +356,41 @@ export default class This {
 
   setSteps(steps: IStep[]) {
     this.steps = steps;
+  }
+  //Addons
+  setAddons(addons: ExtendedIAddons[]) {
+    this.addons = addons;
+  }
+
+  deleteItemsWithSameHashFromAddonReciver(hash: string) {
+    this.addonReciver = [...this.addonReciver].filter(
+      (addon) => addon.hash !== hash
+    );
+  }
+
+  deleteMultyItemFromAddonReciver(hash: string, multyId: number) {
+    const index = this.addonReciver.findIndex(
+      (addon) => addon.hash === hash && addon.multyId === multyId
+    );
+    if (index !== -1) {
+      this.addonReciver.splice(index, 1);
+    }
+  }
+
+  addItemToAddonReciver(item: IAddonReciver) {
+    this.addonReciver.push(item);
+  }
+
+  setActivityInAddons(hash: string) {
+    const index = this.addons.findIndex((addon) => addon.hash === hash);
+    this.addons[index].isActive = !this.addons[index].isActive;
+  }
+
+  deleteItemFromAddonReciver(hash: string) {
+    const index = this.addonReciver.findIndex((addon) => addon.hash === hash);
+    if (index !== -1) {
+      this.addonReciver.splice(index, 1);
+    }
   }
 
   // Washing addons

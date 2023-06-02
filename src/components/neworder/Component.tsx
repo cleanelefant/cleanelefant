@@ -26,6 +26,7 @@ import Rates from "./rates/Rates";
 import { ExtendedITime, ExtendedIMinutes, rateType } from "../../types";
 import { fetchedRates } from "../../utils/rates";
 import { times, minutes } from "../../utils/times";
+import AddService from "./additional_services/AddService";
 
 function Component() {
   const { store, orderStore } = React.useContext(Context);
@@ -290,6 +291,7 @@ function Component() {
             <HomeOption />
             <Rates />
             <AddWashing />
+            <AddService />
             <div ref={bottomComercialDataRef}></div>
             <div
               id='datepicker_order_page'
