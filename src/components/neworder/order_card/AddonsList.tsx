@@ -20,16 +20,30 @@ function findInArray(addon: IAddonReciver, targetArr: ITarget[]) {
 function AddonsList() {
   const { store } = useContext(Context);
   const washingAddonsArr = toJS(store.washingAddonReciver);
-  const washingTargetArr: ITarget[] = [];
+  const addonsArr = toJS(store.addonReciver);
+  const targetArr: ITarget[] = [];
+  console.log("targetArr", targetArr);
 
   washingAddonsArr.forEach((addon) => {
-    if (findInArray(addon, washingTargetArr)) {
-      const index = washingTargetArr.findIndex(
-        (item) => item.hash === addon.hash
-      );
-      washingTargetArr[index].total += 1;
+    if (findInArray(addon, targetArr)) {
+      const index = targetArr.findIndex((item) => item.hash === addon.hash);
+      targetArr[index].total += 1;
     } else {
-      washingTargetArr.push({
+      targetArr.push({
+        hash: addon.hash,
+        title: addon.title,
+        total: 1,
+        src: addon.src,
+      });
+    }
+  });
+
+  addonsArr.forEach((addon) => {
+    if (findInArray(addon, targetArr)) {
+      const index = targetArr.findIndex((item) => item.hash === addon.hash);
+      targetArr[index].total += 1;
+    } else {
+      targetArr.push({
         hash: addon.hash,
         title: addon.title,
         total: 1,
@@ -50,12 +64,12 @@ function AddonsList() {
 
     fetchData();
   }, []); // Only run once, on mount
-
+  console.log("targetArr", targetArr);
   return (
     <div>
       {washingAddonsArr.length > 0 && (
         <div className='text-center font-mono text-sm'>
-          {washingTargetArr.map((item, index) => (
+          {targetArr.map((item, index) => (
             <div
               key={index}
               className='flex gap-x-2 justify-start items-center pt-1'

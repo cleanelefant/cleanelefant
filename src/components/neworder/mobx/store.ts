@@ -171,6 +171,8 @@ export default class This {
     this.windowMinuteRate = 0;
     this.commonShiftTime = 0;
     this.commonShiftTime = 0;
+
+    this.addonReciver = [];
   }
   setIsModal(value: boolean) {
     this.isModal = value;

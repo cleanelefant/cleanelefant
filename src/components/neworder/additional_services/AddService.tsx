@@ -7,6 +7,7 @@ import { ExtendedIAddons } from "../../../types";
 import MultyCard from "./MultyCard";
 import SingleCard from "./SingleCard";
 import { addons } from "../../../utils/addons";
+import { toJS } from "mobx";
 
 function AddServices() {
   const { store } = useContext(Context);
